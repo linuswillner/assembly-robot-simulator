@@ -7,6 +7,6 @@ class MainTest {
 
   @Test
   void getHelloWorld() {
-    assertEquals(Main.getHelloWorld(), "Hello world!", "Incorrect capitalisation");
+    assertEquals(Main.getHelloWorld(), "Hello World!", "Incorrect capitalisation");
   }
 }
