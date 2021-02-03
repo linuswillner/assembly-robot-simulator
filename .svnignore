@@ -54,6 +54,7 @@ fabric.properties
 hs_err_pid*
 .gradle
 build/
+dist/
 gradle-app.setting
 .gradletasknamecache
 **/build/
