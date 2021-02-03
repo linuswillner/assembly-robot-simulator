@@ -1,12 +1,55 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
-group 'com.assembly-robot'
-version '1.0-SNAPSHOT'
+group 'com.assemblyrobot'
+version '1.0.0'
 
 repositories {
     mavenCentral()
+}
+
+java {
+    modularity.inferModulePath = true
+}
+
+javafx {
+    version = '15.0.1'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+// Build options
+def mainClassName = "com.assemblyrobot.ui.Main"
+def inputDir = 'build/libs'
+def outputDir = 'dist'
+def appName = 'assembly-robot-simulator'
+
+task copyDependencies(type: Copy) {
+    dependsOn 'build'
+    from configurations.runtime
+    into "${buildDir}/libs"
+}
+
+task jpackage(type: Exec) {
+    dependsOn 'clean'
+    dependsOn 'copyDependencies'
+
+    commandLine "${System.getenv("JAVA_HOME")}/bin/jpackage",
+        '--type', 'exe',
+        '--name', 'AssemblyRobotSimulator',
+        '--input', "${inputDir}",
+        '--dest', "${outputDir}",
+        '--main-jar', "${appName}-${version}.jar",
+        '--main-class', "${mainClassName}",
+        '--verbose',
+        '--win-console', '--win-dir-chooser', '--win-shortcut'
+    // TODO: This doesn't launch because it can't find the main class?
+}
+
+test {
+    useJUnitPlatform()
 }
 
 dependencies {
@@ -16,9 +59,9 @@ dependencies {
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.18'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
-    testCompileOnly 'org.projectlombok:lombok:1.18.16'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.18'
+    testCompileOnly 'org.projectlombok:lombok:1.18.18'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.18'
 
     // Guava
     implementation 'com.google.guava:guava:30.1-jre'
@@ -28,8 +71,4 @@ dependencies {
 
     // GSON
     implementation 'com.google.code.gson:gson:2.8.6'
-}
-
-test {
-    useJUnitPlatform()
 }
