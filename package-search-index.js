@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.assemblyrobot"},{"l":"com.assemblyrobot.ui"},{"l":"com.assemblyrobot.ui.controllers"}];updateSearchResults();

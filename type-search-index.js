@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"com.assemblyrobot.ui","l":"Main"},{"p":"com.assemblyrobot.ui.controllers","l":"MainController"},{"p":"com.assemblyrobot","l":"TestGetter"}];updateSearchResults();
