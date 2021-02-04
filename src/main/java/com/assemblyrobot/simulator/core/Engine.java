@@ -1,6 +1,6 @@
 package com.assemblyrobot.simulator.core;
 
-import com.assemblyrobot.system.core.Point;
+import com.assemblyrobot.system.core.Station;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.system.controllers.EngineController;
 import com.assemblyrobot.simulator.core.events.EventQueue;
@@ -15,7 +15,7 @@ public abstract class Engine {
   @Getter private final EngineController engineController = new EngineController();
   @Getter private final Clock clock = Clock.getInstance();
   @Getter private final EventQueue eventQueue = new EventQueue();
-  @Getter private final ArrayList<Point> points = new ArrayList<>(); // TODO: Priority queue based on which point is free
+  @Getter private final ArrayList<Station> stations = new ArrayList<>(); // TODO: Priority queue based on which point is free
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
@@ -61,7 +61,7 @@ public abstract class Engine {
 
     // Tell points to check for C events
     System.out.println("ENGINE: Attempting to perform C events.");
-    points.forEach(Point::poll);
+    stations.forEach(Station::poll);
 
     // Advance clock
     val ticksToAdvance = eventQueue.peekNext().getExecutionTime() - clock.getCurrentTick();

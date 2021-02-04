@@ -5,15 +5,15 @@ import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
-import com.assemblyrobot.system.controllers.PointQueueController;
+import com.assemblyrobot.system.controllers.StationController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.val;
 
-public abstract class Point extends TickAdvanceListener {
+public abstract class Station extends TickAdvanceListener {
   @Getter private final EventQueue eventQueue;
-  @Getter private final PointQueueController controller = new PointQueueController();
+  @Getter private final StationController controller = new StationController();
   @Getter private final MaterialQueue queue = new MaterialQueue();
 
   @Getter
@@ -24,7 +24,7 @@ public abstract class Point extends TickAdvanceListener {
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
 
-  public Point(EventQueue eventQueue) {
+  public Station(EventQueue eventQueue) {
     super(null);
     Clock.getInstance().registerTickAdvanceListener(this);
     this.eventQueue = eventQueue;

@@ -1,10 +1,10 @@
 package com.assemblyrobot.system.points;
 
 import com.assemblyrobot.simulator.core.events.EventQueue;
-import com.assemblyrobot.system.core.Point;
+import com.assemblyrobot.system.core.Station;
 
-public class AssemblyPoint extends Point {
-  public AssemblyPoint(EventQueue eventQueue) {
+public class AssemblyStation extends Station {
+  public AssemblyStation(EventQueue eventQueue) {
     super(eventQueue);
   }
 

@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.val;
 
 @RequiredArgsConstructor
-public class PointQueueController {
+public class StationController {
   @Getter private final HashMap<Integer, Material> cache = new HashMap<>();
 
   public void registerIncomingMaterial(@NonNull Material material) {
