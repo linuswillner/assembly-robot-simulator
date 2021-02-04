@@ -1,18 +1,16 @@
 package com.assemblyrobot.system.engines;
 
 import com.assemblyrobot.simulator.core.Engine;
-import com.assemblyrobot.simulator.core.events.ArrivalEventGenerator;
+import com.assemblyrobot.system.generators.ArrivalEventPropagator;
 import com.assemblyrobot.system.materials.ComponentPack;
-import com.assemblyrobot.system.points.AssemblyStation;
+import com.assemblyrobot.system.stations.AssemblyStation;
 import java.util.Arrays;
 
 public class AssemblyEngine extends Engine {
-  private final ArrivalEventGenerator arrivalEventGenerator =
-      new ArrivalEventGenerator(super.getEventQueue());
+  private final ArrivalEventPropagator arrivalEventPropagator =
+      new ArrivalEventPropagator(super.getEventQueue());
 
-  private final AssemblyStation[] assemblyPoints = {
-      new AssemblyStation(super.getEventQueue())
-  };
+  private final AssemblyStation[] assemblyPoints = {new AssemblyStation(super.getEventQueue())};
 
   @Override
   protected void init() {
@@ -20,13 +18,13 @@ public class AssemblyEngine extends Engine {
     super.getStations().addAll(Arrays.asList(assemblyPoints));
 
     // Kickstart arrival event generator
-    arrivalEventGenerator.feedNext();
+    arrivalEventPropagator.feedNext();
   }
 
   @Override
   protected void onArrival() {
-    arrivalEventGenerator.feedNext();
-    // TODO: Temp, automatically hand out the best one
+    arrivalEventPropagator.feedNext();
+    // TODO: Temp, automatically hand out the best one (StageController)
     super.getStations().get(0).addToQueue(new ComponentPack());
   }
 
