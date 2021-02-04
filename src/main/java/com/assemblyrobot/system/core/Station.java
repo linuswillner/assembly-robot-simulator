@@ -66,7 +66,7 @@ public abstract class Station extends TickAdvanceListener {
       setBusyTimeRemaining(processingTime);
 
       System.out.printf(
-          "POINT: Starting processing of %s. Processing will continue for %d ticks.%n",
+          "STATION: Starting processing of %s. Processing will continue for %d ticks.%n",
           next, processingTime);
     }
   }
@@ -75,17 +75,19 @@ public abstract class Station extends TickAdvanceListener {
 
   @Override
   protected void onTickAdvance(long ticksAdvanced) {
-    val newBusyTime = busyTimeRemaining - ticksAdvanced;
+    if (isBusy()) {
+      val newBusyTime = busyTimeRemaining - ticksAdvanced;
 
-    System.out.printf(
-        "POINT: Advanced %d ticks. Busy time reduced from %d to %d.%n",
-        ticksAdvanced, getBusyTimeRemaining(), newBusyTime);
+      System.out.printf(
+          "STATION: Advanced %d ticks. Busy time reduced from %d to %d.%n",
+          ticksAdvanced, busyTimeRemaining, newBusyTime);
 
-    if (busyTimeRemaining == 0) {
-      System.out.printf("POINT: Processing for material %s finished.%n", currentMaterial);
+      if (newBusyTime == 0) {
+        System.out.printf("STATION: Processing for material %s finished.%n", currentMaterial);
+      }
+
+      setBusyTimeRemaining(newBusyTime);
     }
-
-    setBusyTimeRemaining(newBusyTime);
   }
 
   @Override
