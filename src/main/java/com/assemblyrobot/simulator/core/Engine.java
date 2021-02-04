@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.val;
 
-// TODO: Log4J
+// TODO: Implement Log4J
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
   // TODO: Hand off this process to StageController once Stages are implemented, see spec for implementation details
@@ -30,7 +30,7 @@ public abstract class Engine {
     System.out.println("ENGINE: Running initialisation routines.");
     init();
 
-    System.out.println("ENGINE: Initialisation routines complete. Starting.");
+    System.out.println("ENGINE: Initialisation routines complete. Starting event loop.");
     setRunning(true);
 
     while (isRunning()) {

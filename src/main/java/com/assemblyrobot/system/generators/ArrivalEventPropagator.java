@@ -17,11 +17,11 @@ public class ArrivalEventPropagator {
     System.out.printf("ARRIVAL_EVENT_GENERATOR: Scheduling next arrival event %s.%n", nextEvent);
     eventQueue.schedule(nextEvent);
 
-    // Schedule new next event
+    // Tee up the next arrival event to schedule
     val nextArrivalTime =
         Clock.getInstance().getCurrentTick()
             + ArrivalEventIntervalGenerator.getInstance().nextLong();
     nextEvent = new Event(nextArrivalTime, EventType.ARRIVAL);
-    System.out.printf("ARRIVAL_EVENT_GENERATOR: Scheduling complete. Tee'd next arrival event %s.%n", nextEvent);
+    System.out.printf("ARRIVAL_EVENT_GENERATOR: Scheduling complete. Teed next arrival event %s.%n", nextEvent);
   }
 }

@@ -59,7 +59,7 @@ public abstract class Station extends TickAdvanceListener {
       controller.registerMaterialProcessing(next.getId());
       val processingTime = getProcessingTime();
 
-      // TODO: This is not scalable, need to abstract this away into a higher-order class
+      // TODO: Refactor this; handoff to the StageController instead when implemented
       eventQueue.schedule(
           new Event(Clock.getInstance().getCurrentTick() + processingTime, EventType.DEPARTURE));
 

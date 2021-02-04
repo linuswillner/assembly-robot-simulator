@@ -8,6 +8,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 
+// TODO: Refactor this into the StageController when implemented
 @RequiredArgsConstructor
 public class StationController {
   @Getter private final HashMap<Integer, Material> cache = new HashMap<>();

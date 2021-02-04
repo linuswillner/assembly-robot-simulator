@@ -10,7 +10,7 @@ public class ArrivalEventIntervalGenerator implements Generator {
   @Getter
   private static final ArrivalEventIntervalGenerator instance = new ArrivalEventIntervalGenerator();
 
-  // TODO: Load from config, deconstantify
+  // TODO: Load from config, deconstantify parameters
   private final Normal normalGenerator = new Normal(20, 5);
 
   @Override

@@ -14,7 +14,7 @@ public class AssemblyEngine extends Engine {
 
   @Override
   protected void init() {
-    // Register points
+    // Register stations
     super.getStations().addAll(Arrays.asList(assemblyPoints));
 
     // Kickstart arrival event generator
