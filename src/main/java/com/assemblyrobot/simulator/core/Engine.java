@@ -12,10 +12,10 @@ import lombok.val;
 
 // TODO: Log4J
 public abstract class Engine {
-  @Getter private final EngineController engineController = new EngineController();
-  @Getter private final Clock clock = Clock.getInstance();
-  @Getter private final EventQueue eventQueue = new EventQueue();
-  @Getter private final ArrayList<Station> stations = new ArrayList<>(); // TODO: Priority queue based on which point is free
+  @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
+  @Getter(AccessLevel.PROTECTED) private final ArrayList<Station> stations = new ArrayList<>(); // TODO: Priority queue based on which station is free
+  private final EngineController engineController = new EngineController();
+  private final Clock clock = Clock.getInstance();
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
