@@ -2,7 +2,6 @@ package com.assemblyrobot.system.engines;
 
 import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.system.generators.ArrivalEventPropagator;
-import com.assemblyrobot.system.materials.ComponentPack;
 import com.assemblyrobot.system.stations.AssemblyStation;
 import java.util.Arrays;
 
@@ -25,7 +24,7 @@ public class AssemblyEngine extends Engine {
   protected void onArrival() {
     arrivalEventPropagator.feedNext();
     // TODO: Temp, automatically hand out the best one (StageController)
-    super.getStations().get(0).addToQueue(new ComponentPack());
+    //super.getStations().get(0).addToQueue(new Material());
   }
 
   @Override
