@@ -5,7 +5,7 @@ import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
-import com.assemblyrobot.system.controllers.StationController;
+import com.assemblyrobot.system.controllers.StageController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import lombok.val;
 @RequiredArgsConstructor
 public abstract class Station extends TickAdvanceListener {
   @Getter private final EventQueue eventQueue;
-  @Getter private final StationController controller = new StationController();
+  @Getter private final StageController controller = new StageController();
   @Getter private final MaterialQueue queue = new MaterialQueue();
 
   @Getter
