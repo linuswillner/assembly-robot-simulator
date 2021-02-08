@@ -10,7 +10,7 @@ import lombok.val;
 
 // TODO: Refactor this into the StageController when implemented
 @RequiredArgsConstructor
-public class StationController {
+public class StageController {
   @Getter private final HashMap<Integer, Material> cache = new HashMap<>();
 
   public void registerIncomingMaterial(@NonNull Material material) {
