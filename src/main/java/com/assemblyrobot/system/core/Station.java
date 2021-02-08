@@ -8,9 +8,11 @@ import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.system.controllers.StationController;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.val;
 
+@RequiredArgsConstructor
 public abstract class Station extends TickAdvanceListener {
   @Getter private final EventQueue eventQueue;
   @Getter private final StationController controller = new StationController();
@@ -23,10 +25,6 @@ public abstract class Station extends TickAdvanceListener {
   @Getter
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
-
-  public Station(EventQueue eventQueue) {
-    this.eventQueue = eventQueue;
-  }
 
   // Busy logic
 
