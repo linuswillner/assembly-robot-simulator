@@ -73,4 +73,8 @@ dependencies {
 
     // GSON
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Log4J
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
 }

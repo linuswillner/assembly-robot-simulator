@@ -7,14 +7,17 @@ import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public class ArrivalEventPropagator {
   private final EventQueue eventQueue;
   private Event nextEvent = new Event(0, EventType.ARRIVAL);
+  private static final Logger logger = LogManager.getLogger();
 
   public void feedNext() {
-    System.out.printf("ARRIVAL_EVENT_GENERATOR: Scheduling next arrival event %s.%n", nextEvent);
+    logger.debug("Scheduling next arrival event {}.", nextEvent);
     eventQueue.schedule(nextEvent);
 
     // Tee up the next arrival event to schedule
@@ -22,6 +25,7 @@ public class ArrivalEventPropagator {
         Clock.getInstance().getCurrentTick()
             + ArrivalEventIntervalGenerator.getInstance().nextLong();
     nextEvent = new Event(nextArrivalTime, EventType.ARRIVAL);
-    System.out.printf("ARRIVAL_EVENT_GENERATOR: Scheduling complete. Teed next arrival event %s.%n", nextEvent);
+
+    logger.debug("Scheduling complete. Teed next arrival event {}.", nextEvent);
   }
 }
