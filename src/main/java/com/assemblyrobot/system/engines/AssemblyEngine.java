@@ -24,7 +24,7 @@ public class AssemblyEngine extends Engine {
   protected void onArrival() {
     arrivalEventPropagator.feedNext();
     // TODO: Temp, automatically hand out the best one (StageController)
-    super.getStations().get(0).addToQueue(new ComponentPack());
+    //super.getStations().get(0).addToQueue(new Material());
   }
 
   @Override
