@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Mirror to SVN" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="$PROJECT_DIR$/mirror-to-svn.ps1" workingDirectory="C:\Users\hello">
+    <method v="2" />
+  </configuration>
+</component>
