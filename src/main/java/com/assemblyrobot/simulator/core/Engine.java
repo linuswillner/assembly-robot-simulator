@@ -1,14 +1,16 @@
 package com.assemblyrobot.simulator.core;
 
-import com.assemblyrobot.system.core.Station;
 import com.assemblyrobot.simulator.core.clock.Clock;
-import com.assemblyrobot.system.controllers.EngineController;
 import com.assemblyrobot.simulator.core.events.EventQueue;
+import com.assemblyrobot.system.controllers.EngineController;
+import com.assemblyrobot.system.core.Station;
 import java.util.ArrayList;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.val;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // TODO: Implement Log4J
 public abstract class Engine {
@@ -17,6 +19,7 @@ public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final ArrayList<Station> stations = new ArrayList<>();
   private final EngineController engineController = new EngineController(); // TODO: Not used for now
   private final Clock clock = Clock.getInstance();
+  private static final Logger logger = LogManager.getLogger();
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
@@ -25,12 +28,12 @@ public abstract class Engine {
   // Runner methods
 
   public void start() throws InterruptedException {
-    System.out.println("ENGINE: Starting simulation.");
+    logger.info("Starting simulation.");
 
-    System.out.println("ENGINE: Running initialisation routines.");
+    logger.info("Running initialisation routines.");
     init();
 
-    System.out.println("ENGINE: Initialisation routines complete. Starting event loop.");
+    logger.info("Initialisation routines complete. Starting event loop.");
     setRunning(true);
 
     while (isRunning()) {
@@ -39,20 +42,20 @@ public abstract class Engine {
   }
 
   public void stop() {
-    System.out.println("ENGINE: Stopping simulation.");
+    logger.warn("ENGINE: Stopping simulation.");
     setRunning(false);
   }
 
   private void runCycle() throws InterruptedException {
-    System.out.println("---\nENGINE: Beginning new cycle.");
+    logger.trace("Beginning new cycle.");
 
     // Perform B events
 
-    System.out.println("ENGINE: Performing B events.");
+    logger.trace("Performing B events.");
     var nextEvent = eventQueue.peekNext();
 
     while(nextEvent.getExecutionTime() == clock.getCurrentTick()) {
-      System.out.printf("ENGINE: Next event: %s%n", nextEvent);
+      logger.trace("Next event: {}", nextEvent);
 
       switch (nextEvent.getType()) {
         case ARRIVAL -> onArrival();
@@ -64,21 +67,23 @@ public abstract class Engine {
     }
 
     // Tell points to check for C events
-    System.out.println("ENGINE: Attempting to perform C events.");
+    logger.trace("Attempting to perform C events.");
     stations.forEach(Station::poll);
 
     // Dump event queue for debug
-    System.out.println("ENGINE: All events performed. Dumping future event queue.\n---");
+    logger.trace("All events performed. Dumping future event queue.");
+    System.out.println("---");
     eventQueue.dump();
-    System.out.println("---\nENGINE: Future event queue dumped.");
+    System.out.println("---");
+    logger.trace("Future event queue dumped.");
 
     // Advance clock
     val ticksToAdvance = eventQueue.peekNext().getExecutionTime() - clock.getCurrentTick();
 
-    System.out.printf("ENGINE: Advancing clock by %d ticks to tick %d.%n", ticksToAdvance, clock.getCurrentTick() + ticksToAdvance);
+    logger.trace("Advancing clock by {} ticks to tick {}.", ticksToAdvance, clock.getCurrentTick() + ticksToAdvance);
     Thread.sleep(ticksToAdvance * 1000);
     clock.advanceTick(ticksToAdvance);
-    System.out.printf("ENGINE: Clock tick is now %d.%n", clock.getCurrentTick());
+    logger.trace("Clock tick is now {}.", clock.getCurrentTick());
   }
 
   // Delegate methods

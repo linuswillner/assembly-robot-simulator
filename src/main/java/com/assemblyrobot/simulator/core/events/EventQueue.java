@@ -5,9 +5,12 @@ import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.val;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EventQueue {
   @Getter private final PriorityQueue<Event> queue = new PriorityQueue<>();
+  private static final Logger logger = LogManager.getLogger();
 
   public void schedule(Event event) {
     queue.add(event);
@@ -27,6 +30,6 @@ public class EventQueue {
             .sorted(Comparator.comparingLong(Event::getExecutionTime))
             .collect(Collectors.toList());
 
-    orderedQueue.forEach(event -> System.out.printf("%s%n", event.toString()));
+    orderedQueue.forEach(logger::debug);
   }
 }
