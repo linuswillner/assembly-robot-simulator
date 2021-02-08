@@ -25,8 +25,6 @@ public abstract class Station extends TickAdvanceListener {
   private Material currentMaterial = null;
 
   public Station(EventQueue eventQueue) {
-    super(null);
-    Clock.getInstance().registerTickAdvanceListener(this);
     this.eventQueue = eventQueue;
   }
 
