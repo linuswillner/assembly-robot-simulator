@@ -2,7 +2,6 @@ package com.assemblyrobot.system.engines;
 
 import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.system.generators.ArrivalEventPropagator;
-import com.assemblyrobot.system.materials.ComponentPack;
 import com.assemblyrobot.system.stations.AssemblyStation;
 import java.util.Arrays;
 
