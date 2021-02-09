@@ -3,8 +3,6 @@ package com.assemblyrobot.simulator.core;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.system.controllers.EngineController;
-import com.assemblyrobot.system.core.Station;
-import java.util.ArrayList;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,11 +10,8 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// TODO: Implement Log4J
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
-  // TODO: Hand off this process to StageController once Stages are implemented, see spec for implementation details
-  @Getter(AccessLevel.PROTECTED) private final ArrayList<Station> stations = new ArrayList<>();
   private final EngineController engineController = new EngineController(); // TODO: Not used for now
   private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
@@ -68,7 +63,7 @@ public abstract class Engine {
 
     // Tell points to check for C events
     logger.trace("Attempting to perform C events.");
-    stations.forEach(Station::poll);
+    //stations.forEach(Station::poll);
 
     // Dump event queue for debug
     logger.trace("All events performed. Dumping future event queue.");

@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public abstract class Station extends TickAdvanceListener {
-  @Getter private final EventQueue eventQueue;
   @Getter private final StageController controller = new StageController();
   @Getter private final MaterialQueue queue = new MaterialQueue();
   private static final Logger logger = LogManager.getLogger();
@@ -57,10 +56,6 @@ public abstract class Station extends TickAdvanceListener {
       setCurrentMaterial(next);
       controller.registerMaterialProcessing(next.getId());
       val processingTime = getProcessingTime();
-
-      // TODO: Refactor this; handoff to the StageController instead when implemented
-      eventQueue.schedule(
-          new Event(Clock.getInstance().getCurrentTick() + processingTime, EventType.DEPARTURE));
 
       setBusyTimeRemaining(processingTime);
 

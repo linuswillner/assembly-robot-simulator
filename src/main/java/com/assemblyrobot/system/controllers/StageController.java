@@ -8,7 +8,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 
-// TODO: Refactor this into the StageController when implemented
 @RequiredArgsConstructor
 public class StageController {
   @Getter private final HashMap<Integer, Material> cache = new HashMap<>();
@@ -35,3 +34,7 @@ public class StageController {
     return Clock.getInstance().getCurrentTick();
   }
 }
+
+/* eventQueue.schedule(
+          new Event(Clock.getInstance().getCurrentTick() + processingTime, EventType.DEPARTURE));
+*/
