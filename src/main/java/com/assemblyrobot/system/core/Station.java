@@ -11,12 +11,14 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.val;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public abstract class Station extends TickAdvanceListener {
-  @Getter private final EventQueue eventQueue;
   @Getter private final StageController controller = new StageController();
   @Getter private final MaterialQueue queue = new MaterialQueue();
+  private static final Logger logger = LogManager.getLogger();
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
@@ -55,15 +57,9 @@ public abstract class Station extends TickAdvanceListener {
       controller.registerMaterialProcessing(next.getId());
       val processingTime = getProcessingTime();
 
-      // TODO: Refactor this; handoff to the StageController instead when implemented
-      eventQueue.schedule(
-          new Event(Clock.getInstance().getCurrentTick() + processingTime, EventType.DEPARTURE));
-
       setBusyTimeRemaining(processingTime);
 
-      System.out.printf(
-          "STATION: Starting processing of %s. Processing will continue for %d ticks.%n",
-          next, processingTime);
+      logger.trace("Starting processing of {}. Processing will continue for {} ticks.", next, processingTime);
     }
   }
 
@@ -74,12 +70,10 @@ public abstract class Station extends TickAdvanceListener {
     if (isBusy()) {
       val newBusyTime = busyTimeRemaining - ticksAdvanced;
 
-      System.out.printf(
-          "STATION: Advanced %d ticks. Busy time reduced from %d to %d.%n",
-          ticksAdvanced, busyTimeRemaining, newBusyTime);
+      logger.trace("Advanced {} ticks. Busy time reduced from {} to {}.", ticksAdvanced, busyTimeRemaining, newBusyTime);
 
       if (newBusyTime == 0) {
-        System.out.printf("STATION: Processing for material %s finished.%n", currentMaterial);
+        logger.trace("Processing for material {} finished.", currentMaterial);
       }
 
       setBusyTimeRemaining(newBusyTime);

@@ -5,8 +5,9 @@ import com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator;
 import com.assemblyrobot.system.core.Station;
 
 public class AssemblyStation extends Station {
-  public AssemblyStation(EventQueue eventQueue) {
-    super(eventQueue);
+
+  public AssemblyStation() {
+    super();
   }
 
   @Override
