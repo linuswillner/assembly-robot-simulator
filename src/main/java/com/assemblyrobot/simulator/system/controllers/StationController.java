@@ -1,4 +1,4 @@
-package com.assemblyrobot.system.controllers;
+package com.assemblyrobot.simulator.system.controllers;
 
 public class StationController {
 

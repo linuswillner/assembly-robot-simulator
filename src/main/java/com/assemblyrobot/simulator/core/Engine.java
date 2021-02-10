@@ -2,7 +2,7 @@ package com.assemblyrobot.simulator.core;
 
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
-import com.assemblyrobot.system.controllers.EngineController;
+import com.assemblyrobot.simulator.system.controllers.EngineController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

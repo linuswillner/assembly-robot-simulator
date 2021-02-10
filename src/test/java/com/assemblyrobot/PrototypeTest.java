@@ -1,6 +1,6 @@
 package com.assemblyrobot;
 
-import com.assemblyrobot.system.engines.MainEngine;
+import com.assemblyrobot.simulator.system.engines.MainEngine;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
