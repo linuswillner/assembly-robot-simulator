@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public class ArrivalEventPropagator {
-  private final EventQueue eventQueue;
+  @NonNull private final EventQueue eventQueue;
   private Event nextEvent = new Event(0, EventType.ARRIVAL);
   private static final Logger logger = LogManager.getLogger();
 
