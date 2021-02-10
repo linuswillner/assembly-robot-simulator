@@ -2,10 +2,10 @@ com.assemblyrobot.simulator.core
 com.assemblyrobot.simulator.core.clock
 com.assemblyrobot.simulator.core.events
 com.assemblyrobot.simulator.core.generators
-com.assemblyrobot.system.controllers
-com.assemblyrobot.system.core
-com.assemblyrobot.system.engines
-com.assemblyrobot.system.generators
-com.assemblyrobot.system.stations
+com.assemblyrobot.simulator.system.components
+com.assemblyrobot.simulator.system.controllers
+com.assemblyrobot.simulator.system.engines
+com.assemblyrobot.simulator.system.generators
+com.assemblyrobot.simulator.system.stations
 com.assemblyrobot.ui
 com.assemblyrobot.ui.controllers
