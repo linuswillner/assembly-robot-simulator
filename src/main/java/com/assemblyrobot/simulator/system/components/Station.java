@@ -11,7 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
-public abstract class Station extends TickAdvanceListener {
+public abstract class Station extends TickAdvanceListener implements BiDirectionalQueueable{
   @Getter private final StageController controller = new StageController();
   @Getter private final MaterialQueue queue = new MaterialQueue();
   private static final Logger logger = LogManager.getLogger();
