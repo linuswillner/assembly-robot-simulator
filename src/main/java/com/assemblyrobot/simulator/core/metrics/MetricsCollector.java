@@ -13,7 +13,15 @@ public class MetricsCollector {
     CentralMetricsCollector.getInstance().registerMetricsCollector(collectingClassName, this);
   }
 
-  public void put(@NonNull String metricName, double measurement) {
+  public double getMetric(@NonNull String metricName) {
+    return metrics.get(metricName);
+  }
+
+  public double getMetricWithDefault(@NonNull String metricName, double defaultValue) {
+    return metrics.getOrDefault(metricName, defaultValue);
+  }
+
+  public void putMetric(@NonNull String metricName, double measurement) {
     metrics.put(metricName, measurement);
   }
 }
