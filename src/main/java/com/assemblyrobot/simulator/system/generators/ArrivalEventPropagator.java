@@ -1,4 +1,4 @@
-package com.assemblyrobot.system.generators;
+package com.assemblyrobot.simulator.system.generators;
 
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.Event;

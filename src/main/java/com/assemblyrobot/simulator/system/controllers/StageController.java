@@ -1,6 +1,6 @@
-package com.assemblyrobot.system.controllers;
+package com.assemblyrobot.simulator.system.controllers;
 
-import com.assemblyrobot.system.core.Material;
+import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import java.util.HashMap;
 import lombok.Getter;

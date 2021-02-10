@@ -1,4 +1,4 @@
-package com.assemblyrobot.system.core;
+package com.assemblyrobot.simulator.system.components;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,11 +1,7 @@
-package com.assemblyrobot.system.core;
+package com.assemblyrobot.simulator.system.components;
 
-import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
-import com.assemblyrobot.simulator.core.events.Event;
-import com.assemblyrobot.simulator.core.events.EventQueue;
-import com.assemblyrobot.simulator.core.events.EventType;
-import com.assemblyrobot.system.controllers.StageController;
+import com.assemblyrobot.simulator.system.controllers.StageController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
