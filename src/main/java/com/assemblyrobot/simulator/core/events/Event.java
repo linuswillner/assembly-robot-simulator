@@ -1,6 +1,7 @@
 package com.assemblyrobot.simulator.core.events;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -8,10 +9,10 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class Event implements Comparable<Event> {
   @Getter private final long executionTime;
-  @Getter private final EventType type;
+  @Getter @NonNull private final EventType type;
 
   @Override
-  public int compareTo(Event comparingEvent) {
+  public int compareTo(@NonNull Event comparingEvent) {
     return Long.compare(executionTime, comparingEvent.getExecutionTime());
   }
 }
