@@ -57,10 +57,12 @@ loadScripts(document, 'script');</script>
 <li><a href="com/assemblyrobot/simulator/core/clock/package-tree.html">com.assemblyrobot.simulator.core.clock</a>, </li>
 <li><a href="com/assemblyrobot/simulator/core/events/package-tree.html">com.assemblyrobot.simulator.core.events</a>, </li>
 <li><a href="com/assemblyrobot/simulator/core/generators/package-tree.html">com.assemblyrobot.simulator.core.generators</a>, </li>
+<li><a href="com/assemblyrobot/simulator/core/metrics/package-tree.html">com.assemblyrobot.simulator.core.metrics</a>, </li>
 <li><a href="com/assemblyrobot/simulator/system/components/package-tree.html">com.assemblyrobot.simulator.system.components</a>, </li>
 <li><a href="com/assemblyrobot/simulator/system/controllers/package-tree.html">com.assemblyrobot.simulator.system.controllers</a>, </li>
 <li><a href="com/assemblyrobot/simulator/system/engines/package-tree.html">com.assemblyrobot.simulator.system.engines</a>, </li>
 <li><a href="com/assemblyrobot/simulator/system/generators/package-tree.html">com.assemblyrobot.simulator.system.generators</a>, </li>
+<li><a href="com/assemblyrobot/simulator/system/metricscollectors/package-tree.html">com.assemblyrobot.simulator.system.metricscollectors</a>, </li>
 <li><a href="com/assemblyrobot/simulator/system/stations/package-tree.html">com.assemblyrobot.simulator.system.stations</a>, </li>
 <li><a href="com/assemblyrobot/ui/package-tree.html">com.assemblyrobot.ui</a>, </li>
 <li><a href="com/assemblyrobot/ui/controllers/package-tree.html">com.assemblyrobot.ui.controllers</a></li>
@@ -79,6 +81,7 @@ loadScripts(document, 'script');</script>
 <li class="circle">com.assemblyrobot.simulator.core.generators.<a href="com/assemblyrobot/simulator/core/generators/ArrivalEventIntervalGenerator.html" title="class in com.assemblyrobot.simulator.core.generators"><span class="type-name-link">ArrivalEventIntervalGenerator</span></a> (implements com.assemblyrobot.simulator.core.generators.<a href="com/assemblyrobot/simulator/core/generators/Generator.html" title="interface in com.assemblyrobot.simulator.core.generators">Generator</a>)</li>
 <li class="circle">com.assemblyrobot.simulator.system.generators.<a href="com/assemblyrobot/simulator/system/generators/ArrivalEventPropagator.html" title="class in com.assemblyrobot.simulator.system.generators"><span class="type-name-link">ArrivalEventPropagator</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.core.generators.<a href="com/assemblyrobot/simulator/core/generators/AssemblyTimeGenerator.html" title="class in com.assemblyrobot.simulator.core.generators"><span class="type-name-link">AssemblyTimeGenerator</span></a> (implements com.assemblyrobot.simulator.core.generators.<a href="com/assemblyrobot/simulator/core/generators/Generator.html" title="interface in com.assemblyrobot.simulator.core.generators">Generator</a>)</li>
+<li class="circle">com.assemblyrobot.simulator.core.metrics.<a href="com/assemblyrobot/simulator/core/metrics/CentralMetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><span class="type-name-link">CentralMetricsCollector</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.core.clock.<a href="com/assemblyrobot/simulator/core/clock/Clock.html" title="class in com.assemblyrobot.simulator.core.clock"><span class="type-name-link">Clock</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core"><span class="type-name-link">Engine</span></a>
 <ul>
@@ -90,11 +93,21 @@ loadScripts(document, 'script');</script>
 <li class="circle">com.assemblyrobot.ui.controllers.<a href="com/assemblyrobot/ui/controllers/MainController.html" title="class in com.assemblyrobot.ui.controllers"><span class="type-name-link">MainController</span></a> (implements javafx.fxml.Initializable)</li>
 <li class="circle">com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><span class="type-name-link">Material</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/MaterialQueue.html" title="class in com.assemblyrobot.simulator.system.components"><span class="type-name-link">MaterialQueue</span></a></li>
+<li class="circle">com.assemblyrobot.simulator.core.metrics.<a href="com/assemblyrobot/simulator/core/metrics/MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><span class="type-name-link">MetricsCollector</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.system.controllers.<a href="com/assemblyrobot/simulator/system/controllers/StageController.html" title="class in com.assemblyrobot.simulator.system.controllers"><span class="type-name-link">StageController</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.system.controllers.<a href="com/assemblyrobot/simulator/system/controllers/StationController.html" title="class in com.assemblyrobot.simulator.system.controllers"><span class="type-name-link">StationController</span></a></li>
+<li class="circle">java.lang.Throwable (implements java.io.Serializable)
+<ul>
+<li class="circle">java.lang.Error
+<ul>
+<li class="circle">com.assemblyrobot.simulator.core.metrics.<a href="com/assemblyrobot/simulator/core/metrics/MetricsCollectorTypeNotRegisteredError.html" title="class in com.assemblyrobot.simulator.core.metrics"><span class="type-name-link">MetricsCollectorTypeNotRegisteredError</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="circle">com.assemblyrobot.simulator.core.clock.<a href="com/assemblyrobot/simulator/core/clock/TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock"><span class="type-name-link">TickAdvanceListener</span></a>
 <ul>
-<li class="circle">com.assemblyrobot.simulator.system.controllers.<a href="com/assemblyrobot/simulator/system/controllers/EngineController.html" title="class in com.assemblyrobot.simulator.system.controllers"><span class="type-name-link">EngineController</span></a></li>
+<li class="circle">com.assemblyrobot.simulator.system.metricscollectors.<a href="com/assemblyrobot/simulator/system/metricscollectors/EngineMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><span class="type-name-link">EngineMetricsCollector</span></a></li>
 <li class="circle">com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><span class="type-name-link">Station</span></a>
 <ul>
 <li class="circle">com.assemblyrobot.simulator.system.stations.<a href="com/assemblyrobot/simulator/system/stations/AssemblyStation.html" title="class in com.assemblyrobot.simulator.system.stations"><span class="type-name-link">AssemblyStation</span></a></li>
@@ -120,6 +133,7 @@ loadScripts(document, 'script');</script>
 <li class="circle">java.lang.Enum&lt;E&gt; (implements java.lang.Comparable&lt;T&gt;, java.lang.constant.Constable, java.io.Serializable)
 <ul>
 <li class="circle">com.assemblyrobot.simulator.core.events.<a href="com/assemblyrobot/simulator/core/events/EventType.html" title="enum in com.assemblyrobot.simulator.core.events"><span class="type-name-link">EventType</span></a></li>
+<li class="circle">com.assemblyrobot.simulator.core.metrics.<a href="com/assemblyrobot/simulator/core/metrics/MetricsCollectorType.html" title="enum in com.assemblyrobot.simulator.core.metrics"><span class="type-name-link">MetricsCollectorType</span></a></li>
 </ul>
 </li>
 </ul>
