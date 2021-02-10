@@ -4,6 +4,7 @@ import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.system.controllers.StageController;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.val;
@@ -36,7 +37,7 @@ public abstract class Station extends TickAdvanceListener {
 
   // Queue operations
 
-  public void addToQueue(Material material) {
+  public void addToQueue(@NonNull Material material) {
     controller.registerIncomingMaterial(material);
     queue.add(material);
   }

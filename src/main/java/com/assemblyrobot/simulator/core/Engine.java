@@ -2,7 +2,7 @@ package com.assemblyrobot.simulator.core;
 
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
-import com.assemblyrobot.simulator.system.controllers.EngineController;
+import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,13 +12,16 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
-  private final EngineController engineController = new EngineController(); // TODO: Not used for now
   private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
   private boolean isRunning = false;
+
+  public Engine() {
+    new EngineMetricsCollector(this); // Register engine metrics collector
+  }
 
   // Runner methods
 
