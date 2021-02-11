@@ -71,7 +71,7 @@ public abstract class Engine {
     // Dump event queue for debug
     logger.trace("All events performed. Dumping future event queue.");
     System.out.println("---");
-    eventQueue.dump();
+    eventQueue.print();
     System.out.println("---");
     logger.trace("Future event queue dumped.");
 

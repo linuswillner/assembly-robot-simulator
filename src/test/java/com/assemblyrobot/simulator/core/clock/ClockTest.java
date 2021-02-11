@@ -10,7 +10,7 @@ class ClockTest {
   private final Clock clock = Clock.getInstance();
 
   @AfterEach
-  void resetClock() {
+  void afterEach() {
     clock.reset();
   }
 
