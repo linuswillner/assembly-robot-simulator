@@ -3,7 +3,6 @@ package com.assemblyrobot.simulator.system.stages;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
-import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.controllers.StageController;
 import com.assemblyrobot.simulator.system.stations.ErrorCheckStation;
 import java.util.PriorityQueue;
@@ -23,14 +22,21 @@ public class ErrorCheckStage extends Stage {
 
   private void createStations(int stationAmount){
     for(int i = 0; i < stationAmount; i++){
-      stageQueue.add(new ErrorCheckStation());
+      stageQueue.add(new ErrorCheckStation(stageController));
     }
   }
 
-  public void addToErrorCheckStationQueue(Material material) {
+  @Override
+  public void addToQueue(Material material) {
     stationData = new MaterialStationData();
     stationData.setStageId(stageId);
-    stageQueue.peek().addToErrorCheckStationQueue(material, stationData);
+    stageQueue.peek().addToQueue(material, stationData);
+  }
+
+  // Interface overload method
+  @Override
+  public void addToQueue(Material material, MaterialStationData stationData) {
+
   }
 
   public void onChildQueueDepart(Material material, MaterialStationData data) {
