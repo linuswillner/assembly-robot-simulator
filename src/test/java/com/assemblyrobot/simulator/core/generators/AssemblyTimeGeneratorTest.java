@@ -25,5 +25,4 @@ class AssemblyTimeGeneratorTest {
     val result = generator.nextDouble();
     assertTrue(result >= 8.0 && result <= 12.0);
   }
-
 }
