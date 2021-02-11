@@ -1,6 +1,5 @@
 package com.assemblyrobot.simulator.system.stations;
 
-import com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Station;
@@ -13,10 +12,11 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AssemblyStation extends Station implements Comparable<AssemblyStation>{
+public class ErrorCheckStation extends Station {
 
-  @Getter private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
-  private final StageController stageController;
+  @Getter
+  private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
+  private StageController stageController;
   @Getter private MaterialStationData stationData;
   private static final Logger logger = LogManager.getLogger();
 
@@ -28,14 +28,21 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
 
-  public AssemblyStation(StageController stageController){
+  public ErrorCheckStation(StageController stageController){
     this.stageController = stageController;
   }
 
+
+  //TODO: Note this is a placeholder method. Change after all time generators have been implemented.
   @Override
   protected long getProcessingTime() {
-    return AssemblyTimeGenerator.getInstance().nextLong();
+    return 0;
   }
+ /* @Override
+  protected long getProcessingTime() {
+    return ErrorCheckTimeGenerator.getInstance().nextLong();
+  }*/
+
 
   // Busy logic
 
@@ -55,7 +62,6 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
 
   }
 
-  @Override
   public void addToQueue(Material material, MaterialStationData stationData) {
     this.stationData = stationData;
     stationQueue.add(material);
@@ -84,7 +90,6 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
       logger.trace("Starting processing of {}. Processing will continue for {} ticks.", next, processingTime);
     }
   }
-
   @Override
   public void onChildQueueDepart(Material material, MaterialStationData data){
   }
