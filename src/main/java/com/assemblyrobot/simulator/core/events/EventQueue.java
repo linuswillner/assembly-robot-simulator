@@ -1,11 +1,11 @@
 package com.assemblyrobot.simulator.core.events;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,15 +42,26 @@ public class EventQueue {
   }
 
   /**
-   * Utility function to dump the entire event queue to the log, ordered in ascending order by
-   * execution time.
+   * Dumps the event queue, in ascending order based on execution time.
+   * @return {@link List}<{@link Event}>
    */
-  public void dump() {
-    val orderedQueue =
-        queue.stream()
+  public List<Event> dump() {
+    return queue.stream()
             .sorted(Comparator.comparingLong(Event::getExecutionTime))
             .collect(Collectors.toList());
+  }
 
-    orderedQueue.forEach(logger::debug);
+  /**
+   * Prints the event queue to the terminal.
+   */
+  public void print() {
+    dump().forEach(logger::debug);
+  }
+
+  /**
+   * Empties the event queue.
+   */
+  public void flush() {
+    queue.clear();
   }
 }
