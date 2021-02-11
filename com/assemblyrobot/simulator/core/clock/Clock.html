@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">Clock</span>
 extends java.lang.Object</pre>
+<div class="block">Centralised, monotonic simulator clock with support for attaching listeners to monitor clock
+ advancements.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -126,28 +128,31 @@ extends java.lang.Object</pre>
 <tbody>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#advanceTick(int)">advanceTick</a></span>&#8203;(int&nbsp;amount)</code></th>
-<td class="col-last">&nbsp;</td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#advanceTick(long)">advanceTick</a></span>&#8203;(long&nbsp;amount)</code></th>
+<td class="col-last">
+<div class="block">Move the clock forward by a set number of ticks.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#advanceTick(long)">advanceTick</a></span>&#8203;(long&nbsp;amount)</code></th>
-<td class="col-last">&nbsp;</td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#nextTick()">nextTick</a></span>()</code></th>
+<td class="col-last">
+<div class="block">Move the clock forward by one tick.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#nextTick()">nextTick</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#registerTickAdvanceListener(com.assemblyrobot.simulator.core.clock.TickAdvanceListener)">registerTickAdvanceListener</a></span>&#8203;(<a href="TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock">TickAdvanceListener</a>&nbsp;listener)</code></th>
+<td class="col-last">
+<div class="block">Register a tick advancement listener.</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#registerTickAdvanceListener(com.assemblyrobot.simulator.core.clock.TickAdvanceListener)">registerTickAdvanceListener</a></span>&#8203;(<a href="TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock">TickAdvanceListener</a>&nbsp;listener)</code></th>
-<td class="col-last">&nbsp;</td>
-</tr>
-<tr class="alt-color" id="i4">
-<td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#reset()">reset</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Reset the clock tick to 0.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -185,17 +190,7 @@ extends java.lang.Object</pre>
 <section class="detail" id="nextTick()">
 <h3>nextTick</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">nextTick</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="advanceTick(int)">
-<h3>advanceTick</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">advanceTick</span>&#8203;(<span class="parameters">int&nbsp;amount)</span>
-                 throws <span class="exceptions">java.lang.IllegalArgumentException</span></div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>java.lang.IllegalArgumentException</code></dd>
-</dl>
+<div class="block">Move the clock forward by one tick.</div>
 </section>
 </li>
 <li>
@@ -203,9 +198,12 @@ extends java.lang.Object</pre>
 <h3>advanceTick</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">advanceTick</span>&#8203;(<span class="parameters">long&nbsp;amount)</span>
                  throws <span class="exceptions">java.lang.IllegalArgumentException</span></div>
+<div class="block">Move the clock forward by a set number of ticks.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>amount</code> - Amount to move the clock forward by.</dd>
 <dt>Throws:</dt>
-<dd><code>java.lang.IllegalArgumentException</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code> - If the provided tick advancement is less than 0.</dd>
 </dl>
 </section>
 </li>
@@ -213,12 +211,18 @@ extends java.lang.Object</pre>
 <section class="detail" id="reset()">
 <h3>reset</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">reset</span>()</div>
+<div class="block">Reset the clock tick to 0.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="registerTickAdvanceListener(com.assemblyrobot.simulator.core.clock.TickAdvanceListener)">
 <h3>registerTickAdvanceListener</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">registerTickAdvanceListener</span>&#8203;(<span class="parameters"><a href="TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock">TickAdvanceListener</a>&nbsp;listener)</span></div>
+<div class="block">Register a tick advancement listener.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>listener</code> - <a href="TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock"><code>TickAdvanceListener</code></a></dd>
+</dl>
 </section>
 </li>
 </ul>

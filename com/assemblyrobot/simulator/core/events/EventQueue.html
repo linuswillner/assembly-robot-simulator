@@ -82,6 +82,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">EventQueue</span>
 extends java.lang.Object</pre>
+<div class="block">Generic event queue.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -127,22 +128,31 @@ extends java.lang.Object</pre>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#dump()">dump</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Utility function to dump the entire event queue to the log, ordered in ascending order by
+ execution time.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code><a href="Event.html" title="class in com.assemblyrobot.simulator.core.events">Event</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#peekNext()">peekNext</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Returns the next <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> to be executed.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code><a href="Event.html" title="class in com.assemblyrobot.simulator.core.events">Event</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#pop()">pop</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Returns the next <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> to be executed, simultaneously removing it from the queue.</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#schedule(com.assemblyrobot.simulator.core.events.Event)">schedule</a></span>&#8203;(@NonNull <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events">Event</a>&nbsp;event)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Schedules an <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> for future execution.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -181,24 +191,41 @@ extends java.lang.Object</pre>
 <h3>schedule</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">schedule</span>&#8203;(<span class="parameters">@NonNull
 @NonNull <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events">Event</a>&nbsp;event)</span></div>
+<div class="block">Schedules an <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> for future execution.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>event</code> - The event to schedule.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="peekNext()">
 <h3>peekNext</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Event.html" title="class in com.assemblyrobot.simulator.core.events">Event</a></span>&nbsp;<span class="member-name">peekNext</span>()</div>
+<div class="block">Returns the next <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> to be executed.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="pop()">
 <h3>pop</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Event.html" title="class in com.assemblyrobot.simulator.core.events">Event</a></span>&nbsp;<span class="member-name">pop</span>()</div>
+<div class="block">Returns the next <a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> to be executed, simultaneously removing it from the queue.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="dump()">
 <h3>dump</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">dump</span>()</div>
+<div class="block">Utility function to dump the entire event queue to the log, ordered in ascending order by
+ execution time.</div>
 </section>
 </li>
 </ul>

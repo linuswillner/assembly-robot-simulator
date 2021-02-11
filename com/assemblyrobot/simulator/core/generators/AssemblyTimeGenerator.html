@@ -87,6 +87,9 @@ loadScripts(document, 'script');</script>
 <pre>public class <span class="type-name-label">AssemblyTimeGenerator</span>
 extends java.lang.Object
 implements <a href="Generator.html" title="interface in com.assemblyrobot.simulator.core.generators">Generator</a></pre>
+<div class="block">Assembly duration generator. Generates arbitrary durations for assembly (measured in seconds)
+ during the Assembly stage based on a <code>Normal</code> distribution, with defaults specified by the
+ system and alterable by the user.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -132,17 +135,23 @@ implements <a href="Generator.html" title="interface in com.assemblyrobot.simula
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>double</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#nextDouble()">nextDouble</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the next random value as a <code>Double</code>.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>int</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#nextInt()">nextInt</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the next random value as an <code>Integer</code>.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#nextLong()">nextLong</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the next random value as a <code>Long</code>.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -180,9 +189,13 @@ implements <a href="Generator.html" title="interface in com.assemblyrobot.simula
 <section class="detail" id="nextInt()">
 <h3>nextInt</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="member-name">nextInt</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Generator.html#nextInt()">Generator</a></code></span></div>
+<div class="block">Gets the next random value as an <code>Integer</code>.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="Generator.html#nextInt()">nextInt</a></code>&nbsp;in interface&nbsp;<code><a href="Generator.html" title="interface in com.assemblyrobot.simulator.core.generators">Generator</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>Integer</code></dd>
 </dl>
 </section>
 </li>
@@ -190,9 +203,13 @@ implements <a href="Generator.html" title="interface in com.assemblyrobot.simula
 <section class="detail" id="nextLong()">
 <h3>nextLong</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">nextLong</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Generator.html#nextLong()">Generator</a></code></span></div>
+<div class="block">Gets the next random value as a <code>Long</code>.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="Generator.html#nextLong()">nextLong</a></code>&nbsp;in interface&nbsp;<code><a href="Generator.html" title="interface in com.assemblyrobot.simulator.core.generators">Generator</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>Long</code></dd>
 </dl>
 </section>
 </li>
@@ -200,9 +217,13 @@ implements <a href="Generator.html" title="interface in com.assemblyrobot.simula
 <section class="detail" id="nextDouble()">
 <h3>nextDouble</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="member-name">nextDouble</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Generator.html#nextDouble()">Generator</a></code></span></div>
+<div class="block">Gets the next random value as a <code>Double</code>.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="Generator.html#nextDouble()">nextDouble</a></code>&nbsp;in interface&nbsp;<code><a href="Generator.html" title="interface in com.assemblyrobot.simulator.core.generators">Generator</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>Double</code></dd>
 </dl>
 </section>
 </li>

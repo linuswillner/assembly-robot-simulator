@@ -86,6 +86,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public abstract class <span class="type-name-label">Engine</span>
 extends java.lang.Object</pre>
+<div class="block">Generic simulator engine. Used for running the simulation.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -146,12 +147,16 @@ extends java.lang.Object</pre>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#start()">start</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Starts the engine.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i4">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#stop()">stop</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Stops the engine.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -190,9 +195,10 @@ extends java.lang.Object</pre>
 <h3>start</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">start</span>()
            throws <span class="exceptions">java.lang.InterruptedException</span></div>
+<div class="block">Starts the engine.</div>
 <dl class="notes">
 <dt>Throws:</dt>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.lang.InterruptedException</code> - If a Thread.sleep() operation is interrupted.</dd>
 </dl>
 </section>
 </li>
@@ -200,6 +206,7 @@ extends java.lang.Object</pre>
 <section class="detail" id="stop()">
 <h3>stop</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">stop</span>()</div>
+<div class="block">Stops the engine.</div>
 </section>
 </li>
 <li>

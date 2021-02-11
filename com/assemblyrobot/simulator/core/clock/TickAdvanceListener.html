@@ -86,6 +86,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public abstract class <span class="type-name-label">TickAdvanceListener</span>
 extends java.lang.Object</pre>
+<div class="block">Generic tick advancement listener. Any class that extends this class will automatically be
+ registered as a tick advancement listener in the <a href="Clock.html" title="class in com.assemblyrobot.simulator.core.clock"><code>Clock</code></a>.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -133,12 +135,16 @@ extends java.lang.Object</pre>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>protected abstract void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#onTickAdvance(long)">onTickAdvance</a></span>&#8203;(long&nbsp;ticksAdvanced)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Callback method for when the clock moves forward.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>protected abstract void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#onTickReset()">onTickReset</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Callback method for when the clock tick was reset to 0.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -176,12 +182,18 @@ extends java.lang.Object</pre>
 <section class="detail" id="onTickAdvance(long)">
 <h3>onTickAdvance</h3>
 <div class="member-signature"><span class="modifiers">protected abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">onTickAdvance</span>&#8203;(<span class="parameters">long&nbsp;ticksAdvanced)</span></div>
+<div class="block">Callback method for when the clock moves forward.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>ticksAdvanced</code> - The amount of ticks that the clock moved forward by.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="onTickReset()">
 <h3>onTickReset</h3>
 <div class="member-signature"><span class="modifiers">protected abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">onTickReset</span>()</div>
+<div class="block">Callback method for when the clock tick was reset to 0.</div>
 </section>
 </li>
 </ul>

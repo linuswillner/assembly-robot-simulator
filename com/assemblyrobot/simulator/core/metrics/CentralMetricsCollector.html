@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -82,6 +82,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">CentralMetricsCollector</span>
 extends java.lang.Object</pre>
+<div class="block">Centralised metrics collector. Used for keeping track of all metrics collectors in the simulator.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -126,9 +127,18 @@ extends java.lang.Object</pre>
 <tbody>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#dump()">dump</a></span>()</code></th>
+<td class="col-last">
+<div class="block">Dumps all current metrics collectors.</div>
+</td>
+</tr>
+<tr class="row-color" id="i1">
+<td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#registerMetricsCollector(java.lang.String,com.assemblyrobot.simulator.core.metrics.MetricsCollector)">registerMetricsCollector</a></span>&#8203;(@NonNull java.lang.String&nbsp;hostClassName,
 @NonNull <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics">MetricsCollector</a>&nbsp;collector)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Registers a metrics collector.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -168,7 +178,28 @@ extends java.lang.Object</pre>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">registerMetricsCollector</span>&#8203;(<span class="parameters">@NonNull
 @NonNull java.lang.String&nbsp;hostClassName,
 @NonNull
-@NonNull <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics">MetricsCollector</a>&nbsp;collector)</span></div>
+@NonNull <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics">MetricsCollector</a>&nbsp;collector)</span>
+                              throws <span class="exceptions"><a href="errors/DuplicateMetricsCollectorRegistrationError.html" title="class in com.assemblyrobot.simulator.core.metrics.errors">DuplicateMetricsCollectorRegistrationError</a></span></div>
+<div class="block">Registers a metrics collector. This method is automatically called by the default constructor of
+ <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><code>MetricsCollector</code></a>.
+
+ <p>Note: With respect to the above, do not call this method manually. It is public strictly for
+ practical reasons.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>hostClassName</code> - Name of the host class for this metrics collector.</dd>
+<dd><code>collector</code> - <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><code>MetricsCollector</code></a></dd>
+<dt>Throws:</dt>
+<dd><code><a href="errors/DuplicateMetricsCollectorRegistrationError.html" title="class in com.assemblyrobot.simulator.core.metrics.errors">DuplicateMetricsCollectorRegistrationError</a></code> - If a metrics collector for this host class
+     has already been registered.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="dump()">
+<h3>dump</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">dump</span>()</div>
+<div class="block">Dumps all current metrics collectors. Used for resets between simulator runs.</div>
 </section>
 </li>
 </ul>
