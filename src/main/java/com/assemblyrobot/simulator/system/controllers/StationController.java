@@ -1,10 +1,13 @@
 package com.assemblyrobot.simulator.system.controllers;
 
+import com.assemblyrobot.simulator.system.components.Station;
+import java.util.ArrayList;
+import lombok.AccessLevel;
+import lombok.Getter;
+
 public class StationController {
 
-  /* TODO: Hand off this process to StationController once Stages are implemented, see spec for implementation details
-  @Getter(AccessLevel.PROTECTED) private final ArrayList<Station> stations = new ArrayList<>();*/
-
+  //@Getter(AccessLevel.PROTECTED) private final ArrayList<Station> stations = new ArrayList<>();
 
 
 }
