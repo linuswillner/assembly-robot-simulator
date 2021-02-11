@@ -136,7 +136,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>double</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getMetricWithDefault(java.lang.String,double)">getMetricWithDefault</a></span>&#8203;(@NonNull java.lang.String&nbsp;metricName,
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getMetric(java.lang.String,double)">getMetric</a></span>&#8203;(@NonNull java.lang.String&nbsp;metricName,
 double&nbsp;defaultValue)</code></th>
 <td class="col-last">
 <div class="block">Gets a metric by name, specifying a default value to use when a metric by this name does not
@@ -190,20 +190,23 @@ double&nbsp;measurement)</code></th>
 <section class="detail" id="getMetric(java.lang.String)">
 <h3>getMetric</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="member-name">getMetric</span>&#8203;(<span class="parameters">@NonNull
-@NonNull java.lang.String&nbsp;metricName)</span></div>
+@NonNull java.lang.String&nbsp;metricName)</span>
+                 throws <span class="exceptions">java.lang.NullPointerException</span></div>
 <div class="block">Gets a metric by name.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>metricName</code> - Metric name to get.</dd>
 <dt>Returns:</dt>
-<dd><code>Double</code> (Null if no metric by this name exists)</dd>
+<dd><code>Double</code></dd>
+<dt>Throws:</dt>
+<dd><code>java.lang.NullPointerException</code> - If no metric by this name exists.</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getMetricWithDefault(java.lang.String,double)">
-<h3>getMetricWithDefault</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="member-name">getMetricWithDefault</span>&#8203;(<span class="parameters">@NonNull
+<section class="detail" id="getMetric(java.lang.String,double)">
+<h3>getMetric</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="member-name">getMetric</span>&#8203;(<span class="parameters">@NonNull
 @NonNull java.lang.String&nbsp;metricName,
 double&nbsp;defaultValue)</span></div>
 <div class="block">Gets a metric by name, specifying a default value to use when a metric by this name does not
