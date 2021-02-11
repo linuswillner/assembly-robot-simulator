@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-public abstract class Material {
+public abstract class Material implements Comparable<Material>{
   private static int nextFreeId = 1;
 
   @Getter private final int id;
@@ -25,5 +25,9 @@ public abstract class Material {
 
   public long getProcessingDuration() {
     return processingEndTime - processingStartTime;
+  }
+
+  public int compareTo(Material material){
+    return Long.compare(this.getQueueStartTime(), material.getQueueStartTime());
   }
 }
