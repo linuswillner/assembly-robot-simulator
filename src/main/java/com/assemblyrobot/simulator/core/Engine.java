@@ -10,6 +10,9 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Generic simulator engine. Used for running the simulation.
+ */
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
   private final Clock clock = Clock.getInstance();
@@ -25,6 +28,10 @@ public abstract class Engine {
 
   // Runner methods
 
+  /**
+   * Starts the engine.
+   * @throws InterruptedException If a Thread.sleep() operation is interrupted.
+   */
   public void start() throws InterruptedException {
     logger.info("Starting simulation.");
 
@@ -39,11 +46,18 @@ public abstract class Engine {
     }
   }
 
+  /**
+   * Stops the engine.
+   */
   public void stop() {
     logger.warn("ENGINE: Stopping simulation.");
     setRunning(false);
   }
 
+  /**
+   * Runs one "CPU" cycle.
+   * @throws InterruptedException If a Thread.sleep() operation is interrupted.
+   */
   private void runCycle() throws InterruptedException {
     logger.trace("Beginning new cycle.");
 

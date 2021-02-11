@@ -5,6 +5,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+/** Generic simulator event class. Takes a one-time-programmable execution time and event type. */
 @ToString
 @RequiredArgsConstructor
 public class Event implements Comparable<Event> {
