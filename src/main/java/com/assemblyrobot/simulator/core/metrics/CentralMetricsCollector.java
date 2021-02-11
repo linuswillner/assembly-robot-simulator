@@ -37,4 +37,11 @@ public class CentralMetricsCollector {
 
     collectors.put(hostClassName, collector);
   }
+
+  /**
+   * Dumps all current metrics collectors. Used for resets between simulator runs.
+   */
+  public void dump() {
+    collectors.clear();
+  }
 }
