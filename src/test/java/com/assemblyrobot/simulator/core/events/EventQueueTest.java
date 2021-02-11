@@ -1,8 +1,6 @@
 package com.assemblyrobot.simulator.core.events;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import lombok.val;
