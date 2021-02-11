@@ -17,7 +17,7 @@ public class CentralMetricsCollector {
   @Getter private static final HashMap<String, MetricsCollector> collectors = new HashMap<>();
 
   /**
-   * Register a metrics collector. This method is automatically called by the default constructor of
+   * Registers a metrics collector. This method is automatically called by the default constructor of
    * {@link MetricsCollector}.
    *
    * <p>Note: With respect to the above, do not call this method manually. It is public strictly for

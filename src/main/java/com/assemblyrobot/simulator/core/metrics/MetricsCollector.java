@@ -18,7 +18,7 @@ public class MetricsCollector {
   }
 
   /**
-   * Get a metric by name.
+   * Gets a metric by name.
    *
    * @param metricName Metric name to get.
    * @return {@link Double} (Null if no metric by this name exists)
@@ -28,7 +28,7 @@ public class MetricsCollector {
   }
 
   /**
-   * Get a metric by name, specifying a default value to use when a metric by this name does not
+   * Gets a metric by name, specifying a default value to use when a metric by this name does not
    * exist.
    *
    * @param metricName Metric name to get.
@@ -40,7 +40,7 @@ public class MetricsCollector {
   }
 
   /**
-   * Set or update a metric.
+   * Sets or updates a metric.
    *
    * @param metricName Metric name to set/update.
    * @param measurement Metric value to set/update.
