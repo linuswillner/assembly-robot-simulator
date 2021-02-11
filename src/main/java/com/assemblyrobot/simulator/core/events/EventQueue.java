@@ -43,7 +43,7 @@ public class EventQueue {
 
   /**
    * Dumps the event queue, in ascending order based on execution time.
-   * @return {@link List}<{@link Event}>
+   * @return {@link List}&lt;{@link Event}&gt;
    */
   public List<Event> dump() {
     return queue.stream()
