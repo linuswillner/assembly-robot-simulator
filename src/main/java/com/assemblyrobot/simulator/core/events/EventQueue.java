@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +13,7 @@ public class EventQueue {
   @Getter private final PriorityQueue<Event> queue = new PriorityQueue<>();
   private static final Logger logger = LogManager.getLogger();
 
-  public void schedule(Event event) {
+  public void schedule(@NonNull Event event) {
     queue.add(event);
   }
 
