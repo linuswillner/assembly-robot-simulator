@@ -1,12 +1,9 @@
 package com.assemblyrobot.simulator.system.components;
 
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.val;
+import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 
-public abstract class Station extends TickAdvanceListener implements BiDirectionalQueueable{
+public abstract class Station extends TickAdvanceListener{
 
 // This code is the original way of handling a station's tick advances. Left here in case there's a need to refer to it.
 /*
@@ -35,6 +32,8 @@ public abstract class Station extends TickAdvanceListener implements BiDirection
 */
 
   // Delegate methods
+
+  public abstract void onChildQueueDepart(Material material, MaterialStationData data);
 
   protected abstract long getProcessingTime();
 }

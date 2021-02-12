@@ -26,18 +26,13 @@ public class ErrorCheckStage extends Stage {
     }
   }
 
-  @Override
-  public void addToQueue(Material material) {
+  public void addToErrorCheckStationQueue(Material material) {
     stationData = new MaterialStationData();
     stationData.setStageId(stageId);
-    stageQueue.peek().addToQueue(material, stationData);
+    stageQueue.peek().addToStationQueue(material, stationData);
   }
 
-  // Interface overload method
-  @Override
-  public void addToQueue(Material material, MaterialStationData stationData) {
 
-  }
 
   public void onChildQueueDepart(Material material, MaterialStationData data) {
 

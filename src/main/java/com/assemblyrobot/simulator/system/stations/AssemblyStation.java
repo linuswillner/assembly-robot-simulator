@@ -49,14 +49,7 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
 
   // Queue operations
 
-  //Interface overload method
-  @Override
-  public void addToQueue(Material material) {
-
-  }
-
-  @Override
-  public void addToQueue(Material material, MaterialStationData stationData) {
+  public void addToStationQueue(Material material, MaterialStationData stationData) {
     this.stationData = stationData;
     stationQueue.add(material);
     stationData.setQueueStartTime(material.getQueueStartTime());
@@ -85,7 +78,6 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
     }
   }
 
-  @Override
   public void onChildQueueDepart(Material material, MaterialStationData data){
   }
 

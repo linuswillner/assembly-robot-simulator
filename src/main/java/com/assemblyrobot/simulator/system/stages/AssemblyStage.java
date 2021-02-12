@@ -26,17 +26,10 @@ public class AssemblyStage extends Stage {
     }
   }
 
-  @Override
-  public void addToQueue(Material material) {
+  public void addToAssemblyStationQueue(Material material) {
     stationData = new MaterialStationData();
     stationData.setStageId(stageId);
-    stageQueue.peek().addToQueue(material, stationData);
-  }
-
-  // Interface overload method
-  @Override
-  public void addToQueue(Material material, MaterialStationData stationData) {
-
+    stageQueue.peek().addToStationQueue(material, stationData);
   }
 
   public void onChildQueueDepart(Material material, MaterialStationData data) {

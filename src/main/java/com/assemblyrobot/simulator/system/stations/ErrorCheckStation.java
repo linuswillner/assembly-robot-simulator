@@ -56,13 +56,7 @@ public class ErrorCheckStation extends Station {
 
   // Queue operations
 
-  //Interface overload method
-  @Override
-  public void addToQueue(Material material) {
-
-  }
-
-  public void addToQueue(Material material, MaterialStationData stationData) {
+  public void addToStationQueue(Material material, MaterialStationData stationData) {
     this.stationData = stationData;
     stationQueue.add(material);
     stationData.setQueueStartTime(material.getQueueStartTime());
@@ -90,7 +84,7 @@ public class ErrorCheckStation extends Station {
       logger.trace("Starting processing of {}. Processing will continue for {} ticks.", next, processingTime);
     }
   }
-  @Override
+
   public void onChildQueueDepart(Material material, MaterialStationData data){
   }
 
