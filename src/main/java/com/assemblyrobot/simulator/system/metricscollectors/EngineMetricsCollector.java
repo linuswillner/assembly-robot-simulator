@@ -16,7 +16,7 @@ public class EngineMetricsCollector extends TickAdvanceListener {
 
   @Override
   protected void onTickAdvance(long ticksAdvanced) {
-    val currentTime = metricsCollector.getMetricWithDefault(TOTAL_SIMULATION_TIME_METRIC_NAME, 0);
+    val currentTime = metricsCollector.getMetric(TOTAL_SIMULATION_TIME_METRIC_NAME, 0);
     metricsCollector.putMetric(TOTAL_SIMULATION_TIME_METRIC_NAME, currentTime + ticksAdvanced);
   }
 

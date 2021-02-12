@@ -21,9 +21,14 @@ public class MetricsCollector {
    * Gets a metric by name.
    *
    * @param metricName Metric name to get.
-   * @return {@link Double} (Null if no metric by this name exists)
+   * @return {@link Double}
+   * @throws NullPointerException If no metric by this name exists.
    */
-  public double getMetric(@NonNull String metricName) {
+  public double getMetric(@NonNull String metricName) throws NullPointerException {
+    if (!metrics.containsKey(metricName)) {
+      throw new NullPointerException("No metric with name %s found.".formatted(metricName));
+    }
+
     return metrics.get(metricName);
   }
 
@@ -35,7 +40,7 @@ public class MetricsCollector {
    * @param defaultValue Default value to use in case no metric by this name exists.
    * @return {@link Double}
    */
-  public double getMetricWithDefault(@NonNull String metricName, double defaultValue) {
+  public double getMetric(@NonNull String metricName, double defaultValue) {
     return metrics.getOrDefault(metricName, defaultValue);
   }
 
