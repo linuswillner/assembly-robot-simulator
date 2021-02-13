@@ -2,7 +2,7 @@ package com.assemblyrobot.simulator.core;
 
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
-import com.assemblyrobot.system.controllers.EngineController;
+import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +10,11 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Generic simulator engine. Used for running the simulation.
+ */
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
-  private final EngineController engineController = new EngineController(); // TODO: Not used for now
   private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
 
@@ -20,8 +22,16 @@ public abstract class Engine {
   @Setter(AccessLevel.PRIVATE)
   private boolean isRunning = false;
 
+  public Engine() {
+    new EngineMetricsCollector(this); // Register engine metrics collector
+  }
+
   // Runner methods
 
+  /**
+   * Starts the engine.
+   * @throws InterruptedException If a Thread.sleep() operation is interrupted.
+   */
   public void start() throws InterruptedException {
     logger.info("Starting simulation.");
 
@@ -36,11 +46,18 @@ public abstract class Engine {
     }
   }
 
+  /**
+   * Stops the engine.
+   */
   public void stop() {
     logger.warn("ENGINE: Stopping simulation.");
     setRunning(false);
   }
 
+  /**
+   * Runs one "CPU" cycle.
+   * @throws InterruptedException If a Thread.sleep() operation is interrupted.
+   */
   private void runCycle() throws InterruptedException {
     logger.trace("Beginning new cycle.");
 
@@ -68,7 +85,7 @@ public abstract class Engine {
     // Dump event queue for debug
     logger.trace("All events performed. Dumping future event queue.");
     System.out.println("---");
-    eventQueue.dump();
+    eventQueue.print();
     System.out.println("---");
     logger.trace("Future event queue dumped.");
 
