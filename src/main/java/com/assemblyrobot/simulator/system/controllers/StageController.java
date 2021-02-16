@@ -49,7 +49,7 @@ public class StageController {
   private long getCurrentTick() {
     return Clock.getInstance().getCurrentTick();
   }
-}
+
 
 /*
   TODO Refractor this method to work with new event queue
@@ -57,3 +57,9 @@ public class StageController {
   eventQueue.schedule(
    new Event(Clock.getInstance().getCurrentTick() + processingTime, EventType.DEPARTURE));
 */
+
+  //todo make addtoq methods to every stage
+  public void addToQueue(){
+
+  }
+}
