@@ -1,5 +1,6 @@
 package com.assemblyrobot.simulator.system.controllers;
 
+import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.system.components.Tracker;
@@ -13,7 +14,7 @@ import lombok.val;
 import org.checkerframework.checker.units.qual.A;
 
 @RequiredArgsConstructor
-public class StageController {
+public class StageController{
   @Getter private final HashMap<Integer, Material> materialCache = new HashMap<>();
   @Getter private final HashMap<Integer, Tracker> trackerCache = new HashMap<>();
   //TODO: Note that these are placeholder variables. The amount of stations that will be created will be asked from the user in the UI. Implement later.
@@ -21,6 +22,7 @@ public class StageController {
   private int errorCheckStationAmount = 1;
   private final AssemblyStage assemblyStage = new AssemblyStage(assemblyStationAmount, this);
   private final ErrorCheckStage errorCheckStage = new ErrorCheckStage(errorCheckStationAmount, this);
+
 
 
   public void registerIncomingMaterial(@NonNull Material material) {
@@ -58,8 +60,15 @@ public class StageController {
    new Event(Clock.getInstance().getCurrentTick() + processingTime, EventType.DEPARTURE));
 */
 
-  //todo make addtoq methods to every stage
-  public void addToQueue(){
+  public EventQueue getQueue(){
+    return EventQueue.getInstance();
+  }
 
+  //todo make addtoq methods to every stage
+  public void addToAssemblyQueue(Material material){
+    assemblyStage.addToAssemblyStationQueue(material);
+  }
+  public void addToErrorStageQueue(Material material){
+    errorCheckStage.addToErrorCheckStationQueue(material);
   }
 }
