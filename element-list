@@ -1,3 +1,6 @@
+com.assemblyrobot.shared.config
+com.assemblyrobot.shared.config.model
+com.assemblyrobot.shared.utils
 com.assemblyrobot.simulator.core
 com.assemblyrobot.simulator.core.clock
 com.assemblyrobot.simulator.core.events
