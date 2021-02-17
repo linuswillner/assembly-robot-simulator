@@ -13,6 +13,7 @@ import lombok.Getter;
  */
 public class AssemblyTimeGenerator implements Generator {
   @Getter private static final AssemblyTimeGenerator instance = new AssemblyTimeGenerator();
+
   private final NormalDistributionConfig config = Config.getConfig().getAssemblyTimeParams();
   private final Normal normalGenerator = new Normal(config.getMean(), config.getVariance());
 
