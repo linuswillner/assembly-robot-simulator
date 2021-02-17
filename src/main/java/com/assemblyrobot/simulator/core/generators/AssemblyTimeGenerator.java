@@ -1,5 +1,7 @@
 package com.assemblyrobot.simulator.core.generators;
 
+import com.assemblyrobot.shared.config.Config;
+import com.assemblyrobot.shared.config.model.NormalDistributionConfig;
 import eduni.distributions.Normal;
 import lombok.Getter;
 
@@ -12,8 +14,8 @@ import lombok.Getter;
 public class AssemblyTimeGenerator implements Generator {
   @Getter private static final AssemblyTimeGenerator instance = new AssemblyTimeGenerator();
 
-  // TODO: Load from config, deconstantify parameters
-  private final Normal normalGenerator = new Normal(10, 2);
+  private final NormalDistributionConfig config = Config.getConfig().getAssemblyTimeParams();
+  private final Normal normalGenerator = new Normal(config.getMean(), config.getVariance());
 
   @Override
   public int nextInt() {

@@ -57,7 +57,7 @@ public class Clock {
 
   /**
    * Internal callback that is called whenever the clock moves forward. Propagates calling of the
-   * {@link TickAdvanceListener}.onTickAdvance() method on each listener.
+   * {@link TickAdvanceListener#onTickAdvance(long)} method on each listener.
    *
    * @param ticksAdvanced Amount of ticks that the clock was moved forward by
    */
@@ -67,7 +67,7 @@ public class Clock {
 
   /**
    * Internal callback that is called whenever the clock is reset. Propagates calling of the {@link
-   * TickAdvanceListener}.onTickReset() method on each listener.
+   * TickAdvanceListener#onTickReset()} method on each listener.
    */
   private void onTickReset() {
     listeners.forEach(TickAdvanceListener::onTickReset);
