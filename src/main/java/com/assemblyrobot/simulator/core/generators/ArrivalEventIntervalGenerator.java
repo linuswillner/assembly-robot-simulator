@@ -1,6 +1,8 @@
 package com.assemblyrobot.simulator.core.generators;
 
+import com.assemblyrobot.shared.config.model.NormalDistributionConfig;
 import eduni.distributions.Normal;
+import com.assemblyrobot.shared.config.Config;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +16,8 @@ import lombok.NoArgsConstructor;
 public class ArrivalEventIntervalGenerator implements Generator {
   @Getter
   private static final ArrivalEventIntervalGenerator instance = new ArrivalEventIntervalGenerator();
-
-  // TODO: Load from config, deconstantify parameters
-  private final Normal normalGenerator = new Normal(20, 5);
+  private final NormalDistributionConfig config = Config.getConfig().getArrivalIntervalParams();
+  private final Normal normalGenerator = new Normal(config.getMean(), config.getVariance());
 
   @Override
   public int nextInt() {

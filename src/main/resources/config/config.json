@@ -1,0 +1,10 @@
+{
+  "arrivalIntervalParams": {
+    "mean": 20,
+    "variance": 5
+  },
+  "assemblyTimeParams": {
+    "mean": 10,
+    "variance": 2
+  }
+}
