@@ -1,11 +1,11 @@
 package com.assemblyrobot.simulator.system.controllers;
 
+import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
-import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.system.components.Tracker;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +22,8 @@ import org.apache.logging.log4j.Logger;
 public class StageController {
   @Getter private final HashMap<Long, Material> materialCache = new HashMap<>();
   @Getter private final HashMap<Long, Tracker> trackerCache = new HashMap<>();
+  @Getter private final ArrayList<Material> transferQueue = new ArrayList<>();
+
   private final EventQueue eventQueue;
   // TODO: Note that these are placeholder variables. The amount of stations that will be created
   // will be asked from the user in the UI. Implement later.
@@ -68,7 +69,9 @@ public class StageController {
     Tracker tracker = trackerCache.get(material.getId());
     tracker.addData(stationData);
     addTrackingData(tracker);
-    sendToNextStage(material);
+
+    transferQueue.add(material);
+    eventQueue.schedule(new Event(Clock.getInstance().getCurrentTick() + 1, EventType.TRANSFER));
   }
 
   private void addToAssemblyStageQueue(Material material) {
@@ -84,7 +87,7 @@ public class StageController {
     long materialId = material.getId();
     Tracker tracker = trackerCache.get(materialId);
     ArrayList<MaterialStationData> stationDataList = tracker.getDataForStations();
-    StageID currentStageId = stationDataList.get(stationDataList.size()).getStageId();
+    StageID currentStageId = stationDataList.get(stationDataList.size() - 1).getStageId();
 
     // TODO: implement FIX/DEPART stage progression
     if (currentStageId == null) {
@@ -100,6 +103,8 @@ public class StageController {
   }
 
   private void sendToNextStage(Material material){
+    // Remove this material from the transfer queue
+
     if(getNextStage(material) == StageID.ASSEMBLY){
       addToAssemblyStageQueue(material);
     }else if(getNextStage(material) == StageID.ERROR_CHECK){
@@ -109,6 +114,10 @@ public class StageController {
     }else{
       logger.warn("Material not progressing anywhere.");
     }
+  }
+
+  public void transferAll() {
+    transferQueue.forEach(this::sendToNextStage);
   }
 
 }

@@ -73,6 +73,7 @@ public abstract class Engine {
 
       switch (nextEvent.getType()) {
         case ARRIVAL -> onArrival();
+        case TRANSFER -> onTransfer();
         case DEPARTURE -> onDeparture();
       }
 
@@ -105,6 +106,8 @@ public abstract class Engine {
   protected abstract void init();
 
   protected abstract void onArrival();
+
+  protected abstract void onTransfer();
 
   protected abstract void onDeparture();
 }

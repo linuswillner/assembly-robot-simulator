@@ -20,5 +20,11 @@ public class MainEngine extends Engine {
   }
 
   @Override
+  protected void onTransfer() {
+    super.getStageController().transferAll();
+  }
+
+
+  @Override
   protected void onDeparture() {}
 }
