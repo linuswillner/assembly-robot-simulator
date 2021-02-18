@@ -1,16 +1,23 @@
 package com.assemblyrobot.simulator.system.controllers;
 
+import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
+import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.system.components.Tracker;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
+import com.assemblyrobot.simulator.system.stages.StageID;
+import java.util.ArrayList;
 import java.util.HashMap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import lombok.val;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public class StageController {
@@ -24,6 +31,7 @@ public class StageController {
   private final AssemblyStage assemblyStage = new AssemblyStage(assemblyStationAmount, this);
   private final ErrorCheckStage errorCheckStage =
       new ErrorCheckStage(errorCheckStationAmount, this);
+  private static final Logger logger = LogManager.getLogger();
 
   public void registerIncomingMaterial() {
     Material material = new Material();
@@ -32,6 +40,7 @@ public class StageController {
     Tracker tracker = new Tracker(material.getId());
     trackerCache.put(tracker.getMaterialid(), tracker);
     materialCache.put(material.getId(), material);
+    sendToNextStage(material);
   }
 
   public void registerMaterialProcessing(long id) {
@@ -59,14 +68,47 @@ public class StageController {
     Tracker tracker = trackerCache.get(material.getId());
     tracker.addData(stationData);
     addTrackingData(tracker);
+    sendToNextStage(material);
   }
 
-  // todo make addtoq methods to every stage
-  public void addToAssemblyQueue(Material material) {
+  private void addToAssemblyStageQueue(Material material) {
     assemblyStage.addToStationQueue(material);
   }
 
-  public void addToErrorStageQueue(Material material) {
+  private void addToErrorCheckStageQueue(Material material) {
     errorCheckStage.addToStationQueue(material);
   }
+
+  private StageID getNextStage(Material material) {
+    // Get stageID from tracker
+    long materialId = material.getId();
+    Tracker tracker = trackerCache.get(materialId);
+    ArrayList<MaterialStationData> stationDataList = tracker.getDataForStations();
+    StageID currentStageId = stationDataList.get(stationDataList.size()).getStageId();
+
+    // TODO: implement FIX/DEPART stage progression
+    if (currentStageId == null) {
+      return StageID.ASSEMBLY;
+    } else if (currentStageId == StageID.ASSEMBLY) {
+      return StageID.ERROR_CHECK;
+    } else if (currentStageId == StageID.ERROR_CHECK) {
+      return StageID.FIX;
+    } else {
+      logger.warn("StageID cannot be null.");
+      return null;
+    }
+  }
+
+  private void sendToNextStage(Material material){
+    if(getNextStage(material) == StageID.ASSEMBLY){
+      addToAssemblyStageQueue(material);
+    }else if(getNextStage(material) == StageID.ERROR_CHECK){
+      addToErrorCheckStageQueue(material);
+    }else if(getNextStage(material) == StageID.DEPART){
+      registerOutgoingMaterial(material.getId());
+    }else{
+      logger.warn("Material not progressing anywhere.");
+    }
+  }
+
 }
