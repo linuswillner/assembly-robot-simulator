@@ -3,16 +3,15 @@ package com.assemblyrobot.simulator.system.metricscollectors;
 import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
-import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 
+@RequiredArgsConstructor
 public class EngineMetricsCollector extends TickAdvanceListener {
-  private final MetricsCollector metricsCollector;
+  private final Engine engine;
+  private final MetricsCollector metricsCollector =
+      new MetricsCollector(getClass().getName(), engine.getClass().getName());
   private static final String TOTAL_SIMULATION_TIME_METRIC_NAME = "total_simulation_time";
-
-  public EngineMetricsCollector(@NonNull Engine engine) {
-    metricsCollector = new MetricsCollector(getClass().getName(), engine.getClass().getName());
-  }
 
   @Override
   protected void onTickAdvance(long ticksAdvanced) {

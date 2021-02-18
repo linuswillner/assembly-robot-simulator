@@ -12,9 +12,9 @@ public class MetricsCollector {
   @Getter private final HashMap<String, Double> metrics = new HashMap<>();
   @Getter @NonNull private final MetricsCollectorType type;
 
-  public MetricsCollector(@NonNull String collectingClassName, @NonNull String typeClassName) {
+  public MetricsCollector(@NonNull String hostName, @NonNull String typeClassName) {
     this.type = MetricsCollectorType.getByClass(typeClassName);
-    CentralMetricsCollector.getInstance().registerMetricsCollector(collectingClassName, this);
+    CentralMetricsCollector.getInstance().registerMetricsCollector(hostName, this);
   }
 
   /**

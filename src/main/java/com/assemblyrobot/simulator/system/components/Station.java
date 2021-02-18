@@ -4,7 +4,6 @@ import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 
 public abstract class Station extends TickAdvanceListener {
-
   public abstract boolean isBusy();
 
   protected abstract boolean canPull();
