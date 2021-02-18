@@ -15,6 +15,8 @@ public enum MetricsCollectorType {
    * @return {@link MetricsCollectorType}
    * @throws MetricsCollectorTypeNotRegisteredError If no such organisational identifier exists.
    */
+
+  //TODO: Check cases to match classnames
   public static MetricsCollectorType getByClass(@NonNull String className) throws MetricsCollectorTypeNotRegisteredError{
     return switch (className) {
       case "com.assemblyrobot.simulator.core.Engine" -> ENGINE;

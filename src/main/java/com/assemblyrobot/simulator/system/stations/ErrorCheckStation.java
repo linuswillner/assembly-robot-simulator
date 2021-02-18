@@ -42,7 +42,7 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
   // implemented.
   @Override
   protected long getProcessingTime() {
-    return 0;
+    return 5;
   }
   /* @Override
   protected long getProcessingTime() {

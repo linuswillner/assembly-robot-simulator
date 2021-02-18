@@ -84,34 +84,54 @@ public class StageController {
   private StageID getNextStage(Material material) {
     // Get stageID from tracker
     long materialId = material.getId();
+    logger.trace("Material: " + materialId + " Implementing getNextStage()");
     Tracker tracker = trackerCache.get(materialId);
     ArrayList<MaterialStationData> stationDataList = tracker.getDataForStations();
-    StageID currentStageId = stationDataList.get(stationDataList.size() - 1).getStageId();
+    StageID currentStageId = null;
+    try{
+     currentStageId = stationDataList.get(stationDataList.size() - 1).getStageId();
+    }catch(IndexOutOfBoundsException e){
+      logger.warn("Material: " + materialId + " StationDataList is empty.");
+    }
+
 
     // TODO: implement FIX/DEPART stage progression
     if (currentStageId == null) {
+      logger.trace("Material: " + materialId + " Next stage will be Assembly.");
       return StageID.ASSEMBLY;
     } else if (currentStageId == StageID.ASSEMBLY) {
+      logger.trace("Material: " + materialId + " Next stage will be ErrorCheck.");
       return StageID.ERROR_CHECK;
     } else if (currentStageId == StageID.ERROR_CHECK) {
+      logger.trace("Material: " + materialId + " Next stage will be Fix.");
       return StageID.FIX;
     } else {
-      logger.warn("StageID cannot be null.");
+      logger.warn("Material: " + materialId + " StageID cannot be null.");
       return null;
     }
   }
 
   private void sendToNextStage(Material material) {
-    transferQueue.remove(transferQueue.indexOf(material.getId()));
+    try{
+      transferQueue.remove(transferQueue.indexOf(material.getId()));
+    } catch (IndexOutOfBoundsException e) {
+      logger.warn("Material: " + material.getId() + " TransferQueue is empty.");
+    }
+    StageID stageId = getNextStage(material);
 
-    if (getNextStage(material) == StageID.ASSEMBLY) {
+    if (stageId == StageID.ASSEMBLY) {
       addToAssemblyStageQueue(material);
-    } else if (getNextStage(material) == StageID.ERROR_CHECK) {
+      logger.trace("Material: " + material.getId() + " progressing to Assembly.");
+    } else if (stageId == StageID.ERROR_CHECK) {
       addToErrorCheckStageQueue(material);
-    } else if (getNextStage(material) == StageID.DEPART) {
+      logger.trace("Material: " + material.getId() + " progressing to ErrorCheck.");
+    } else if (stageId == StageID.FIX){
+      logger.trace("Material: " + material.getId() + " progressing to Fix.");
+    } else if (stageId == StageID.DEPART) {
       registerOutgoingMaterial(material.getId());
+      logger.trace("Material: " + material.getId() + " departing.");
     } else {
-      logger.warn("Material not progressing anywhere.");
+      logger.warn("Material: " + material.getId() + " Material not progressing anywhere.");
     }
   }
 

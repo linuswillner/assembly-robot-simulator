@@ -8,6 +8,7 @@ import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.controllers.StageController;
+import com.assemblyrobot.simulator.system.metricscollectors.StationMetricsCollector;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
@@ -24,6 +25,7 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
   private final AssemblyStage stage;
   private final StageController stageController;
   @Getter private MaterialStationData stationData;
+  @Getter private StationMetricsCollector stationMetricsCollector;
   private static final Logger logger = LogManager.getLogger();
 
   @Getter
@@ -36,6 +38,7 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
 
   public AssemblyStation(AssemblyStage stage) {
     this.stage = stage;
+    stationMetricsCollector = new StationMetricsCollector(this);
     stageController = stage.getStageController();
   }
 
