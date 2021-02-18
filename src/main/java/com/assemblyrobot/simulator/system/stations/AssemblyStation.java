@@ -71,6 +71,9 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
       stageController.registerMaterialProcessing(next.getId());
       val processingTime = getProcessingTime();
 
+      // The PROCESSING_COMPLETE event has no function beyond stopping the clock at the moment where busy time reaches 0 so that we can call onChildQueueDepart()
+      // eventQueue.schedule(Clock.getInstance().getCurrentTick() + processingTime, EventType.PROCESSING_COMPLETE)
+
       setBusyTimeRemaining(processingTime);
 
       stationData.setProcessingStartTime(currentMaterial.getProcessingStartTime());

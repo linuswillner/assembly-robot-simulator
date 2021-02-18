@@ -75,6 +75,7 @@ public abstract class Engine {
         case ARRIVAL -> onArrival();
         case TRANSFER -> onTransfer();
         case DEPARTURE -> onDeparture();
+        // Not handling the PROCESSING_COMPLETE event as we need to do nothing to it
       }
 
       eventQueue.pop();

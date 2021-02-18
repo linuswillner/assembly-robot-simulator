@@ -103,7 +103,7 @@ public class StageController {
   }
 
   private void sendToNextStage(Material material){
-    // Remove this material from the transfer queue
+    // TODO: Remove this material from the transfer queue
 
     if(getNextStage(material) == StageID.ASSEMBLY){
       addToAssemblyStageQueue(material);
