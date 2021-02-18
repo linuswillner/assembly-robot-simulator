@@ -20,6 +20,10 @@ public class Material implements Comparable<Material> {
     nextFreeId++;
   }
 
+  public static void resetId() {
+    nextFreeId = 1;
+  }
+
   public long getQueueDuration() {
     return queueEndTime - queueStartTime;
   }
