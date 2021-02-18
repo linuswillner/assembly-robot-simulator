@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.controllers.StageController;
+import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,10 +13,12 @@ import lombok.Setter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-public class AssemblyStation extends Station implements Comparable<AssemblyStation>{
+public class AssemblyStation extends Station implements Comparable<AssemblyStation> {
 
   @Getter private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
+  private final AssemblyStage stage;
   private final StageController stageController;
   @Getter private MaterialStationData stationData;
   private static final Logger logger = LogManager.getLogger();
@@ -28,8 +31,9 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
 
-  public AssemblyStation(StageController stageController){
-    this.stageController = stageController;
+  public AssemblyStation(AssemblyStage stage) {
+    this.stage = stage;
+    stageController = stage.getStageController();
   }
 
   @Override
@@ -43,7 +47,7 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
     return busyTimeRemaining > 0;
   }
 
-  private boolean canPull() {
+  protected boolean canPull() {
     return !isBusy() && stationQueue.size() > 0;
   }
 
@@ -53,14 +57,12 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
     this.stationData = stationData;
     stationQueue.add(material);
     stationData.setQueueStartTime(material.getQueueStartTime());
-
   }
 
-  private Material pullFromStationQueue() {
+  protected Material pullFromStationQueue() {
     return stationQueue.poll();
   }
 
-  // TODO: check if possible DRY violation
   public void poll() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
@@ -74,16 +76,17 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
       stationData.setProcessingStartTime(currentMaterial.getProcessingStartTime());
       stationData.setQueueEndTime(currentMaterial.getQueueEndTime());
 
-      logger.trace("Starting processing of {}. Processing will continue for {} ticks.", next, processingTime);
+      logger.trace(
+          "Starting processing of {}. Processing will continue for {} ticks.",
+          next,
+          processingTime);
     }
-  }
-
-  public void onChildQueueDepart(Material material, MaterialStationData data){
   }
 
   // Handles ordering the PriorityQueue inside AssemblyStage
 
-  public int compareTo(AssemblyStation station){
+  @Override
+  public int compareTo(@NotNull AssemblyStation station) {
     return Integer.compare(this.stationQueue.size(), station.getStationQueue().size());
   }
 
@@ -94,13 +97,21 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
     if (isBusy()) {
       val newBusyTime = busyTimeRemaining - ticksAdvanced;
 
-      logger.trace("Advanced {} ticks. Busy time reduced from {} to {}.", ticksAdvanced, busyTimeRemaining, newBusyTime);
+      logger.trace(
+          "Advanced {} ticks. Busy time reduced from {} to {}.",
+          ticksAdvanced,
+          busyTimeRemaining,
+          newBusyTime);
 
       if (newBusyTime == 0) {
+        stationData.setProcessingEndTime(currentMaterial.getProcessingEndTime());
+        stageController.onChildQueueDepart(currentMaterial, stationData);
         logger.trace("Processing for material {} finished.", currentMaterial);
       }
 
       setBusyTimeRemaining(newBusyTime);
+    } else {
+      poll();
     }
   }
 
@@ -108,5 +119,4 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
   protected void onTickReset() {
     busyTimeRemaining = 0;
   }
-
 }

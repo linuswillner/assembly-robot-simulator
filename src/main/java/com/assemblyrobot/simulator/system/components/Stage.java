@@ -5,13 +5,9 @@ import com.assemblyrobot.simulator.system.controllers.StageController;
 import java.util.PriorityQueue;
 import lombok.Getter;
 
-public abstract class Stage{
+public abstract class Stage {
 
-  @Getter private final StageController stageController = new StageController();
+  protected abstract void createStations(int stationAmount);
 
-  public abstract void onChildQueueDepart(Material material, MaterialStationData data);
-
-  public abstract PriorityQueue<Station> getStageQueue();
-
+  public abstract void addToStationQueue(Material material);
 }
-

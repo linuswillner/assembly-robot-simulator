@@ -10,30 +10,25 @@ import lombok.Getter;
 
 public class AssemblyStage extends Stage {
 
-  private final StageController stageController;
+  @Getter private final StageController stageController;
   @Getter private PriorityQueue<AssemblyStation> stageQueue = new PriorityQueue<>();
   @Getter private final StageID stageId = StageID.ASSEMBLY;
   private MaterialStationData stationData;
 
-  public AssemblyStage(int stationAmount, StageController stageController){
+  public AssemblyStage(int stationAmount, StageController stageController) {
     this.stageController = stageController;
     createStations(stationAmount);
   }
 
-  private void createStations(int stationAmount){
-    for(int i = 0; i < stationAmount; i++){
-      stageQueue.add(new AssemblyStation(stageController));
+  protected void createStations(int stationAmount) {
+    for (int i = 0; i < stationAmount; i++) {
+      stageQueue.add(new AssemblyStation(this));
     }
   }
 
-  public void addToAssemblyStationQueue(Material material) {
+  public void addToStationQueue(Material material) {
     stationData = new MaterialStationData();
     stationData.setStageId(stageId);
     stageQueue.peek().addToStationQueue(material, stationData);
   }
-
-  public void onChildQueueDepart(Material material, MaterialStationData data) {
-
-  }
-
 }

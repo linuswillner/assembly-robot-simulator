@@ -4,6 +4,7 @@ import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.controllers.StageController;
+import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -11,11 +12,12 @@ import lombok.Setter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-public class ErrorCheckStation extends Station {
+public class ErrorCheckStation extends Station implements Comparable<ErrorCheckStation> {
 
-  @Getter
-  private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
+  @Getter private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
+  private final ErrorCheckStage stage;
   private StageController stageController;
   @Getter private MaterialStationData stationData;
   private static final Logger logger = LogManager.getLogger();
@@ -28,21 +30,21 @@ public class ErrorCheckStation extends Station {
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
 
-  public ErrorCheckStation(StageController stageController){
-    this.stageController = stageController;
+  public ErrorCheckStation(ErrorCheckStage stage) {
+    this.stage = stage;
+    stageController = stage.getStageController();
   }
 
-
-  //TODO: Note this is a placeholder method. Change after all time generators have been implemented.
+  // TODO: Note this is a placeholder method. Change after all time generators have been
+  // implemented.
   @Override
   protected long getProcessingTime() {
     return 0;
   }
- /* @Override
+  /* @Override
   protected long getProcessingTime() {
     return ErrorCheckTimeGenerator.getInstance().nextLong();
   }*/
-
 
   // Busy logic
 
@@ -50,7 +52,7 @@ public class ErrorCheckStation extends Station {
     return busyTimeRemaining > 0;
   }
 
-  private boolean canPull() {
+  protected boolean canPull() {
     return !isBusy() && stationQueue.size() > 0;
   }
 
@@ -60,14 +62,12 @@ public class ErrorCheckStation extends Station {
     this.stationData = stationData;
     stationQueue.add(material);
     stationData.setQueueStartTime(material.getQueueStartTime());
-
   }
 
-  private Material pullFromStationQueue() {
+  protected Material pullFromStationQueue() {
     return stationQueue.poll();
   }
 
-  // TODO: check if possible DRY violation
   public void poll() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
@@ -81,16 +81,17 @@ public class ErrorCheckStation extends Station {
       stationData.setProcessingStartTime(currentMaterial.getProcessingStartTime());
       stationData.setQueueEndTime(currentMaterial.getQueueEndTime());
 
-      logger.trace("Starting processing of {}. Processing will continue for {} ticks.", next, processingTime);
+      logger.trace(
+          "Starting processing of {}. Processing will continue for {} ticks.",
+          next,
+          processingTime);
     }
-  }
-
-  public void onChildQueueDepart(Material material, MaterialStationData data){
   }
 
   // Handles ordering the PriorityQueue inside AssemblyStage
 
-  public int compareTo(AssemblyStation station){
+  @Override
+  public int compareTo(@NotNull ErrorCheckStation station) {
     return Integer.compare(this.stationQueue.size(), station.getStationQueue().size());
   }
 
@@ -101,13 +102,21 @@ public class ErrorCheckStation extends Station {
     if (isBusy()) {
       val newBusyTime = busyTimeRemaining - ticksAdvanced;
 
-      logger.trace("Advanced {} ticks. Busy time reduced from {} to {}.", ticksAdvanced, busyTimeRemaining, newBusyTime);
+      logger.trace(
+          "Advanced {} ticks. Busy time reduced from {} to {}.",
+          ticksAdvanced,
+          busyTimeRemaining,
+          newBusyTime);
 
       if (newBusyTime == 0) {
+        stationData.setProcessingEndTime(currentMaterial.getProcessingEndTime());
+        stageController.onChildQueueDepart(currentMaterial, stationData);
         logger.trace("Processing for material {} finished.", currentMaterial);
       }
 
       setBusyTimeRemaining(newBusyTime);
+    } else {
+      poll();
     }
   }
 
@@ -115,5 +124,4 @@ public class ErrorCheckStation extends Station {
   protected void onTickReset() {
     busyTimeRemaining = 0;
   }
-
 }
