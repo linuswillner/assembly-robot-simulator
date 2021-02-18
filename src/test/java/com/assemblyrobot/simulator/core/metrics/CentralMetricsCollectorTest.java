@@ -24,10 +24,10 @@ class CentralMetricsCollectorTest {
   @DisplayName("registerMetricsCollector(): Throws an error if duplicate registrations occur")
   void registerMetricsCollector() {
     val collector =
-        new MetricsCollector(getClass().getName(), "com.assemblyrobot.simulator.core.Engine");
+        new MetricsCollector(getClass().getSimpleName(), "com.assemblyrobot.simulator.core.Engine");
 
     assertThrows(
         DuplicateMetricsCollectorRegistrationError.class,
-        () -> centralMetricsCollector.registerMetricsCollector(getClass().getName(), collector));
+        () -> centralMetricsCollector.registerMetricsCollector(getClass().getSimpleName(), collector));
   }
 }

@@ -18,7 +18,7 @@ class MetricsCollectorTest {
   @BeforeAll
   void beforeAll() {
     metricsCollector =
-        new MetricsCollector(getClass().getName(), "com.assemblyrobot.simulator.core.Engine");
+        new MetricsCollector(getClass().getSimpleName(), "com.assemblyrobot.simulator.core.Engine");
   }
 
   @AfterEach
