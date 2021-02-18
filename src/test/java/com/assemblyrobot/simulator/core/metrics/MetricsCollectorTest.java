@@ -50,4 +50,10 @@ class MetricsCollectorTest {
   void getType() {
     assertEquals(MetricsCollectorType.ENGINE, metricsCollector.getType());
   }
+
+  @Test
+  @DisplayName("incrementMetric(): Correctly increments a given metric")
+  void incrementMetric() {
+    assertEquals(1.0, metricsCollector.getMetric(METRIC_NAME, 1.0));
+  }
 }

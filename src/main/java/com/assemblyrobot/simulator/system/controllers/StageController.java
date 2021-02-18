@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
+import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Tracker;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
@@ -32,6 +33,16 @@ public class StageController {
   private final ErrorCheckStage errorCheckStage =
       new ErrorCheckStage(errorCheckStationAmount, this);
   private static final Logger logger = LogManager.getLogger();
+  private MetricsCollector metricsCollector =
+      new MetricsCollector(getClass().getSimpleName(), getClass().getName());
+
+  @RequiredArgsConstructor
+  private enum Metrics {
+    TOTAL_MATERIAL_AMOUNT("total_entered_material_amount"),
+    TOTAL_ASSEMBLED_AMOUNT("total_exited_material_amount");
+
+    @Getter private final String metricName;
+  }
 
   public void registerIncomingMaterial() {
     Material material = new Material();
@@ -41,6 +52,7 @@ public class StageController {
     trackerCache.put(tracker.getMaterialid(), tracker);
     materialCache.put(material.getId(), material);
     sendToNextStage(material);
+    metricsCollector.incrementMetric(Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName());
   }
 
   public void registerMaterialProcessing(long id) {
@@ -53,6 +65,7 @@ public class StageController {
     val material = materialCache.get(id);
     material.setProcessingEndTime(getCurrentTick());
     materialCache.put(id, material);
+    metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
   }
 
   // tracker contains an arraylist of data the id is the same as material id
