@@ -3,19 +3,17 @@ package com.assemblyrobot.simulator.system.components;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import java.util.ArrayList;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class Tracker {
 
-  @Getter private final long materialid;
-  // TODO Figure out a way to match this with Stage controller
-  @Getter
-  private final ArrayList<MaterialStationData> dataForStations =
-      new ArrayList<MaterialStationData>();
+  @Getter private final long trackerId;
 
-  // this is for testing with custom data
-  public void addData(MaterialStationData data) {
+  @Getter private final ArrayList<MaterialStationData> dataForStations = new ArrayList<>();
+
+  public void addData(@NonNull MaterialStationData data) {
     dataForStations.add(data);
   }
 }

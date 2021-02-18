@@ -11,18 +11,17 @@ import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
 public class ErrorCheckStation extends Station implements Comparable<ErrorCheckStation> {
 
-  @Getter private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
-  private final ErrorCheckStage stage;
-  private StageController stageController;
-  @Getter private MaterialStationData stationData;
+  @Getter private final PriorityQueue<Material> materialQueue = new PriorityQueue<>();
+  private final StageController stageController;
+  private MaterialStationData stationData;
   private static final Logger logger = LogManager.getLogger();
 
   @Getter
@@ -33,8 +32,7 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
 
-  public ErrorCheckStation(ErrorCheckStage stage) {
-    this.stage = stage;
+  public ErrorCheckStation(@NonNull ErrorCheckStage stage) {
     stageController = stage.getStageController();
   }
 
@@ -51,27 +49,28 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
 
   // Busy logic
 
-  public boolean isBusy() {
+  protected boolean isBusy() {
     return busyTimeRemaining > 0;
   }
 
   protected boolean canPull() {
-    return !isBusy() && stationQueue.size() > 0;
+    return !isBusy() && materialQueue.size() > 0;
   }
 
   // Queue operations
 
-  public void addToStationQueue(Material material, MaterialStationData stationData) {
+  public void addToStationQueue(
+      @NonNull Material material, @NonNull MaterialStationData stationData) {
     this.stationData = stationData;
-    stationQueue.add(material);
+    materialQueue.add(material);
     stationData.setQueueStartTime(material.getQueueStartTime());
   }
 
   protected Material pullFromStationQueue() {
-    return stationQueue.poll();
+    return materialQueue.poll();
   }
 
-  public void poll() {
+  protected void poll() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
       val next = pullFromStationQueue();
@@ -103,8 +102,8 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
   // Handles ordering the PriorityQueue inside AssemblyStage
 
   @Override
-  public int compareTo(@NotNull ErrorCheckStation station) {
-    return Integer.compare(this.stationQueue.size(), station.getStationQueue().size());
+  public int compareTo(@NonNull ErrorCheckStation station) {
+    return Integer.compare(this.materialQueue.size(), station.getMaterialQueue().size());
   }
 
   // Tick advance listener methods

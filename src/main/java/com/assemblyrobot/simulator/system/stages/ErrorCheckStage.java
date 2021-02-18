@@ -7,28 +7,30 @@ import com.assemblyrobot.simulator.system.controllers.StageController;
 import com.assemblyrobot.simulator.system.stations.ErrorCheckStation;
 import java.util.PriorityQueue;
 import lombok.Getter;
+import lombok.NonNull;
 
 public class ErrorCheckStage extends Stage {
 
   @Getter private final StageController stageController;
-  @Getter private PriorityQueue<ErrorCheckStation> stageQueue = new PriorityQueue<>();
-  @Getter private final StageID stageId = StageID.ERROR_CHECK;
-  private MaterialStationData stationData;
+  private final PriorityQueue<ErrorCheckStation> stationQueue = new PriorityQueue<>();
 
-  public ErrorCheckStage(int stationAmount, StageController stageController) {
+  public ErrorCheckStage(int stationAmount, @NonNull StageController stageController) {
     this.stageController = stageController;
     createStations(stationAmount);
   }
 
   protected void createStations(int stationAmount) {
     for (int i = 0; i < stationAmount; i++) {
-      stageQueue.add(new ErrorCheckStation(this));
+      stationQueue.add(new ErrorCheckStation(this));
     }
   }
 
-  public void addToStationQueue(Material material) {
-    stationData = new MaterialStationData();
-    stationData.setStageId(stageId);
-    stageQueue.peek().addToStationQueue(material, stationData);
+  public void addToStationQueue(@NonNull Material material) {
+    MaterialStationData stationData = new MaterialStationData();
+    stationData.setStageId(StageID.ERROR_CHECK);
+
+    if (stationQueue.peek() != null) {
+      stationQueue.peek().addToStationQueue(material, stationData);
+    }
   }
 }

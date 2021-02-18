@@ -8,24 +8,23 @@ import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.controllers.StageController;
-import com.assemblyrobot.simulator.system.metricscollectors.StationMetricsCollector;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
 public class AssemblyStation extends Station implements Comparable<AssemblyStation> {
 
-  @Getter private PriorityQueue<Material> stationQueue = new PriorityQueue<>();
-  private final AssemblyStage stage;
+  @Getter(AccessLevel.PRIVATE)
+  private final PriorityQueue<Material> materialQueue = new PriorityQueue<>();
+
   private final StageController stageController;
-  @Getter private MaterialStationData stationData;
-  @Getter private StationMetricsCollector stationMetricsCollector;
+  private MaterialStationData stationData;
   private static final Logger logger = LogManager.getLogger();
 
   @Getter
@@ -36,9 +35,7 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
   @Setter(AccessLevel.PRIVATE)
   private Material currentMaterial = null;
 
-  public AssemblyStation(AssemblyStage stage) {
-    this.stage = stage;
-    stationMetricsCollector = new StationMetricsCollector(this);
+  public AssemblyStation(@NonNull AssemblyStage stage) {
     stageController = stage.getStageController();
   }
 
@@ -49,27 +46,29 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
 
   // Busy logic
 
-  public boolean isBusy() {
+  protected boolean isBusy() {
     return busyTimeRemaining > 0;
   }
 
   protected boolean canPull() {
-    return !isBusy() && stationQueue.size() > 0;
+    return !isBusy() && materialQueue.size() > 0;
   }
 
   // Queue operations
 
-  public void addToStationQueue(Material material, MaterialStationData stationData) {
+  public void addToStationQueue(
+      @NonNull Material material, @NonNull MaterialStationData stationData) {
     this.stationData = stationData;
-    stationQueue.add(material);
+    materialQueue.add(material);
     stationData.setQueueStartTime(material.getQueueStartTime());
+    poll();
   }
 
   protected Material pullFromStationQueue() {
-    return stationQueue.poll();
+    return materialQueue.poll();
   }
 
-  public void poll() {
+  protected void poll() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
       val next = pullFromStationQueue();
@@ -101,8 +100,8 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
   // Handles ordering the PriorityQueue inside AssemblyStage
 
   @Override
-  public int compareTo(@NotNull AssemblyStation station) {
-    return Integer.compare(this.stationQueue.size(), station.getStationQueue().size());
+  public int compareTo(@NonNull AssemblyStation station) {
+    return Integer.compare(this.materialQueue.size(), station.getMaterialQueue().size());
   }
 
   // Tick advance listener methods

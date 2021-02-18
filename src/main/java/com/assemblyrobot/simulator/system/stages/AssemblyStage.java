@@ -7,28 +7,30 @@ import com.assemblyrobot.simulator.system.controllers.StageController;
 import com.assemblyrobot.simulator.system.stations.AssemblyStation;
 import java.util.PriorityQueue;
 import lombok.Getter;
+import lombok.NonNull;
 
 public class AssemblyStage extends Stage {
 
   @Getter private final StageController stageController;
-  @Getter private PriorityQueue<AssemblyStation> stageQueue = new PriorityQueue<>();
-  @Getter private final StageID stageId = StageID.ASSEMBLY;
-  private MaterialStationData stationData;
+  private final PriorityQueue<AssemblyStation> stationQueue = new PriorityQueue<>();
 
-  public AssemblyStage(int stationAmount, StageController stageController) {
+  public AssemblyStage(int stationAmount, @NonNull StageController stageController) {
     this.stageController = stageController;
     createStations(stationAmount);
   }
 
   protected void createStations(int stationAmount) {
     for (int i = 0; i < stationAmount; i++) {
-      stageQueue.add(new AssemblyStation(this));
+      stationQueue.add(new AssemblyStation(this));
     }
   }
 
-  public void addToStationQueue(Material material) {
-    stationData = new MaterialStationData();
-    stationData.setStageId(stageId);
-    stageQueue.peek().addToStationQueue(material, stationData);
+  public void addToStationQueue(@NonNull Material material) {
+    MaterialStationData stationData = new MaterialStationData();
+    stationData.setStageId(StageID.ASSEMBLY);
+
+    if (stationQueue.peek() != null) {
+      stationQueue.peek().addToStationQueue(material, stationData);
+    }
   }
 }
