@@ -1,5 +1,8 @@
 package com.assemblyrobot.simulator.system.stations;
 
+import com.assemblyrobot.simulator.core.clock.Clock;
+import com.assemblyrobot.simulator.core.events.Event;
+import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Station;
@@ -80,6 +83,15 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
 
       stationData.setProcessingStartTime(currentMaterial.getProcessingStartTime());
       stationData.setQueueEndTime(currentMaterial.getQueueEndTime());
+
+      // The PROCESSING_COMPLETE event has no function beyond stopping the clock at the moment where
+      // busy time reaches 0 so that we can call onChildQueueDepart()
+      stageController
+          .getEventQueue()
+          .schedule(
+              new Event(
+                  Clock.getInstance().getCurrentTick() + processingTime,
+                  EventType.PROCESSING_COMPLETE));
 
       logger.trace(
           "Starting processing of {}. Processing will continue for {} ticks.",

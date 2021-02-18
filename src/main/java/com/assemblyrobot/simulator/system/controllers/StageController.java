@@ -23,8 +23,7 @@ public class StageController {
   @Getter private final HashMap<Long, Material> materialCache = new HashMap<>();
   @Getter private final HashMap<Long, Tracker> trackerCache = new HashMap<>();
   @Getter private final ArrayList<Material> transferQueue = new ArrayList<>();
-
-  private final EventQueue eventQueue;
+  @Getter private final EventQueue eventQueue;
   // TODO: Note that these are placeholder variables. The amount of stations that will be created
   // will be asked from the user in the UI. Implement later.
   private int assemblyStationAmount = 1;
@@ -102,16 +101,16 @@ public class StageController {
     }
   }
 
-  private void sendToNextStage(Material material){
-    // TODO: Remove this material from the transfer queue
+  private void sendToNextStage(Material material) {
+    transferQueue.remove(transferQueue.indexOf(material.getId()));
 
-    if(getNextStage(material) == StageID.ASSEMBLY){
+    if (getNextStage(material) == StageID.ASSEMBLY) {
       addToAssemblyStageQueue(material);
-    }else if(getNextStage(material) == StageID.ERROR_CHECK){
+    } else if (getNextStage(material) == StageID.ERROR_CHECK) {
       addToErrorCheckStageQueue(material);
-    }else if(getNextStage(material) == StageID.DEPART){
+    } else if (getNextStage(material) == StageID.DEPART) {
       registerOutgoingMaterial(material.getId());
-    }else{
+    } else {
       logger.warn("Material not progressing anywhere.");
     }
   }
@@ -119,5 +118,4 @@ public class StageController {
   public void transferAll() {
     transferQueue.forEach(this::sendToNextStage);
   }
-
 }
