@@ -26,7 +26,8 @@ public abstract class Station extends TickAdvanceListener {
 
   private final MetricsCollector metricsCollector =
       new MetricsCollector(
-          "%s-%d".formatted(getClass().getSimpleName(), nextFreeId), getClass().getSuperclass().getName());
+          "%s-%d".formatted(getClass().getSimpleName(), nextFreeId),
+          getClass().getSuperclass().getName());
 
   @Getter(AccessLevel.PROTECTED)
   private final PriorityQueue<Material> materialQueue = new PriorityQueue<>();
