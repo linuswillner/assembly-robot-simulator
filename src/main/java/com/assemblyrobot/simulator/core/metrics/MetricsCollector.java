@@ -3,6 +3,7 @@ package com.assemblyrobot.simulator.core.metrics;
 import java.util.HashMap;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.val;
 
 /**
  * Generic metrics collector. Can be attached to any class to store metrics about various facets of
@@ -12,9 +13,9 @@ public class MetricsCollector {
   @Getter private final HashMap<String, Double> metrics = new HashMap<>();
   @Getter @NonNull private final MetricsCollectorType type;
 
-  public MetricsCollector(@NonNull String collectingClassName, @NonNull String typeClassName) {
+  public MetricsCollector(@NonNull String hostName, @NonNull String typeClassName) {
     this.type = MetricsCollectorType.getByClass(typeClassName);
-    CentralMetricsCollector.getInstance().registerMetricsCollector(collectingClassName, this);
+    CentralMetricsCollector.getInstance().registerMetricsCollector(hostName, this);
   }
 
   /**
@@ -52,5 +53,15 @@ public class MetricsCollector {
    */
   public void putMetric(@NonNull String metricName, double measurement) {
     metrics.put(metricName, measurement);
+  }
+
+  /**
+   * Increments a metric by 1.
+   *
+   * @param metricName Metric name to increment.
+   */
+  public void incrementMetric(@NonNull String metricName) {
+    val current = getMetric(metricName, 0);
+    metrics.put(metricName, current + 1);
   }
 }

@@ -16,7 +16,14 @@ public class MainEngine extends Engine {
   @Override
   protected void onArrival() {
     arrivalEventPropagator.feedNext();
+    super.getStageController().registerIncomingMaterial();
   }
+
+  @Override
+  protected void onTransfer() {
+    super.getStageController().transferAll();
+  }
+
 
   @Override
   protected void onDeparture() {}

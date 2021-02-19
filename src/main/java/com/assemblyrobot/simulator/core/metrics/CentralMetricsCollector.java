@@ -23,19 +23,19 @@ public class CentralMetricsCollector {
    * <p>Note: With respect to the above, do not call this method manually. It is public strictly for
    * practical reasons.
    *
-   * @param hostClassName Name of the host class for this metrics collector.
+   * @param hostName Name of the host for this metrics collector; needs to be a unique identiifer.
    * @param collector {@link MetricsCollector}
    * @throws DuplicateMetricsCollectorRegistrationError If a metrics collector for this host class
    *     has already been registered.
    */
   public void registerMetricsCollector(
-      @NonNull String hostClassName, @NonNull MetricsCollector collector)
+      @NonNull String hostName, @NonNull MetricsCollector collector)
       throws DuplicateMetricsCollectorRegistrationError {
-    if (collectors.containsKey(hostClassName)) {
-      throw new DuplicateMetricsCollectorRegistrationError(hostClassName);
+    if (collectors.containsKey(hostName)) {
+      throw new DuplicateMetricsCollectorRegistrationError(hostName);
     }
 
-    collectors.put(hostClassName, collector);
+    collectors.put(hostName, collector);
   }
 
   /**

@@ -5,7 +5,6 @@ import com.assemblyrobot.shared.config.model.NormalDistributionConfig;
 import eduni.distributions.Normal;
 import lombok.Getter;
 
-// TODO: When there is an AssemblyStage, link it here
 /**
  * Assembly duration generator. Generates arbitrary durations for assembly (measured in seconds)
  * during the Assembly stage based on a {@link Normal} distribution, with defaults specified by the
