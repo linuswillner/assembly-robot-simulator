@@ -26,11 +26,12 @@ public class AssemblyStage extends Stage {
   }
 
   public void addToStationQueue(@NonNull Material material) {
-    MaterialStationData stationData = new MaterialStationData();
+    val stationData = new MaterialStationData();
     stationData.setStageId(StageID.ASSEMBLY);
 
-    if (stationQueue.peek() != null) {
-      stationQueue.peek().addToStationQueue(material, stationData);
+    val nextFreeStation = stationQueue.peek();
+    if (nextFreeStation != null) {
+      nextFreeStation.addToStationQueue(material, stationData);
     }
   }
 }

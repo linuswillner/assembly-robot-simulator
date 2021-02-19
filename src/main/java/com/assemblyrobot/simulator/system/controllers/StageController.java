@@ -53,13 +53,16 @@ public class StageController {
   }
 
   public void registerIncomingMaterial() {
-    Material material = new Material();
+    val material = new Material();
     material.setProcessingStartTime(getCurrentTick());
     material.setQueueStartTime(getCurrentTick());
-    Tracker tracker = new Tracker(material.getId());
-    trackerCache.put(tracker.getTrackerId(), tracker);
     materialCache.put(material.getId(), material);
+
+    val tracker = new Tracker(material.getId());
+    trackerCache.put(tracker.getTrackerId(), tracker);
+    
     sendToNextStage(material);
+    
     metricsCollector.incrementMetric(Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName());
   }
 
@@ -73,6 +76,7 @@ public class StageController {
     val material = materialCache.get(id);
     material.setProcessingEndTime(getCurrentTick());
     materialCache.put(id, material);
+
     metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
   }
 
@@ -107,9 +111,9 @@ public class StageController {
 
   private StageID getNextStage(@NonNull Material material) {
     // Get stageID from tracker
-    long materialId = material.getId();
-    Tracker tracker = trackerCache.get(materialId);
-    ArrayList<MaterialStationData> stationDataList = tracker.getDataForStations();
+    val materialId = material.getId();
+    val tracker = trackerCache.get(materialId);
+    val stationDataList = tracker.getDataForStations();
     StageID currentStageId = null;
     try {
       currentStageId = stationDataList.get(stationDataList.size() - 1).getStageId();
@@ -145,7 +149,7 @@ public class StageController {
 
   public void onChildQueueDepart(
       @NonNull Material material, @NonNull MaterialStationData stationData) {
-    Tracker tracker = trackerCache.get(material.getId());
+    val tracker = trackerCache.get(material.getId());
     tracker.addData(stationData);
     addTrackingData(tracker);
 
