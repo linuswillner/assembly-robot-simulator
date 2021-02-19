@@ -134,7 +134,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#registerMetricsCollector(java.lang.String,com.assemblyrobot.simulator.core.metrics.MetricsCollector)">registerMetricsCollector</a></span>&#8203;(@NonNull java.lang.String&nbsp;hostClassName,
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#registerMetricsCollector(java.lang.String,com.assemblyrobot.simulator.core.metrics.MetricsCollector)">registerMetricsCollector</a></span>&#8203;(@NonNull java.lang.String&nbsp;hostName,
 @NonNull <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics">MetricsCollector</a>&nbsp;collector)</code></th>
 <td class="col-last">
 <div class="block">Registers a metrics collector.</div>
@@ -176,7 +176,7 @@ extends java.lang.Object</pre>
 <section class="detail" id="registerMetricsCollector(java.lang.String,com.assemblyrobot.simulator.core.metrics.MetricsCollector)">
 <h3>registerMetricsCollector</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">registerMetricsCollector</span>&#8203;(<span class="parameters">@NonNull
-@NonNull java.lang.String&nbsp;hostClassName,
+@NonNull java.lang.String&nbsp;hostName,
 @NonNull
 @NonNull <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics">MetricsCollector</a>&nbsp;collector)</span>
                               throws <span class="exceptions"><a href="errors/DuplicateMetricsCollectorRegistrationError.html" title="class in com.assemblyrobot.simulator.core.metrics.errors">DuplicateMetricsCollectorRegistrationError</a></span></div>
@@ -187,7 +187,7 @@ extends java.lang.Object</pre>
  practical reasons.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>hostClassName</code> - Name of the host class for this metrics collector.</dd>
+<dd><code>hostName</code> - Name of the host for this metrics collector; needs to be a unique identiifer.</dd>
 <dd><code>collector</code> - <a href="MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><code>MetricsCollector</code></a></dd>
 <dt>Throws:</dt>
 <dd><code><a href="errors/DuplicateMetricsCollectorRegistrationError.html" title="class in com.assemblyrobot.simulator.core.metrics.errors">DuplicateMetricsCollectorRegistrationError</a></code> - If a metrics collector for this host class

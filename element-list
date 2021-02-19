@@ -12,6 +12,7 @@ com.assemblyrobot.simulator.system.controllers
 com.assemblyrobot.simulator.system.engines
 com.assemblyrobot.simulator.system.generators
 com.assemblyrobot.simulator.system.metricscollectors
+com.assemblyrobot.simulator.system.stages
 com.assemblyrobot.simulator.system.stations
 com.assemblyrobot.ui
 com.assemblyrobot.ui.controllers

@@ -15,8 +15,8 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":9};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
 var tableTab = "table-tab";
@@ -79,9 +79,14 @@ loadScripts(document, 'script');</script>
 <div class="inheritance">com.assemblyrobot.simulator.system.components.Material</div>
 </div>
 <section class="description">
+<dl class="notes">
+<dt>All Implemented Interfaces:</dt>
+<dd><code>java.lang.Comparable&lt;<a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&gt;</code></dd>
+</dl>
 <hr>
-<pre>public abstract class <span class="type-name-label">Material</span>
-extends java.lang.Object</pre>
+<pre>public class <span class="type-name-label">Material</span>
+extends java.lang.Object
+implements java.lang.Comparable&lt;<a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&gt;</pre>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -113,7 +118,7 @@ extends java.lang.Object</pre>
 <section class="method-summary" id="method.summary">
 <h2>Method Summary</h2>
 <div class="member-summary" id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">All Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">All Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t1" class="table-tab" onclick="show(1);">Static Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <table class="summary-table" aria-labelledby="t0">
 <thead>
@@ -125,13 +130,23 @@ extends java.lang.Object</pre>
 </thead>
 <tbody>
 <tr class="alt-color" id="i0">
-<td class="col-first"><code>long</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getProcessingDuration()">getProcessingDuration</a></span>()</code></th>
+<td class="col-first"><code>int</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#compareTo(com.assemblyrobot.simulator.system.components.Material)">compareTo</a></span>&#8203;(<a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material)</code></th>
 <td class="col-last">&nbsp;</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>long</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getProcessingDuration()">getProcessingDuration</a></span>()</code></th>
+<td class="col-last">&nbsp;</td>
+</tr>
+<tr class="alt-color" id="i2">
+<td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getQueueDuration()">getQueueDuration</a></span>()</code></th>
+<td class="col-last">&nbsp;</td>
+</tr>
+<tr class="row-color" id="i3">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#resetId()">resetId</a></span>()</code></th>
 <td class="col-last">&nbsp;</td>
 </tr>
 </tbody>
@@ -167,6 +182,12 @@ extends java.lang.Object</pre>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="resetId()">
+<h3>resetId</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">resetId</span>()</div>
+</section>
+</li>
+<li>
 <section class="detail" id="getQueueDuration()">
 <h3>getQueueDuration</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getQueueDuration</span>()</div>
@@ -176,6 +197,16 @@ extends java.lang.Object</pre>
 <section class="detail" id="getProcessingDuration()">
 <h3>getProcessingDuration</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getProcessingDuration</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="compareTo(com.assemblyrobot.simulator.system.components.Material)">
+<h3>compareTo</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="member-name">compareTo</span>&#8203;(<span class="parameters"><a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material)</span></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code>compareTo</code>&nbsp;in interface&nbsp;<code>java.lang.Comparable&lt;<a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&gt;</code></dd>
+</dl>
 </section>
 </li>
 </ul>
