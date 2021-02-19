@@ -1,6 +1,6 @@
 package com.assemblyrobot.simulator.system.stages;
 
-import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
+import com.assemblyrobot.simulator.system.components.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.controllers.StageController;
@@ -8,6 +8,7 @@ import com.assemblyrobot.simulator.system.stations.AssemblyStation;
 import java.util.PriorityQueue;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.val;
 
 public class AssemblyStage extends Stage {
 

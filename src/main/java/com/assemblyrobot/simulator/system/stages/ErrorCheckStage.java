@@ -1,6 +1,6 @@
 package com.assemblyrobot.simulator.system.stages;
 
-import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
+import com.assemblyrobot.simulator.system.components.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.controllers.StageController;
@@ -8,6 +8,7 @@ import com.assemblyrobot.simulator.system.stations.ErrorCheckStation;
 import java.util.PriorityQueue;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.val;
 
 public class ErrorCheckStage extends Stage {
 
@@ -26,11 +27,12 @@ public class ErrorCheckStage extends Stage {
   }
 
   public void addToStationQueue(@NonNull Material material) {
-    MaterialStationData stationData = new MaterialStationData();
+    val stationData = new MaterialStationData();
     stationData.setStageId(StageID.ERROR_CHECK);
 
-    if (stationQueue.peek() != null) {
-      stationQueue.peek().addToStationQueue(material, stationData);
+    val nextFreeStation = stationQueue.peek();
+    if (nextFreeStation != null) {
+      nextFreeStation.addToStationQueue(material, stationData);
     }
   }
 }

@@ -1,4 +1,4 @@
-package com.assemblyrobot.simulator.core.metrics;
+package com.assemblyrobot.simulator.system.components;
 
 import com.assemblyrobot.simulator.system.stages.StageID;
 import lombok.Getter;

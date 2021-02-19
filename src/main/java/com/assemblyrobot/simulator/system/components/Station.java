@@ -4,7 +4,6 @@ import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventType;
-import com.assemblyrobot.simulator.core.metrics.MaterialStationData;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
 import com.assemblyrobot.simulator.system.controllers.StageController;
 import java.util.PriorityQueue;
