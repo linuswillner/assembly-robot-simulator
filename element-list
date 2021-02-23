@@ -7,9 +7,9 @@ com.assemblyrobot.simulator.core.events
 com.assemblyrobot.simulator.core.generators
 com.assemblyrobot.simulator.core.metrics
 com.assemblyrobot.simulator.core.metrics.errors
+com.assemblyrobot.simulator.system
 com.assemblyrobot.simulator.system.components
 com.assemblyrobot.simulator.system.controllers
-com.assemblyrobot.simulator.system.engines
 com.assemblyrobot.simulator.system.generators
 com.assemblyrobot.simulator.system.metricscollectors
 com.assemblyrobot.simulator.system.stages
