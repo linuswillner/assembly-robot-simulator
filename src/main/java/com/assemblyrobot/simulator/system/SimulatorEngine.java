@@ -1,9 +1,9 @@
-package com.assemblyrobot.simulator.system.engines;
+package com.assemblyrobot.simulator.system;
 
 import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.simulator.system.generators.ArrivalEventPropagator;
 
-public class MainEngine extends Engine {
+public class SimulatorEngine extends Engine {
   private final ArrivalEventPropagator arrivalEventPropagator =
       new ArrivalEventPropagator(super.getEventQueue());
 
