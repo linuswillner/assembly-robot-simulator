@@ -35,7 +35,7 @@ public class ErrorOccurrenceGenerator {
   // Note: Starting at 1 so the error threshold can be measured as one in two/three/four... (Def. 3)
 
   public boolean shouldHaveError() {
-    return errorOccurrenceGenerator.sample() > occurrenceConfig.getErrorThreshold();
+    return Math.round(errorOccurrenceGenerator.sample()) >= occurrenceConfig.getErrorThreshold();
   }
 
   public ErrorType nextError() {
