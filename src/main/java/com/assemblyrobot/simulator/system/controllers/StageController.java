@@ -10,7 +10,7 @@ import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Tracker;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
-import com.assemblyrobot.simulator.system.stages.StageID;
+import com.assemblyrobot.shared.constants.StageID;
 import java.util.ArrayList;
 import java.util.HashMap;
 import lombok.AccessLevel;

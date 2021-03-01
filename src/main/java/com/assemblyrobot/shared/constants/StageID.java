@@ -1,4 +1,4 @@
-package com.assemblyrobot.simulator.system.stages;
+package com.assemblyrobot.shared.constants;
 
 public enum StageID {
   ASSEMBLY,

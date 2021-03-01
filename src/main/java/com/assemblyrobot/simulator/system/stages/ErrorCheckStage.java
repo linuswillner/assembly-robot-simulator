@@ -1,5 +1,6 @@
 package com.assemblyrobot.simulator.system.stages;
 
+import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.system.components.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
