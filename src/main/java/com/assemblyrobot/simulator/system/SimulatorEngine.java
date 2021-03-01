@@ -1,7 +1,7 @@
 package com.assemblyrobot.simulator.system;
 
 import com.assemblyrobot.simulator.core.Engine;
-import com.assemblyrobot.simulator.system.generators.ArrivalEventPropagator;
+import com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator;
 
 public class SimulatorEngine extends Engine {
   private final ArrivalEventPropagator arrivalEventPropagator =
