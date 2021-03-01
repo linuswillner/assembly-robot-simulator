@@ -1,4 +1,4 @@
-package com.assemblyrobot.simulator.system.controllers;
+package com.assemblyrobot.simulator.system.components;
 
 import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.core.clock.Clock;
@@ -7,11 +7,9 @@ import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
-import com.assemblyrobot.simulator.system.components.Material;
-import com.assemblyrobot.simulator.system.components.MaterialStationData;
-import com.assemblyrobot.simulator.system.components.Tracker;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
+import com.assemblyrobot.simulator.system.stages.FixStage;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +37,7 @@ public class StageController {
 
   private final AssemblyStage assemblyStage = new AssemblyStage(this);
   private final ErrorCheckStage errorCheckStage = new ErrorCheckStage(this);
+  private final FixStage fixStage = new FixStage(this);
 
   private static final Logger logger = LogManager.getLogger();
   private final MetricsCollector metricsCollector =
@@ -106,7 +105,7 @@ public class StageController {
           logger.trace("Material {}: Progressing to ErrorCheck.", material.getId());
         }
         case FIX -> {
-
+          fixStage.addToStationQueue(material);
           logger.trace("Material {}: Progressing to Fix.", material.getId());
         }
         case DEPART -> {
