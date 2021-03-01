@@ -21,5 +21,14 @@
     "rivetingFixTime": 5,
     "weldingFixTime": 7,
     "returningFixTime": 10
+  },
+  "stationParams": {
+    "assemblyStationAmount": 1,
+    "errorCheckStationAmount": 1,
+    "fittingFixStationAmount": 1,
+    "boltingFixStationAmount": 1,
+    "rivetingFixStationAmount": 1,
+    "weldingFixStationAmount": 1,
+    "returningFixStationAmount": 1
   }
 }

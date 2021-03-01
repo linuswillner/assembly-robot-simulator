@@ -11,4 +11,5 @@ public class ApplicationConfig {
   @Getter @Setter private NormalDistributionConfig errorCheckTimeParams;
   @Getter @Setter private ErrorOccurrenceConfig errorOccurrenceParams;
   @Getter @Setter private ErrorFixTimeConfig errorFixTimes;
+  @Getter @Setter private StationConfig stationParams;
 }
