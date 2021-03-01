@@ -6,5 +6,20 @@
   "assemblyTimeParams": {
     "mean": 10,
     "variance": 2
+  },
+  "errorCheckTimeParams": {
+    "mean": 5,
+    "variance": 2
+  },
+  "errorOccurrenceParams": {
+    "typeDistributionMean": 0.67,
+    "errorThreshold": 3
+  },
+  "errorFixTimes": {
+    "fittingFixTime": 1,
+    "boltingFixTime": 3,
+    "rivetingFixTime": 5,
+    "weldingFixTime": 7,
+    "returningFixTime": 10
   }
 }
