@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
  */
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
-  @Getter(AccessLevel.PROTECTED) private final StageController  stageController = new StageController(eventQueue);
+  @Getter(AccessLevel.PROTECTED) private final StageController stageController = new StageController(eventQueue);
   private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
 

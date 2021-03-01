@@ -41,7 +41,7 @@ public class StageController {
   private final ErrorCheckStage errorCheckStage =
       new ErrorCheckStage(errorCheckStationAmount, this);
   private static final Logger logger = LogManager.getLogger();
-  private MetricsCollector metricsCollector =
+  private final MetricsCollector metricsCollector =
       new MetricsCollector(getClass().getSimpleName(), getClass().getName());
 
   @RequiredArgsConstructor

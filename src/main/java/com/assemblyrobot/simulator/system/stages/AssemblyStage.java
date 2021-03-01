@@ -20,12 +20,14 @@ public class AssemblyStage extends Stage {
     createStations(stationAmount);
   }
 
+  @Override
   protected void createStations(int stationAmount) {
     for (int i = 0; i < stationAmount; i++) {
       stationQueue.add(new AssemblyStation(this));
     }
   }
 
+  @Override
   public void addToStationQueue(@NonNull Material material) {
     val stationData = new MaterialStationData();
     stationData.setStageId(StageID.ASSEMBLY);
