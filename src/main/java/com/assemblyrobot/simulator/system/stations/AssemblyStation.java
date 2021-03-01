@@ -15,7 +15,6 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
     return AssemblyTimeGenerator.getInstance().nextLong();
   }
 
-  // Handles ordering the PriorityQueue inside AssemblyStage
   @Override
   public int compareTo(@NonNull AssemblyStation station) {
     return Integer.compare(super.getMaterialQueue().size(), station.getMaterialQueue().size());

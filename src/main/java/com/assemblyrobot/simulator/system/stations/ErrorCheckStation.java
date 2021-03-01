@@ -15,7 +15,6 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
     return ErrorCheckTimeGenerator.getInstance().nextLong();
   }
 
-  // Handles ordering the PriorityQueue inside AssemblyStage
   @Override
   public int compareTo(@NonNull ErrorCheckStation station) {
     return Integer.compare(super.getMaterialQueue().size(), station.getMaterialQueue().size());
