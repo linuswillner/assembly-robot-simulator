@@ -32,6 +32,10 @@ public class Material implements Comparable<Material> {
     return processingEndTime - processingStartTime;
   }
 
+  public long getTotalProcessingTime() {
+    return processingEndTime - queueStartTime;
+  }
+
   public int compareTo(Material material) {
     return Long.compare(this.getQueueStartTime(), material.getQueueStartTime());
   }

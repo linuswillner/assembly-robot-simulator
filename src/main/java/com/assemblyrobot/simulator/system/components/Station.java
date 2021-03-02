@@ -5,10 +5,12 @@ import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
+import com.assemblyrobot.shared.constants.StageID;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,12 +22,21 @@ public abstract class Station extends TickAdvanceListener {
   private Material currentMaterial;
   private long busyTimeRemaining = 0;
   private static int nextFreeId = 1;
+  private final String stationId = "%s-%d".formatted(getClass().getSimpleName(), nextFreeId);
   private static final Logger logger = LogManager.getLogger();
 
   private final MetricsCollector metricsCollector =
-      new MetricsCollector(
-          "%s-%d".formatted(getClass().getSimpleName(), nextFreeId),
-          getClass().getSuperclass().getName());
+      new MetricsCollector(stationId, getClass().getName());
+
+  @RequiredArgsConstructor
+  private enum Metrics {
+    STATION_MATERIAL_AMOUNT("station_entered_material_amount"),
+    STATION_PROCESSED_AMOUNT("station_exited_material_amount"),
+    STATION_BUSY_TIME("station_busy_time"),
+    STATION_TOTAL_PASSTHROUGH_TIME("station_total_passthrough_time");
+
+    @Getter private final String metricName;
+  }
 
   @Getter(AccessLevel.PROTECTED)
   private final PriorityQueue<Material> materialQueue = new PriorityQueue<>();
@@ -47,11 +58,11 @@ public abstract class Station extends TickAdvanceListener {
     return !isBusy() && materialQueue.size() > 0;
   }
 
-  public void addToStationQueue(
-      @NonNull Material material, @NonNull MaterialStationData stationData) {
-    currentStationData = stationData;
+  public void addToStationQueue(@NonNull Material material, @NonNull StageID stageId) {
+    currentStationData = new MaterialStationData(stageId, stationId);
     materialQueue.add(material);
-    stationData.setQueueStartTime(material.getQueueStartTime());
+    currentStationData.setQueueStartTime(material.getQueueStartTime());
+    metricsCollector.incrementMetric(Metrics.STATION_MATERIAL_AMOUNT.getMetricName());
     poll();
   }
 
@@ -102,6 +113,13 @@ public abstract class Station extends TickAdvanceListener {
           newBusyTime);
 
       if (newBusyTime == 0) {
+        metricsCollector.incrementMetric(
+            Metrics.STATION_BUSY_TIME.getMetricName(), getProcessingTime());
+        metricsCollector.incrementMetric(Metrics.STATION_PROCESSED_AMOUNT.getMetricName());
+        metricsCollector.incrementMetric(
+            Metrics.STATION_TOTAL_PASSTHROUGH_TIME.getMetricName(),
+            currentMaterial.getTotalProcessingTime());
+
         currentStationData.setProcessingEndTime(currentMaterial.getProcessingEndTime());
         stageController.onChildQueueDepart(currentMaterial, currentStationData);
         logger.trace("Processing for material {} finished.", currentMaterial);

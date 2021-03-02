@@ -7,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class Tracker {
-
   @Getter private final long trackerId;
-
   @Getter private final ArrayList<MaterialStationData> dataForStations = new ArrayList<>();
 
   public void addData(@NonNull MaterialStationData data) {
