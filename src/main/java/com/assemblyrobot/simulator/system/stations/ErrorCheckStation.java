@@ -6,8 +6,15 @@ import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import lombok.NonNull;
 
 public class ErrorCheckStation extends Station implements Comparable<ErrorCheckStation> {
+  private static int nextFreeId = 1;
+
   public ErrorCheckStation(@NonNull ErrorCheckStage stage) {
-    super(stage.getStageController());
+    super(stage.getStageController(), "ErrorCheckStation-%d".formatted(nextFreeId));
+    nextFreeId++;
+  }
+
+  public static void resetId() {
+    nextFreeId = 1;
   }
 
   @Override

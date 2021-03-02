@@ -13,7 +13,6 @@ public class Material implements Comparable<Material> {
   @Getter @Setter private long queueEndTime = 0;
   @Getter @Setter private long processingStartTime = 0;
   @Getter @Setter private long processingEndTime = 0;
-  @Getter private Tracker tracker;
 
   public Material() {
     id = nextFreeId;
@@ -24,6 +23,13 @@ public class Material implements Comparable<Material> {
     nextFreeId = 1;
   }
 
+  public void reset() {
+    queueStartTime = 0;
+    queueEndTime = 0;
+    processingStartTime = 0;
+    processingEndTime = 0;
+  }
+
   public long getQueueDuration() {
     return queueEndTime - queueStartTime;
   }
@@ -32,7 +38,7 @@ public class Material implements Comparable<Material> {
     return processingEndTime - processingStartTime;
   }
 
-  public long getTotalProcessingTime() {
+  public long getTotalPassthroughTime() {
     return processingEndTime - queueStartTime;
   }
 

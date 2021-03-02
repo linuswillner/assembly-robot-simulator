@@ -6,8 +6,15 @@ import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import lombok.NonNull;
 
 public class AssemblyStation extends Station implements Comparable<AssemblyStation> {
+  private static int nextFreeId = 1;
+
   public AssemblyStation(@NonNull AssemblyStage stage) {
-    super(stage.getStageController());
+    super(stage.getStageController(), "AssemblyStation-%d".formatted(nextFreeId));
+    nextFreeId++;
+  }
+
+  public static void resetId() {
+    nextFreeId = 1;
   }
 
   @Override
