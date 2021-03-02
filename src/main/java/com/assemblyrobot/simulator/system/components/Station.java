@@ -1,11 +1,12 @@
 package com.assemblyrobot.simulator.system.components;
 
+import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
-import com.assemblyrobot.shared.constants.StageID;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,10 +19,10 @@ import org.apache.logging.log4j.Logger;
 public abstract class Station extends TickAdvanceListener {
 
   private final StageController stageController;
-  private MaterialStationData currentStationData;
+  private final HashMap<Long, MaterialStationData> materialsInProcessing = new HashMap<>();
+  private final String stationId;
   private Material currentMaterial;
   private long busyTimeRemaining = 0;
-  private final String stationId;
   private static final Logger logger = LogManager.getLogger();
 
   private final MetricsCollector metricsCollector;
@@ -54,11 +55,14 @@ public abstract class Station extends TickAdvanceListener {
   }
 
   public void addToStationQueue(@NonNull Material material, @NonNull StageID stageId) {
-    currentStationData = new MaterialStationData(stageId, stationId, material.getId());
-    materialQueue.add(material);
+    val materialId = material.getId();
+    val stationData = new MaterialStationData(stageId, stationId, materialId);
+    val currentTick = getCurrentTick();
 
-    material.setQueueStartTime(getCurrentTick());
-    currentStationData.setQueueStartTime(material.getQueueStartTime());
+    materialQueue.add(material);
+    material.setQueueStartTime(currentTick);
+    stationData.setQueueStartTime(currentTick);
+    materialsInProcessing.put(materialId, stationData);
 
     metricsCollector.incrementMetric(Metrics.STATION_MATERIAL_AMOUNT.getMetricName());
     poll();
@@ -90,8 +94,12 @@ public abstract class Station extends TickAdvanceListener {
       val currentTick = getCurrentTick();
       currentMaterial.setQueueEndTime(currentTick);
       currentMaterial.setProcessingStartTime(currentTick);
-      currentStationData.setQueueEndTime(currentMaterial.getQueueEndTime());
-      currentStationData.setProcessingStartTime(currentMaterial.getProcessingStartTime());
+
+      val currentMaterialId = currentMaterial.getId();
+      val currentStationData = materialsInProcessing.get(currentMaterialId);
+      currentStationData.setQueueEndTime(currentTick);
+      currentStationData.setProcessingStartTime(currentTick);
+      materialsInProcessing.put(currentMaterialId, currentStationData);
 
       logger.trace(
           "Starting processing of {}. Processing will continue for {} ticks.",
@@ -127,13 +135,18 @@ public abstract class Station extends TickAdvanceListener {
             currentMaterial.getTotalPassthroughTime());
 
         // Update material metrics
-        currentMaterial.setProcessingEndTime(getCurrentTick());
-        currentStationData.setProcessingEndTime(currentMaterial.getProcessingEndTime());
+        val currentTick = getCurrentTick();
+        val currentMaterialId = currentMaterial.getId();
+        val currentStationData = materialsInProcessing.get(currentMaterialId);
+
+        currentMaterial.setProcessingEndTime(currentTick);
+        currentStationData.setProcessingEndTime(currentTick);
         currentStationData.updateMetrics();
 
         logger.trace("Processing for material {} finished.", currentMaterial);
 
         stageController.onChildQueueDepart(currentMaterial, currentStationData);
+        materialsInProcessing.remove(currentMaterialId);
       }
 
       busyTimeRemaining = newBusyTime;
