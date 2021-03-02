@@ -15,8 +15,8 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":9};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
 var tableTab = "table-tab";
@@ -106,7 +106,8 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 </thead>
 <tbody>
 <tr class="alt-color">
-<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(com.assemblyrobot.simulator.system.components.StageController)">Station</a></span>&#8203;(<a href="StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a>&nbsp;stageController)</code></th>
+<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(com.assemblyrobot.simulator.system.components.StageController,java.lang.String)">Station</a></span>&#8203;(<a href="StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a>&nbsp;stageController,
+java.lang.String&nbsp;stationId)</code></th>
 <td class="col-last">&nbsp;</td>
 </tr>
 </tbody>
@@ -119,7 +120,7 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 <section class="method-summary" id="method.summary">
 <h2>Method Summary</h2>
 <div class="member-summary" id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">All Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t1" class="table-tab" onclick="show(1);">Static Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t3" class="table-tab" onclick="show(4);">Abstract Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">All Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t3" class="table-tab" onclick="show(4);">Abstract Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <table class="summary-table" aria-labelledby="t0">
 <thead>
@@ -132,8 +133,8 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 <tbody>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.simulator.system.components.MaterialStationData)">addToStationQueue</a></span>&#8203;(@NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
-@NonNull <a href="MaterialStationData.html" title="class in com.assemblyrobot.simulator.system.components">MaterialStationData</a>&nbsp;stationData)</code></th>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.StageID)">addToStationQueue</a></span>&#8203;(@NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
+@NonNull <a href="../../../shared/constants/StageID.html" title="enum in com.assemblyrobot.shared.constants">StageID</a>&nbsp;stageId)</code></th>
 <td class="col-last">&nbsp;</td>
 </tr>
 <tr class="row-color" id="i1">
@@ -175,11 +176,6 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#pullFromStationQueue()">pullFromStationQueue</a></span>()</code></th>
 <td class="col-last">&nbsp;</td>
 </tr>
-<tr class="alt-color" id="i8">
-<td class="col-first"><code>static void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#resetId()">resetId</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -199,9 +195,10 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(com.assemblyrobot.simulator.system.components.StageController)">
+<section class="detail" id="&lt;init&gt;(com.assemblyrobot.simulator.system.components.StageController,java.lang.String)">
 <h3>Station</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">Station</span>&#8203;(<span class="parameters"><a href="StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a>&nbsp;stageController)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">Station</span>&#8203;(<span class="parameters"><a href="StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a>&nbsp;stageController,
+java.lang.String&nbsp;stationId)</span></div>
 </section>
 </li>
 </ul>
@@ -212,12 +209,6 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 <section class="method-details" id="method.detail">
 <h2>Method Details</h2>
 <ul class="member-list">
-<li>
-<section class="detail" id="resetId()">
-<h3>resetId</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">resetId</span>()</div>
-</section>
-</li>
 <li>
 <section class="detail" id="isBusy()">
 <h3>isBusy</h3>
@@ -231,12 +222,12 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 </section>
 </li>
 <li>
-<section class="detail" id="addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.simulator.system.components.MaterialStationData)">
+<section class="detail" id="addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.StageID)">
 <h3>addToStationQueue</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">addToStationQueue</span>&#8203;(<span class="parameters">@NonNull
 @NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
 @NonNull
-@NonNull <a href="MaterialStationData.html" title="class in com.assemblyrobot.simulator.system.components">MaterialStationData</a>&nbsp;stationData)</span></div>
+@NonNull <a href="../../../shared/constants/StageID.html" title="enum in com.assemblyrobot.shared.constants">StageID</a>&nbsp;stageId)</span></div>
 </section>
 </li>
 <li>
