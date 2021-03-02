@@ -53,8 +53,6 @@ public class StageController {
 
   public void registerIncomingMaterial() {
     val material = new Material();
-    material.setProcessingStartTime(getCurrentTick());
-    material.setQueueStartTime(getCurrentTick());
     materialCache.put(material.getId(), material);
 
     val tracker = new Tracker(material.getId());
@@ -67,13 +65,11 @@ public class StageController {
 
   public void registerMaterialProcessing(long id) {
     val material = materialCache.get(id);
-    material.setQueueEndTime(getCurrentTick());
     materialCache.put(id, material);
   }
 
   public void registerOutgoingMaterial(long id) {
     val material = materialCache.get(id);
-    material.setProcessingEndTime(getCurrentTick());
     materialCache.put(id, material);
 
     metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
@@ -97,20 +93,20 @@ public class StageController {
     } else {
       switch (nextStageId) {
         case ASSEMBLY -> {
-          assemblyStage.addToStationQueue(material);
           logger.trace("Material {}: Progressing to Assembly.", material.getId());
+          assemblyStage.addToStationQueue(material);
         }
         case ERROR_CHECK -> {
-          errorCheckStage.addToStationQueue(material);
           logger.trace("Material {}: Progressing to ErrorCheck.", material.getId());
+          errorCheckStage.addToStationQueue(material);
         }
         case FIX -> {
-          fixStage.addToStationQueue(material);
           logger.trace("Material {}: Progressing to Fix.", material.getId());
+          fixStage.addToStationQueue(material);
         }
         case DEPART -> {
-          registerOutgoingMaterial(material.getId());
           logger.trace("Material {}: Departing.", material.getId());
+          registerOutgoingMaterial(material.getId());
         }
       }
     }
@@ -167,7 +163,7 @@ public class StageController {
     val tracker = trackerCache.get(material.getId());
     tracker.addData(stationData);
     addTrackingData(tracker);
-
+    material.reset();
     transferQueue.add(material);
     eventQueue.schedule(new Event(Clock.getInstance().getCurrentTick() + 1, EventType.TRANSFER));
   }

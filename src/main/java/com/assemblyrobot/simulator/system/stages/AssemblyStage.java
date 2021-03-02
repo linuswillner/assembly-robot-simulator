@@ -4,7 +4,6 @@ import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.StationConfig;
 import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.system.components.Material;
-import com.assemblyrobot.simulator.system.components.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.stations.AssemblyStation;
@@ -33,12 +32,9 @@ public class AssemblyStage extends Stage {
 
   @Override
   public void addToStationQueue(@NonNull Material material) {
-    val stationData = new MaterialStationData();
-    stationData.setStageId(StageID.ASSEMBLY);
-
     val nextFreeStation = stationQueue.peek();
     if (nextFreeStation != null) {
-      nextFreeStation.addToStationQueue(material, stationData);
+      nextFreeStation.addToStationQueue(material, StageID.ASSEMBLY);
     }
   }
 }

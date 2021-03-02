@@ -10,10 +10,12 @@ import lombok.val;
  * said class.
  */
 public class MetricsCollector {
+  @Getter private final String hostName;
   @Getter private final HashMap<String, Double> metrics = new HashMap<>();
   @Getter @NonNull private final MetricsCollectorType type;
 
   public MetricsCollector(@NonNull String hostName, @NonNull String typeClassName) {
+    this.hostName = hostName;
     this.type = MetricsCollectorType.getByClass(typeClassName);
     CentralMetricsCollector.getInstance().registerMetricsCollector(hostName, this);
   }
@@ -63,5 +65,10 @@ public class MetricsCollector {
   public void incrementMetric(@NonNull String metricName) {
     val current = getMetric(metricName, 0);
     metrics.put(metricName, current + 1);
+  }
+
+  public void incrementMetric(@NonNull String metricName, double measurement) {
+    val current = getMetric(metricName, 0);
+    metrics.put(metricName, current + measurement);
   }
 }

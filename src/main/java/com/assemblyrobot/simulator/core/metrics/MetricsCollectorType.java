@@ -7,7 +7,8 @@ public enum MetricsCollectorType {
   ENGINE,
   STAGE,
   STAGE_CONTROLLER,
-  STATION;
+  STATION,
+  MATERIAL;
 
   /**
    * Determines the appropriate metrics collector type based on a name (= organisational identifier).
@@ -23,6 +24,7 @@ public enum MetricsCollectorType {
       case "com.assemblyrobot.simulator.system.components.Stage" -> STAGE;
       case "com.assemblyrobot.simulator.system.components.Station" -> STATION;
       case "com.assemblyrobot.simulator.system.components.StageController" -> STAGE_CONTROLLER;
+      case "com.assemblyrobot.simulator.system.components.MaterialStationData" -> MATERIAL;
       default -> throw new MetricsCollectorTypeNotRegisteredError(className);
     };
   }

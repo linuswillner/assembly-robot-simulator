@@ -6,8 +6,15 @@ import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import lombok.NonNull;
 
 public class AssemblyStation extends Station implements Comparable<AssemblyStation> {
+  private static int nextFreeId = 1;
+
   public AssemblyStation(@NonNull AssemblyStage stage) {
-    super(stage.getStageController());
+    super(stage.getStageController(), "AssemblyStation-%d".formatted(nextFreeId));
+    nextFreeId++;
+  }
+
+  public static void resetId() {
+    nextFreeId = 1;
   }
 
   @Override
@@ -17,6 +24,6 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
 
   @Override
   public int compareTo(@NonNull AssemblyStation station) {
-    return Integer.compare(super.getMaterialQueue().size(), station.getMaterialQueue().size());
+    return Integer.compare(this.getMaterialQueue().size(), station.getMaterialQueue().size());
   }
 }
