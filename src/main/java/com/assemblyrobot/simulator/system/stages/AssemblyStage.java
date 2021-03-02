@@ -1,9 +1,12 @@
 package com.assemblyrobot.simulator.system.stages;
 
-import com.assemblyrobot.simulator.system.components.MaterialStationData;
+import com.assemblyrobot.shared.config.Config;
+import com.assemblyrobot.shared.config.model.StationConfig;
+import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.system.components.Material;
+import com.assemblyrobot.simulator.system.components.MaterialStationData;
 import com.assemblyrobot.simulator.system.components.Stage;
-import com.assemblyrobot.simulator.system.controllers.StageController;
+import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.stations.AssemblyStation;
 import java.util.PriorityQueue;
 import lombok.Getter;
@@ -14,18 +17,21 @@ public class AssemblyStage extends Stage {
 
   @Getter private final StageController stageController;
   private final PriorityQueue<AssemblyStation> stationQueue = new PriorityQueue<>();
+  private final StationConfig config = Config.getConfig().getStationParams();
 
-  public AssemblyStage(int stationAmount, @NonNull StageController stageController) {
+  public AssemblyStage(@NonNull StageController stageController) {
     this.stageController = stageController;
-    createStations(stationAmount);
+    createStations();
   }
 
-  protected void createStations(int stationAmount) {
-    for (int i = 0; i < stationAmount; i++) {
+  @Override
+  protected void createStations() {
+    for (int i = 0; i < config.getAssemblyStationAmount(); i++) {
       stationQueue.add(new AssemblyStation(this));
     }
   }
 
+  @Override
   public void addToStationQueue(@NonNull Material material) {
     val stationData = new MaterialStationData();
     stationData.setStageId(StageID.ASSEMBLY);

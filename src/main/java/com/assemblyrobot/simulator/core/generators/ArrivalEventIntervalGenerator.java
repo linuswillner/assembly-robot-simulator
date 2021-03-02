@@ -18,20 +18,20 @@ public class ArrivalEventIntervalGenerator implements Generator {
   private static final ArrivalEventIntervalGenerator instance = new ArrivalEventIntervalGenerator();
 
   private final NormalDistributionConfig config = Config.getConfig().getArrivalIntervalParams();
-  private final Normal normalGenerator = new Normal(config.getMean(), config.getVariance());
+  private final Normal intervalGenerator = new Normal(config.getMean(), config.getVariance());
 
   @Override
   public int nextInt() {
-    return (int) Math.round(normalGenerator.sample());
+    return (int) Math.round(intervalGenerator.sample());
   }
 
   @Override
   public long nextLong() {
-    return Math.round(normalGenerator.sample());
+    return Math.round(intervalGenerator.sample());
   }
 
   @Override
   public double nextDouble() {
-    return normalGenerator.sample();
+    return intervalGenerator.sample();
   }
 }

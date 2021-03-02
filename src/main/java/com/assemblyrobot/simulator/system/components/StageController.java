@@ -1,18 +1,19 @@
-package com.assemblyrobot.simulator.system.controllers;
+package com.assemblyrobot.simulator.system.components;
 
+import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
-import com.assemblyrobot.simulator.system.components.MaterialStationData;
+import com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
-import com.assemblyrobot.simulator.system.components.Material;
-import com.assemblyrobot.simulator.system.components.Tracker;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
-import com.assemblyrobot.simulator.system.stages.StageID;
+import com.assemblyrobot.simulator.system.stages.FixStage;
+import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
@@ -33,15 +34,13 @@ public class StageController {
   private final ArrayList<Material> transferQueue = new ArrayList<>();
 
   @Getter private final EventQueue eventQueue;
-  // TODO: Note that these are placeholder variables. The amount of stations that will be created
-  // will be asked from the user in the UI. Implement later.
-  private int assemblyStationAmount = 1;
-  private int errorCheckStationAmount = 1;
-  private final AssemblyStage assemblyStage = new AssemblyStage(assemblyStationAmount, this);
-  private final ErrorCheckStage errorCheckStage =
-      new ErrorCheckStage(errorCheckStationAmount, this);
+
+  private final AssemblyStage assemblyStage = new AssemblyStage(this);
+  private final ErrorCheckStage errorCheckStage = new ErrorCheckStage(this);
+  private final FixStage fixStage = new FixStage(this);
+
   private static final Logger logger = LogManager.getLogger();
-  private MetricsCollector metricsCollector =
+  private final MetricsCollector metricsCollector =
       new MetricsCollector(getClass().getSimpleName(), getClass().getName());
 
   @RequiredArgsConstructor
@@ -60,9 +59,9 @@ public class StageController {
 
     val tracker = new Tracker(material.getId());
     trackerCache.put(tracker.getTrackerId(), tracker);
-    
+
     sendToNextStage(material);
-    
+
     metricsCollector.incrementMetric(Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName());
   }
 
@@ -94,21 +93,24 @@ public class StageController {
     val nextStageId = getNextStage(material);
 
     if (nextStageId == null) {
-      logger.warn("Material ID {} not progressing anywhere.", material.getId());
+      logger.warn("Material {}: Not progressing anywhere.", material.getId());
     } else {
       switch (nextStageId) {
         case ASSEMBLY -> {
-          addToAssemblyStageQueue(material);
-          logger.trace("Material ID {} progressing to Assembly stage.", material.getId());
+          assemblyStage.addToStationQueue(material);
+          logger.trace("Material {}: Progressing to Assembly.", material.getId());
         }
         case ERROR_CHECK -> {
-          addToErrorCheckStageQueue(material);
-          logger.trace("Material ID {} progressing to Error Check stage.", material.getId());
+          errorCheckStage.addToStationQueue(material);
+          logger.trace("Material {}: Progressing to ErrorCheck.", material.getId());
         }
-        case FIX -> logger.trace("Material ID {} progressing to Error Fix stage.", material.getId());
+        case FIX -> {
+          fixStage.addToStationQueue(material);
+          logger.trace("Material {}: Progressing to Fix.", material.getId());
+        }
         case DEPART -> {
           registerOutgoingMaterial(material.getId());
-          logger.trace("Material ID {} departing.", material.getId());
+          logger.trace("Material {}: Departing.", material.getId());
         }
       }
     }
@@ -121,43 +123,43 @@ public class StageController {
     StageID currentStageId = null;
 
     try {
-      currentStageId = stationDataList.get(stationDataList.size() - 1).getStageId();
-    } catch (IndexOutOfBoundsException e) {
-      logger.trace("Material ID {}: StationDataList is empty.", materialId);
+      currentStageId = Iterables.getLast(stationDataList).getStageId();
+    } catch (NoSuchElementException e) {
+      logger.trace("Material {}: No station data logged yet.", materialId);
     }
 
     if (currentStageId == null) {
-      logger.trace(
-          "Material ID {}: Next stage: Assembly", materialId);
+      logger.trace("Material {}: Current stage = Arrival, next stage = Assembly", materialId);
       return StageID.ASSEMBLY;
     } else {
-      // TODO: implement FIX/DEPART stage progression
       switch (currentStageId) {
         case ASSEMBLY -> {
           logger.trace(
-              "Material ID {}: Current stage: {} Next stage: ErrorCheck", materialId,
+              "Material {}: Current stage = {}, next stage = ErrorCheck", materialId,
               currentStageId);
           return StageID.ERROR_CHECK;
         }
         case ERROR_CHECK -> {
-          logger.trace("Material ID {}: Current stage: {} Next stage: Fix", materialId,
+          // Have to use explicit cast to boolean here, lombok doesn't like val in switch blocks
+          boolean shouldHaveError = ErrorOccurrenceGenerator.getInstance().shouldHaveError();
+
+          logger.trace("Material {}: Has error? {}", materialId, shouldHaveError ? "Yes" : "No");
+          logger.trace("Material {}: Current stage = {}, next stage = {}",  materialId,
+              currentStageId, shouldHaveError ? "FIX" : "DEPART");
+
+          return shouldHaveError ? StageID.FIX : StageID.DEPART;
+        }
+        case FIX -> {
+          logger.trace("Material {}: Current stage = {}, next stage = Depart", materialId,
               currentStageId);
-          return StageID.FIX;
+          return StageID.DEPART;
         }
         default -> {
-          logger.warn("Material ID {}: Stage ID {} has no next stage defined.", materialId, currentStageId);
+          logger.warn("Material {}: Stage {} has no next stage defined.", materialId, currentStageId);
           return null;
         }
       }
     }
-  }
-
-  private void addToAssemblyStageQueue(@NonNull Material material) {
-    assemblyStage.addToStationQueue(material);
-  }
-
-  private void addToErrorCheckStageQueue(@NonNull Material material) {
-    errorCheckStage.addToStationQueue(material);
   }
 
   public void onChildQueueDepart(

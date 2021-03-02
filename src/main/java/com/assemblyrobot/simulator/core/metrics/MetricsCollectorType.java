@@ -22,7 +22,7 @@ public enum MetricsCollectorType {
       case "com.assemblyrobot.simulator.core.Engine" -> ENGINE;
       case "com.assemblyrobot.simulator.system.components.Stage" -> STAGE;
       case "com.assemblyrobot.simulator.system.components.Station" -> STATION;
-      case "com.assemblyrobot.simulator.system.controllers.StageController" -> STAGE_CONTROLLER;
+      case "com.assemblyrobot.simulator.system.components.StageController" -> STAGE_CONTROLLER;
       default -> throw new MetricsCollectorTypeNotRegisteredError(className);
     };
   }

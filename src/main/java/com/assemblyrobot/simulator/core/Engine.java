@@ -2,8 +2,8 @@ package com.assemblyrobot.simulator.core;
 
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
-import com.assemblyrobot.simulator.system.controllers.StageController;
-import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
+import com.assemblyrobot.simulator.system.components.StageController;
+import com.assemblyrobot.simulator.system.utils.EngineMetricsCollector;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
  */
 public abstract class Engine {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
-  @Getter(AccessLevel.PROTECTED) private final StageController  stageController = new StageController(eventQueue);
+  @Getter(AccessLevel.PROTECTED) private final StageController stageController = new StageController(eventQueue);
   private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
 

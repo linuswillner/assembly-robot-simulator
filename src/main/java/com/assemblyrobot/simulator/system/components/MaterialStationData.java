@@ -1,6 +1,6 @@
 package com.assemblyrobot.simulator.system.components;
 
-import com.assemblyrobot.simulator.system.stages.StageID;
+import com.assemblyrobot.shared.constants.StageID;
 import lombok.Getter;
 import lombok.Setter;
 

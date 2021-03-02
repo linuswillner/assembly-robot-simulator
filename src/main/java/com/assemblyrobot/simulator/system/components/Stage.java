@@ -4,7 +4,7 @@ import lombok.NonNull;
 
 public abstract class Stage {
 
-  protected abstract void createStations(int stationAmount);
+  protected abstract void createStations();
 
   public abstract void addToStationQueue(@NonNull Material material);
 }

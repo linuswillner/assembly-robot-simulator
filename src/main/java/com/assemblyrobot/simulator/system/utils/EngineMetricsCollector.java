@@ -1,4 +1,4 @@
-package com.assemblyrobot.simulator.system.metricscollectors;
+package com.assemblyrobot.simulator.system.utils;
 
 import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
