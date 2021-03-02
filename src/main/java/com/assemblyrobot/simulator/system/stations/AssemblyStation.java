@@ -24,6 +24,6 @@ public class AssemblyStation extends Station implements Comparable<AssemblyStati
 
   @Override
   public int compareTo(@NonNull AssemblyStation station) {
-    return Integer.compare(super.getMaterialQueue().size(), station.getMaterialQueue().size());
+    return Integer.compare(this.getMaterialQueue().size(), station.getMaterialQueue().size());
   }
 }

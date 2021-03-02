@@ -24,6 +24,6 @@ public class ErrorCheckStation extends Station implements Comparable<ErrorCheckS
 
   @Override
   public int compareTo(@NonNull ErrorCheckStation station) {
-    return Integer.compare(super.getMaterialQueue().size(), station.getMaterialQueue().size());
+    return Integer.compare(this.getMaterialQueue().size(), station.getMaterialQueue().size());
   }
 }

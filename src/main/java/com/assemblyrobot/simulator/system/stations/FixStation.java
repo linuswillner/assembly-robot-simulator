@@ -35,6 +35,6 @@ public class FixStation extends Station implements Comparable<FixStation> {
 
   @Override
   public int compareTo(@NonNull FixStation station) {
-    return Integer.compare(super.getMaterialQueue().size(), station.getMaterialQueue().size());
+    return Integer.compare(this.getMaterialQueue().size(), station.getMaterialQueue().size());
   }
 }
