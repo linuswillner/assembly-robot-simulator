@@ -7,6 +7,7 @@ import com.assemblyrobot.simulator.system.utils.EngineMetricsCollector;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Generic simulator engine. Used for running the simulation.
  */
-public abstract class Engine {
+public abstract class Engine extends Thread {
   @Getter(AccessLevel.PROTECTED) private final EventQueue eventQueue = new EventQueue();
   @Getter(AccessLevel.PROTECTED) private final StageController stageController = new StageController(eventQueue);
   private final Clock clock = Clock.getInstance();
@@ -28,13 +29,19 @@ public abstract class Engine {
     new EngineMetricsCollector(this); // Register engine metrics collector
   }
 
+  @SneakyThrows
+  @Override
+  public void run() {
+    startEngine();
+  }
+
   // Runner methods
 
   /**
    * Starts the engine.
    * @throws InterruptedException If a Thread.sleep() operation is interrupted.
    */
-  public void start() throws InterruptedException {
+  private void startEngine() throws InterruptedException {
     logger.info("Starting simulation.");
 
     logger.info("Running initialisation routines.");
@@ -51,7 +58,7 @@ public abstract class Engine {
   /**
    * Stops the engine.
    */
-  public void stop() {
+  public void endRun() {
     logger.warn("ENGINE: Stopping simulation.");
     setRunning(false);
   }
