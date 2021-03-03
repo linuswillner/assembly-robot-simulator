@@ -24,7 +24,7 @@ public enum MetricsCollectorType {
       case "com.assemblyrobot.simulator.system.components.Stage" -> STAGE;
       case "com.assemblyrobot.simulator.system.components.Station" -> STATION;
       case "com.assemblyrobot.simulator.system.components.StageController" -> STAGE_CONTROLLER;
-      case "com.assemblyrobot.simulator.system.components.MaterialStationData" -> MATERIAL;
+      case "com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector" -> MATERIAL;
       default -> throw new MetricsCollectorTypeNotRegisteredError(className);
     };
   }

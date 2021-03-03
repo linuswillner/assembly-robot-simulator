@@ -7,6 +7,7 @@ import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
 import com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
+import com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import com.assemblyrobot.simulator.system.stages.FixStage;
@@ -115,11 +116,11 @@ public class StageController {
   private StageID getNextStage(@NonNull Material material) {
     val materialId = material.getId();
     val tracker = trackerCache.get(materialId);
-    val stationDataList = tracker.getDataForStations();
+    val stationMetrics = tracker.getStationMetrics();
     StageID currentStageId = null;
 
     try {
-      currentStageId = Iterables.getLast(stationDataList).getStageId();
+      currentStageId = Iterables.getLast(stationMetrics).getStageId();
     } catch (NoSuchElementException e) {
       logger.trace("Material {}: No station data logged yet.", materialId);
     }
@@ -159,9 +160,9 @@ public class StageController {
   }
 
   public void onChildQueueDepart(
-      @NonNull Material material, @NonNull MaterialStationData stationData) {
+      @NonNull Material material, @NonNull MaterialMetricsCollector metrics) {
     val tracker = trackerCache.get(material.getId());
-    tracker.addData(stationData);
+    tracker.addMetrics(metrics);
     addTrackingData(tracker);
     material.reset();
     transferQueue.add(material);
