@@ -56,7 +56,9 @@ public abstract class Engine extends Thread {
     logger.info("Initialisation routines complete. Starting event loop.");
     setRunning(true);
 
-    while (stopTick != 0 ? Clock.getInstance().getCurrentTick() <= stopTick : isRunning()) {
+    // Run while stopTick is above 0 (=> not default infinite) and below the set limit,
+    // or per default until told to stop
+    while (stopTick != 0 ? clock.getCurrentTick() <= stopTick : isRunning()) {
       runCycle();
     }
   }
