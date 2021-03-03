@@ -8,15 +8,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * Assembly duration generator. Generates arbitrary durations for assembly (measured in seconds)
- * during the Assembly stage based on a {@link Normal} distribution, with defaults specified by the
+ * Error check time generator. Generates arbitrary durations for error checks (measured in seconds)
+ * during the ErrorCheck stage based on a {@link Normal} distribution, with defaults specified by the
  * system and alterable by the user.
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class AssemblyTimeGenerator implements Generator {
-  @Getter private static final AssemblyTimeGenerator instance = new AssemblyTimeGenerator();
+public class ErrorCheckTimeGenerator implements Generator {
+  @Getter private static final ErrorCheckTimeGenerator instance = new ErrorCheckTimeGenerator();
 
-  private final NormalDistributionConfig config = Config.getConfig().getAssemblyTimeParams();
+  private final NormalDistributionConfig config = Config.getConfig().getErrorCheckTimeParams();
   private final Normal timeGenerator = new Normal(config.getMean(), config.getVariance());
 
   @Override

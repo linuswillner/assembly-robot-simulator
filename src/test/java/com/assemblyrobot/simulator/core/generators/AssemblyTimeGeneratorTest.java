@@ -2,27 +2,31 @@ package com.assemblyrobot.simulator.core.generators;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.assemblyrobot.shared.config.Config;
+import com.assemblyrobot.shared.config.model.NormalDistributionConfig;
+import com.assemblyrobot.utils.RandomUtils;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
 class AssemblyTimeGeneratorTest {
   private final AssemblyTimeGenerator generator = AssemblyTimeGenerator.getInstance();
+  private final NormalDistributionConfig config = Config.getConfig().getAssemblyTimeParams();
 
   @Test
   void nextInt() {
     val result = generator.nextInt();
-    assertTrue(result >= 8 && result <= 12);
+    assertTrue(RandomUtils.resultIsWithinVariance(result, config.getMean(), config.getVariance()));
   }
 
   @Test
   void nextLong() {
     val result = generator.nextLong();
-    assertTrue(result >= 8L && result <= 12L);
+    assertTrue(RandomUtils.resultIsWithinVariance(result, config.getMean(), config.getVariance()));
   }
 
   @Test
   void nextDouble() {
     val result = generator.nextDouble();
-    assertTrue(result >= 8.0 && result <= 12.0);
+    assertTrue(RandomUtils.resultIsWithinVariance(result, config.getMean(), config.getVariance()));
   }
 }

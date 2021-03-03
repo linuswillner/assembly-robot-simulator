@@ -43,24 +43,21 @@ public class EventQueue {
 
   /**
    * Dumps the event queue, in ascending order based on execution time.
+   *
    * @return {@link List}&lt;{@link Event}&gt;
    */
   public List<Event> dump() {
     return queue.stream()
-            .sorted(Comparator.comparingLong(Event::getExecutionTime))
-            .collect(Collectors.toList());
+        .sorted(Comparator.comparingLong(Event::getExecutionTime))
+        .collect(Collectors.toList());
   }
 
-  /**
-   * Prints the event queue to the terminal.
-   */
+  /** Prints the event queue to the terminal. */
   public void print() {
     dump().forEach(logger::debug);
   }
 
-  /**
-   * Empties the event queue.
-   */
+  /** Empties the event queue. */
   public void flush() {
     queue.clear();
   }

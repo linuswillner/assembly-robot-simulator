@@ -6,7 +6,9 @@ import lombok.NonNull;
 public enum MetricsCollectorType {
   ENGINE,
   STAGE,
-  STATION;
+  STAGE_CONTROLLER,
+  STATION,
+  MATERIAL;
 
   /**
    * Determines the appropriate metrics collector type based on a name (= organisational identifier).
@@ -15,11 +17,14 @@ public enum MetricsCollectorType {
    * @return {@link MetricsCollectorType}
    * @throws MetricsCollectorTypeNotRegisteredError If no such organisational identifier exists.
    */
+
   public static MetricsCollectorType getByClass(@NonNull String className) throws MetricsCollectorTypeNotRegisteredError{
     return switch (className) {
       case "com.assemblyrobot.simulator.core.Engine" -> ENGINE;
       case "com.assemblyrobot.simulator.system.components.Stage" -> STAGE;
       case "com.assemblyrobot.simulator.system.components.Station" -> STATION;
+      case "com.assemblyrobot.simulator.system.components.StageController" -> STAGE_CONTROLLER;
+      case "com.assemblyrobot.simulator.system.components.MaterialStationData" -> MATERIAL;
       default -> throw new MetricsCollectorTypeNotRegisteredError(className);
     };
   }

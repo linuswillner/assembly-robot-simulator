@@ -1,12 +1,12 @@
 package com.assemblyrobot;
 
-import com.assemblyrobot.simulator.system.engines.MainEngine;
+import com.assemblyrobot.simulator.system.SimulatorEngine;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 
 public class PrototypeTest {
-  private static final MainEngine ASSEMBLY_ENGINE = new MainEngine();
+  private static final SimulatorEngine ASSEMBLY_ENGINE = new SimulatorEngine();
 
   @SneakyThrows
   public static void main(String[] args) {

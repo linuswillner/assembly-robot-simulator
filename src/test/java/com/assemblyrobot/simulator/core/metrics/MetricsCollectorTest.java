@@ -18,7 +18,7 @@ class MetricsCollectorTest {
   @BeforeAll
   void beforeAll() {
     metricsCollector =
-        new MetricsCollector(getClass().getName(), "com.assemblyrobot.simulator.core.Engine");
+        new MetricsCollector(getClass().getSimpleName(), "com.assemblyrobot.simulator.core.Engine");
   }
 
   @AfterEach
@@ -49,5 +49,11 @@ class MetricsCollectorTest {
   @DisplayName("getType(): Returns the correct type")
   void getType() {
     assertEquals(MetricsCollectorType.ENGINE, metricsCollector.getType());
+  }
+
+  @Test
+  @DisplayName("incrementMetric(): Correctly increments a given metric")
+  void incrementMetric() {
+    assertEquals(1.0, metricsCollector.getMetric(METRIC_NAME, 1.0));
   }
 }

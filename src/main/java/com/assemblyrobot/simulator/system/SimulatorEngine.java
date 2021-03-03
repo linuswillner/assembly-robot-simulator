@@ -1,9 +1,9 @@
-package com.assemblyrobot.simulator.system.engines;
+package com.assemblyrobot.simulator.system;
 
 import com.assemblyrobot.simulator.core.Engine;
-import com.assemblyrobot.simulator.system.generators.ArrivalEventPropagator;
+import com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator;
 
-public class MainEngine extends Engine {
+public class SimulatorEngine extends Engine {
   private final ArrivalEventPropagator arrivalEventPropagator =
       new ArrivalEventPropagator(super.getEventQueue());
 
@@ -16,7 +16,14 @@ public class MainEngine extends Engine {
   @Override
   protected void onArrival() {
     arrivalEventPropagator.feedNext();
+    super.getStageController().registerIncomingMaterial();
   }
+
+  @Override
+  protected void onTransfer() {
+    super.getStageController().transferAll();
+  }
+
 
   @Override
   protected void onDeparture() {}

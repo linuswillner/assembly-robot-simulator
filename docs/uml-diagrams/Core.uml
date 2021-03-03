@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.assemblyrobot.simulator.core.Engine</OriginalElement>
+  <nodes>
+    <node x="984.9373746867166" y="0.0">com.assemblyrobot.simulator.system.stages.StageID</node>
+    <node x="1736.0121240601497" y="1304.5">com.assemblyrobot.simulator.core.generators.Generator</node>
+    <node x="190.18737468671657" y="653.0">com.assemblyrobot.simulator.core.clock.Clock</node>
+    <node x="1932.4944757727644" y="1897.5">com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator</node>
+    <node x="265.18737468671657" y="460.5">com.assemblyrobot.simulator.core.clock.TickAdvanceListener</node>
+    <node x="1592.67126148705" y="2266.0">com.assemblyrobot.simulator.system.stations.AssemblyStation</node>
+    <node x="1347.7444757727644" y="631.0">com.assemblyrobot.simulator.system.components.Material</node>
+    <node x="1269.740946115288" y="225.5">com.assemblyrobot.simulator.system.components.MaterialStationData</node>
+    <node x="0.0" y="1281.5">com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector</node>
+    <node x="500.86781537176205" y="1808.5">com.assemblyrobot.simulator.core.Engine</node>
+    <node x="1054.5035296574765" y="1765.0">com.assemblyrobot.simulator.system.components.Station</node>
+    <node x="564.3478383458639" y="686.5">com.assemblyrobot.simulator.core.events.EventQueue</node>
+    <node x="1637.4944757727644" y="1886.0">com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator</node>
+    <node x="980.8323517126146" y="1061.0">com.assemblyrobot.simulator.system.controllers.StageController</node>
+    <node x="1064.6180659983288" y="708.0">com.assemblyrobot.simulator.system.controllers.StageController.Metrics</node>
+    <node x="853.4573517126146" y="214.0">com.assemblyrobot.simulator.core.events.EventType</node>
+    <node x="651.2323517126146" y="438.0">com.assemblyrobot.simulator.core.events.Event</node>
+    <node x="1249.4944757727644" y="449.0">com.assemblyrobot.simulator.system.components.Tracker</node>
+    <node x="1435.5142439431906" y="1315.5">com.assemblyrobot.simulator.system.components.Stage</node>
+    <node x="1006.7535296574764" y="2266.0">com.assemblyrobot.simulator.system.stations.ErrorCheckStation</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.assemblyrobot.simulator.core.clock.Clock" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="-112.66666666666674" y="-138.0" />
+      <point x="246.52070802004982" y="611.0" />
+      <point x="321.58737468671666" y="611.0" />
+      <point x="-37.59999999999991" y="49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.system.stages.StageID">
+      <point x="-87.0" y="-292.0" />
+      <point x="1067.8323517126146" y="1001.0" />
+      <point x="842.9573517126146" y="1001.0" />
+      <point x="842.9573517126146" y="189.0" />
+      <point x="1028.1873746867166" y="189.0" />
+      <point x="-43.25" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.EventQueue">
+      <point x="12.0" y="-182.0" />
+      <point x="632.867815371762" y="1745.0" />
+      <point x="626.15" y="1745.0" />
+      <point x="626.15" y="1041.0" />
+      <point x="595.5145050125307" y="1041.0" />
+      <point x="-62.33333333333326" y="104.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="-119.35000000000014" y="-225.5" />
+      <point x="1105.6535296574762" y="1685.0" />
+      <point x="538.6873746867166" y="1685.0" />
+      <point x="538.6873746867166" y="601.0" />
+      <point x="434.3873746867166" y="601.0" />
+      <point x="75.20000000000005" y="49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="-12.0" y="-182.0" />
+      <point x="608.867815371762" y="1705.0" />
+      <point x="553.8478383458639" y="1705.0" />
+      <point x="553.8478383458639" y="408.0" />
+      <point x="876.8323517126146" y="408.0" />
+      <point x="-70.125" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-85.25" y="-225.5" />
+      <point x="1139.7535296574765" y="1675.0" />
+      <point x="800.4373746867166" y="1675.0" />
+      <point x="800.4373746867166" y="611.0" />
+      <point x="771.6323517126146" y="611.0" />
+      <point x="34.40000000000009" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-111.85714285714289" y="-292.0" />
+      <point x="1042.9752088554717" y="1011.0" />
+      <point x="811.4373746867166" y="1011.0" />
+      <point x="811.4373746867166" y="611.0" />
+      <point x="806.0323517126145" y="611.0" />
+      <point x="68.79999999999995" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.AssemblyStation" target="com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator">
+      <point x="76.0" y="-49.0" />
+      <point x="1782.67126148705" y="2246.0" />
+      <point x="2057.4944757727644" y="2246.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Material" target="com.assemblyrobot.simulator.system.components.Tracker">
+      <point x="0.0" y="-160.0" />
+      <point x="1436.2444757727644" y="611.0" />
+      <point x="1498.8694757727644" y="611.0" />
+      <point x="106.875" y="60.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.MaterialStationData" target="com.assemblyrobot.simulator.system.stages.StageID">
+      <point x="0.0" y="-70.5" />
+      <point x="1360.240946115288" y="189.0" />
+      <point x="1114.6873746867166" y="189.0" />
+      <point x="43.25" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.AssemblyStation" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="-76.0" y="-49.0" />
+      <point x="1630.67126148705" y="2246.0" />
+      <point x="1267.6285296574765" y="2246.0" />
+      <point x="42.625" y="225.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="-36.0" y="-182.0" />
+      <point x="584.867815371762" y="1715.0" />
+      <point x="348.69783834586406" y="1715.0" />
+      <point x="348.69783834586406" y="1031.0" />
+      <point x="316.93737468671657" y="1031.0" />
+      <point x="-42.25" y="138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.EventQueue" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-46.75" y="-104.5" />
+      <point x="611.0978383458639" y="611.0" />
+      <point x="668.4323517126146" y="611.0" />
+      <point x="-68.79999999999995" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController.Metrics" target="com.assemblyrobot.simulator.system.controllers.StageController">
+      <point x="44.5" y="83.0" />
+      <point x="1198.1180659983288" y="971.0" />
+      <point x="1167.260923141186" y="971.0" />
+      <point x="12.428571428571331" y="-292.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator" target="com.assemblyrobot.simulator.core.generators.Generator">
+      <point x="0.0" y="-104.5" />
+      <point x="-39.5" y="48.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.core.events.EventQueue">
+      <point x="-136.71428571428567" y="-292.0" />
+      <point x="1018.1180659983289" y="1021.0" />
+      <point x="720.1811716791972" y="1021.0" />
+      <point x="62.33333333333326" y="104.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="-51.15000000000009" y="-225.5" />
+      <point x="1173.8535296574764" y="1665.0" />
+      <point x="970.3323517126146" y="1665.0" />
+      <point x="23.375" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="0.0" y="-71.5" />
+      <point x="154.0" y="601.0" />
+      <point x="283.9873746867165" y="601.0" />
+      <point x="-75.20000000000005" y="49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.controllers.StageController">
+      <point x="-17.049999999999955" y="-225.5" />
+      <point x="1207.9535296574763" y="1745.0" />
+      <point x="1198.3323517126146" y="1745.0" />
+      <point x="43.5" y="292.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="111.85714285714289" y="-292.0" />
+      <point x="1266.6894945697575" y="1011.0" />
+      <point x="1362.4944757727644" y="1011.0" />
+      <point x="-73.75" y="160.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.components.MaterialStationData">
+      <point x="153.45000000000005" y="-225.5" />
+      <point x="1378.4535296574763" y="1745.0" />
+      <point x="1706.1392439431906" y="1745.0" />
+      <point x="1706.1392439431906" y="398.0" />
+      <point x="1432.640946115288" y="398.0" />
+      <point x="72.39999999999998" y="70.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.system.components.Tracker">
+      <point x="37.28571428571422" y="-292.0" />
+      <point x="1192.1180659983288" y="981.0" />
+      <point x="1315.2444757727644" y="981.0" />
+      <point x="1315.2444757727644" y="611.0" />
+      <point x="1285.1194757727644" y="611.0" />
+      <point x="-106.875" y="60.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="-161.57142857142844" y="-292.0" />
+      <point x="993.2609231411861" y="1031.0" />
+      <point x="485.93737468671657" y="1031.0" />
+      <point x="126.75" y="138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.Event" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="0.0" y="-71.5" />
+      <point x="737.2323517126146" y="418.0" />
+      <point x="923.5823517126146" y="418.0" />
+      <point x="-23.375" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector">
+      <point x="-108.0" y="-182.0" />
+      <point x="512.867815371762" y="1745.0" />
+      <point x="77.0" y="1745.0" />
+      <point x="-77.0" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator" target="com.assemblyrobot.simulator.core.generators.Generator">
+      <point x="0.0" y="-93.0" />
+      <point x="2057.4944757727644" y="1745.0" />
+      <point x="1854.5121240601497" y="1745.0" />
+      <point x="39.5" y="48.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="85.25" y="-225.5" />
+      <point x="1310.2535296574765" y="1725.0" />
+      <point x="1677.0142439431906" y="1725.0" />
+      <point x="1677.0142439431906" y="1031.0" />
+      <point x="1509.9944757727644" y="1031.0" />
+      <point x="73.75" y="160.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="-62.14285714285711" y="-292.0" />
+      <point x="1092.6894945697575" y="991.0" />
+      <point x="995.5823517126146" y="991.0" />
+      <point x="995.5823517126146" y="418.0" />
+      <point x="1017.0823517126146" y="418.0" />
+      <point x="70.125" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="-153.45000000000005" y="-225.5" />
+      <point x="1071.5535296574762" y="1695.0" />
+      <point x="360.4728383458639" y="1695.0" />
+      <point x="360.4728383458639" y="1041.0" />
+      <point x="401.43737468671657" y="1041.0" />
+      <point x="42.25" y="138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.system.components.MaterialStationData">
+      <point x="-37.28571428571422" y="-292.0" />
+      <point x="1117.5466374269004" y="981.0" />
+      <point x="1049.6948517126145" y="981.0" />
+      <point x="1049.6948517126145" y="418.0" />
+      <point x="1287.840946115288" y="418.0" />
+      <point x="-72.39999999999998" y="70.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Stage" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="0.0" y="-37.5" />
+      <point x="1551.0142439431906" y="1041.0" />
+      <point x="1480.4944757727644" y="1041.0" />
+      <point x="44.25" y="160.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.controllers.StageController" target="com.assemblyrobot.simulator.system.controllers.StageController.Metrics">
+      <point x="-12.428571428571331" y="-292.0" />
+      <point x="1142.4037802840433" y="971.0" />
+      <point x="1109.1180659983288" y="971.0" />
+      <point x="-44.5" y="83.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.clock.TickAdvanceListener" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="37.59999999999991" y="49.0" />
+      <point x="396.7873746867165" y="611.0" />
+      <point x="471.8540413533833" y="611.0" />
+      <point x="112.66666666666674" y="-138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="60.0" y="-182.0" />
+      <point x="680.867815371762" y="1725.0" />
+      <point x="761.8478383458639" y="1725.0" />
+      <point x="761.8478383458639" y="611.0" />
+      <point x="737.2323517126146" y="611.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Tracker" target="com.assemblyrobot.simulator.system.components.MaterialStationData">
+      <point x="-71.25" y="-60.5" />
+      <point x="1320.7444757727644" y="418.0" />
+      <point x="1324.0409461152879" y="418.0" />
+      <point x="-36.200000000000045" y="70.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.ErrorCheckStation" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="-60.5" y="-49.0" />
+      <point x="1067.2535296574765" y="2246.0" />
+      <point x="1097.1285296574765" y="2246.0" />
+      <point x="-127.875" y="225.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.system.controllers.StageController">
+      <point x="84.0" y="-182.0" />
+      <point x="704.867815371762" y="1735.0" />
+      <point x="1024.3323517126146" y="1735.0" />
+      <point x="-130.5" y="292.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector" target="com.assemblyrobot.simulator.core.Engine">
+      <point x="77.0" y="71.5" />
+      <point x="231.0" y="1735.0" />
+      <point x="536.867815371762" y="1735.0" />
+      <point x="-84.0" y="-182.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5150888797023563" x="1145.6207562364511" y="1274.2253660954448" />
+  <SelectedNodes>
+    <node>com.assemblyrobot.simulator.system.components.Material</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
