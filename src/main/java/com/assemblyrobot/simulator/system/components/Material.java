@@ -23,6 +23,7 @@ public class Material implements Comparable<Material> {
     nextFreeId = 1;
   }
 
+
   public void reset() {
     queueStartTime = 0;
     queueEndTime = 0;
@@ -30,17 +31,15 @@ public class Material implements Comparable<Material> {
     processingEndTime = 0;
   }
 
-  public long getQueueDuration() {
-    return queueEndTime - queueStartTime;
-  }
 
-  public long getProcessingDuration() {
-    return processingEndTime - processingStartTime;
-  }
-
+  /**
+   * calculates the amount of time the {@link Material} spent in the system
+   * @return returns the difference of {@link Material#processingEndTime} and {@link Material#processingStartTime}
+   */
   public long getTotalPassthroughTime() {
     return processingEndTime - queueStartTime;
   }
+
 
   public int compareTo(Material material) {
     return Long.compare(this.getQueueStartTime(), material.getQueueStartTime());
