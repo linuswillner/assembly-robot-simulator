@@ -49,7 +49,7 @@ public class StageController {
   }
 
   /**
-   * puts Material object and tracker object into their respective hashmaps and {@link
+   * puts {@link Material object} and {@link Tracker object} into their respective hashmaps and {@link
    * StageController#sendToNextStage(Material) sends the material to its next stage}. Increments
    * total material amount for metrics.
    */
