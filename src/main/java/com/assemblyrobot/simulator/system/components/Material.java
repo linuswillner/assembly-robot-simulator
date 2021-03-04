@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/** Represents a product traveling through the production line in a simulated environment */
 @ToString
 public class Material implements Comparable<Material> {
+
   private static int nextFreeId = 1;
 
   @Getter private final long id;
@@ -29,15 +31,12 @@ public class Material implements Comparable<Material> {
     processingStartTime = 0;
     processingEndTime = 0;
   }
-
-  public long getQueueDuration() {
-    return queueEndTime - queueStartTime;
-  }
-
-  public long getProcessingDuration() {
-    return processingEndTime - processingStartTime;
-  }
-
+  /**
+   * Calculates the amount of time the {@link Material} spent in the system.
+   *
+   * @return The difference of {@link Material#processingEndTime} and {@link
+   *     Material#processingStartTime}
+   */
   public long getTotalPassthroughTime() {
     return processingEndTime - queueStartTime;
   }

@@ -24,7 +24,6 @@ public class SimulatorEngine extends Engine {
     super.getStageController().transferAll();
   }
 
-
   @Override
   protected void onDeparture() {}
 }

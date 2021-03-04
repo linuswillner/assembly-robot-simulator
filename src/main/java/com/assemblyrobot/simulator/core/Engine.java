@@ -98,7 +98,6 @@ public abstract class Engine extends Thread {
 
     // Tell points to check for C events
     logger.trace("Attempting to perform C events.");
-    // stations.forEach(Station::poll);
 
     // Dump event queue for debug
     logger.trace("All events performed. Dumping future event queue.");

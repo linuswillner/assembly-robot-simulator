@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/** Collects Material and Station specific data */
 public class MaterialMetricsCollector {
   @Getter private final StageID stageId;
   @Getter private final String stationId;
@@ -35,25 +36,40 @@ public class MaterialMetricsCollector {
     this.stationId = stationId;
     metricsCollector =
         new MetricsCollector(
-            "Material-%d [%s]".formatted(materialId, stationId),
-            getClass().getName());
+            "Material-%d [%s]".formatted(materialId, stationId), getClass().getName());
   }
 
+  /**
+   * Gets the duration of how long a material has queued.
+   *
+   * @return {@link Long}
+   */
   public long getQueueDuration() {
     return queueEndTime - queueStartTime;
   }
 
+  /**
+   * Gets the duration of how long it has taken to process a material.
+   *
+   * @return {@link Long}
+   */
   public long getProcessingDuration() {
     return processingEndTime - processingStartTime;
   }
 
+  /**
+   * Gets the total duration of how long it took a material to pass through a station (queueing +
+   * processing time).
+   *
+   * @return {@link Long}
+   */
   public long getTotalPassthroughTime() {
     return processingEndTime - queueStartTime;
   }
 
+  /** Updates all metrics. */
   public void updateMetrics() {
-    Arrays.stream(Metrics.values())
-        .forEach(
+    Arrays.stream(Metrics.values()).forEach(
             metric -> {
               switch (metric) {
                 case QUEUE_START_TIME -> putMetric(Metrics.QUEUE_START_TIME, queueStartTime);
@@ -67,6 +83,12 @@ public class MaterialMetricsCollector {
             });
   }
 
+  /**
+   * Adds a metric.
+   *
+   * @param metric Name of the metric.
+   * @param measurement Value of the metric.
+   */
   private void putMetric(Metrics metric, double measurement) {
     metricsCollector.putMetric(metric.getMetricName(), measurement);
   }

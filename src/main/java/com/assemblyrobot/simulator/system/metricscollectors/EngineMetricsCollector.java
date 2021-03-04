@@ -6,6 +6,7 @@ import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
 import lombok.NonNull;
 import lombok.val;
 
+/** Collects data from Engine */
 public class EngineMetricsCollector extends TickAdvanceListener {
   private final MetricsCollector metricsCollector;
   private static final String TOTAL_SIMULATION_TIME_METRIC_NAME = "total_simulation_time";
@@ -13,7 +14,9 @@ public class EngineMetricsCollector extends TickAdvanceListener {
   // Cannot use RequiredArgsConstructor and a class property here because that will result in a
   // "variable might not have been initialized" error
   public EngineMetricsCollector(@NonNull Engine engine) {
-    metricsCollector = new MetricsCollector(getClass().getSimpleName(), engine.getClass().getSuperclass().getName());
+    metricsCollector =
+        new MetricsCollector(
+            getClass().getSimpleName(), engine.getClass().getSuperclass().getName());
   }
 
   @Override
