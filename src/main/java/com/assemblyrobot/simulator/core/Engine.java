@@ -3,7 +3,7 @@ package com.assemblyrobot.simulator.core;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.system.components.StageController;
-import com.assemblyrobot.simulator.system.utils.EngineMetricsCollector;
+import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -56,7 +56,9 @@ public abstract class Engine extends Thread {
     logger.info("Initialisation routines complete. Starting event loop.");
     setRunning(true);
 
-    while (stopTick != 0 ? Clock.getInstance().getCurrentTick() <= stopTick : isRunning()) {
+    // Run while stopTick is above 0 (=> not default infinite) and below the set limit,
+    // or per default until told to stop
+    while (stopTick != 0 ? clock.getCurrentTick() <= stopTick : isRunning()) {
       runCycle();
     }
   }
