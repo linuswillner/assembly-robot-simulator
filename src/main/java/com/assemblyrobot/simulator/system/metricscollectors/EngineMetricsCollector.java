@@ -6,6 +6,7 @@ import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
 import lombok.NonNull;
 import lombok.val;
 
+/** Collects data from Engine */
 public class EngineMetricsCollector extends TickAdvanceListener {
   private final MetricsCollector metricsCollector;
   private static final String TOTAL_SIMULATION_TIME_METRIC_NAME = "total_simulation_time";
