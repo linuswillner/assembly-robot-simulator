@@ -18,8 +18,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Abstract super class for all station classes. Contains methods to control a material's flow in a
- * station
+ * Abstract super class for all station classes. Contains methods to control a {@link Material}'s
+ * flow in a {@link Station}
  */
 public abstract class Station extends TickAdvanceListener {
 
@@ -52,17 +52,18 @@ public abstract class Station extends TickAdvanceListener {
   }
 
   /**
-   * Gets the processing duration of the station from a corresponding generator.
+   * Gets the processing duration of the {@link Station} from a corresponding generator.
    *
    * @return {@link Long}
    */
   protected abstract long getProcessingTime();
 
   /**
-   * Adds the material to the station's queue. Also collects related data.
+   * Adds the {@link Material} to the {@link Station}'s queue {@link Station#materialQueue}. Also
+   * collects related data.
    *
-   * @param material Material to add to the queue
-   * @param stageId name of the stage the material is currently in
+   * @param material {@link Material} to add to the  {@link Station#materialQueue}
+   * @param stageId ID of the {@link Stage} the {@link Material} is currently in
    */
   public void addToStationQueue(@NonNull Material material, @NonNull StageID stageId) {
     val materialId = material.getId();
@@ -78,7 +79,7 @@ public abstract class Station extends TickAdvanceListener {
     processMaterial();
   }
 
-  /** Starts the processing of the material. Also collects related data. */
+  /** Starts the processing of the {@link Material}. Also collects related data. */
   protected void processMaterial() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
@@ -115,7 +116,7 @@ public abstract class Station extends TickAdvanceListener {
   }
 
   /**
-   * Checks if station is currently processing another material.
+   * Checks if {@link Station} is currently processing another {@link Material}.
    *
    * @return {@link Boolean}
    */
@@ -124,7 +125,7 @@ public abstract class Station extends TickAdvanceListener {
   }
 
   /**
-   * Checks if a material can be pulled from the queue.
+   * Checks if a {@link Material} can be pulled from the {@link Station#materialQueue}.
    *
    * @return {@link Boolean}
    */
@@ -133,8 +134,8 @@ public abstract class Station extends TickAdvanceListener {
   }
 
   /**
-   * Determines the status of the material and coordinates its processing accordingly. Also collects
-   * related data.
+   * Determines the status of the {@link Material} and coordinates its processing accordingly. Also
+   * collects related data.
    *
    * @param ticksAdvanced The amount of ticks that the clock has moved forward by.
    */

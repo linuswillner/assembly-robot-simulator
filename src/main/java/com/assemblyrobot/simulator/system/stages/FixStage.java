@@ -31,7 +31,7 @@ public class FixStage extends Stage {
   }
 
   /**
-   * Gets the amount of stations to be created from user input. Used later in createStations() -method.
+   * Gets the amount of stations to be created from user input. Used later in {@link FixStage#createStations()} method.
    *
    * @param type Type of error station
    * @return {@link Integer}
