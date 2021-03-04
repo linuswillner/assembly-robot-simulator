@@ -49,9 +49,9 @@ public class StageController {
   }
 
   /**
-   * puts Material object and tracker object into their respective hashmaps and
-   * {@link StageController#sendToNextStage(Material) sends the material to its next stage}.
-   * Increments total material amount for metrics.
+   * puts Material object and tracker object into their respective hashmaps and {@link
+   * StageController#sendToNextStage(Material) sends the material to its next stage}. Increments
+   * total material amount for metrics.
    */
   public void registerIncomingMaterial() {
     val material = new Material();
@@ -68,8 +68,8 @@ public class StageController {
   // tracker contains an arraylist of data the id is the same as material id
 
   /**
-   * @param tracker contains data of the materials passed stations
-   * puts the tracker into the hashmap
+   * @param tracker contains data of the materials passed stations puts the tracker into the
+   *                hashmap
    */
   private void addTrackingData(@NonNull Tracker tracker) {
     trackers.put(tracker.getTrackerId(), tracker);
@@ -84,9 +84,8 @@ public class StageController {
   }
 
   /**
-   * @param material the material about to be sent to next stage
-   * {@link StageController#getNextStage(Material) finds next stage} for the material and adds it to the correct queue
-   *
+   * @param material the material about to be sent to next stage {@link StageController#getNextStage(Material)
+   *                 finds next stage} for the material and adds it to the correct queue
    */
   private void sendToNextStage(@NonNull Material material) {
     val nextStageId = getNextStage(material);
@@ -116,9 +115,10 @@ public class StageController {
   }
 
   /**
-   * @param material which needs its destination figured
-   * internal callback that is called when {@link StageController#sendToNextStage(Material) to find materials next stage}
-   * @return {@link StageID} possible values are ASSEMBLY, ERROR_CHECK, FIX, DEPART. null if material just arrived to the system.
+   * @param material which needs its destination figured internal callback that is called when
+   *                 {@link StageController#sendToNextStage(Material) to find materials next stage}
+   * @return {@link StageID} possible values are ASSEMBLY, ERROR_CHECK, FIX, DEPART. null if
+   * material just arrived to the system.
    */
   private StageID getNextStage(@NonNull Material material) {
     val materialId = material.getId();
@@ -170,9 +170,8 @@ public class StageController {
 
   /**
    * @param material to be added to the transfer queue
-   * @param metrics metrics added to the tracker
-   * prepares material for transfer {@link StageController#transferAll()}
-   * adds tracking data.
+   * @param metrics  metrics added to the tracker prepares material for transfer {@link
+   *                 StageController#transferAll()} adds tracking data.
    */
   public void onChildQueueDepart(
       @NonNull Material material, @NonNull MaterialMetricsCollector metrics) {
