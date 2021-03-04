@@ -54,7 +54,7 @@ public class Run {
 
   @Getter
   @OneToMany(mappedBy = "run")
-  private final HashSet<Engine> stageControllers = new HashSet<>();
+  private final HashSet<StageController> stageControllers = new HashSet<>();
 
   @Getter
   @OneToMany(mappedBy = "run")
