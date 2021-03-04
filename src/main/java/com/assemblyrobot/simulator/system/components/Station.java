@@ -78,7 +78,6 @@ public abstract class Station extends TickAdvanceListener {
     while (canPull()) {
       val next = pullFromStationQueue();
       currentMaterial = next;
-      stageController.registerMaterialProcessing(next.getId());
       val processingTime = getProcessingTime();
 
       // The PROCESSING_COMPLETE event has no function beyond stopping the clock at the moment where
