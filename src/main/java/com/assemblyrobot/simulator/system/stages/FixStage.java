@@ -18,7 +18,6 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/** Sub-class of Stage, handles operations during Fix stage. */
 public class FixStage extends Stage {
 
   @Getter private final StageController stageController;

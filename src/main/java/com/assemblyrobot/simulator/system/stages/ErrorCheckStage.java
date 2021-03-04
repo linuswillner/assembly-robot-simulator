@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.val;
 
-/** Sub-class of Stage, handles operations during Error Check stage. */
 public class ErrorCheckStage extends Stage {
 
   @Getter private final StageController stageController;

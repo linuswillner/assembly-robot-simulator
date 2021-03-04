@@ -59,7 +59,7 @@ public abstract class Station extends TickAdvanceListener {
   protected abstract long getProcessingTime();
 
   /**
-   * Adds the material to the station's queue and collects needed metrics.
+   * Adds the material to the station's queue. Also collects related data.
    *
    * @param material Material to add to the queue
    * @param stageId name of the stage the material is currently in
@@ -78,7 +78,7 @@ public abstract class Station extends TickAdvanceListener {
     processMaterial();
   }
 
-  /** Starts the processing of the material. */
+  /** Starts the processing of the material. Also collects related data. */
   protected void processMaterial() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
@@ -133,7 +133,8 @@ public abstract class Station extends TickAdvanceListener {
   }
 
   /**
-   * Determines the status of the material and coordinates its processing accordingly.
+   * Determines the status of the material and coordinates its processing accordingly. Also collects
+   * related data.
    *
    * @param ticksAdvanced The amount of ticks that the clock has moved forward by.
    */
