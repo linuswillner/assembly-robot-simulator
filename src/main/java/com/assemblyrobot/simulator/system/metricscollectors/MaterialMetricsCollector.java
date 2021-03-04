@@ -1,4 +1,4 @@
-package com.assemblyrobot.simulator.system.components;
+package com.assemblyrobot.simulator.system.metricscollectors;
 
 import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-public class MaterialStationData {
+public class MaterialMetricsCollector {
   @Getter private final StageID stageId;
   @Getter private final String stationId;
   @Getter @Setter private long queueStartTime;
@@ -30,7 +30,7 @@ public class MaterialStationData {
     @Getter private final String metricName;
   }
 
-  public MaterialStationData(StageID stageId, String stationId, long materialId) {
+  public MaterialMetricsCollector(StageID stageId, String stationId, long materialId) {
     this.stageId = stageId;
     this.stationId = stationId;
     metricsCollector =
