@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import lombok.NonNull;
 
+/** Sub-class of Station, handles operations of Assembly stations. */
 public class AssemblyStation extends Station implements Comparable<AssemblyStation> {
   private static int nextFreeId = 1;
 

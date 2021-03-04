@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.val;
 
+/** Sub-class of Stage, handles operations during Assembly stage. */
 public class AssemblyStage extends Stage {
 
   @Getter private final StageController stageController;

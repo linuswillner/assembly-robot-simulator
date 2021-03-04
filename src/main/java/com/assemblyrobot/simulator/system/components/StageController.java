@@ -55,15 +55,7 @@ public class StageController {
     metricsCollector.incrementMetric(Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName());
   }
 
-  public void registerMaterialProcessing(long id) {
-    val material = materials.get(id);
-    materials.put(id, material);
-  }
-
   public void registerOutgoingMaterial(long id) {
-    val material = materials.get(id);
-    materials.put(id, material);
-
     metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
   }
 
@@ -158,9 +150,5 @@ public class StageController {
     material.reset();
     transferQueue.add(material);
     eventQueue.schedule(new Event(Clock.getInstance().getCurrentTick() + 1, EventType.TRANSFER));
-  }
-
-  private long getCurrentTick() {
-    return Clock.getInstance().getCurrentTick();
   }
 }

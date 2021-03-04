@@ -18,6 +18,7 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/** Sub-class of Stage, handles operations during Fix stage. */
 public class FixStage extends Stage {
 
   @Getter private final StageController stageController;
@@ -29,6 +30,13 @@ public class FixStage extends Stage {
     this.stageController = stageController;
     createStations();
   }
+
+  /**
+   * Gets the amount of stations to be created from user input. Used later in createStations() -method.
+   *
+   * @param type Type of error station
+   * @return {@link Integer}
+   */
 
   private int getStationAmountForErrorType(ErrorType type) {
     return switch (type) {

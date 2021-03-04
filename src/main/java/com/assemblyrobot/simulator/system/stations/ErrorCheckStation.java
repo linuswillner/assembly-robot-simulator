@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import lombok.NonNull;
 
+/** Sub-class of Station, handles operations of Error Check stations. */
 public class ErrorCheckStation extends Station implements Comparable<ErrorCheckStation> {
   private static int nextFreeId = 1;
 
