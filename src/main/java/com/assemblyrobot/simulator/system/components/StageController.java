@@ -49,8 +49,8 @@ public class StageController {
   }
 
   /**
-   * puts {@link Material object} and {@link Tracker object} into their respective hashmaps and {@link
-   * StageController#sendToNextStage(Material) sends the material to its next stage}. Increments
+   * Puts {@link Material} and {@link Tracker} into their respective HashMaps, and {@link
+   * StageController#sendToNextStage} sends the material to its next stage. Increments
    * total material amount for metrics.
    */
   public void registerIncomingMaterial() {
@@ -76,7 +76,7 @@ public class StageController {
   }
 
   /**
-   * sends the materials that are ready to be transferred to their destination
+   * Transfers all materials in the transfer queue to their destinations.
    */
   public void transferAll() {
     transferQueue.forEach(this::sendToNextStage);
