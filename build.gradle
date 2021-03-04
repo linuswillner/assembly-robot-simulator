@@ -82,5 +82,5 @@ dependencies {
 
     // Hibernate ORM with sqlite dialect
     implementation 'org.hibernate:hibernate-core:5.4.29.Final'
-    implementation group: 'org.hibernate.dialect', name: 'sqlite-dialect', version: '0.1.0'
+    implementation 'com.zsoltfabok:sqlite-dialect:1.0'
 }
