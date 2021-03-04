@@ -79,4 +79,8 @@ dependencies {
 
     // SQLite-JDBC
     implementation 'org.xerial:sqlite-jdbc:3.34.0'
+
+    // Hibernate ORM with sqlite dialect
+    implementation 'org.hibernate:hibernate-core:5.4.29.Final'
+    implementation 'org.hibernate.dialect:sqlite-dialect:0.1.0'
 }
