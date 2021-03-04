@@ -22,6 +22,8 @@ public class StageController {
   @GeneratedValue
   private long id;
 
+  @Getter
+  @Setter
   @ManyToOne
   @JoinColumn(nullable = false, name = "run_id")
   private Run run;

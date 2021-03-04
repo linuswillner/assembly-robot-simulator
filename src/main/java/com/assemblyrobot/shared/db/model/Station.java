@@ -20,6 +20,8 @@ public class Station {
   @Column(nullable = false)
   private String id;
 
+  @Getter
+  @Setter
   @ManyToOne
   @JoinColumn(nullable = false, name = "run_id")
   private Run run;
