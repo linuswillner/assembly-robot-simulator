@@ -50,8 +50,8 @@ public class StageController {
 
   /**
    * Puts {@link Material} and {@link Tracker} into their respective HashMaps, and {@link
-   * StageController#sendToNextStage} sends the material to its next stage. Increments
-   * total material amount for metrics.
+   * StageController#sendToNextStage} sends the material to its next stage. Increments total
+   * material amount for metrics.
    */
   public void registerIncomingMaterial() {
     val material = new Material();
