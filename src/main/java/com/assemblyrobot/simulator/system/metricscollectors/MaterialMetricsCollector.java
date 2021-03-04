@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 public class MaterialMetricsCollector {
+  @Getter private final String materialId;
   @Getter private final StageID stageId;
   @Getter private final String stationId;
   @Getter @Setter private long queueStartTime;
@@ -33,10 +34,8 @@ public class MaterialMetricsCollector {
   public MaterialMetricsCollector(StageID stageId, String stationId, long materialId) {
     this.stageId = stageId;
     this.stationId = stationId;
-    metricsCollector =
-        new MetricsCollector(
-            "Material-%d [%s]".formatted(materialId, stationId),
-            getClass().getName());
+    this.materialId = "Material-%d [%s]".formatted(materialId, stationId);
+    metricsCollector = new MetricsCollector(this.materialId, getClass().getName());
   }
 
   public long getQueueDuration() {
@@ -47,7 +46,7 @@ public class MaterialMetricsCollector {
     return processingEndTime - processingStartTime;
   }
 
-  public long getTotalPassthroughTime() {
+  public long getPassthroughTime() {
     return processingEndTime - queueStartTime;
   }
 
@@ -62,7 +61,7 @@ public class MaterialMetricsCollector {
                 case PROCESSING_START_TIME -> putMetric(Metrics.PROCESSING_START_TIME, processingStartTime);
                 case PROCESSING_END_TIME -> putMetric(Metrics.PROCESSING_END_TIME, processingEndTime);
                 case PROCESSING_DURATION -> putMetric(Metrics.PROCESSING_DURATION, getProcessingDuration());
-                case PASSTHROUGH_TIME -> putMetric(Metrics.PASSTHROUGH_TIME, getTotalPassthroughTime());
+                case PASSTHROUGH_TIME -> putMetric(Metrics.PASSTHROUGH_TIME, getPassthroughTime());
               }
             });
   }
