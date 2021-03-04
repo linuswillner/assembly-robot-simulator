@@ -1,15 +1,26 @@
 package com.assemblyrobot.shared.db.dao;
 
 import com.assemblyrobot.shared.db.DB;
+import com.assemblyrobot.shared.db.model.Engine;
+import com.assemblyrobot.shared.db.model.Material;
 import com.assemblyrobot.shared.db.model.Run;
+import com.assemblyrobot.shared.db.model.StageController;
+import com.assemblyrobot.shared.db.model.Station;
+import java.util.Arrays;
 import java.util.List;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RunDAO implements DAO {
+  @Getter private static final RunDAO instance = new RunDAO();
+
   private final SessionFactory sessionFactory = DB.getSessionFactory();
   private static final Logger logger = LogManager.getLogger();
 
@@ -45,12 +56,24 @@ public class RunDAO implements DAO {
   }
 
   @Override
-  public boolean logRun(Run run) {
+  public boolean logRun(
+      Run run,
+      Engine engine,
+      StageController stageController,
+      Station[] stations,
+      Material[] materials) {
     Transaction transaction = null;
 
     try (val session = sessionFactory.openSession()) {
       transaction = session.beginTransaction();
+
       session.saveOrUpdate(run);
+      session.saveOrUpdate(engine);
+      session.saveOrUpdate(stageController);
+
+      Arrays.stream(stations).forEach(session::saveOrUpdate);
+      Arrays.stream(materials).forEach(session::saveOrUpdate);
+
       transaction.commit();
       return true;
     } catch (Exception e) {
