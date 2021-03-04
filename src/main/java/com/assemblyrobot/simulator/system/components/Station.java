@@ -62,7 +62,7 @@ public abstract class Station extends TickAdvanceListener {
    * Adds the {@link Material} to the {@link Station}'s queue {@link Station#materialQueue}. Also
    * collects related data.
    *
-   * @param material {@link Material} to add to the  {@link Station#materialQueue}
+   * @param material {@link Material} to add to the {@link Station#materialQueue}
    * @param stageId ID of the {@link Stage} the {@link Material} is currently in
    */
   public void addToStationQueue(@NonNull Material material, @NonNull StageID stageId) {

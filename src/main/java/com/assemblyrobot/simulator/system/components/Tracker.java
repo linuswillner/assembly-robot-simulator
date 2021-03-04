@@ -11,11 +11,7 @@ public class Tracker {
   @Getter private final long trackerId;
   @Getter private final ArrayList<MaterialMetricsCollector> stationMetrics = new ArrayList<>();
 
-
-  /**
-   * @param metrics Metrics that are added to the {@link Tracker#stationMetrics} ArrayList.
-   */
-
+  /** @param metrics Metrics that are added to the {@link Tracker#stationMetrics} ArrayList. */
   public void addMetrics(@NonNull MaterialMetricsCollector metrics) {
     stationMetrics.add(metrics);
   }

@@ -30,11 +30,11 @@ public class Material implements Comparable<Material> {
     processingEndTime = 0;
   }
 
-
   /**
    * Calculates the amount of time the {@link Material} spent in the system.
    *
-   * @return The difference of {@link Material#processingEndTime} and {@link Material#processingStartTime}
+   * @return The difference of {@link Material#processingEndTime} and {@link
+   *     Material#processingStartTime}
    */
   public long getTotalPassthroughTime() {
     return processingEndTime - queueStartTime;

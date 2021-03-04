@@ -14,7 +14,9 @@ public class EngineMetricsCollector extends TickAdvanceListener {
   // Cannot use RequiredArgsConstructor and a class property here because that will result in a
   // "variable might not have been initialized" error
   public EngineMetricsCollector(@NonNull Engine engine) {
-    metricsCollector = new MetricsCollector(getClass().getSimpleName(), engine.getClass().getSuperclass().getName());
+    metricsCollector =
+        new MetricsCollector(
+            getClass().getSimpleName(), engine.getClass().getSuperclass().getName());
   }
 
   @Override
