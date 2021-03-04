@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -88,6 +88,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public abstract class <span class="type-name-label">Station</span>
 extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock">TickAdvanceListener</a></pre>
+<div class="block">Abstract super class for all station classes. Contains methods to control a <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>'s
+ flow in a <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -135,28 +137,36 @@ java.lang.String&nbsp;stationId)</code></th>
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.StageID)">addToStationQueue</a></span>&#8203;(@NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
 @NonNull <a href="../../../shared/constants/StageID.html" title="enum in com.assemblyrobot.shared.constants">StageID</a>&nbsp;stageId)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Adds the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to the <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>'s queue <code>materialQueue</code>.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>protected boolean</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#canPull()">canPull</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Checks if a <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> can be pulled from the <code>materialQueue</code>.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>protected abstract long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getProcessingTime()">getProcessingTime</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the processing duration of the <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> from a corresponding generator.</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>protected boolean</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#isBusy()">isBusy</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Checks if <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> is currently processing another <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i4">
 <td class="col-first"><code>protected void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#onTickAdvance(long)">onTickAdvance</a></span>&#8203;(long&nbsp;ticksAdvanced)</code></th>
 <td class="col-last">
-<div class="block">Callback method for when the clock moves forward.</div>
+<div class="block">Determines the status of the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> and coordinates its processing accordingly.</div>
 </td>
 </tr>
 <tr class="row-color" id="i5">
@@ -168,13 +178,10 @@ java.lang.String&nbsp;stationId)</code></th>
 </tr>
 <tr class="alt-color" id="i6">
 <td class="col-first"><code>protected void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#poll()">poll</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
-</tr>
-<tr class="row-color" id="i7">
-<td class="col-first"><code>protected <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a></code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#pullFromStationQueue()">pullFromStationQueue</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#processMaterial()">processMaterial</a></span>()</code></th>
+<td class="col-last">
+<div class="block">Starts the processing of the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -210,15 +217,14 @@ java.lang.String&nbsp;stationId)</span></div>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="isBusy()">
-<h3>isBusy</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">isBusy</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="canPull()">
-<h3>canPull</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">canPull</span>()</div>
+<section class="detail" id="getProcessingTime()">
+<h3>getProcessingTime</h3>
+<div class="member-signature"><span class="modifiers">protected abstract</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getProcessingTime</span>()</div>
+<div class="block">Gets the processing duration of the <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> from a corresponding generator.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Long</code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -228,37 +234,55 @@ java.lang.String&nbsp;stationId)</span></div>
 @NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
 @NonNull
 @NonNull <a href="../../../shared/constants/StageID.html" title="enum in com.assemblyrobot.shared.constants">StageID</a>&nbsp;stageId)</span></div>
+<div class="block">Adds the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to the <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>'s queue <code>materialQueue</code>. Also
+ collects related data.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>material</code> - <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to add to the <code>materialQueue</code></dd>
+<dd><code>stageId</code> - ID of the <a href="Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a> the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> is currently in</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="pullFromStationQueue()">
-<h3>pullFromStationQueue</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a></span>&nbsp;<span class="member-name">pullFromStationQueue</span>()</div>
+<section class="detail" id="processMaterial()">
+<h3>processMaterial</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">processMaterial</span>()</div>
+<div class="block">Starts the processing of the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>. Also collects related data.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="poll()">
-<h3>poll</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">poll</span>()</div>
+<section class="detail" id="isBusy()">
+<h3>isBusy</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">isBusy</span>()</div>
+<div class="block">Checks if <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> is currently processing another <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Boolean</code></dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getProcessingTime()">
-<h3>getProcessingTime</h3>
-<div class="member-signature"><span class="modifiers">protected abstract</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getProcessingTime</span>()</div>
+<section class="detail" id="canPull()">
+<h3>canPull</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">canPull</span>()</div>
+<div class="block">Checks if a <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> can be pulled from the <code>materialQueue</code>.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Boolean</code></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="onTickAdvance(long)">
 <h3>onTickAdvance</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">onTickAdvance</span>&#8203;(<span class="parameters">long&nbsp;ticksAdvanced)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../../core/clock/TickAdvanceListener.html#onTickAdvance(long)">TickAdvanceListener</a></code></span></div>
-<div class="block">Callback method for when the clock moves forward.</div>
+<div class="block">Determines the status of the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> and coordinates its processing accordingly. Also
+ collects related data.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../../core/clock/TickAdvanceListener.html#onTickAdvance(long)">onTickAdvance</a></code>&nbsp;in class&nbsp;<code><a href="../../core/clock/TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock">TickAdvanceListener</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>ticksAdvanced</code> - The amount of ticks that the clock moved forward by.</dd>
+<dd><code>ticksAdvanced</code> - The amount of ticks that the clock has moved forward by.</dd>
 </dl>
 </section>
 </li>

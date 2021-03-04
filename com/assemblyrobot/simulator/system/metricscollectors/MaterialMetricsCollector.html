@@ -82,6 +82,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">MaterialMetricsCollector</span>
 extends java.lang.Object</pre>
+<div class="block">Collects Material and Station specific data</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -129,22 +130,31 @@ long&nbsp;materialId)</code></th>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getProcessingDuration()">getProcessingDuration</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the duration of how long it has taken to process a material.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getQueueDuration()">getQueueDuration</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the duration of how long a material has queued.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getTotalPassthroughTime()">getTotalPassthroughTime</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets the total duration of how long it took a material to pass through a station (queueing +
+ processing time).</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#updateMetrics()">updateMetrics</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Updates all metrics.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -184,24 +194,41 @@ long&nbsp;materialId)</span></div>
 <section class="detail" id="getQueueDuration()">
 <h3>getQueueDuration</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getQueueDuration</span>()</div>
+<div class="block">Gets the duration of how long a material has queued.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Long</code></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getProcessingDuration()">
 <h3>getProcessingDuration</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getProcessingDuration</span>()</div>
+<div class="block">Gets the duration of how long it has taken to process a material.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Long</code></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getTotalPassthroughTime()">
 <h3>getTotalPassthroughTime</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">getTotalPassthroughTime</span>()</div>
+<div class="block">Gets the total duration of how long it took a material to pass through a station (queueing +
+ processing time).</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Long</code></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="updateMetrics()">
 <h3>updateMetrics</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">updateMetrics</span>()</div>
+<div class="block">Updates all metrics.</div>
 </section>
 </li>
 </ul>
