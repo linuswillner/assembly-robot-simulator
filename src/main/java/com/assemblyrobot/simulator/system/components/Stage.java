@@ -14,7 +14,7 @@ public abstract class Stage {
   /**
    * Checks which {@link Station} is free and commands it to add the {@link Material} to its queue.
    *
-   * @param material {@link Material} to be added.
+   * @param material Material to be added
    */
   public abstract void addToStationQueue(@NonNull Material material);
 }

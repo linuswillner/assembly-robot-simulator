@@ -13,8 +13,9 @@ public class Tracker {
 
 
   /**
-   * @param metrics metrics that are added to {@link Tracker#stationMetrics ArrayList}
+   * @param metrics Metrics that are added to the {@link Tracker#stationMetrics} ArrayList.
    */
+
   public void addMetrics(@NonNull MaterialMetricsCollector metrics) {
     stationMetrics.add(metrics);
   }
