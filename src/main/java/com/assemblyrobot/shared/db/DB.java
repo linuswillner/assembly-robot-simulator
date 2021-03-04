@@ -1,6 +1,7 @@
 package com.assemblyrobot.shared.db;
 
 import lombok.Getter;
+import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -11,9 +12,11 @@ public abstract class DB {
   private static final Logger logger = LogManager.getLogger();
 
   public DB() {
-    try {
-      sessionFactory =
-          new Configuration().configure("/resources/config/hibernate.cfg.xml").buildSessionFactory();
+    try (val factory =
+        new Configuration()
+            .configure("/resources/config/hibernate.cfg.xml")
+            .buildSessionFactory()) {
+      sessionFactory = factory;
     } catch (Exception e) {
       logger.fatal("Could not build session factory:", e);
       System.exit(1);

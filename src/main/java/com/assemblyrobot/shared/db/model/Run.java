@@ -6,6 +6,8 @@ import com.assemblyrobot.shared.config.model.NormalDistributionConfig;
 import com.assemblyrobot.shared.config.model.StationConfig;
 import com.assemblyrobot.shared.utils.JsonUtils;
 import com.google.gson.Gson;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "runs")
 @NoArgsConstructor
-public class Run {
+public class Run implements Serializable {
+  @Serial
+  private static final long serialVersionUID = 1L;
   private final Gson gson = JsonUtils.gson;
 
   @Id
