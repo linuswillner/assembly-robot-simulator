@@ -49,9 +49,9 @@ public class StageController {
   }
 
   /**
-   * puts {@link Material object} and {@link Tracker object} into their respective hashmaps and {@link
-   * StageController#sendToNextStage(Material) sends the material to its next stage}. Increments
-   * total material amount for metrics.
+   * puts {@link Material object} and {@link Tracker object} into their respective hashmaps and
+   * {@link StageController#sendToNextStage(Material) sends the material to its next stage}.
+   * Increments total material amount for metrics.
    */
   public void registerIncomingMaterial() {
     val material = new Material();
@@ -68,8 +68,8 @@ public class StageController {
   // tracker contains an arraylist of data the id is the same as material id
 
   /**
-   * @param tracker contains data of the materials passed stations puts the tracker into the
-   *                hashmap
+   * @param tracker that is added to the {@link StageController#trackers HashMap} Adds Tracker to
+   *                the HashMap
    */
   private void addTrackingData(@NonNull Tracker tracker) {
     trackers.put(tracker.getTrackerId(), tracker);
@@ -84,8 +84,9 @@ public class StageController {
   }
 
   /**
-   * @param material the material about to be sent to next stage {@link StageController#getNextStage(Material)
-   *                 finds next stage} for the material and adds it to the correct queue
+   * @param material internal method used by {@link StageController#transferAll()} and {@link
+   *                 StageController#sendToNextStage(Material)} to find out where to transfer the
+   *                 {@link Material}
    */
   private void sendToNextStage(@NonNull Material material) {
     val nextStageId = getNextStage(material);
@@ -169,9 +170,14 @@ public class StageController {
 
 
   /**
-   * @param material to be added to the transfer queue
-   * @param metrics  metrics added to the tracker prepares material for transfer {@link
-   *                 StageController#transferAll()} adds tracking data.
+   * @param material To be added to the transfer queue
+   * @param metrics  Metrics added to the tracker
+   *                 <p>
+   *                 Prepares material for transfer method by adding it to {@link
+   *                 StageController#transferQueue} for {@link StageController#transferAll()}. Adds
+   *                 {@link MaterialMetricsCollector} to {@link Tracker} and uses {@link
+   *                 StageController#addTrackingData(Tracker)} to add it to{@link
+   *                 StageController#trackers} HashMap
    */
   public void onChildQueueDepart(
       @NonNull Material material, @NonNull MaterialMetricsCollector metrics) {
