@@ -13,5 +13,9 @@
 
     <!-- Entity mappings -->
     <mapping class="com.assemblyrobot.shared.db.model.Run"/>
+    <mapping class="com.assemblyrobot.shared.db.model.Engine"/>
+    <mapping class="com.assemblyrobot.shared.db.model.StageController"/>
+    <mapping class="com.assemblyrobot.shared.db.model.Station"/>
+    <mapping class="com.assemblyrobot.shared.db.model.Material"/>
   </session-factory>
 </hibernate-configuration>
