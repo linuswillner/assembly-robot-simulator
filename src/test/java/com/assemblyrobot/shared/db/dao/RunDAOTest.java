@@ -1,6 +1,8 @@
 package com.assemblyrobot.shared.db.dao;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.assemblyrobot.shared.config.Config;
@@ -13,19 +15,19 @@ import com.assemblyrobot.shared.db.model.Station;
 import java.util.Arrays;
 import lombok.val;
 import org.hamcrest.MatcherAssert;
+import org.junit.Assume;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Disabled
 class RunDAOTest {
   private final ApplicationConfig config = Config.getConfig();
   private final RunDAO dao = RunDAO.getInstance();
 
   @BeforeEach
   void beforeEach() {
+    Assume.assumeThat(System.getenv("CI"), is(nullValue()));
     createTestRun();
   }
 
