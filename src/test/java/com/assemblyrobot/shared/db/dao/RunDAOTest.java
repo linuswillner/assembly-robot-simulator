@@ -15,9 +15,11 @@ import lombok.val;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 class RunDAOTest {
   private final ApplicationConfig config = Config.getConfig();
   private final RunDAO dao = RunDAO.getInstance();
