@@ -159,3 +159,4 @@ gradle-app.setting
 
 # Database files
 *.sqlite
+FIRST_RUN

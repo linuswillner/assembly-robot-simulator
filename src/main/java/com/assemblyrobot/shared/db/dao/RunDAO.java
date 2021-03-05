@@ -5,6 +5,7 @@ import com.assemblyrobot.shared.db.model.Material;
 import com.assemblyrobot.shared.db.model.Run;
 import com.assemblyrobot.shared.db.model.StageController;
 import com.assemblyrobot.shared.db.model.Station;
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import lombok.Getter;
@@ -24,7 +25,15 @@ public class RunDAO implements DAO {
   private RunDAO() {
     try {
       val config = new Configuration().configure("/config/hibernate.cfg.xml");
-      // TODO: Don't drop DB on reboot?
+      val isFirstRun = new File("./FIRST_RUN").createNewFile();
+
+      if (isFirstRun) {
+        System.out.println("Tables do not exist, creating.");
+        config.setProperty("hibernate.hbm2ddl.auto", "create");
+      } else {
+        System.out.println("Tables already exist, not creating again.");
+        config.setProperty("hibernate.hbm2ddl.auto", "validate");
+      }
       sessionFactory = config.buildSessionFactory();
     } catch (Exception e) {
       e.printStackTrace();

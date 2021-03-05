@@ -60,7 +60,7 @@ class RunDAOTest {
   void getRun() {
     // This is a really shallow check, but there aren't many better ways to check whether these two
     // are equal
-    MatcherAssert.assertThat(dao.getRun(1), instanceOf(Run.class));
+    MatcherAssert.assertThat(dao.getRun(dao.getAllRuns()[0].getId()), instanceOf(Run.class));
   }
 
   @Test
