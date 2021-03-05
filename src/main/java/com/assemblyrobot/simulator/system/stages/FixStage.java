@@ -30,6 +30,12 @@ public class FixStage extends Stage {
     createStations();
   }
 
+  /**
+   * Gets the amount of stations to be created from user input. Used later in {@link FixStage#createStations()} method.
+   *
+   * @param type Type of error station
+   * @return {@link Integer}
+   */
   private int getStationAmountForErrorType(ErrorType type) {
     return switch (type) {
       case FITTING -> config.getFittingFixStationAmount();

@@ -67,6 +67,12 @@ public class MetricsCollector {
     metrics.put(metricName, current + 1);
   }
 
+  /**
+   * Increments a metric by wanted amount.
+   *
+   * @param metricName Metric name to increment.
+   * @param measurement Amount to increment.
+   */
   public void incrementMetric(@NonNull String metricName, double measurement) {
     val current = getMetric(metricName, 0);
     metrics.put(metricName, current + measurement);
