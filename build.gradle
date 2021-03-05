@@ -80,7 +80,7 @@ dependencies {
     // SQLite-JDBC
     implementation 'org.xerial:sqlite-jdbc:3.34.0'
 
-    // Hibernate ORM with sqlite dialect
+    // Hibernate ORM with MariaDB connector
     implementation 'org.hibernate:hibernate-core:5.4.29.Final'
-    implementation 'com.zsoltfabok:sqlite-dialect:1.0'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 }

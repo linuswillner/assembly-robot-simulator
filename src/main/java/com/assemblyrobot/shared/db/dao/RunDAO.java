@@ -1,6 +1,5 @@
 package com.assemblyrobot.shared.db.dao;
 
-import com.assemblyrobot.shared.db.DB;
 import com.assemblyrobot.shared.db.model.Engine;
 import com.assemblyrobot.shared.db.model.Material;
 import com.assemblyrobot.shared.db.model.Run;
@@ -8,27 +7,36 @@ import com.assemblyrobot.shared.db.model.StageController;
 import com.assemblyrobot.shared.db.model.Station;
 import java.util.Arrays;
 import java.util.List;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RunDAO implements DAO {
+  private SessionFactory sessionFactory;
   @Getter private static final RunDAO instance = new RunDAO();
-
-  private final SessionFactory sessionFactory = DB.getSessionFactory();
   private static final Logger logger = LogManager.getLogger();
+
+  private RunDAO() {
+    try {
+      val config = new Configuration().configure("/config/hibernate.cfg.xml");
+      // TODO: Don't drop DB on reboot?
+      sessionFactory = config.buildSessionFactory();
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.exit(1);
+    }
+  }
 
   @Override
   public Run getRun(long id) {
     Transaction transaction = null;
 
-    try (val session = sessionFactory.openSession()) {
+    try (Session session = sessionFactory.openSession()) {
       transaction = session.beginTransaction();
       val run = session.get(Run.class, id);
       transaction.commit();
@@ -47,8 +55,8 @@ public class RunDAO implements DAO {
   @Override
   public Run[] getAllRuns() {
     try (val session = sessionFactory.openSession()) {
-      @SuppressWarnings("unchecked")
-      List<Run> result = session.createQuery("from runs").getResultList();
+      @SuppressWarnings({"unchecked", "deprecation"})
+      List<Run> result = session.createCriteria(Run.class).list();
       return result.toArray(new Run[0]);
     } catch (Exception e) {
       return null;
@@ -67,13 +75,17 @@ public class RunDAO implements DAO {
     try (val session = sessionFactory.openSession()) {
       transaction = session.beginTransaction();
 
+      engine.setRun(run);
+      stageController.setRun(run);
+      Arrays.stream(stations).forEach(station -> station.setRun(run));
+      Arrays.stream(materials).forEach(material -> material.setRun(run));
+
+      run.setEngine(engine);
+      run.setStageController(stageController);
+      run.setStations(stations);
+      run.setMaterials(materials);
+
       session.saveOrUpdate(run);
-      session.saveOrUpdate(engine);
-      session.saveOrUpdate(stageController);
-
-      Arrays.stream(stations).forEach(session::saveOrUpdate);
-      Arrays.stream(materials).forEach(session::saveOrUpdate);
-
       transaction.commit();
       return true;
     } catch (Exception e) {
@@ -89,8 +101,10 @@ public class RunDAO implements DAO {
 
   @Override
   public boolean deleteRun(long id) {
+    val toDelete = getRun(id);
+
     // Check that what we're deleting exists
-    if (getRun(id) == null) {
+    if (toDelete == null) {
       logger.warn("Attempted to delete non-existent run {}.", id);
       return false;
     }
@@ -99,7 +113,7 @@ public class RunDAO implements DAO {
 
     try (val session = sessionFactory.openSession()) {
       transaction = session.beginTransaction();
-      session.delete(id);
+      session.delete(toDelete);
       transaction.commit();
       return true;
     } catch (Exception e) {
@@ -110,6 +124,14 @@ public class RunDAO implements DAO {
       }
 
       return false;
+    }
+  }
+
+  @SuppressWarnings("deprecation")
+  @Override
+  public void finalize() {
+    if (sessionFactory != null) {
+      sessionFactory.close();
     }
   }
 }

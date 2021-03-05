@@ -1,19 +1,24 @@
 package com.assemblyrobot.shared.db.model;
 
+import static com.assemblyrobot.shared.utils.JsonUtils.gson;
+
 import com.assemblyrobot.shared.config.model.ErrorFixTimeConfig;
 import com.assemblyrobot.shared.config.model.ErrorOccurrenceConfig;
 import com.assemblyrobot.shared.config.model.NormalDistributionConfig;
 import com.assemblyrobot.shared.config.model.StationConfig;
-import com.assemblyrobot.shared.utils.JsonUtils;
-import com.google.gson.Gson;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,9 +28,7 @@ import lombok.Setter;
 @Table(name = "runs")
 @NoArgsConstructor
 public class Run implements Serializable {
-  @Serial
-  private static final long serialVersionUID = 1L;
-  private final Gson gson = JsonUtils.gson;
+  @Serial private static final long serialVersionUID = 1L;
 
   @Id
   @Getter
@@ -53,20 +56,24 @@ public class Run implements Serializable {
   private String stationParams;
 
   @Getter
-  @OneToMany(mappedBy = "run")
-  private final HashSet<Engine> engines = new HashSet<>();
+  @Setter
+  @OneToOne(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL)
+  private Engine engine;
 
   @Getter
-  @OneToMany(mappedBy = "run")
-  private final HashSet<StageController> stageControllers = new HashSet<>();
+  @Setter
+  @OneToOne(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL)
+  private StageController stageController;
 
   @Getter
-  @OneToMany(mappedBy = "run")
-  private final HashSet<Station> stations = new HashSet<>();
+  @Column(nullable = false)
+  @OneToMany(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private final Set<Station> stations = new HashSet<>();
 
   @Getter
-  @OneToMany(mappedBy = "run")
-  private final HashSet<Material> materials = new HashSet<>();
+  @Column(nullable = false)
+  @OneToMany(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private final Set<Material> materials = new HashSet<>();
 
   // Having to use this monolith constructor as opposed to @RequiredArgsConstructor because we don't
   // want a run ID to be defined before creation time
@@ -131,5 +138,13 @@ public class Run implements Serializable {
 
   public void setStationParams(StationConfig stationParams) {
     this.stationParams = gson.toJson(stationParams);
+  }
+
+  public void setStations(Station[] stations) {
+    this.stations.addAll(Arrays.asList(stations));
+  }
+
+  public void setMaterials(Material[] materials) {
+    this.materials.addAll(Arrays.asList(materials));
   }
 }

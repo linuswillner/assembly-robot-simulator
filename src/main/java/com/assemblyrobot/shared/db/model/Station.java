@@ -17,7 +17,7 @@ public class Station {
   @Id
   @Getter
   @Setter
-  @Column(nullable = false)
+  @Column(nullable = false, length = 64)
   private String id;
 
   @Getter
