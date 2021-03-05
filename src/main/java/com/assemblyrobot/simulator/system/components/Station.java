@@ -133,6 +133,11 @@ public abstract class Station extends TickAdvanceListener {
     return !isBusy() && materialQueue.size() > 0;
   }
 
+  /** Internal shortcut to get the current clock tick with added brevity. */
+  private long getCurrentTick() {
+    return Clock.getInstance().getCurrentTick();
+  }
+
   /**
    * Determines the status of the {@link Material} and coordinates its processing accordingly. Also
    * collects related data.
@@ -178,10 +183,6 @@ public abstract class Station extends TickAdvanceListener {
     } else {
       processMaterial();
     }
-  }
-
-  private long getCurrentTick() {
-    return Clock.getInstance().getCurrentTick();
   }
 
   @Override

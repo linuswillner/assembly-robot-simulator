@@ -4,12 +4,12 @@ import com.assemblyrobot.shared.constants.ErrorType;
 import lombok.NonNull;
 
 /**
- * Abstract super class for all stage classes. Contains methods to control a {@link Material}'s flow
- * to in a {@link Stage}.
+ * Abstract super class for all {@link Stage} classes. Contains methods to control a {@link
+ * Material}'s flow to in a {@link Stage}.
  */
 public abstract class Stage {
 
-  /** Creates the wanted amount of {@link Station}s. */
+  /** Creates a customisable, desired amount of {@link Station}s. */
   protected abstract void createStations();
 
   /**
