@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class ErrorOccurrenceGeneratorTest {
   private final ErrorOccurrenceGenerator generator = ErrorOccurrenceGenerator.getInstance();
   private final ErrorOccurrenceConfig config = Config.getConfig().getErrorOccurrenceParams();
-  private static final int SAMPLE_SIZE = 100;
+  private static final int SAMPLE_SIZE = 10;
 
   @Test
   @DisplayName("shouldHaveError(): An error has a \"1 in X\" chance of happening")
@@ -37,6 +37,7 @@ class ErrorOccurrenceGeneratorTest {
 
     // A 1 error distribution delta is within the realm of feasibility, but much more than that
     // would make this test too unreliable to perform
+    System.out.printf("Expecting target size %f, getting %d%n", targetSize, errorOccurrences.size());
     assertEquals(targetSize, errorOccurrences.size(), 1.0);
   }
 
@@ -45,6 +46,8 @@ class ErrorOccurrenceGeneratorTest {
   @Test
   @DisplayName("nextError(): Returns a correct ErrorType object")
   void nextError() {
-    MatcherAssert.assertThat(generator.nextError(), instanceOf(ErrorType.class));
+    val error = generator.nextError();
+    System.out.printf("Next error: %s%n", error);
+    MatcherAssert.assertThat(error, instanceOf(ErrorType.class));
   }
 }
