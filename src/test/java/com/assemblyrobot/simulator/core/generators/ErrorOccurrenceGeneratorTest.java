@@ -35,9 +35,9 @@ class ErrorOccurrenceGeneratorTest {
     // Define a target array size based on the target percentage of the sample size
     val targetSize = Math.floor(targetPercentage * SAMPLE_SIZE);
 
-    // A 1-2 error distribution delta is within the realm of feasibility, but much more than that
+    // A 1 error distribution delta is within the realm of feasibility, but much more than that
     // would make this test too unreliable to perform
-    assertEquals(targetSize, errorOccurrences.size(), 2.0);
+    assertEquals(targetSize, errorOccurrences.size(), 1.0);
   }
 
   // Not testing nextError() in detail here, predicting negexp distributions and their relations to
