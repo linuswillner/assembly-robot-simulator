@@ -4,7 +4,6 @@ import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.StationConfig;
 import com.assemblyrobot.shared.constants.ErrorType;
 import com.assemblyrobot.shared.constants.StageID;
-import com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.components.StageController;
@@ -63,10 +62,7 @@ public class FixStage extends Stage {
   }
 
   @Override
-  public void addToStationQueue(@NonNull Material material) {
-    // Decide what error type we have right here
-    val errorType = ErrorOccurrenceGenerator.getInstance().nextError();
-
+  public void addToStationQueue(@NonNull Material material, ErrorType errorType) {
     logger.trace("Material {}: Has error in {}.", material.getId(), errorType);
 
     val nextFreeStation = substations.get(errorType).peek();

@@ -1,5 +1,7 @@
 package com.assemblyrobot.simulator.system.components;
 
+import com.assemblyrobot.shared.constants.ErrorType;
+import com.assemblyrobot.shared.constants.StageID;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +17,8 @@ public class Material implements Comparable<Material> {
   @Getter @Setter private long queueEndTime = 0;
   @Getter @Setter private long processingStartTime = 0;
   @Getter @Setter private long processingEndTime = 0;
+  @Getter @Setter private StageID currentStage;
+  @Getter @Setter private ErrorType error;
 
   public Material() {
     id = nextFreeId;
@@ -31,6 +35,11 @@ public class Material implements Comparable<Material> {
     processingStartTime = 0;
     processingEndTime = 0;
   }
+
+  public void setNextStage(StageID currentStage) {
+    this.currentStage = currentStage;
+  }
+
   /**
    * Calculates the amount of time the {@link Material} spent in the system.
    *
