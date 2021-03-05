@@ -32,7 +32,6 @@ public class Run implements Serializable {
 
   @Id
   @Getter
-  @Setter
   @Column(nullable = false)
   @GeneratedValue
   private long id;
@@ -67,12 +66,20 @@ public class Run implements Serializable {
 
   @Getter
   @Column(nullable = false)
-  @OneToMany(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(
+      mappedBy = "run",
+      orphanRemoval = true,
+      cascade = CascadeType.ALL,
+      fetch = FetchType.EAGER)
   private final Set<Station> stations = new HashSet<>();
 
   @Getter
   @Column(nullable = false)
-  @OneToMany(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(
+      mappedBy = "run",
+      orphanRemoval = true,
+      cascade = CascadeType.ALL,
+      fetch = FetchType.EAGER)
   private final Set<Material> materials = new HashSet<>();
 
   // Having to use this monolith constructor as opposed to @RequiredArgsConstructor because we don't

@@ -16,7 +16,6 @@ import lombok.Setter;
 public class Station {
   @Id
   @Getter
-  @Setter
   @Column(nullable = false, length = 64)
   private String id;
 
@@ -27,22 +26,18 @@ public class Station {
   private Run run;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "station_entered_material_amount")
   private double enteredMaterialAmount;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "station_exited_material_amount")
   private double exitedMaterialAmount;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "station_busy_time")
   private double busyTime;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "station_total_passthrough_time")
   private double totalPassthroughTime;
 

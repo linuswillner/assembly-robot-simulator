@@ -17,7 +17,6 @@ import lombok.Setter;
 public class StageController {
   @Id
   @Getter
-  @Setter
   @Column(nullable = false)
   @GeneratedValue
   private long id;
@@ -29,12 +28,10 @@ public class StageController {
   private Run run;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "total_entered_material_amount")
   private double totalEnteredMaterialAmount;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "total_exited_material_amount")
   private double totalExitedMaterialAmount;
 

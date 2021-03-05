@@ -16,7 +16,6 @@ import lombok.Setter;
 public class Material {
   @Id
   @Getter
-  @Setter
   @Column(nullable = false, length = 64)
   private String id;
 
@@ -27,37 +26,30 @@ public class Material {
   private Run run;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_queue_start_time")
   private double queueStartTime;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_queue_end_time")
   private double queueEndTime;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_queue_duration")
   private double queueDuration;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_processing_start_time")
   private double processingStartTime;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_processing_end_time")
   private double processingEndTime;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_processing_duration")
   private double processingDuration;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "material_passthrough_time")
   private double passthroughTime;
 

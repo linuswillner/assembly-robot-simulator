@@ -17,7 +17,6 @@ import lombok.Setter;
 public class Engine {
   @Id
   @Getter
-  @Setter
   @Column(nullable = false)
   @GeneratedValue
   private long id;
@@ -29,7 +28,6 @@ public class Engine {
   private Run run;
 
   @Getter
-  @Setter
   @Column(nullable = false, name = "total_simulation_time")
   private double totalSimulationTime;
 
