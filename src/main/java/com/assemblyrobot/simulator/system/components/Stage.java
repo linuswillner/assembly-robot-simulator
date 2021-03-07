@@ -5,7 +5,7 @@ import lombok.NonNull;
 
 /**
  * Abstract super class for all {@link Stage} classes. Contains methods to control a {@link
- * Material}'s flow to in a {@link Stage}.
+ * Material}'s flow in a {@link Stage}.
  */
 public abstract class Stage {
 
