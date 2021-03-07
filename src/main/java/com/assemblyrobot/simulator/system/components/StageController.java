@@ -44,7 +44,7 @@ public class StageController {
   }
 
   /**
-   * Puts {@link Material}s and {@link Tracker}s into their respective data stores, and propagate
+   * Puts {@link Material}s and {@link Tracker}s into their respective data stores, and propagates
    * transfers via {@link StageController#sendToNextStage}. Increments total material amount for
    * metrics.
    */
