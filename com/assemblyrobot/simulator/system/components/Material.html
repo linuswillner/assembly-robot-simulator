@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":9};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":9,"i4":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <pre>public class <span class="type-name-label">Material</span>
 extends java.lang.Object
 implements java.lang.Comparable&lt;<a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&gt;</pre>
-<div class="block">Represents a product traveling through the production line in a simulated environment</div>
+<div class="block">Represents a product traveling through the production line in a simulated environment.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -145,12 +145,21 @@ implements java.lang.Comparable&lt;<a href="Material.html" title="class in com.a
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#reset()">reset</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Resets all class fields to their default values.</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#resetId()">resetId</a></span>()</code></th>
 <td class="col-last">&nbsp;</td>
+</tr>
+<tr class="alt-color" id="i4">
+<td class="col-first"><code>void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#setNextStage(com.assemblyrobot.shared.constants.StageID)">setNextStage</a></span>&#8203;(<a href="../../../shared/constants/StageID.html" title="enum in com.assemblyrobot.shared.constants">StageID</a>&nbsp;nextStage)</code></th>
+<td class="col-last">
+<div class="block">Alternatively worded setter for <code>currentStage</code>.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -194,6 +203,20 @@ implements java.lang.Comparable&lt;<a href="Material.html" title="class in com.a
 <section class="detail" id="reset()">
 <h3>reset</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">reset</span>()</div>
+<div class="block">Resets all class fields to their default values. Used when transferring between <a href="Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a>s,
+ since this object is not garbage collected until it has passed through the entire system.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setNextStage(com.assemblyrobot.shared.constants.StageID)">
+<h3>setNextStage</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">setNextStage</span>&#8203;(<span class="parameters"><a href="../../../shared/constants/StageID.html" title="enum in com.assemblyrobot.shared.constants">StageID</a>&nbsp;nextStage)</span></div>
+<div class="block">Alternatively worded setter for <code>currentStage</code>. Used for setting the "new"
+ current stage in a more declarative way.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>nextStage</code> - The next <a href="Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a> this material is headed to.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -203,7 +226,7 @@ implements java.lang.Comparable&lt;<a href="Material.html" title="class in com.a
 <div class="block">Calculates the amount of time the <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> spent in the system.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The difference of <code>processingEndTime</code> and <code>processingStartTime</code></dd>
+<dd>The difference of <code>processingEndTime</code> and <code>processingStartTime</code>.</dd>
 </dl>
 </section>
 </li>

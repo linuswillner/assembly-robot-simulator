@@ -82,7 +82,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">MaterialMetricsCollector</span>
 extends java.lang.Object</pre>
-<div class="block">Collects Material and Station specific data</div>
+<div class="block">Collects data and metrics of a <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> as
+ it passes through a <a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a> and <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -153,7 +154,7 @@ long&nbsp;materialId)</code></th>
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#updateMetrics()">updateMetrics</a></span>()</code></th>
 <td class="col-last">
-<div class="block">Updates all metrics.</div>
+<div class="block">Copies values of relevant class fields to the <a href="../../core/metrics/MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><code>MetricsCollector</code></a>.</div>
 </td>
 </tr>
 </tbody>
@@ -228,7 +229,7 @@ long&nbsp;materialId)</span></div>
 <section class="detail" id="updateMetrics()">
 <h3>updateMetrics</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">updateMetrics</span>()</div>
-<div class="block">Updates all metrics.</div>
+<div class="block">Copies values of relevant class fields to the <a href="../../core/metrics/MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><code>MetricsCollector</code></a>.</div>
 </section>
 </li>
 </ul>

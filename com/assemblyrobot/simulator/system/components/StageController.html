@@ -128,20 +128,24 @@ extends java.lang.Object</pre>
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#onChildQueueDepart(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector)">onChildQueueDepart</a></span>&#8203;(@NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
 @NonNull <a href="../metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors">MaterialMetricsCollector</a>&nbsp;metrics)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Callback called by <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s when <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s complete processing and depart their
+ queues.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#registerIncomingMaterial()">registerIncomingMaterial</a></span>()</code></th>
 <td class="col-last">
-<div class="block">Puts <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> and <a href="Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a> into their respective HashMaps, and <code>sendToNextStage(com.assemblyrobot.simulator.system.components.Material)</code> sends the material to its next stage.</div>
+<div class="block">Puts <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s and <a href="Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a>s into their respective data stores, and propagates
+ transfers via <code>sendToNextStage(com.assemblyrobot.simulator.system.components.Material)</code>.</div>
 </td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#transferAll()">transferAll</a></span>()</code></th>
 <td class="col-last">
-<div class="block">Transfers all materials in the transfer queue to their destinations.</div>
+<div class="block">Transfers all materials in the transfer queue to their appropriate destinations.</div>
 </td>
 </tr>
 </tbody>
@@ -180,15 +184,16 @@ extends java.lang.Object</pre>
 <section class="detail" id="registerIncomingMaterial()">
 <h3>registerIncomingMaterial</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">registerIncomingMaterial</span>()</div>
-<div class="block">Puts <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> and <a href="Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a> into their respective HashMaps, and <code>sendToNextStage(com.assemblyrobot.simulator.system.components.Material)</code> sends the material to its next stage. Increments total
- material amount for metrics.</div>
+<div class="block">Puts <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s and <a href="Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a>s into their respective data stores, and propagates
+ transfers via <code>sendToNextStage(com.assemblyrobot.simulator.system.components.Material)</code>. Increments total material amount for
+ metrics.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="transferAll()">
 <h3>transferAll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">transferAll</span>()</div>
-<div class="block">Transfers all materials in the transfer queue to their destinations.</div>
+<div class="block">Transfers all materials in the transfer queue to their appropriate destinations.</div>
 </section>
 </li>
 <li>
@@ -198,13 +203,14 @@ extends java.lang.Object</pre>
 @NonNull <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
 @NonNull
 @NonNull <a href="../metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors">MaterialMetricsCollector</a>&nbsp;metrics)</span></div>
+<div class="block">Callback called by <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s when <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s complete processing and depart their
+ queues. Triggers scheduling of <a href="../../core/events/TransferEvent.html" title="class in com.assemblyrobot.simulator.core.events"><code>TransferEvent</code></a>s (Type <a href="../../core/events/EventType.html#TRANSFER"><code>EventType.TRANSFER</code></a>).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>material</code> - To be added to the transfer queue</dd>
-<dd><code>metrics</code> - Metrics added to the tracker
-                 <p>
-                 Prepares material for transfer method by adding it to <code>transferQueue</code> for <a href="#transferAll()"><code>transferAll()</code></a>. Adds
-                 <a href="../metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><code>MaterialMetricsCollector</code></a> to <a href="Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a> and uses <code>addTrackingData(Tracker)</code> to add it to<code>trackers</code> HashMap</dd>
+<dd><code>material</code> - <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to add to the transfer queue.</dd>
+<dd><code>metrics</code> - Populated <a href="../metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><code>MaterialMetricsCollector</code></a> to add to the tracker.
+     <p>Prepares material for transfer method by adding it to <code>transferQueue</code> for <a href="#transferAll()"><code>transferAll()</code></a>. Adds <a href="../metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><code>MaterialMetricsCollector</code></a> to <a href="Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a> and uses <code>addTrackingData(Tracker)</code> to add it to<code>trackers</code>
+     HashMap</dd>
 </dl>
 </section>
 </li>

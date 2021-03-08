@@ -56,21 +56,23 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Tracker.html#addMetrics(com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector)">addMetrics(MaterialMetricsCollector)</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Tracker.html" title="class in com.assemblyrobot.simulator.system.components">Tracker</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Stage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">addToStationQueue(Material)</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></dt>
 <dd>
-<div class="block">Checks which <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> is free and commands it to add the <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to its queue.</div>
+<div class="block">Logs metrics from processing that happened in a given <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>, as logged by a <a href="com/assemblyrobot/simulator/system/metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><code>MaterialMetricsCollector</code></a>.</div>
 </dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/AssemblyStage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">addToStationQueue(Material)</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/AssemblyStage.html" title="class in com.assemblyrobot.simulator.system.stages">AssemblyStage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/ErrorCheckStage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">addToStationQueue(Material)</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/ErrorCheckStage.html" title="class in com.assemblyrobot.simulator.system.stages">ErrorCheckStage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/FixStage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">addToStationQueue(Material)</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/FixStage.html" title="class in com.assemblyrobot.simulator.system.stages">FixStage</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Station.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.StageID)">addToStationQueue(Material, StageID)</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a></dt>
 <dd>
 <div class="block">Adds the <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to the <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>'s queue <code>Station.materialQueue</code>.</div>
 </dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Stage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">addToStationQueue(Material, ErrorType)</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></dt>
+<dd>
+<div class="block">Checks which <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> is free and commands it to add the <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to its queue.</div>
+</dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/AssemblyStage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">addToStationQueue(Material, ErrorType)</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/AssemblyStage.html" title="class in com.assemblyrobot.simulator.system.stages">AssemblyStage</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/ErrorCheckStage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">addToStationQueue(Material, ErrorType)</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/ErrorCheckStage.html" title="class in com.assemblyrobot.simulator.system.stages">ErrorCheckStage</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/FixStage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">addToStationQueue(Material, ErrorType)</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/FixStage.html" title="class in com.assemblyrobot.simulator.system.stages">FixStage</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/clock/Clock.html#advanceTick(long)">advanceTick(long)</a></span> - Method in class com.assemblyrobot.simulator.core.clock.<a href="com/assemblyrobot/simulator/core/clock/Clock.html" title="class in com.assemblyrobot.simulator.core.clock">Clock</a></dt>
 <dd>
 <div class="block">Move the clock forward by a set number of ticks.</div>
@@ -89,8 +91,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/utils/ArrivalEventPropagator.html" title="class in com.assemblyrobot.simulator.system.utils"><span class="type-name-link">ArrivalEventPropagator</span></a> - Class in <a href="com/assemblyrobot/simulator/system/utils/package-summary.html">com.assemblyrobot.simulator.system.utils</a></dt>
 <dd>
-<div class="block">Takes <a href="com/assemblyrobot/simulator/core/events/EventQueue.html" title="class in com.assemblyrobot.simulator.core.events"><code>EventQueue</code></a> as a parameter and is responsible for adding arrival <a href="com/assemblyrobot/simulator/core/events/Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a>s to
- it</div>
+<div class="block">Propagates <a href="com/assemblyrobot/simulator/core/events/EventType.html#ARRIVAL"><code>EventType.ARRIVAL</code></a> events to the <a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core"><code>Engine</code></a> event queue.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/utils/ArrivalEventPropagator.html#%3Cinit%3E()">ArrivalEventPropagator()</a></span> - Constructor for class com.assemblyrobot.simulator.system.utils.<a href="com/assemblyrobot/simulator/system/utils/ArrivalEventPropagator.html" title="class in com.assemblyrobot.simulator.system.utils">ArrivalEventPropagator</a></dt>
 <dd>&nbsp;</dd>
@@ -189,7 +190,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Stage.html#createStations()">createStations()</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></dt>
 <dd>
-<div class="block">Creates the wanted amount of <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
+<div class="block">Creates a customisable, desired amount of <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stages/AssemblyStage.html#createStations()">createStations()</a></span> - Method in class com.assemblyrobot.simulator.system.stages.<a href="com/assemblyrobot/simulator/system/stages/AssemblyStage.html" title="class in com.assemblyrobot.simulator.system.stages">AssemblyStage</a></dt>
 <dd>&nbsp;</dd>
@@ -233,7 +234,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/metricscollectors/EngineMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><span class="type-name-link">EngineMetricsCollector</span></a> - Class in <a href="com/assemblyrobot/simulator/system/metricscollectors/package-summary.html">com.assemblyrobot.simulator.system.metricscollectors</a></dt>
 <dd>
-<div class="block">Collects data from Engine</div>
+<div class="block">Collects metrics from the <a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core"><code>Engine</code></a>.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/metricscollectors/EngineMetricsCollector.html#%3Cinit%3E(com.assemblyrobot.simulator.core.Engine)">EngineMetricsCollector(Engine)</a></span> - Constructor for class com.assemblyrobot.simulator.system.metricscollectors.<a href="com/assemblyrobot/simulator/system/metricscollectors/EngineMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors">EngineMetricsCollector</a></dt>
 <dd>&nbsp;</dd>
@@ -409,7 +410,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><span class="type-name-link">Material</span></a> - Class in <a href="com/assemblyrobot/simulator/system/components/package-summary.html">com.assemblyrobot.simulator.system.components</a></dt>
 <dd>
-<div class="block">Represents a product traveling through the production line in a simulated environment</div>
+<div class="block">Represents a product traveling through the production line in a simulated environment.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Material.html#%3Cinit%3E()">Material()</a></span> - Constructor for class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a></dt>
 <dd>&nbsp;</dd>
@@ -417,7 +418,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors"><span class="type-name-link">MaterialMetricsCollector</span></a> - Class in <a href="com/assemblyrobot/simulator/system/metricscollectors/package-summary.html">com.assemblyrobot.simulator.system.metricscollectors</a></dt>
 <dd>
-<div class="block">Collects Material and Station specific data</div>
+<div class="block">Collects data and metrics of a <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> as
+ it passes through a <a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a> and <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a></div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/metricscollectors/MaterialMetricsCollector.html#%3Cinit%3E(com.assemblyrobot.shared.constants.StageID,java.lang.String,long)">MaterialMetricsCollector(StageID, String, long)</a></span> - Constructor for class com.assemblyrobot.simulator.system.metricscollectors.<a href="com/assemblyrobot/simulator/system/metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors">MaterialMetricsCollector</a></dt>
 <dd>&nbsp;</dd>
@@ -479,15 +481,18 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:O">O</h2>
 <dl class="index">
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/Engine.html#onArrival()">onArrival()</a></span> - Method in class com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core">Engine</a></dt>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/Engine.html#onArrival(com.assemblyrobot.simulator.core.events.Event)">onArrival(Event)</a></span> - Method in class com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core">Engine</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html#onArrival()">onArrival()</a></span> - Method in class com.assemblyrobot.simulator.system.<a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system">SimulatorEngine</a></dt>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html#onArrival(com.assemblyrobot.simulator.core.events.Event)">onArrival(Event)</a></span> - Method in class com.assemblyrobot.simulator.system.<a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system">SimulatorEngine</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/StageController.html#onChildQueueDepart(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector)">onChildQueueDepart(Material, MaterialMetricsCollector)</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a></dt>
+<dd>
+<div class="block">Callback called by <a href="com/assemblyrobot/simulator/system/components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s when <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s complete processing and depart their
+ queues.</div>
+</dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/Engine.html#onDeparture(com.assemblyrobot.simulator.core.events.Event)">onDeparture(Event)</a></span> - Method in class com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core">Engine</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/Engine.html#onDeparture()">onDeparture()</a></span> - Method in class com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core">Engine</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html#onDeparture()">onDeparture()</a></span> - Method in class com.assemblyrobot.simulator.system.<a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system">SimulatorEngine</a></dt>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html#onDeparture(com.assemblyrobot.simulator.core.events.Event)">onDeparture(Event)</a></span> - Method in class com.assemblyrobot.simulator.system.<a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system">SimulatorEngine</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/clock/TickAdvanceListener.html#onTickAdvance(long)">onTickAdvance(long)</a></span> - Method in class com.assemblyrobot.simulator.core.clock.<a href="com/assemblyrobot/simulator/core/clock/TickAdvanceListener.html" title="class in com.assemblyrobot.simulator.core.clock">TickAdvanceListener</a></dt>
 <dd>
@@ -507,9 +512,9 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/metricscollectors/EngineMetricsCollector.html#onTickReset()">onTickReset()</a></span> - Method in class com.assemblyrobot.simulator.system.metricscollectors.<a href="com/assemblyrobot/simulator/system/metricscollectors/EngineMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors">EngineMetricsCollector</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/Engine.html#onTransfer()">onTransfer()</a></span> - Method in class com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core">Engine</a></dt>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/Engine.html#onTransfer(com.assemblyrobot.simulator.core.events.TransferEvent)">onTransfer(TransferEvent)</a></span> - Method in class com.assemblyrobot.simulator.core.<a href="com/assemblyrobot/simulator/core/Engine.html" title="class in com.assemblyrobot.simulator.core">Engine</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html#onTransfer()">onTransfer()</a></span> - Method in class com.assemblyrobot.simulator.system.<a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system">SimulatorEngine</a></dt>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html#onTransfer(com.assemblyrobot.simulator.core.events.TransferEvent)">onTransfer(TransferEvent)</a></span> - Method in class com.assemblyrobot.simulator.system.<a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system">SimulatorEngine</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:P">P</h2>
@@ -541,7 +546,8 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/StageController.html#registerIncomingMaterial()">registerIncomingMaterial()</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a></dt>
 <dd>
-<div class="block">Puts <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> and <a href="com/assemblyrobot/simulator/system/components/Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a> into their respective HashMaps, and <code>StageController.sendToNextStage(com.assemblyrobot.simulator.system.components.Material)</code> sends the material to its next stage.</div>
+<div class="block">Puts <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s and <a href="com/assemblyrobot/simulator/system/components/Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><code>Tracker</code></a>s into their respective data stores, and propagates
+ transfers via <code>StageController.sendToNextStage(com.assemblyrobot.simulator.system.components.Material)</code>.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/metrics/CentralMetricsCollector.html#registerMetricsCollector(java.lang.String,com.assemblyrobot.simulator.core.metrics.MetricsCollector)">registerMetricsCollector(String, MetricsCollector)</a></span> - Method in class com.assemblyrobot.simulator.core.metrics.<a href="com/assemblyrobot/simulator/core/metrics/CentralMetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics">CentralMetricsCollector</a></dt>
 <dd>
@@ -556,7 +562,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Reset the clock tick to 0.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Material.html#reset()">reset()</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Resets all class fields to their default values.</div>
+</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Material.html#resetId()">resetId()</a></span> - Static method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/stations/AssemblyStation.html#resetId()">resetId()</a></span> - Static method in class com.assemblyrobot.simulator.system.stations.<a href="com/assemblyrobot/simulator/system/stations/AssemblyStation.html" title="class in com.assemblyrobot.simulator.system.stations">AssemblyStation</a></dt>
@@ -580,6 +588,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Schedules an <a href="com/assemblyrobot/simulator/core/events/Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> for future execution.</div>
 </dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Material.html#setNextStage(com.assemblyrobot.shared.constants.StageID)">setNextStage(StageID)</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a></dt>
+<dd>
+<div class="block">Alternatively worded setter for <code>Material.currentStage</code>.</div>
+</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/generators/ErrorOccurrenceGenerator.html#shouldHaveError()">shouldHaveError()</a></span> - Method in class com.assemblyrobot.simulator.core.generators.<a href="com/assemblyrobot/simulator/core/generators/ErrorOccurrenceGenerator.html" title="class in com.assemblyrobot.simulator.core.generators">ErrorOccurrenceGenerator</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/SimulatorEngine.html" title="class in com.assemblyrobot.simulator.system"><span class="type-name-link">SimulatorEngine</span></a> - Class in <a href="com/assemblyrobot/simulator/system/package-summary.html">com.assemblyrobot.simulator.system</a></dt>
@@ -588,7 +600,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components"><span class="type-name-link">Stage</span></a> - Class in <a href="com/assemblyrobot/simulator/system/components/package-summary.html">com.assemblyrobot.simulator.system.components</a></dt>
 <dd>
-<div class="block">Abstract super class for all stage classes.</div>
+<div class="block">Abstract super class for all <a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a> classes.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Stage.html#%3Cinit%3E()">Stage()</a></span> - Constructor for class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></dt>
 <dd>&nbsp;</dd>
@@ -627,7 +639,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/assemblyrobot/simulator/system/components/Tracker.html" title="class in com.assemblyrobot.simulator.system.components"><span class="type-name-link">Tracker</span></a> - Class in <a href="com/assemblyrobot/simulator/system/components/package-summary.html">com.assemblyrobot.simulator.system.components</a></dt>
 <dd>
-<div class="block">Contains tracking data of a <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.Always has the same Id as the corresponding <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.</div>
+<div class="block">Contains tracking data of a <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.</div>
 </dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/Tracker.html#%3Cinit%3E()">Tracker()</a></span> - Constructor for class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/Tracker.html" title="class in com.assemblyrobot.simulator.system.components">Tracker</a></dt>
 <dd>&nbsp;</dd>
@@ -635,14 +647,21 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/components/StageController.html#transferAll()">transferAll()</a></span> - Method in class com.assemblyrobot.simulator.system.components.<a href="com/assemblyrobot/simulator/system/components/StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a></dt>
 <dd>
-<div class="block">Transfers all materials in the transfer queue to their destinations.</div>
+<div class="block">Transfers all materials in the transfer queue to their appropriate destinations.</div>
 </dd>
+<dt><a href="com/assemblyrobot/simulator/core/events/TransferEvent.html" title="class in com.assemblyrobot.simulator.core.events"><span class="type-name-link">TransferEvent</span></a> - Class in <a href="com/assemblyrobot/simulator/core/events/package-summary.html">com.assemblyrobot.simulator.core.events</a></dt>
+<dd>
+<div class="block">Unique <a href="com/assemblyrobot/simulator/core/events/Event.html" title="class in com.assemblyrobot.simulator.core.events"><code>Event</code></a> subclass for <a href="com/assemblyrobot/simulator/core/events/EventType.html#TRANSFER"><code>EventType.TRANSFER</code></a> events, which require information to
+ be passed on the destination of a <a href="com/assemblyrobot/simulator/system/components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>.</div>
+</dd>
+<dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/core/events/TransferEvent.html#%3Cinit%3E(long,com.assemblyrobot.simulator.core.events.EventType,com.assemblyrobot.shared.constants.StageID,com.assemblyrobot.shared.constants.ErrorType)">TransferEvent(long, EventType, StageID, ErrorType)</a></span> - Constructor for class com.assemblyrobot.simulator.core.events.<a href="com/assemblyrobot/simulator/core/events/TransferEvent.html" title="class in com.assemblyrobot.simulator.core.events">TransferEvent</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
 <dt><span class="member-name-link"><a href="com/assemblyrobot/simulator/system/metricscollectors/MaterialMetricsCollector.html#updateMetrics()">updateMetrics()</a></span> - Method in class com.assemblyrobot.simulator.system.metricscollectors.<a href="com/assemblyrobot/simulator/system/metricscollectors/MaterialMetricsCollector.html" title="class in com.assemblyrobot.simulator.system.metricscollectors">MaterialMetricsCollector</a></dt>
 <dd>
-<div class="block">Updates all metrics.</div>
+<div class="block">Copies values of relevant class fields to the <a href="com/assemblyrobot/simulator/core/metrics/MetricsCollector.html" title="class in com.assemblyrobot.simulator.core.metrics"><code>MetricsCollector</code></a>.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>

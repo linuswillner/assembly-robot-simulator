@@ -128,7 +128,8 @@ extends <a href="../components/Stage.html" title="class in com.assemblyrobot.sim
 <tbody>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">addToStationQueue</a></span>&#8203;(@NonNull <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material)</code></th>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">addToStationQueue</a></span>&#8203;(@NonNull <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
+<a href="../../../shared/constants/ErrorType.html" title="enum in com.assemblyrobot.shared.constants">ErrorType</a>&nbsp;errorType)</code></th>
 <td class="col-last">
 <div class="block">Checks which <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> is free and commands it to add the <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to its queue.</div>
 </td>
@@ -137,7 +138,7 @@ extends <a href="../components/Stage.html" title="class in com.assemblyrobot.sim
 <td class="col-first"><code>protected void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#createStations()">createStations</a></span>()</code></th>
 <td class="col-last">
-<div class="block">Creates the wanted amount of <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
+<div class="block">Creates a customisable, desired amount of <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
 </td>
 </tr>
 </tbody>
@@ -178,7 +179,7 @@ extends <a href="../components/Stage.html" title="class in com.assemblyrobot.sim
 <h3>createStations</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">createStations</span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../components/Stage.html#createStations()">Stage</a></code></span></div>
-<div class="block">Creates the wanted amount of <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
+<div class="block">Creates a customisable, desired amount of <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../components/Stage.html#createStations()">createStations</a></code>&nbsp;in class&nbsp;<code><a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></code></dd>
@@ -186,17 +187,19 @@ extends <a href="../components/Stage.html" title="class in com.assemblyrobot.sim
 </section>
 </li>
 <li>
-<section class="detail" id="addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">
+<section class="detail" id="addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">
 <h3>addToStationQueue</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">addToStationQueue</span>&#8203;(<span class="parameters">@NonNull
-@NonNull <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../components/Stage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">Stage</a></code></span></div>
+@NonNull <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components">Material</a>&nbsp;material,
+<a href="../../../shared/constants/ErrorType.html" title="enum in com.assemblyrobot.shared.constants">ErrorType</a>&nbsp;errorType)</span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../components/Stage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">Stage</a></code></span></div>
 <div class="block">Checks which <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> is free and commands it to add the <a href="../components/Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a> to its queue.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../components/Stage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material)">addToStationQueue</a></code>&nbsp;in class&nbsp;<code><a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></code></dd>
+<dd><code><a href="../components/Stage.html#addToStationQueue(com.assemblyrobot.simulator.system.components.Material,com.assemblyrobot.shared.constants.ErrorType)">addToStationQueue</a></code>&nbsp;in class&nbsp;<code><a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>material</code> - Material to be added</dd>
+<dd><code>material</code> - Material to be added.</dd>
+<dd><code>errorType</code> - Optional error type, if calling this on a <a href="FixStage.html" title="class in com.assemblyrobot.simulator.system.stages"><code>FixStage</code></a>.</dd>
 </dl>
 </section>
 </li>
