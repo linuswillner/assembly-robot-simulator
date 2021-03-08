@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -79,7 +80,7 @@
                               <Label text="Error Occurence:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Label text="Mean">
+                                    <Label text="Average (s)">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
@@ -89,7 +90,7 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Label text="Variance">
+                                    <Label text="Variance (s)">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
@@ -103,7 +104,7 @@
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="Mean">
+                                    <Label text="Average (s)">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
@@ -113,7 +114,7 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Label text="Variance">
+                                    <Label text="Variance (s)">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
@@ -123,7 +124,7 @@
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                                  <children>
-                                    <Label text="Mean">
+                                    <Label text="Average (s)">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
@@ -133,31 +134,30 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Label text="Variance">
+                                    <Label text="Variance (s)">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
+                                    <TextField maxWidth="50.0" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="Mean (type distribution)">
+                                    <Label text="Type distribution coefficient 🛈">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
+                                       <tooltip>
+                                          <Tooltip text="Oh yeah, it's all coming together" />
+                                       </tooltip>
                                     </Label>
                                     <TextField maxWidth="50.0">
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Label text="Threshold">
+                                    <Label text="Threshold 🛈">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
