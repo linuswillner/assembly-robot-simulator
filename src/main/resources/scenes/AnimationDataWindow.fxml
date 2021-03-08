@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="740.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenes.AnimationDataWindow">
+   <children>
+      <TableView prefHeight="740.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn prefWidth="319.0" text="Assembly Stage" />
+          <TableColumn minWidth="0.0" prefWidth="366.0" text="Error Check Stage" />
+            <TableColumn minWidth="0.0" prefWidth="338.0" text="Fix Stage" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
