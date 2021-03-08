@@ -46,7 +46,7 @@ class MaterialMetricsCollectorTest {
   void getTotalPassthroughTime() {
     metricsCollector.setQueueStartTime(1);
     metricsCollector.setProcessingEndTime(2);
-    assertEquals(1, metricsCollector.getTotalPassthroughTime());
+    assertEquals(1, metricsCollector.getPassthroughTime());
   }
 
   @Test
