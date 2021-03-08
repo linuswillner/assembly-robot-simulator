@@ -3,22 +3,29 @@ package com.assemblyrobot.simulator.system.metricscollectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.assemblyrobot.shared.constants.StageID;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+@TestInstance(Lifecycle.PER_CLASS)
 class MaterialMetricsCollectorTest {
 
-  //TODO: Can't register duplicate metric collectors, possible workaround?
-  MaterialMetricsCollector metricsCollector =
-      new MaterialMetricsCollector(StageID.ASSEMBLY,"Assembly", 1);
+  private MaterialMetricsCollector metricsCollector;
+
+  @BeforeAll
+  void beforeAll() {
+    metricsCollector = new MaterialMetricsCollector(StageID.ASSEMBLY,"Assembly", 1);
+  }
 
   @BeforeEach
   void beforeEach() {
-    metricsCollector.setQueueEndTime(0);
+    metricsCollector.setQueueStartTime(0);
     metricsCollector.setQueueEndTime(0);
     metricsCollector.setProcessingEndTime(0);
-    metricsCollector.setProcessingEndTime(0);
+    metricsCollector.setProcessingStartTime(0);
   }
 
   @Test
