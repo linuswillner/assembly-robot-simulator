@@ -7,8 +7,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-/** Collects Material and Station specific data */
+/**
+ * Collects data and metrics of a {@link com.assemblyrobot.simulator.system.components.Material} as
+ * it passes through a {@link com.assemblyrobot.simulator.system.components.Stage} and {@link
+ * com.assemblyrobot.simulator.system.components.Station}
+ */
 public class MaterialMetricsCollector {
+  @Getter private final String materialId;
   @Getter private final StageID stageId;
   @Getter private final String stationId;
   @Getter @Setter private long queueStartTime;
@@ -34,9 +39,8 @@ public class MaterialMetricsCollector {
   public MaterialMetricsCollector(StageID stageId, String stationId, long materialId) {
     this.stageId = stageId;
     this.stationId = stationId;
-    metricsCollector =
-        new MetricsCollector(
-            "Material-%d [%s]".formatted(materialId, stationId), getClass().getName());
+    this.materialId = "Material-%d [%s]".formatted(materialId, stationId);
+    metricsCollector = new MetricsCollector(this.materialId, getClass().getName());
   }
 
   /**
@@ -57,19 +61,14 @@ public class MaterialMetricsCollector {
     return processingEndTime - processingStartTime;
   }
 
-  /**
-   * Gets the total duration of how long it took a material to pass through a station (queueing +
-   * processing time).
-   *
-   * @return {@link Long}
-   */
-  public long getTotalPassthroughTime() {
+  public long getPassthroughTime() {
     return processingEndTime - queueStartTime;
   }
 
-  /** Updates all metrics. */
+  /** Copies values of relevant class fields to the {@link MetricsCollector}. */
   public void updateMetrics() {
-    Arrays.stream(Metrics.values()).forEach(
+    Arrays.stream(Metrics.values())
+        .forEach(
             metric -> {
               switch (metric) {
                 case QUEUE_START_TIME -> putMetric(Metrics.QUEUE_START_TIME, queueStartTime);
@@ -78,7 +77,7 @@ public class MaterialMetricsCollector {
                 case PROCESSING_START_TIME -> putMetric(Metrics.PROCESSING_START_TIME, processingStartTime);
                 case PROCESSING_END_TIME -> putMetric(Metrics.PROCESSING_END_TIME, processingEndTime);
                 case PROCESSING_DURATION -> putMetric(Metrics.PROCESSING_DURATION, getProcessingDuration());
-                case PASSTHROUGH_TIME -> putMetric(Metrics.PASSTHROUGH_TIME, getTotalPassthroughTime());
+                case PASSTHROUGH_TIME -> putMetric(Metrics.PASSTHROUGH_TIME, getPassthroughTime());
               }
             });
   }
