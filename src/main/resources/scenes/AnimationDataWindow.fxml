@@ -11,17 +11,23 @@
          <children>
             <TableView prefHeight="740.0" prefWidth="1024.0">
               <columns>
-                <TableColumn prefWidth="340.0" text="Assembly Stage" />
+                <TableColumn maxWidth="131.0" prefWidth="97.0" text="Station  Status" />
+                  <TableColumn maxWidth="217.0" minWidth="0.0" prefWidth="155.0" text="Station Name" />
+                  <TableColumn maxWidth="228.0" minWidth="0.0" prefWidth="88.0" text="In Queue" />
               </columns>
             </TableView>
             <TableView prefHeight="740.0" prefWidth="1024.0">
                <columns>
-                  <TableColumn prefWidth="340.0" text="Error Check Stage" />
+                  <TableColumn maxWidth="110.0" prefWidth="95.0" text="Station  Status" />
+                  <TableColumn maxWidth="259.0" minWidth="0.0" prefWidth="148.0" text="Station Name" />
+                  <TableColumn maxWidth="320.0" minWidth="0.0" prefWidth="97.0" text="In Queue" />
                </columns>
             </TableView>
             <TableView prefHeight="740.0" prefWidth="1024.0">
                <columns>
-                  <TableColumn prefWidth="341.0" text="Fix Stage" />
+                  <TableColumn maxWidth="120.0" prefWidth="96.0" text="Station  Status" />
+                  <TableColumn maxWidth="261.0" prefWidth="169.0" text="Station Name" />
+                  <TableColumn maxWidth="76.0" minWidth="0.0" prefWidth="76.0" text="In Queue" />
                </columns>
             </TableView>
          </children>
