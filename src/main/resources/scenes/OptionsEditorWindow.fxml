@@ -80,66 +80,116 @@
                               <Label text="Error Occurence:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Label text="Average (s)">
+                                    <Label text="Average">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0">
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField maxWidth="50.0" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
-                                    </TextField>
-                                    <Label text="Variance (s)">
+                                    </HBox>
+                                    <Label text="Variance">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0">
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField maxWidth="50.0" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
-                                    </TextField>
+                                    </HBox>
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="Average (s)">
+                                    <Label text="Average">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0">
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField maxWidth="50.0" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
-                                    </TextField>
-                                    <Label text="Variance (s)">
+                                    </HBox>
+                                    <Label text="Variance">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0" />
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField maxWidth="50.0" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                                  <children>
-                                    <Label text="Average (s)">
+                                    <Label text="Average">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0">
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="24.0" prefWidth="395.0">
+                                       <children>
+                                          <TextField maxWidth="50.0" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
-                                    </TextField>
-                                    <Label text="Variance (s)">
+                                    </HBox>
+                                    <Label text="Variance">
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxWidth="50.0" />
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="395.0">
+                                       <children>
+                                          <TextField maxWidth="50.0" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -310,11 +360,56 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <TextField maxWidth="50.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="3" GridPane.valignment="CENTER" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="5" GridPane.valignment="CENTER" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="7" GridPane.valignment="CENTER" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="9" GridPane.valignment="CENTER" />
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="3">
+                                 <children>
+                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="5">
+                                 <children>
+                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="7">
+                                 <children>
+                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="9">
+                                 <children>
+                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </GridPane>
                      </children>
