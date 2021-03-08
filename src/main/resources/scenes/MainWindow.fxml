@@ -50,7 +50,7 @@
             <ProgressBar layoutX="390.0" layoutY="391.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="295.0" progress="0.0" rotate="-90.0" />
             <ProgressBar layoutX="443.0" layoutY="149.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="190.0" progress="0.0" rotate="-90.0" />
             <ProgressBar layoutY="243.0" prefHeight="18.0" prefWidth="100.0" progress="0.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="99.0" layoutY="213.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" height="80.0" layoutX="99.0" layoutY="213.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="302.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="714.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="714.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
@@ -62,6 +62,13 @@
             <ProgressBar layoutX="794.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="70.0" progress="0.0" />
             <ProgressBar layoutX="794.0" layoutY="153.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="70.0" progress="0.0" />
             <ProgressBar layoutX="794.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="70.0" progress="0.0" />
+            <Label layoutX="109.0" layoutY="236.0" prefWidth="60.0" text="Assembly Stage" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="312.0" layoutY="228.0" prefWidth="60.0" text="Error Check Stage" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="724.0" layoutY="55.0" prefWidth="60.0" text="Fix Stage: Fitting" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="724.0" layoutY="145.0" prefWidth="60.0" text="Fix Stage: Bolting" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="724.0" layoutY="235.0" prefWidth="60.0" text="Fix Stage: Riveting" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="724.0" layoutY="325.0" prefWidth="60.0" text="Fix Stage: Welting" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="724.0" layoutY="415.0" prefWidth="60.0" text="Fix Stage: Position" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
       <ButtonBar id="buttonBarSimulationControls" buttonOrder="U+L_HE+FBIX_NCYOA_R" prefHeight="96.0" prefWidth="1000.0">
