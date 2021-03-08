@@ -161,6 +161,9 @@
                                        <VBox.margin>
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
+                                       <tooltip>
+                                          <Tooltip text="Oh yeah, it's all coming together" />
+                                       </tooltip>
                                     </Label>
                                     <TextField maxWidth="50.0" />
                                  </children>
