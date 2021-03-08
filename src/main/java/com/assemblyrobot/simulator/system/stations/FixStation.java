@@ -23,9 +23,12 @@ public class FixStation extends Station implements Comparable<FixStation> {
   }
 
   public static void resetId() {
-    stationIds.keySet().forEach(errorType -> {
-      stationIds.put(errorType, 1L);
-    });
+    stationIds
+        .keySet()
+        .forEach(
+            errorType -> {
+              stationIds.put(errorType, 1L);
+            });
   }
 
   @Override

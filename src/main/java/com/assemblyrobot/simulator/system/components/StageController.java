@@ -2,9 +2,9 @@ package com.assemblyrobot.simulator.system.components;
 
 import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.core.clock.Clock;
-import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.EventType;
+import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
 import com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector;
@@ -24,8 +24,8 @@ import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public class StageController {
+
   @Getter private final EventQueue eventQueue;
-  private final HashMap<Long, Material> materials = new HashMap<>();
   private final HashMap<Long, Tracker> trackers = new HashMap<>();
   private final ArrayList<Material> transferQueue = new ArrayList<>();
   private final AssemblyStage assemblyStage = new AssemblyStage(this);
@@ -43,113 +43,124 @@ public class StageController {
     @Getter private final String metricName;
   }
 
+  /**
+   * Puts {@link Material}s and {@link Tracker}s into their respective data stores, and propagates
+   * transfers via {@link StageController#sendToNextStage}. Increments total material amount for
+   * metrics.
+   */
   public void registerIncomingMaterial() {
     val material = new Material();
-    materials.put(material.getId(), material);
-
     val tracker = new Tracker(material.getId());
-    trackers.put(tracker.getTrackerId(), tracker);
-
+    addTrackingData(tracker);
     sendToNextStage(material);
 
     metricsCollector.incrementMetric(Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName());
   }
 
-  public void registerMaterialProcessing(long id) {
-    val material = materials.get(id);
-    materials.put(id, material);
-  }
-
-  public void registerOutgoingMaterial(long id) {
-    val material = materials.get(id);
-    materials.put(id, material);
-
-    metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
-  }
-
-  // tracker contains an arraylist of data the id is the same as material id
+  /**
+   * Logs a {@link Tracker} for a {@link Material} in {@link StageController#trackers}.
+   *
+   * @param tracker {@link Tracker} to log.
+   */
   private void addTrackingData(@NonNull Tracker tracker) {
     trackers.put(tracker.getTrackerId(), tracker);
   }
 
+  /** Transfers all materials in the transfer queue to their appropriate destinations. */
   public void transferAll() {
     transferQueue.forEach(this::sendToNextStage);
     transferQueue.clear();
   }
 
+  /**
+   * Internal callback for executing transfers of {@link Material}s.
+   *
+   * @param material {@link Material}
+   */
   private void sendToNextStage(@NonNull Material material) {
-    val nextStageId = getNextStage(material);
+    val currentStage = material.getCurrentStage();
+    val shouldHaveError = currentStage == StageID.ERROR_CHECK && material.getError() != null;
 
-    if (nextStageId == null) {
+    val nextStage = getNextStage(material, shouldHaveError);
+    val materialId = material.getId();
+    material.setNextStage(nextStage);
+
+    logger.trace(
+        "Material {}: Current stage = {}, next stage = {}", materialId, currentStage, nextStage);
+
+    if (nextStage == null) {
       logger.warn("Material {}: Not progressing anywhere.", material.getId());
     } else {
-      switch (nextStageId) {
-        case ASSEMBLY -> {
-          logger.trace("Material {}: Progressing to Assembly.", material.getId());
-          assemblyStage.addToStationQueue(material);
-        }
-        case ERROR_CHECK -> {
-          logger.trace("Material {}: Progressing to ErrorCheck.", material.getId());
-          errorCheckStage.addToStationQueue(material);
-        }
-        case FIX -> {
-          logger.trace("Material {}: Progressing to Fix.", material.getId());
-          fixStage.addToStationQueue(material);
-        }
-        case DEPART -> {
-          logger.trace("Material {}: Departing.", material.getId());
-          registerOutgoingMaterial(material.getId());
-        }
+      switch (nextStage) {
+        case ASSEMBLY -> assemblyStage.addToStationQueue(material, null);
+        case ERROR_CHECK -> errorCheckStage.addToStationQueue(material, null);
+        case FIX -> fixStage.addToStationQueue(material, material.getError());
+        case DEPART -> metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
       }
     }
   }
 
-  private StageID getNextStage(@NonNull Material material) {
+  /**
+   * Internal callback for determining the next stage of a {@link Material}.
+   *
+   * @param material {@link Material}
+   * @param hasError Whether this material has an error, and should be sent to the {@link FixStage}
+   *     before departing.
+   * @return {@link StageID}
+   */
+  private StageID getNextStage(@NonNull Material material, boolean hasError) {
     val materialId = material.getId();
-    val tracker = trackers.get(materialId);
-    val stationMetrics = tracker.getStationMetrics();
-    StageID currentStageId = null;
+    val currentStageId = getLastStageOfTracker(trackers.get(materialId));
 
-    try {
-      currentStageId = Iterables.getLast(stationMetrics).getStageId();
-    } catch (NoSuchElementException e) {
-      logger.trace("Material {}: No station data logged yet.", materialId);
-    }
-
+    // Having to do this null check here to avoid NullPointerExceptions, hence why we can't just
+    // fallthrough to ASSEMBLY
     if (currentStageId == null) {
-      logger.trace("Material {}: Current stage = Arrival, next stage = Assembly", materialId);
       return StageID.ASSEMBLY;
     } else {
       switch (currentStageId) {
         case ASSEMBLY -> {
-          logger.trace(
-              "Material {}: Current stage = {}, next stage = ErrorCheck", materialId,
-              currentStageId);
           return StageID.ERROR_CHECK;
         }
         case ERROR_CHECK -> {
-          // Have to use explicit cast to boolean here, lombok doesn't like val in switch blocks
-          boolean shouldHaveError = ErrorOccurrenceGenerator.getInstance().shouldHaveError();
-
-          logger.trace("Material {}: Has error? {}", materialId, shouldHaveError ? "Yes" : "No");
-          logger.trace("Material {}: Current stage = {}, next stage = {}",  materialId,
-              currentStageId, shouldHaveError ? "FIX" : "DEPART");
-
-          return shouldHaveError ? StageID.FIX : StageID.DEPART;
+          return hasError ? StageID.FIX : StageID.DEPART;
         }
         case FIX -> {
-          logger.trace("Material {}: Current stage = {}, next stage = Depart", materialId,
-              currentStageId);
           return StageID.DEPART;
         }
         default -> {
-          logger.warn("Material {}: Stage {} has no next stage defined.", materialId, currentStageId);
           return null;
         }
       }
     }
   }
 
+  /**
+   * Gets the last known {@link StageID} of a {@link Tracker}.
+   *
+   * @param tracker {@link Tracker}
+   * @return {@link StageID} or null if none logged yet-
+   */
+  private StageID getLastStageOfTracker(Tracker tracker) {
+    try {
+      return Iterables.getLast(tracker.getStationMetrics()).getStageId();
+    } catch (NoSuchElementException e) {
+      logger.trace("Material {}: No station data logged yet.", tracker.getTrackerId());
+      return null;
+    }
+  }
+
+  /**
+   * Callback called by {@link Station}s when {@link Material}s complete processing and depart their
+   * queues. Triggers scheduling of {@link TransferEvent}s (Type {@link EventType#TRANSFER}).
+   *
+   * @param material {@link Material} to add to the transfer queue.
+   * @param metrics Populated {@link MaterialMetricsCollector} to add to the tracker.
+   *     <p>Prepares material for transfer method by adding it to {@link
+   *     StageController#transferQueue} for {@link StageController#transferAll()}. Adds {@link
+   *     MaterialMetricsCollector} to {@link Tracker} and uses {@link
+   *     StageController#addTrackingData(Tracker)} to add it to{@link StageController#trackers}
+   *     HashMap
+   */
   public void onChildQueueDepart(
       @NonNull Material material, @NonNull MaterialMetricsCollector metrics) {
     val tracker = trackers.get(material.getId());
@@ -157,10 +168,21 @@ public class StageController {
     addTrackingData(tracker);
     material.reset();
     transferQueue.add(material);
-    eventQueue.schedule(new Event(Clock.getInstance().getCurrentTick() + 1, EventType.TRANSFER));
-  }
 
-  private long getCurrentTick() {
-    return Clock.getInstance().getCurrentTick();
+    val shouldHaveError =
+        material.getCurrentStage() == StageID.ERROR_CHECK
+            && ErrorOccurrenceGenerator.getInstance().shouldHaveError();
+    val error = shouldHaveError ? ErrorOccurrenceGenerator.getInstance().nextError() : null;
+
+    if (shouldHaveError) {
+      material.setError(error);
+    }
+
+    eventQueue.schedule(
+        new TransferEvent(
+            Clock.getInstance().getCurrentTick() + 1,
+            EventType.TRANSFER,
+            getNextStage(material, shouldHaveError),
+            error));
   }
 }

@@ -1,7 +1,9 @@
 package com.assemblyrobot.simulator.core;
 
 import com.assemblyrobot.simulator.core.clock.Clock;
+import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.EventQueue;
+import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
 import lombok.AccessLevel;
@@ -86,9 +88,9 @@ public abstract class Engine extends Thread {
       logger.trace("Next event: {}", nextEvent);
 
       switch (nextEvent.getType()) {
-        case ARRIVAL -> onArrival();
-        case TRANSFER -> onTransfer();
-        case DEPARTURE -> onDeparture();
+        case ARRIVAL -> onArrival(nextEvent);
+        case TRANSFER -> onTransfer((TransferEvent) nextEvent);
+        case DEPARTURE -> onDeparture(nextEvent);
         // Not handling the PROCESSING_COMPLETE event as we need to do nothing to it
       }
 
@@ -98,7 +100,6 @@ public abstract class Engine extends Thread {
 
     // Tell points to check for C events
     logger.trace("Attempting to perform C events.");
-    // stations.forEach(Station::poll);
 
     // Dump event queue for debug
     logger.trace("All events performed. Dumping future event queue.");
@@ -123,9 +124,9 @@ public abstract class Engine extends Thread {
 
   protected abstract void init();
 
-  protected abstract void onArrival();
+  protected abstract void onArrival(Event event);
 
-  protected abstract void onTransfer();
+  protected abstract void onTransfer(TransferEvent event);
 
-  protected abstract void onDeparture();
+  protected abstract void onDeparture(Event event);
 }

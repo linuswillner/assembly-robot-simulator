@@ -17,6 +17,10 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Abstract super class for all station classes. Contains methods to control a {@link Material}'s
+ * flow in a {@link Station}
+ */
 public abstract class Station extends TickAdvanceListener {
 
   private final StageController stageController;
@@ -47,14 +51,20 @@ public abstract class Station extends TickAdvanceListener {
     metricsCollector = new MetricsCollector(stationId, getClass().getSuperclass().getName());
   }
 
-  protected boolean isBusy() {
-    return busyTimeRemaining > 0;
-  }
+  /**
+   * Gets the processing duration of the {@link Station} from a corresponding generator.
+   *
+   * @return {@link Long}
+   */
+  protected abstract long getProcessingTime();
 
-  protected boolean canPull() {
-    return !isBusy() && materialQueue.size() > 0;
-  }
-
+  /**
+   * Adds the {@link Material} to the {@link Station}'s queue {@link Station#materialQueue}. Also
+   * collects related data.
+   *
+   * @param material {@link Material} to add to the {@link Station#materialQueue}
+   * @param stageId ID of the {@link Stage} the {@link Material} is currently in
+   */
   public void addToStationQueue(@NonNull Material material, @NonNull StageID stageId) {
     val materialId = material.getId();
     val materialMetrics = new MaterialMetricsCollector(stageId, stationId, materialId);
@@ -66,19 +76,15 @@ public abstract class Station extends TickAdvanceListener {
     materialsInProcessing.put(materialId, materialMetrics);
 
     metricsCollector.incrementMetric(Metrics.STATION_MATERIAL_AMOUNT.getMetricName());
-    poll();
+    processMaterial();
   }
 
-  protected Material pullFromStationQueue() {
-    return materialQueue.poll();
-  }
-
-  protected void poll() {
+  /** Starts the processing of the {@link Material}. Also collects related data. */
+  protected void processMaterial() {
     // Using a while loop on canPull() in case we somehow get events that resolve instantly
     while (canPull()) {
-      val next = pullFromStationQueue();
+      val next = materialQueue.poll();
       currentMaterial = next;
-      stageController.registerMaterialProcessing(next.getId());
       val processingTime = getProcessingTime();
 
       // The PROCESSING_COMPLETE event has no function beyond stopping the clock at the moment where
@@ -109,12 +115,35 @@ public abstract class Station extends TickAdvanceListener {
     }
   }
 
+  /**
+   * Checks if {@link Station} is currently processing another {@link Material}.
+   *
+   * @return {@link Boolean}
+   */
+  protected boolean isBusy() {
+    return busyTimeRemaining > 0;
+  }
+
+  /**
+   * Checks if a {@link Material} can be pulled from the {@link Station#materialQueue}.
+   *
+   * @return {@link Boolean}
+   */
+  protected boolean canPull() {
+    return !isBusy() && materialQueue.size() > 0;
+  }
+
+  /** Internal shortcut to get the current clock tick with added brevity. */
   private long getCurrentTick() {
     return Clock.getInstance().getCurrentTick();
   }
 
-  protected abstract long getProcessingTime();
-
+  /**
+   * Determines the status of the {@link Material} and coordinates its processing accordingly. Also
+   * collects related data.
+   *
+   * @param ticksAdvanced The amount of ticks that the clock has moved forward by.
+   */
   @Override
   protected void onTickAdvance(long ticksAdvanced) {
     if (isBusy()) {
@@ -152,7 +181,7 @@ public abstract class Station extends TickAdvanceListener {
 
       busyTimeRemaining = newBusyTime;
     } else {
-      poll();
+      processMaterial();
     }
   }
 
