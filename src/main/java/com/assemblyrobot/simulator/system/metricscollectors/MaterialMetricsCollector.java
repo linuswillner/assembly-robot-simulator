@@ -7,7 +7,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-/** Collects Material and Station specific data */
+/**
+ * Collects data and metrics of a {@link com.assemblyrobot.simulator.system.components.Material} as
+ * it passes through a {@link com.assemblyrobot.simulator.system.components.Stage} and {@link
+ * com.assemblyrobot.simulator.system.components.Station}
+ */
 public class MaterialMetricsCollector {
   @Getter private final String materialId;
   @Getter private final StageID stageId;
@@ -61,9 +65,10 @@ public class MaterialMetricsCollector {
     return processingEndTime - queueStartTime;
   }
 
-  /** Updates all metrics. */
+  /** Copies values of relevant class fields to the {@link MetricsCollector}. */
   public void updateMetrics() {
-    Arrays.stream(Metrics.values()).forEach(
+    Arrays.stream(Metrics.values())
+        .forEach(
             metric -> {
               switch (metric) {
                 case QUEUE_START_TIME -> putMetric(Metrics.QUEUE_START_TIME, queueStartTime);

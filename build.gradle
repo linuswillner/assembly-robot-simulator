@@ -46,6 +46,7 @@ task jpackage(type: Exec) {
 
 test {
     useJUnitPlatform()
+    testLogging.showStandardStreams = true;
 }
 
 dependencies {
