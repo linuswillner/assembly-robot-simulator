@@ -13,8 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Takes {@link EventQueue} as a parameter and is responsible for adding arrival {@link Event}s to
- * it
+ * Propagates {@link EventType#ARRIVAL} events to the {@link
+ * com.assemblyrobot.simulator.core.Engine} event queue.
  */
 @RequiredArgsConstructor
 public class ArrivalEventPropagator {

@@ -2,6 +2,7 @@ package com.assemblyrobot.simulator.system.stages;
 
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.StationConfig;
+import com.assemblyrobot.shared.constants.ErrorType;
 import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
@@ -31,7 +32,7 @@ public class AssemblyStage extends Stage {
   }
 
   @Override
-  public void addToStationQueue(@NonNull Material material) {
+  public void addToStationQueue(@NonNull Material material, ErrorType errorType) {
     val nextFreeStation = stationQueue.peek();
     if (nextFreeStation != null) {
       nextFreeStation.addToStationQueue(material, StageID.ASSEMBLY);
