@@ -23,7 +23,7 @@ public class CentralMetricsCollector {
    * <p>Note: With respect to the above, do not call this method manually. It is public strictly for
    * practical reasons.
    *
-   * @param hostName Name of the host for this metrics collector; needs to be a unique identiifer.
+   * @param hostName Name of the host for this metrics collector; needs to be a unique identifier.
    * @param collector {@link MetricsCollector}
    * @throws DuplicateMetricsCollectorRegistrationError If a metrics collector for this host class
    *     has already been registered.

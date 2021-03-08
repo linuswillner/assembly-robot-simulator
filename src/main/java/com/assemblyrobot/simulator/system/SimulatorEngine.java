@@ -1,6 +1,8 @@
 package com.assemblyrobot.simulator.system;
 
 import com.assemblyrobot.simulator.core.Engine;
+import com.assemblyrobot.simulator.core.events.Event;
+import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator;
 
 public class SimulatorEngine extends Engine {
@@ -14,16 +16,18 @@ public class SimulatorEngine extends Engine {
   }
 
   @Override
-  protected void onArrival() {
+  protected void onArrival(Event event) {
     arrivalEventPropagator.feedNext();
     super.getStageController().registerIncomingMaterial();
   }
 
   @Override
-  protected void onTransfer() {
+  protected void onTransfer(TransferEvent event) {
+    System.out.println(event.toString());
+
     super.getStageController().transferAll();
   }
 
   @Override
-  protected void onDeparture() {}
+  protected void onDeparture(Event event) {}
 }
