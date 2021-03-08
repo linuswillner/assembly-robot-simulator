@@ -1,6 +1,8 @@
 com.assemblyrobot.shared.config
 com.assemblyrobot.shared.config.model
 com.assemblyrobot.shared.constants
+com.assemblyrobot.shared.db.dao
+com.assemblyrobot.shared.db.model
 com.assemblyrobot.shared.utils
 com.assemblyrobot.simulator.core
 com.assemblyrobot.simulator.core.clock
