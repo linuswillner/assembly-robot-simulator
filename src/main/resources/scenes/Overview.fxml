@@ -14,24 +14,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox id="frameMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assemblyrobot.ui.views.Main">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assemblyrobot.ui.views.Overview">
    <children>
-      <MenuBar id="menuBarMain">
+      <MenuBar>
         <menus>
-          <Menu id="menuDatabase" mnemonicParsing="false" text="Database">
+          <Menu mnemonicParsing="false" text="Database">
             <items>
-              <MenuItem id="menuSaveRun" mnemonicParsing="false" text="Save run..." />
-                  <MenuItem id="menuSaveDatabase" mnemonicParsing="false" text="Open database in viewer" />
+              <MenuItem mnemonicParsing="false" onAction="#saveRun" text="Save run..." />
+                  <MenuItem mnemonicParsing="false" onAction="#openDatabaseViewer" text="Open database in viewer" />
             </items>
           </Menu>
-          <Menu id="menuOptions" mnemonicParsing="false" text="Options">
+          <Menu mnemonicParsing="false" text="Options">
             <items>
-              <MenuItem id="menuOpenEditor" mnemonicParsing="false" text="Open editor" />
+              <MenuItem mnemonicParsing="false" onAction="#openOptionsEditor" text="Open editor" />
             </items>
           </Menu>
-          <Menu id="menuHelp" mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem id="menuAbout" mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#openAbout" text="About" />
             </items>
           </Menu>
         </menus>
