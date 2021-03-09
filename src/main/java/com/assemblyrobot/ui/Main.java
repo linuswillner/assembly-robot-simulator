@@ -1,5 +1,7 @@
 package com.assemblyrobot.ui;
 
+import com.assemblyrobot.shared.config.Config;
+import com.assemblyrobot.shared.config.model.ApplicationConfig;
 import com.assemblyrobot.ui.views.Overview;
 import java.io.IOException;
 import javafx.application.Application;
@@ -15,119 +17,80 @@ public class Main extends Application {
 
   private Stage primaryStage;
   private Parent rootScene;
+  private final ApplicationConfig config = Config.getConfig();
   private static final Logger logger = LogManager.getLogger();
 
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;
     primaryStage.setTitle("Assembly Robot Simulator");
-    val width = 1024;
-    val height = 740;
-    primaryStage.setMinWidth(width);
-    primaryStage.setMaxWidth(width);
-    primaryStage.setMinHeight(height);
-    primaryStage.setMaxHeight(height);
-
     initOverviewLayout();
+  }
+
+  private void initStage(Stage stage, String stageTitle) {
+    // Set stage title
+    stage.setTitle(stageTitle);
+
+    val windowHeight = config.getAppSettings().getWindowHeight();
+    val windowWidth = config.getAppSettings().getWindowWidth();
+
+    // Lock window size
+    stage.setMinWidth(windowWidth);
+    stage.setMaxWidth(windowWidth);
+    stage.setMinHeight(windowHeight);
+    stage.setMaxHeight(windowHeight);
+  }
+
+  private void setScene(String sceneResourcePath, String stageTitle) {
+    try {
+      val stage = new Stage();
+      initStage(stage, stageTitle);
+
+      val loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource(sceneResourcePath));
+      rootScene = loader.load();
+
+      val scene = new Scene(rootScene);
+      stage.setScene(scene);
+      stage.show();
+
+      logger.trace("Opening view {}.", sceneResourcePath);
+    } catch (IOException e) {
+      logger.error("Could not open view {}:", sceneResourcePath, e);
+    }
   }
 
   public void initOverviewLayout() {
     try {
-      FXMLLoader loader = new FXMLLoader();
+      val loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("/scenes/Overview.fxml"));
       rootScene = loader.load();
 
       Overview controller = loader.getController();
       controller.setMain(this);
 
-      Scene scene = new Scene(rootScene);
+      val scene = new Scene(rootScene);
 
       primaryStage.setScene(scene);
       primaryStage.show();
 
-      logger.trace("Opening Main view.");
+      logger.trace("Initialising main layout.");
 
     } catch (IOException e) {
-      logger.error("Opening Main view failed. Resource not found", e);
+      logger.error("Could not initialise main layout:", e);
     }
   }
 
   public void showStationViewer() {
-    try {
-      Stage stage = new Stage();
-      val width = 1024;
-      val height = 740;
-      stage.setMinWidth(width);
-      stage.setMaxWidth(width);
-      stage.setMinHeight(height);
-      stage.setMaxHeight(height);
-      stage.setTitle("Assembly Robot Simulator - Station Viewer");
-
-      FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("/scenes/StationViewer.fxml"));
-      rootScene = loader.load();
-
-      Scene scene = new Scene(rootScene);
-      stage.setScene(scene);
-      stage.show();
-
-      logger.trace("Opening StationViewer view.");
-
-    } catch (IOException e) {
-      logger.error("Opening StationViewer view failed. Resource not found", e);
-    }
+    setScene("/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer");
   }
 
   public void showDatabaseViewer() {
-    try {
-      Stage stage = new Stage();
-      val width = 1024;
-      val height = 740;
-      stage.setMinWidth(width);
-      stage.setMaxWidth(width);
-      stage.setMinHeight(height);
-      stage.setMaxHeight(height);
-      stage.setTitle("Assembly Robot Simulator - Database Viewer");
-
-      FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("/scenes/DatabaseViewer.fxml"));
-      rootScene = loader.load();
-
-      Scene scene = new Scene(rootScene);
-      stage.setScene(scene);
-      stage.show();
-
-      logger.trace("Opening DatabaseViewer view.");
-
-    } catch (IOException e) {
-      logger.error("Opening DatabaseViewer view failed. Resource not found", e);
-    }
+    setScene("/scenes/DatabaseViewer.fxml", "Assembly Robot Simulator - Database Viewer");
   }
 
   public void showOptionsEditor() {
-    try {
-      Stage stage = new Stage();
-      val width = 1024;
-      val height = 740;
-      stage.setMinWidth(width);
-      stage.setMaxWidth(width);
-      stage.setMinHeight(height);
-      stage.setMaxHeight(height);
-      stage.setTitle("Assembly Robot Simulator - Options Editor");
-
-      FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("/scenes/OptionsEditor.fxml"));
-      rootScene = loader.load();
-
-      Scene scene = new Scene(rootScene);
-      stage.setScene(scene);
-      stage.show();
-
-      logger.trace("Opening OptionsEditor view.");
-
-    } catch (IOException e) {
-      logger.error("Opening OptionsEditor view failed. Resource not found", e);
-    }
+    setScene("/scenes/OptionsEditor.fxml", "Assembly Robot Simulator - Options Editor");
   }
 
   public static void main(String[] args) {
