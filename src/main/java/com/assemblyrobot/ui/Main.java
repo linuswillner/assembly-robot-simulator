@@ -23,7 +23,7 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;
-    primaryStage.setTitle("Assembly Robot Simulator");
+    initStage(primaryStage, "Assembly Robot Simulator");
     initOverviewLayout();
   }
 
