@@ -18,19 +18,19 @@
    <children>
       <AnchorPane>
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Load">
+                  <Button mnemonicParsing="false" onAction="#handleLoadButtonClick" prefHeight="30.0" prefWidth="60.0" text="Load">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Save">
+                  <Button mnemonicParsing="false" onAction="#handleSaveButtonClick" prefHeight="30.0" prefWidth="60.0" text="Save">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Reset" />
+                  <Button mnemonicParsing="false" onAction="#handleResetButtonClick" prefHeight="30.0" prefWidth="60.0" text="Reset" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
@@ -38,14 +38,14 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="677.0" prefWidth="1024.0">
+      <AnchorPane fx:id="settingsRoot" prefHeight="677.0" prefWidth="1024.0">
          <children>
             <VBox prefHeight="676.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Separator prefWidth="200.0" />
                   <HBox prefHeight="227.0" prefWidth="1000.0">
                      <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefWidth="150.0" text="Distributions" wrapText="true">
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefWidth="150.0" text="Simulation" wrapText="true">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -87,7 +87,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField maxWidth="50.0" />
+                                          <TextField fx:id="arrivalIntervalAverage" maxWidth="50.0" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -105,7 +105,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField maxWidth="50.0" />
+                                          <TextField fx:id="arrivalIntervalVariance" maxWidth="50.0" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -127,7 +127,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField maxWidth="50.0" />
+                                          <TextField fx:id="assemblyTimeAverage" maxWidth="50.0" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -145,7 +145,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField maxWidth="50.0" />
+                                          <TextField fx:id="assemblyTimeVariance" maxWidth="50.0" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -164,7 +164,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="24.0" prefWidth="395.0">
                                        <children>
-                                          <TextField maxWidth="50.0" />
+                                          <TextField fx:id="errorCheckTimeAverage" maxWidth="50.0" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -182,7 +182,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="395.0">
                                        <children>
-                                          <TextField maxWidth="50.0" />
+                                          <TextField fx:id="errorCheckTimeVariance" maxWidth="50.0" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -202,7 +202,7 @@
                                           <Tooltip text="Oh yeah, it's all coming together" />
                                        </tooltip>
                                     </Label>
-                                    <TextField maxWidth="50.0">
+                                    <TextField fx:id="errorOccurrenceCoefficient" maxWidth="50.0">
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
@@ -215,7 +215,7 @@
                                           <Tooltip text="Oh yeah, it's all coming together" />
                                        </tooltip>
                                     </Label>
-                                    <TextField maxWidth="50.0" />
+                                    <TextField fx:id="errorOccurrenceThreshold" maxWidth="50.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -289,13 +289,13 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <TextField maxWidth="50.0" GridPane.columnIndex="1" GridPane.valignment="TOP" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="3" GridPane.valignment="TOP" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                              <TextField maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <TextField fx:id="assemblyStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="errorCheckStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="fittingStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <TextField fx:id="boltingStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                              <TextField fx:id="rivetingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.valignment="TOP" />
+                              <TextField fx:id="weldingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="positionStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
@@ -362,7 +362,7 @@
                               </Label>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="1">
                                  <children>
-                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="fittingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -372,7 +372,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="3">
                                  <children>
-                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="boltingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -382,7 +382,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="5">
                                  <children>
-                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="rivetingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -392,7 +392,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="7">
                                  <children>
-                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="weldingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -402,7 +402,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="9">
                                  <children>
-                                    <TextField maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="positionFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
