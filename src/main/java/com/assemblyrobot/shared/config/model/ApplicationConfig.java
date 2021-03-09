@@ -12,4 +12,5 @@ public class ApplicationConfig {
   @Getter @Setter private ErrorOccurrenceConfig errorOccurrenceParams;
   @Getter @Setter private ErrorFixTimeConfig errorFixTimes;
   @Getter @Setter private StationConfig stationParams;
+  @Getter @Setter private AppConfig appSettings;
 }
