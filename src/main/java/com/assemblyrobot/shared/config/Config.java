@@ -13,7 +13,7 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/** Config loader and manager class. */
+/** Central configuration loader and manager class. */
 public abstract class Config {
   private static final Logger logger = LogManager.getLogger();
   private static ApplicationConfig config;
@@ -102,26 +102,68 @@ public abstract class Config {
     }
   }
 
+  /**
+   * Checks if a user setting exists.
+   *
+   * @param setting {@link UserSetting}
+   * @return {@link Boolean} indicating whether the setting exists.
+   */
   public static boolean hasUserSetting(UserSetting setting) {
     return userSettings.get(setting.getPreferenceName(), null) != null;
   }
 
+  /**
+   * Gets a user setting as a string, or null if not defined.
+   *
+   * @param setting {@link UserSetting}
+   * @return {@link String} or null if not found.
+   */
   public static String getUserSetting(UserSetting setting) {
     return userSettings.get(setting.getPreferenceName(), null);
   }
 
+  /**
+   * Gets a user setting as a boolean.
+   *
+   * <p>IMPORTANT: Due to a combinatory poor design choice in the {@link Preferences} API and how
+   * Java handles primitive types, this method is forced to use a boolean (Not null) as a fallback
+   * value for undefined settings. As a result, it uses "false" as the better security choice.
+   * Subsequently, it's HIGHLY RECOMMENDED to use {@link Config#hasUserSetting(UserSetting)} to
+   * check for the existence of any given setting before running this method, in order to avoid
+   * unexpected results.
+   *
+   * @param setting {@link UserSetting}
+   * @return {@link Boolean}
+   */
   public static boolean getUserSettingBoolean(UserSetting setting) {
     return userSettings.getBoolean(setting.getPreferenceName(), false);
   }
 
+  /**
+   * Defines a user setting as a string value.
+   *
+   * @param setting {@link UserSetting}
+   * @param value {@link String}
+   */
   public static void putUserSetting(UserSetting setting, String value) {
     userSettings.put(setting.getPreferenceName(), value);
   }
 
+  /**
+   * Defines a user setting as a boolean value.
+   *
+   * @param setting {@link UserSetting}
+   * @param value {@link Boolean}
+   */
   public static void putUserSetting(UserSetting setting, boolean value) {
     userSettings.putBoolean(setting.getPreferenceName(), value);
   }
 
+  /**
+   * Removes a user setting.
+   *
+   * @param setting {@link UserSetting}
+   */
   public static void removeUserSetting(UserSetting setting) {
     userSettings.remove(setting.getPreferenceName());
   }
