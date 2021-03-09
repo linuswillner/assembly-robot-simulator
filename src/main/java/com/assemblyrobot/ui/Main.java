@@ -10,7 +10,7 @@ import lombok.val;
 public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Parent rootScene = FXMLLoader.load(getClass().getResource("/scenes/MainWindow.fxml"));
+    Parent rootScene = FXMLLoader.load(getClass().getResource("/scenes/Main.fxml"));
     primaryStage.setTitle("Assembly Robot Simulator");
     primaryStage.setScene(new Scene(rootScene));
     primaryStage.show();
