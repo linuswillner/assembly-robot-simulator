@@ -50,7 +50,7 @@ public class RunDAO implements DAO {
   /**
    * Gets a simulator run by ID.
    *
-   * @param id {@link Run#getId()}
+   * @param id Run ID
    * @return {@link Run}
    */
   @Override
@@ -138,7 +138,7 @@ public class RunDAO implements DAO {
   /**
    * Deletes a run from the database based on its ID.
    *
-   * @param id {@link Run#getId()}
+   * @param id Run ID
    * @return {@link Boolean} indicating whether deletion was successful.
    */
   @Override
