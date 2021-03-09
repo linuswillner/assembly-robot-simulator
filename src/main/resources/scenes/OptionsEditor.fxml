@@ -199,7 +199,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                        <tooltip>
-                                          <Tooltip text="Oh yeah, it's all coming together" />
+                                          <Tooltip maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This value determines the negative exponential distribution for error types. It has been carefully calibrated to result in the correct distribution with the default simulation model. Changing it is therefore only advised if you're aware of the consequences." textOverrun="WORD_ELLIPSIS" wrapText="true" />
                                        </tooltip>
                                     </Label>
                                     <TextField fx:id="errorOccurrenceCoefficient" maxWidth="50.0">
@@ -212,7 +212,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                        <tooltip>
-                                          <Tooltip text="Oh yeah, it's all coming together" />
+                                          <Tooltip maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This defines the X in &quot;1 in X&quot; chance for an error to appear for each product." textOverrun="WORD_ELLIPSIS" wrapText="true" />
                                        </tooltip>
                                     </Label>
                                     <TextField fx:id="errorOccurrenceThreshold" maxWidth="50.0" />
@@ -264,27 +264,27 @@
                                     <Insets left="20.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Fitting Station:" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                              <Label text="Fitting Fix Station:" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets left="20.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Bolting Station:" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                              <Label text="Bolting Fix Station:" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets left="20.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Riveting Station:" GridPane.columnIndex="2" GridPane.valignment="TOP">
+                              <Label text="Riveting Fix Station:" GridPane.columnIndex="2" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Welding Station:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                              <Label text="Welding Fix Station:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label prefHeight="46.0" prefWidth="101.0" text="Position Correcting Station:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                              <Label prefHeight="46.0" prefWidth="101.0" text="Position Fix Station:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
