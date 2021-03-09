@@ -1,11 +1,12 @@
 package com.assemblyrobot.shared.db.dao;
 
+import com.assemblyrobot.shared.config.Config;
+import com.assemblyrobot.shared.config.Config.UserSetting;
 import com.assemblyrobot.shared.db.model.Engine;
 import com.assemblyrobot.shared.db.model.Material;
 import com.assemblyrobot.shared.db.model.Run;
 import com.assemblyrobot.shared.db.model.StageController;
 import com.assemblyrobot.shared.db.model.Station;
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+/** DAO for accessing the simulator run history database. */
 public class RunDAO implements DAO {
   private SessionFactory sessionFactory;
   @Getter private static final RunDAO instance = new RunDAO();
@@ -45,6 +47,12 @@ public class RunDAO implements DAO {
     }
   }
 
+  /**
+   * Gets a simulator run by ID.
+   *
+   * @param id {@link Run#getId()}
+   * @return {@link Run}
+   */
   @Override
   public Run getRun(long id) {
     Transaction transaction = null;
@@ -65,6 +73,11 @@ public class RunDAO implements DAO {
     }
   }
 
+  /**
+   * Returns an array of all runs in the database.
+   *
+   * @return {@link Run}[]
+   */
   @Override
   public Run[] getAllRuns() {
     try (val session = sessionFactory.openSession()) {
@@ -76,6 +89,16 @@ public class RunDAO implements DAO {
     }
   }
 
+  /**
+   * Logs a simulator run.
+   *
+   * @param run {@link Run}
+   * @param engine {@link Engine}
+   * @param stageController {@link StageController}
+   * @param stations {@link Station}[]
+   * @param materials {@link Material}[]
+   * @return {@link Boolean} indicating whether the logging of the run was successful.
+   */
   @Override
   public boolean logRun(
       Run run,
@@ -112,6 +135,12 @@ public class RunDAO implements DAO {
     }
   }
 
+  /**
+   * Deletes a run from the database based on its ID.
+   *
+   * @param id {@link Run#getId()}
+   * @return {@link Boolean} indicating whether deletion was successful.
+   */
   @Override
   public boolean deleteRun(long id) {
     val toDelete = getRun(id);
