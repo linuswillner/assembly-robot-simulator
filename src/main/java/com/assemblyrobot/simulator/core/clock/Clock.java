@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /**
  * Centralised, monotonic simulator clock with support for attaching listeners to monitor clock
@@ -11,13 +12,18 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Clock {
-  @Getter private static final Clock instance = new Clock();
-  @Getter private long currentTick = 0;
+
+  @Getter
+  private static final Clock instance = new Clock();
+  @Getter
+  private long currentTick = 0;
   private final ArrayList<TickAdvanceListener> listeners = new ArrayList<>();
 
   // Clock logic
 
-  /** Move the clock forward by one tick. */
+  /**
+   * Move the clock forward by one tick.
+   */
   public void nextTick() {
     currentTick++;
     onTickAdvance(1);
@@ -38,7 +44,9 @@ public class Clock {
     onTickAdvance(amount);
   }
 
-  /** Reset the clock tick to 0. */
+  /**
+   * Reset the clock tick to 0.
+   */
   public void reset() {
     currentTick = 0;
     onTickReset();
@@ -51,7 +59,7 @@ public class Clock {
    *
    * @param listener {@link TickAdvanceListener}
    */
-  public void registerTickAdvanceListener(TickAdvanceListener listener) {
+  public void registerTickAdvanceListener(@NonNull TickAdvanceListener listener) {
     listeners.add(listener);
   }
 

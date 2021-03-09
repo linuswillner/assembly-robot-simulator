@@ -1,10 +1,13 @@
 package com.assemblyrobot.simulator.core.clock;
 
+import lombok.NonNull;
+
 /**
  * Generic tick advancement listener. Any class that extends this class will automatically be
  * registered as a tick advancement listener in the {@link Clock}.
  */
 public abstract class TickAdvanceListener {
+
   protected TickAdvanceListener() {
     Clock.getInstance().registerTickAdvanceListener(this);
   }
@@ -16,6 +19,8 @@ public abstract class TickAdvanceListener {
    */
   protected abstract void onTickAdvance(long ticksAdvanced);
 
-  /** Callback method for when the clock tick was reset to 0. */
+  /**
+   * Callback method for when the clock tick was reset to 0.
+   */
   protected abstract void onTickReset();
 }

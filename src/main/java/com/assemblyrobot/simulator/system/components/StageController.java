@@ -25,7 +25,8 @@ import org.apache.logging.log4j.Logger;
 @RequiredArgsConstructor
 public class StageController {
 
-  @Getter private final EventQueue eventQueue;
+  @Getter
+  private final EventQueue eventQueue;
   private final HashMap<Long, Tracker> trackers = new HashMap<>();
   private final ArrayList<Material> transferQueue = new ArrayList<>();
   private final AssemblyStage assemblyStage = new AssemblyStage(this);
@@ -40,7 +41,8 @@ public class StageController {
     TOTAL_MATERIAL_AMOUNT("total_entered_material_amount"),
     TOTAL_ASSEMBLED_AMOUNT("total_exited_material_amount");
 
-    @Getter private final String metricName;
+    @Getter
+    private final String metricName;
   }
 
   /**
@@ -66,7 +68,9 @@ public class StageController {
     trackers.put(tracker.getTrackerId(), tracker);
   }
 
-  /** Transfers all materials in the transfer queue to their appropriate destinations. */
+  /**
+   * Transfers all materials in the transfer queue to their appropriate destinations.
+   */
   public void transferAll() {
     transferQueue.forEach(this::sendToNextStage);
     transferQueue.clear();
@@ -95,7 +99,8 @@ public class StageController {
         case ASSEMBLY -> assemblyStage.addToStationQueue(material, null);
         case ERROR_CHECK -> errorCheckStage.addToStationQueue(material, null);
         case FIX -> fixStage.addToStationQueue(material, material.getError());
-        case DEPART -> metricsCollector.incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
+        case DEPART -> metricsCollector
+            .incrementMetric(Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName());
       }
     }
   }
@@ -105,7 +110,7 @@ public class StageController {
    *
    * @param material {@link Material}
    * @param hasError Whether this material has an error, and should be sent to the {@link FixStage}
-   *     before departing.
+   *                 before departing.
    * @return {@link StageID}
    */
   private StageID getNextStage(@NonNull Material material, boolean hasError) {
@@ -140,7 +145,7 @@ public class StageController {
    * @param tracker {@link Tracker}
    * @return {@link StageID} or null if none logged yet-
    */
-  private StageID getLastStageOfTracker(Tracker tracker) {
+  private StageID getLastStageOfTracker(@NonNull Tracker tracker) {
     try {
       return Iterables.getLast(tracker.getStationMetrics()).getStageId();
     } catch (NoSuchElementException e) {
@@ -154,12 +159,12 @@ public class StageController {
    * queues. Triggers scheduling of {@link TransferEvent}s (Type {@link EventType#TRANSFER}).
    *
    * @param material {@link Material} to add to the transfer queue.
-   * @param metrics Populated {@link MaterialMetricsCollector} to add to the tracker.
-   *     <p>Prepares material for transfer method by adding it to {@link
-   *     StageController#transferQueue} for {@link StageController#transferAll()}. Adds {@link
-   *     MaterialMetricsCollector} to {@link Tracker} and uses {@link
-   *     StageController#addTrackingData(Tracker)} to add it to{@link StageController#trackers}
-   *     HashMap
+   * @param metrics  Populated {@link MaterialMetricsCollector} to add to the tracker.
+   *                 <p>Prepares material for transfer method by adding it to {@link
+   *                 StageController#transferQueue} for {@link StageController#transferAll()}. Adds
+   *                 {@link MaterialMetricsCollector} to {@link Tracker} and uses {@link
+   *                 StageController#addTrackingData(Tracker)} to add it to{@link
+   *                 StageController#trackers} HashMap
    */
   public void onChildQueueDepart(
       @NonNull Material material, @NonNull MaterialMetricsCollector metrics) {

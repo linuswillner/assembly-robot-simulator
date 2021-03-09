@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,8 +19,10 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class RunDAO implements DAO {
+
   private SessionFactory sessionFactory;
-  @Getter private static final RunDAO instance = new RunDAO();
+  @Getter
+  private static final RunDAO instance = new RunDAO();
   private static final Logger logger = LogManager.getLogger();
 
   private RunDAO() {
