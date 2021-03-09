@@ -45,7 +45,7 @@
                   <Separator prefWidth="200.0" />
                   <HBox prefHeight="227.0" prefWidth="1000.0">
                      <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefWidth="150.0" text="Simulation" wrapText="true">
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefWidth="150.0" text="Simulation Settings" wrapText="true">
                            <font>
                               <Font size="18.0" />
                            </font>
