@@ -25,11 +25,15 @@ public class RunDAO implements DAO {
   private RunDAO() {
     try {
       val config = new Configuration().configure("/config/hibernate.cfg.xml");
-      val isFirstRun = new File("./FIRST_RUN").createNewFile();
+      val isFirstRun = !Config.hasUserSetting(UserSetting.FIRST_RUN);
 
+      // Only create tables on first run
+      // Also using System.out.println() here because the logger isn't yet defined at the
+      // constructor point
       if (isFirstRun) {
         System.out.println("Tables do not exist, creating.");
         config.setProperty("hibernate.hbm2ddl.auto", "create");
+        Config.putUserSetting(UserSetting.FIRST_RUN, false);
       } else {
         System.out.println("Tables already exist, not creating again.");
         config.setProperty("hibernate.hbm2ddl.auto", "validate");
