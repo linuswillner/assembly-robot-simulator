@@ -2,20 +2,22 @@ package com.assemblyrobot.ui;
 
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.ApplicationConfig;
-import com.assemblyrobot.ui.views.Overview;
+import com.assemblyrobot.ui.views.View;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.Getter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Main extends Application {
-
+  @Getter
   private Stage primaryStage;
+
   private Parent rootScene;
   private final ApplicationConfig config = Config.getConfig();
   private static final Logger logger = LogManager.getLogger();
@@ -24,7 +26,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;
     initStage(primaryStage, "Assembly Robot Simulator");
-    initOverviewLayout();
+    setScene("/scenes/Overview.fxml", "Assembly Robot Simulator");
   }
 
   private void initStage(Stage stage, String stageTitle) {
@@ -50,6 +52,9 @@ public class Main extends Application {
       loader.setLocation(getClass().getResource(sceneResourcePath));
       rootScene = loader.load();
 
+      View controller = loader.getController();
+      controller.setMain(this);
+
       val scene = new Scene(rootScene);
       stage.setScene(scene);
       stage.show();
@@ -57,27 +62,6 @@ public class Main extends Application {
       logger.trace("Opening view {}.", sceneResourcePath);
     } catch (IOException e) {
       logger.error("Could not open view {}:", sceneResourcePath, e);
-    }
-  }
-
-  public void initOverviewLayout() {
-    try {
-      val loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("/scenes/Overview.fxml"));
-      rootScene = loader.load();
-
-      Overview controller = loader.getController();
-      controller.setMain(this);
-
-      val scene = new Scene(rootScene);
-
-      primaryStage.setScene(scene);
-      primaryStage.show();
-
-      logger.trace("Initialising main layout.");
-
-    } catch (IOException e) {
-      logger.error("Could not initialise main layout:", e);
     }
   }
 
