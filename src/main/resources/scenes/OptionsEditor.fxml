@@ -198,7 +198,7 @@
                                  <children>
                                     <Label text="Error occurrence coefficient 🛈">
                                        <tooltip>
-                                          <Tooltip fx:id="errorCoefficientTooltip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This defines the X in &quot;1 in X&quot; chance for an error to appear for each product." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                          <Tooltip fx:id="errorCoefficientTooltip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This value determines the negative exponential distribution for error types. It has been carefully calibrated to result in the correct distribution with the default simulation model. Changing it is therefore only advised if you're aware of the consequences." textOverrun="WORD_ELLIPSIS" wrapText="true" />
                                        </tooltip>
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
