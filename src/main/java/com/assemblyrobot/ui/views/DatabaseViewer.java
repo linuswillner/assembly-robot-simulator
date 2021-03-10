@@ -91,6 +91,36 @@ public class DatabaseViewer implements Initializable, View {
     val stationAmountColumns = stationAmountTable.getColumns();
     stationAmountColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("stationType"));
     stationAmountColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+    // Engine table
+    val engineColumns = engineTable.getColumns();
+    engineColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+    engineColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("totalSimulationTime"));
+
+    // Stage controller table
+    val stageControllerColumns = stageControllerTable.getColumns();
+    stageControllerColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+    stageControllerColumns
+        .get(1)
+        .setCellValueFactory(new PropertyValueFactory<>("totalEnteredMaterialAmount"));
+    stageControllerColumns
+        .get(2)
+        .setCellValueFactory(new PropertyValueFactory<>("totalExitedMaterialAmount"));
+
+    // Stations table
+    val stationColumns = stationTable.getColumns();
+    stationColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+    stationColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("enteredMaterialAmount"));
+    stationColumns.get(2).setCellValueFactory(new PropertyValueFactory<>("exitedMaterialAmount"));
+    stationColumns.get(3).setCellValueFactory(new PropertyValueFactory<>("busyTime"));
+    stationColumns.get(4).setCellValueFactory(new PropertyValueFactory<>("totalPassthroughTime"));
+
+    // Materials table
+    val materialColumns = materialTable.getColumns();
+    materialColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+    materialColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("queueDuration"));
+    materialColumns.get(2).setCellValueFactory(new PropertyValueFactory<>("processingDuration"));
+    materialColumns.get(3).setCellValueFactory(new PropertyValueFactory<>("passthroughTime"));
   }
 
   private void updateCurrentRun(int newIndex) {
@@ -137,5 +167,42 @@ public class DatabaseViewer implements Initializable, View {
     fixTimeItems.add(new ErrorFixTimeVisualization("Riveting", fixTimes.getRivetingFixTime()));
     fixTimeItems.add(new ErrorFixTimeVisualization("Welding", fixTimes.getWeldingFixTime()));
     fixTimeItems.add(new ErrorFixTimeVisualization("Returning", fixTimes.getReturningFixTime()));
+
+    // Station amounts
+    val stationAmounts = currentRun.getStationParams();
+    val stationAmountItems = stationAmountTable.getItems();
+    stationAmountItems.add(
+        new StationAmountVisualization("Assembly", stationAmounts.getAssemblyStationAmount()));
+    stationAmountItems.add(
+        new StationAmountVisualization("Error check", stationAmounts.getErrorCheckStationAmount()));
+    stationAmountItems.add(
+        new StationAmountVisualization(
+            "Fix: Fitting", stationAmounts.getFittingFixStationAmount()));
+    stationAmountItems.add(
+        new StationAmountVisualization(
+            "Fix: Bolting", stationAmounts.getBoltingFixStationAmount()));
+    stationAmountItems.add(
+        new StationAmountVisualization(
+            "Fix: Riveting", stationAmounts.getRivetingFixStationAmount()));
+    stationAmountItems.add(
+        new StationAmountVisualization(
+            "Fix: Welding", stationAmounts.getWeldingFixStationAmount()));
+    stationAmountItems.add(
+        new StationAmountVisualization(
+            "Fix: Returning", stationAmounts.getReturningFixStationAmount()));
+
+    // Engines
+    engineTable.getItems().add(currentRun.getEngine());
+
+    // Stage controllers
+    stageControllerTable.getItems().add(currentRun.getStageController());
+
+    // Stations table
+    val stations = currentRun.getStations();
+    stationTable.getItems().addAll(stations);
+
+    // Materials table
+    val materials = currentRun.getMaterials();
+    materialTable.getItems().addAll(materials);
   }
 }
