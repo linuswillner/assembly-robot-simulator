@@ -72,7 +72,7 @@ public abstract class Engine extends Thread {
 
   /** Stops the engine. */
   public void endRun() {
-    logger.warn("ENGINE: Stopping simulation.");
+    logger.warn("Stopping simulation.");
     setRunning(false);
   }
 

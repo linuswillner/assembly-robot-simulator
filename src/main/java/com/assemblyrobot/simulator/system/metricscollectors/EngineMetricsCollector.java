@@ -3,6 +3,7 @@ package com.assemblyrobot.simulator.system.metricscollectors;
 import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.val;
 
@@ -12,7 +13,7 @@ import lombok.val;
  */
 public class EngineMetricsCollector extends TickAdvanceListener {
   private final MetricsCollector metricsCollector;
-  private static final String TOTAL_SIMULATION_TIME_METRIC_NAME = "total_simulation_time";
+  @Getter private static final String TOTAL_SIMULATION_TIME_METRIC_NAME = "total_simulation_time";
 
   // Cannot use RequiredArgsConstructor and a class property here because that will result in a
   // "variable might not have been initialized" error

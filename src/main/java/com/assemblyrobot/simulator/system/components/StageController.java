@@ -36,7 +36,7 @@ public class StageController {
       new MetricsCollector(getClass().getSimpleName(), getClass().getName());
 
   @RequiredArgsConstructor
-  private enum Metrics {
+  public enum Metrics {
     TOTAL_MATERIAL_AMOUNT("total_entered_material_amount"),
     TOTAL_ASSEMBLED_AMOUNT("total_exited_material_amount");
 

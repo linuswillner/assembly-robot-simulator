@@ -33,7 +33,7 @@ public abstract class Station extends TickAdvanceListener {
   private final MetricsCollector metricsCollector;
 
   @RequiredArgsConstructor
-  private enum Metrics {
+  public enum Metrics {
     STATION_MATERIAL_AMOUNT("station_entered_material_amount"),
     STATION_PROCESSED_AMOUNT("station_exited_material_amount"),
     STATION_BUSY_TIME("station_busy_time"),

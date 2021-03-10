@@ -24,7 +24,7 @@ public class MaterialMetricsCollector {
   private final MetricsCollector metricsCollector;
 
   @RequiredArgsConstructor
-  private enum Metrics {
+  public enum Metrics {
     QUEUE_START_TIME("material_queue_start_time"),
     QUEUE_END_TIME("material_queue_end_time"),
     QUEUE_DURATION("material_queue_duration"),
