@@ -22,10 +22,8 @@ public class StationViewerController {
     stations.sort(Comparator.comparingInt(this::getStationNumber));
 
     stations.forEach(station -> {
-      // TODO: Create TableData
+      data.add(new TableData(station.getStationId(),station.isBusy(),station.getOnQueue()));
     });
-
-    data.add(new TableData("1", "Busy", 5));
     return data;
   }
 
@@ -36,10 +34,8 @@ public class StationViewerController {
     stations.sort(Comparator.comparingInt(this::getStationNumber));
 
     stations.forEach(station -> {
-      // TODO: Create TableData
+      data.add(new TableData(station.getStationId(),station.isBusy(),station.getOnQueue()));
     });
-
-    data.add(new TableData("1", "Busy", 5));
     return data;
   }
 
@@ -53,10 +49,8 @@ public class StationViewerController {
     stations.sort(Comparator.comparing(Station::getStationId));
 
     stations.forEach(station -> {
-      // TODO: Create TableData
+      data.add(new TableData(station.getStationId(),station.isBusy(),station.getOnQueue()));
     });
-
-    data.add(new TableData("1", "Busy", 5));
     return data;
   }
 
