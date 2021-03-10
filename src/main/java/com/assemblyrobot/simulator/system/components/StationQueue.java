@@ -3,7 +3,6 @@ package com.assemblyrobot.simulator.system.components;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.stream.Collectors;
 
 public class StationQueue {
 
@@ -17,7 +16,7 @@ public class StationQueue {
     return queue.peek();
   }
 
-  public List<Station> getQueue() {
+  public List<Station> getAll() {
     return new ArrayList<>(queue);
   }
 
