@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "stations")
 @NoArgsConstructor
-public class Station {
+public class StationDTO {
   @Id
   @Getter
   @Column(nullable = false, length = 64)
@@ -23,7 +23,7 @@ public class Station {
   @Setter
   @ManyToOne
   @JoinColumn(nullable = false, name = "run_id")
-  private Run run;
+  private RunDTO run;
 
   @Getter
   @Column(nullable = false, name = "station_entered_material_amount")
@@ -41,7 +41,7 @@ public class Station {
   @Column(nullable = false, name = "station_total_passthrough_time")
   private double totalPassthroughTime;
 
-  public Station(
+  public StationDTO(
       String id,
       double enteredMaterialAmount,
       double exitedMaterialAmount,

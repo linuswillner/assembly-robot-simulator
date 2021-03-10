@@ -2,6 +2,7 @@ package com.assemblyrobot.ui;
 
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.utils.EnvUtils;
 import com.assemblyrobot.ui.views.View;
 import java.io.IOException;
 import javafx.application.Application;
@@ -23,17 +24,21 @@ public class Main extends Application {
 
   @Override
   public void start(Stage primaryStage) {
+    EnvUtils.checkEnv();
+
     this.primaryStage = primaryStage;
-    initStage(primaryStage, "Assembly Robot Simulator");
-    setScene("/scenes/Overview.fxml", "Assembly Robot Simulator");
+    initStage(primaryStage, "Assembly Robot Simulator", false);
+    setScene("/scenes/Overview.fxml", "Assembly Robot Simulator", false);
   }
 
-  private void initStage(Stage stage, String stageTitle) {
+  private void initStage(Stage stage, String stageTitle, boolean isPopup) {
     // Set stage title
     stage.setTitle(stageTitle);
 
-    val windowHeight = config.getAppSettings().getWindowHeight();
-    val windowWidth = config.getAppSettings().getWindowWidth();
+    val appSettings = config.getAppSettings();
+
+    val windowHeight = isPopup ? appSettings.getPopupWindowHeight() : appSettings.getWindowHeight();
+    val windowWidth = isPopup ? appSettings.getPopupWindowWidth() : appSettings.getWindowWidth();
 
     // Lock window size
     stage.setMinWidth(windowWidth);
@@ -42,10 +47,10 @@ public class Main extends Application {
     stage.setMaxHeight(windowHeight);
   }
 
-  private void setScene(String sceneResourcePath, String stageTitle) {
+  private void setScene(String sceneResourcePath, String stageTitle, boolean isPopup) {
     try {
       val stage = new Stage();
-      initStage(stage, stageTitle);
+      initStage(stage, stageTitle, isPopup);
 
       val loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(sceneResourcePath));
@@ -53,6 +58,7 @@ public class Main extends Application {
 
       View controller = loader.getController();
       controller.setMain(this);
+      controller.setStage(stage);
 
       val scene = new Scene(rootScene);
       stage.setScene(scene);
@@ -65,15 +71,19 @@ public class Main extends Application {
   }
 
   public void showStationViewer() {
-    setScene("/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer");
+    setScene("/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer", false);
   }
 
   public void showDatabaseViewer() {
-    setScene("/scenes/DatabaseViewer.fxml", "Assembly Robot Simulator - Database Viewer");
+    setScene("/scenes/DatabaseViewer.fxml", "Assembly Robot Simulator - Database Viewer", false);
   }
 
   public void showOptionsEditor() {
-    setScene("/scenes/OptionsEditor.fxml", "Assembly Robot Simulator - Options Editor");
+    setScene("/scenes/OptionsEditor.fxml", "Assembly Robot Simulator - Options Editor", false);
+  }
+
+  public void showAbout() {
+    setScene("/scenes/About.fxml", "Assembly Robot Simulator - About", true);
   }
 
   public static void main(String[] args) {

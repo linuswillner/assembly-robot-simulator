@@ -10,13 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Overview implements Initializable, View {
-
   @Setter private Main main;
+  @Setter private Stage stage;
   private final OverviewController controller = new OverviewController();
   private boolean hasStarted = false;
   private boolean isPause = false;
@@ -39,10 +40,9 @@ public class Overview implements Initializable, View {
   }
 
   @FXML
-  public void saveRun(ActionEvent actionEvent) {}
-
-  @FXML
-  public void openAbout(ActionEvent actionEvent) {}
+  public void openAbout(ActionEvent actionEvent) {
+    main.showAbout();
+  }
 
   @FXML
   public void controlSimulation(ActionEvent actionEvent) {
@@ -76,5 +76,19 @@ public class Overview implements Initializable, View {
     double value = sliderSpeed.getValue();
     controller.setSpeed(value);
     System.out.println("Slider speed changed to x" + value);
+  }
+
+  @FXML
+  public void stopSimulation(ActionEvent actionEvent) {
+    controller.stopEngine();
+    resetSimulation();
+    controller.logRun();
+    main.showDatabaseViewer();
+    controller.resetMetricsCollectors();
+  }
+
+  private void resetSimulation() {
+    sliderSpeed.setValue(0);
+    buttonStatus.setText("Start");
   }
 }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -20,12 +22,12 @@
          <children>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleLoadButtonClick" prefHeight="30.0" prefWidth="60.0" text="Load">
+                  <Button mnemonicParsing="false" onAction="#handleLoadButtonClick" prefHeight="30.0" prefWidth="60.0" text="Load...">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleSaveButtonClick" prefHeight="30.0" prefWidth="60.0" text="Save">
+                  <Button mnemonicParsing="false" onAction="#handleSaveButtonClick" prefHeight="30.0" prefWidth="60.0" text="Save...">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -77,7 +79,7 @@
                                  </GridPane.margin>
                               </Label>
                               <Label text="Error Check Time:" GridPane.columnIndex="2" GridPane.valignment="TOP" />
-                              <Label text="Error Occurence:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <Label text="Error Occurrence:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                                  <children>
                                     <Label text="Average">
@@ -194,26 +196,31 @@
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="Type distribution coefficient 🛈">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
+                                    <Label text="Error occurrence coefficient 🛈">
                                        <tooltip>
-                                          <Tooltip maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This value determines the negative exponential distribution for error types. It has been carefully calibrated to result in the correct distribution with the default simulation model. Changing it is therefore only advised if you're aware of the consequences." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                          <Tooltip fx:id="errorCoefficientTooltip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This defines the X in &quot;1 in X&quot; chance for an error to appear for each product." textOverrun="WORD_ELLIPSIS" wrapText="true" />
                                        </tooltip>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Label>
-                                    <TextField fx:id="errorOccurrenceCoefficient" maxWidth="50.0">
-                                       <VBox.margin>
-                                          <Insets bottom="10.0" />
-                                       </VBox.margin>
-                                    </TextField>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="errorOccurrenceCoefficient" disable="true" maxWidth="50.0" />
+                                          <CheckBox fx:id="errorCoefficientCheckbox" mnemonicParsing="false" prefWidth="175.0" text="I know what I'm doing, allow me to edit this value." wrapText="true">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </HBox>
                                     <Label text="Threshold 🛈">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
                                        <tooltip>
-                                          <Tooltip maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This defines the X in &quot;1 in X&quot; chance for an error to appear for each product." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                          <Tooltip fx:id="errorThresholdTooltip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This defines the X in &quot;1 in X&quot; chance for an error to appear for each product." textOverrun="WORD_ELLIPSIS" wrapText="true" />
                                        </tooltip>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Label>
                                     <TextField fx:id="errorOccurrenceThreshold" maxWidth="50.0" />
                                  </children>

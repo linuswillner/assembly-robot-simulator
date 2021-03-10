@@ -25,7 +25,7 @@ public abstract class TextFieldUtils {
    * of {@link TextField}s in said method until the entire hierarchy has been traversed.
    *
    * @param parent {@link Pane}
-   * @param fieldList {@link ArrayList}<{@link TextField}>
+   * @param fieldList {@link ArrayList}&lt;{@link TextField}&gt;
    */
   private static void scanTextFields(Pane parent, ArrayList<TextField> fieldList) {
     parent

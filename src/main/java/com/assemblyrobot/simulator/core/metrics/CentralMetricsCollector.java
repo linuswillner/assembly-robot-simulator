@@ -14,7 +14,7 @@ import lombok.NonNull;
 public class CentralMetricsCollector {
   @Getter private static final CentralMetricsCollector instance = new CentralMetricsCollector();
 
-  @Getter private static final HashMap<String, MetricsCollector> collectors = new HashMap<>();
+  @Getter private final HashMap<String, MetricsCollector> collectors = new HashMap<>();
 
   /**
    * Registers a metrics collector. This method is automatically called by the default constructor of

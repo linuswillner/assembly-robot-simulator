@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "materials")
 @NoArgsConstructor
-public class Material {
+public class MaterialDTO {
   @Id
   @Getter
   @Column(nullable = false, length = 64)
@@ -23,7 +23,7 @@ public class Material {
   @Setter
   @ManyToOne
   @JoinColumn(nullable = false, name = "run_id")
-  private Run run;
+  private RunDTO run;
 
   @Getter
   @Column(nullable = false, name = "material_queue_start_time")
@@ -53,7 +53,7 @@ public class Material {
   @Column(nullable = false, name = "material_passthrough_time")
   private double passthroughTime;
 
-  public Material(
+  public MaterialDTO(
       String id,
       double queueStartTime,
       double queueEndTime,

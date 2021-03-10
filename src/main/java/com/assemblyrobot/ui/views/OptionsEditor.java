@@ -15,10 +15,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import lombok.Setter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
@@ -26,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 
 public class OptionsEditor implements Initializable, View {
   @Setter private Main main;
+  @Setter private Stage stage;
   private static final Logger logger = LogManager.getLogger();
 
   // Root container
@@ -57,6 +62,11 @@ public class OptionsEditor implements Initializable, View {
   @FXML private TextField weldingFixTime;
   @FXML private TextField positionFixTime;
 
+  // Misc
+  @FXML private CheckBox errorCoefficientCheckbox;
+  @FXML private Tooltip errorCoefficientTooltip;
+  @FXML private Tooltip errorThresholdTooltip;
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     val textFields = TextFieldUtils.getAllTextFields(settingsRoot);
@@ -82,6 +92,13 @@ public class OptionsEditor implements Initializable, View {
                             updateConfig();
                           }
                         }));
+
+    // Make the error coefficient checkbox mirror the disabled state of the related input
+    errorCoefficientCheckbox.setOnAction(
+        event -> errorOccurrenceCoefficient.setDisable(!errorOccurrenceCoefficient.isDisabled()));
+
+    errorCoefficientTooltip.setShowDelay(new Duration(0));
+    errorThresholdTooltip.setShowDelay(new Duration(0));
 
     // Pull initial config
     populateConfig();
@@ -154,7 +171,7 @@ public class OptionsEditor implements Initializable, View {
     return fileChooser;
   }
 
-  public void populateConfig() {
+  private void populateConfig() {
     logger.debug("Populating config.");
 
     // Populate configuration into the fields
