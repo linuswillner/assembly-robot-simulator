@@ -40,6 +40,15 @@ public class RunDAO implements DAO {
         System.out.println("Tables already exist, not creating again.");
         config.setProperty("hibernate.hbm2ddl.auto", "validate");
       }
+
+      config.setProperty(
+          "hibernate.connection.url",
+          "jdbc:mariadb://%s:%s/runs?createDatabaseIfNotExist=true"
+              .formatted(System.getenv("DB_HOST"), System.getenv("DB_PORT")));
+
+      config.setProperty("hibernate.connection.username", System.getenv("DB_USERNAME"));
+      config.setProperty("hibernate.connection.password", System.getenv("DB_PASSWORD"));
+
       sessionFactory = config.buildSessionFactory();
     } catch (Exception e) {
       e.printStackTrace();

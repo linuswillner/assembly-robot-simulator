@@ -32,6 +32,7 @@
     "returningFixStationAmount": 1
   },
   "appSettings": {
+    "requiredEnv": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD"],
     "windowWidth": 1024,
     "windowHeight": 800,
     "popupWindowWidth": 500,

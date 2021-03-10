@@ -2,6 +2,7 @@ package com.assemblyrobot.ui;
 
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.utils.EnvUtils;
 import com.assemblyrobot.ui.views.View;
 import java.io.IOException;
 import javafx.application.Application;
@@ -23,6 +24,8 @@ public class Main extends Application {
 
   @Override
   public void start(Stage primaryStage) {
+    EnvUtils.checkEnv();
+
     this.primaryStage = primaryStage;
     initStage(primaryStage, "Assembly Robot Simulator", false);
     setScene("/scenes/Overview.fxml", "Assembly Robot Simulator", false);
