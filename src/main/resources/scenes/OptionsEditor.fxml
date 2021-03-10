@@ -291,7 +291,7 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label prefHeight="46.0" prefWidth="101.0" text="Position Fix Station:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                              <Label prefHeight="46.0" prefWidth="101.0" text="Returning Fix Station:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
@@ -302,7 +302,7 @@
                               <TextField fx:id="boltingStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
                               <TextField fx:id="rivetingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.valignment="TOP" />
                               <TextField fx:id="weldingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                              <TextField fx:id="positionStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <TextField fx:id="returningStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
