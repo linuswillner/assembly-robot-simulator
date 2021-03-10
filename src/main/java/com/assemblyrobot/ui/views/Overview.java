@@ -47,6 +47,7 @@ public class Overview implements Initializable, View {
   @FXML
   public void controlSimulation(ActionEvent actionEvent) {
     if (!hasStarted) {
+      main.showStationViewer();
       buttonStatus.setText("Pause");
       controller.startEngine();
       hasStarted = true;

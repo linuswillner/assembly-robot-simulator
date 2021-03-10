@@ -1,19 +1,21 @@
 package com.assemblyrobot.ui.models;
 
+import lombok.Getter;
+
 public class TableData {
 
-  private int queueLength;
-  private String status;
-  private String name;
+  @Getter private int queueLength;
+  @Getter private String status;
+  @Getter private String name;
 
-  public TableData(String name, String status, int q) {
+  public TableData(String name, boolean status, int q) {
     this.name = name;
     this.queueLength = q;
-    this.status = status;
-  }
-
-  public int getQueueLength() {
-    return queueLength;
+    if (status) {
+      this.status = "Busy";
+    } else {
+      this.status = "Idle";
+    }
   }
 
   public void setQueueLength(int queueLength) {
@@ -24,12 +26,13 @@ public class TableData {
     this.name = name;
   }
 
-  public void setStatus(long s) {
-    if (s > 0) {
+  public void setStatus(Boolean s) {
+    if (s) {
       this.status = "Busy";
     } else {
       this.status = "Idle";
     }
+
   }
 
 

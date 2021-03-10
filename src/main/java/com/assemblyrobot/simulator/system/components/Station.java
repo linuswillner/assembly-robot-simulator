@@ -120,7 +120,7 @@ public abstract class Station extends TickAdvanceListener {
    *
    * @return {@link Boolean}
    */
-  protected boolean isBusy() {
+  public boolean isBusy() {
     return busyTimeRemaining > 0;
   }
 
