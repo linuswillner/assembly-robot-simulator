@@ -40,9 +40,6 @@ public class Overview implements Initializable, View {
   }
 
   @FXML
-  public void saveRun(ActionEvent actionEvent) {}
-
-  @FXML
   public void openAbout(ActionEvent actionEvent) {
     main.showAbout();
   }
@@ -79,5 +76,19 @@ public class Overview implements Initializable, View {
     double value = sliderSpeed.getValue();
     controller.setSpeed(value);
     System.out.println("Slider speed changed to x" + value);
+  }
+
+  @FXML
+  public void stopSimulation(ActionEvent actionEvent) {
+    controller.stopEngine();
+    resetSimulation();
+    controller.logRun();
+    main.showDatabaseViewer();
+    controller.resetMetricsCollectors();
+  }
+
+  private void resetSimulation() {
+    sliderSpeed.setValue(0);
+    buttonStatus.setText("Start");
   }
 }
