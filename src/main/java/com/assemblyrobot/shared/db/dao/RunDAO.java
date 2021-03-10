@@ -2,11 +2,11 @@ package com.assemblyrobot.shared.db.dao;
 
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.Config.UserSetting;
-import com.assemblyrobot.shared.db.model.Engine;
-import com.assemblyrobot.shared.db.model.Material;
-import com.assemblyrobot.shared.db.model.Run;
-import com.assemblyrobot.shared.db.model.StageController;
-import com.assemblyrobot.shared.db.model.Station;
+import com.assemblyrobot.shared.db.model.EngineDTO;
+import com.assemblyrobot.shared.db.model.MaterialDTO;
+import com.assemblyrobot.shared.db.model.RunDTO;
+import com.assemblyrobot.shared.db.model.StageControllerDTO;
+import com.assemblyrobot.shared.db.model.StationDTO;
 import java.util.Arrays;
 import java.util.List;
 import lombok.Getter;
@@ -50,16 +50,16 @@ public class RunDAO implements DAO {
   /**
    * Gets a simulator run by ID.
    *
-   * @param id Run ID
-   * @return {@link Run}
+   * @param id RunDTO ID
+   * @return {@link RunDTO}
    */
   @Override
-  public Run getRun(long id) {
+  public RunDTO getRun(long id) {
     Transaction transaction = null;
 
     try (Session session = sessionFactory.openSession()) {
       transaction = session.beginTransaction();
-      val run = session.get(Run.class, id);
+      val run = session.get(RunDTO.class, id);
       transaction.commit();
       return run;
     } catch (Exception e) {
@@ -76,14 +76,14 @@ public class RunDAO implements DAO {
   /**
    * Returns an array of all runs in the database.
    *
-   * @return {@link Run}[]
+   * @return {@link RunDTO}[]
    */
   @Override
-  public Run[] getAllRuns() {
+  public RunDTO[] getAllRuns() {
     try (val session = sessionFactory.openSession()) {
       @SuppressWarnings({"unchecked", "deprecation"})
-      List<Run> result = session.createCriteria(Run.class).list();
-      return result.toArray(new Run[0]);
+      List<RunDTO> result = session.createCriteria(RunDTO.class).list();
+      return result.toArray(new RunDTO[0]);
     } catch (Exception e) {
       return null;
     }
@@ -92,20 +92,20 @@ public class RunDAO implements DAO {
   /**
    * Logs a simulator run.
    *
-   * @param run {@link Run}
-   * @param engine {@link Engine}
-   * @param stageController {@link StageController}
-   * @param stations {@link Station}[]
-   * @param materials {@link Material}[]
+   * @param run {@link RunDTO}
+   * @param engine {@link EngineDTO}
+   * @param stageController {@link StageControllerDTO}
+   * @param stations {@link StationDTO}[]
+   * @param materials {@link MaterialDTO}[]
    * @return {@link Boolean} indicating whether the logging of the run was successful.
    */
   @Override
   public boolean logRun(
-      Run run,
-      Engine engine,
-      StageController stageController,
-      Station[] stations,
-      Material[] materials) {
+      RunDTO run,
+      EngineDTO engine,
+      StageControllerDTO stageController,
+      StationDTO[] stations,
+      MaterialDTO[] materials) {
     Transaction transaction = null;
 
     try (val session = sessionFactory.openSession()) {
@@ -138,7 +138,7 @@ public class RunDAO implements DAO {
   /**
    * Deletes a run from the database based on its ID.
    *
-   * @param id Run ID
+   * @param id RunDTO ID
    * @return {@link Boolean} indicating whether deletion was successful.
    */
   @Override

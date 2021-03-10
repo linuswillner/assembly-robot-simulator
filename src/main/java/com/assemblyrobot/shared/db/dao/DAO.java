@@ -1,22 +1,22 @@
 package com.assemblyrobot.shared.db.dao;
 
-import com.assemblyrobot.shared.db.model.Engine;
-import com.assemblyrobot.shared.db.model.Material;
-import com.assemblyrobot.shared.db.model.Run;
-import com.assemblyrobot.shared.db.model.StageController;
-import com.assemblyrobot.shared.db.model.Station;
+import com.assemblyrobot.shared.db.model.EngineDTO;
+import com.assemblyrobot.shared.db.model.MaterialDTO;
+import com.assemblyrobot.shared.db.model.RunDTO;
+import com.assemblyrobot.shared.db.model.StageControllerDTO;
+import com.assemblyrobot.shared.db.model.StationDTO;
 
 public interface DAO {
-  Run getRun(long id);
+  RunDTO getRun(long id);
 
-  Run[] getAllRuns();
+  RunDTO[] getAllRuns();
 
   boolean logRun(
-      Run run,
-      Engine engine,
-      StageController stageController,
-      Station[] stations,
-      Material[] materials);
+      RunDTO run,
+      EngineDTO engine,
+      StageControllerDTO stageController,
+      StationDTO[] stations,
+      MaterialDTO[] materials);
 
   boolean deleteRun(long id);
 }
