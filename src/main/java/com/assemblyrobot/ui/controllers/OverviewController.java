@@ -10,9 +10,7 @@ import com.assemblyrobot.shared.db.model.StageControllerDTO;
 import com.assemblyrobot.shared.db.model.StationDTO;
 import com.assemblyrobot.simulator.core.metrics.CentralMetricsCollector;
 import com.assemblyrobot.simulator.system.SimulatorEngine;
-import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.StageController;
-import com.assemblyrobot.simulator.system.components.StageController.Metrics;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
 import com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector;
@@ -68,10 +66,10 @@ public class OverviewController {
             config.getErrorOccurrenceParams(),
             config.getErrorFixTimes(),
             config.getStationParams());
-    AtomicReference<EngineDTO> engine = new AtomicReference<>();
-    AtomicReference<StageControllerDTO> stageController = new AtomicReference<>();
-    ArrayList<StationDTO> stationsList = new ArrayList<StationDTO>();
-    ArrayList<MaterialDTO> materialsList = new ArrayList<MaterialDTO>();
+    val engine = new AtomicReference<EngineDTO>();
+    val stageController = new AtomicReference<StageControllerDTO>();
+    val stationsList = new ArrayList<StationDTO>();
+    val materialsList = new ArrayList<MaterialDTO>();
 
     metricsCollector
         .getCollectors()
@@ -80,7 +78,7 @@ public class OverviewController {
             collector -> {
               switch (collector.getType()) {
                 case ENGINE -> engine
-                    .set(new EngineDTO(collector.getMetric(EngineMetricsCollector.getTOTAL_SIMULATION_TIME_METRIC_NAME())));
+                    .set(new EngineDTO(collector.getMetric(EngineMetricsCollector.Metrics.TOTAL_SIMULATION_TIME.getMetricName())));
 
                 case STAGE -> {}
 
@@ -106,11 +104,10 @@ public class OverviewController {
               }
             });
 
-    StationDTO[] stations = (StationDTO[]) stationsList.toArray();
-    MaterialDTO[] materials = (MaterialDTO[]) materialsList.toArray();
+    val stations = stationsList.toArray(new StationDTO[0]);
+    val materials = materialsList.toArray(new MaterialDTO[0]);
 
     dao.logRun(run, engine.get(), stageController.get(), stations, materials);
-
   }
 
   public void resetMetricsCollectors(){

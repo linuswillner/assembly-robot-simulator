@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.simulator.core.metrics.MetricsCollector;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 
 /**
@@ -13,7 +14,14 @@ import lombok.val;
  */
 public class EngineMetricsCollector extends TickAdvanceListener {
   private final MetricsCollector metricsCollector;
-  @Getter private static final String TOTAL_SIMULATION_TIME_METRIC_NAME = "total_simulation_time";
+
+  @RequiredArgsConstructor
+  public enum Metrics {
+    TOTAL_SIMULATION_TIME("total_simulation_time");
+
+    @Getter
+    private final String metricName;
+  }
 
   // Cannot use RequiredArgsConstructor and a class property here because that will result in a
   // "variable might not have been initialized" error
@@ -25,12 +33,13 @@ public class EngineMetricsCollector extends TickAdvanceListener {
 
   @Override
   protected void onTickAdvance(long ticksAdvanced) {
-    val currentTime = metricsCollector.getMetric(TOTAL_SIMULATION_TIME_METRIC_NAME, 0);
-    metricsCollector.putMetric(TOTAL_SIMULATION_TIME_METRIC_NAME, currentTime + ticksAdvanced);
+    val currentTime = metricsCollector.getMetric(Metrics.TOTAL_SIMULATION_TIME.getMetricName(), 0);
+    metricsCollector.putMetric(
+        Metrics.TOTAL_SIMULATION_TIME.getMetricName(), currentTime + ticksAdvanced);
   }
 
   @Override
   protected void onTickReset() {
-    metricsCollector.putMetric(TOTAL_SIMULATION_TIME_METRIC_NAME, 0);
+    metricsCollector.putMetric(Metrics.TOTAL_SIMULATION_TIME.getMetricName(), 0);
   }
 }
