@@ -78,28 +78,28 @@ public class OverviewController {
             collector -> {
               switch (collector.getType()) {
                 case ENGINE -> engine
-                    .set(new EngineDTO(collector.getMetric(EngineMetricsCollector.Metrics.TOTAL_SIMULATION_TIME.getMetricName())));
+                    .set(new EngineDTO(collector.getMetric(EngineMetricsCollector.Metrics.TOTAL_SIMULATION_TIME.getMetricName(), 0)));
 
                 case STAGE -> {}
 
                 case STAGE_CONTROLLER -> stageController.set(
-                    new StageControllerDTO(collector.getMetric(StageController.Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName()),
-                        collector.getMetric(StageController.Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName())));
+                    new StageControllerDTO(collector.getMetric(StageController.Metrics.TOTAL_MATERIAL_AMOUNT.getMetricName(), 0),
+                        collector.getMetric(StageController.Metrics.TOTAL_ASSEMBLED_AMOUNT.getMetricName(), 0)));
 
                 case STATION -> stationsList.add(new StationDTO(collector.getHostName(),
-                        collector.getMetric(Station.Metrics.STATION_MATERIAL_AMOUNT.getMetricName()),
-                        collector.getMetric(Station.Metrics.STATION_PROCESSED_AMOUNT.getMetricName()),
-                        collector.getMetric(Station.Metrics.STATION_BUSY_TIME.getMetricName()),
-                        collector.getMetric(Station.Metrics.STATION_TOTAL_PASSTHROUGH_TIME.getMetricName())));
+                        collector.getMetric(Station.Metrics.STATION_MATERIAL_AMOUNT.getMetricName(), 0),
+                        collector.getMetric(Station.Metrics.STATION_PROCESSED_AMOUNT.getMetricName(), 0),
+                        collector.getMetric(Station.Metrics.STATION_BUSY_TIME.getMetricName(), 0),
+                        collector.getMetric(Station.Metrics.STATION_TOTAL_PASSTHROUGH_TIME.getMetricName(), 0)));
 
                 case MATERIAL -> materialsList.add(new MaterialDTO(collector.getHostName(),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.QUEUE_START_TIME.getMetricName()),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.QUEUE_END_TIME.getMetricName()),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.QUEUE_DURATION.getMetricName()),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.PROCESSING_START_TIME.getMetricName()),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.PROCESSING_END_TIME.getMetricName()),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.PROCESSING_DURATION.getMetricName()),
-                        collector.getMetric(MaterialMetricsCollector.Metrics.PASSTHROUGH_TIME.getMetricName())
+                        collector.getMetric(MaterialMetricsCollector.Metrics.QUEUE_START_TIME.getMetricName(), 0),
+                        collector.getMetric(MaterialMetricsCollector.Metrics.QUEUE_END_TIME.getMetricName(), 0),
+                        collector.getMetric(MaterialMetricsCollector.Metrics.QUEUE_DURATION.getMetricName(), 0),
+                        collector.getMetric(MaterialMetricsCollector.Metrics.PROCESSING_START_TIME.getMetricName(), 0),
+                        collector.getMetric(MaterialMetricsCollector.Metrics.PROCESSING_END_TIME.getMetricName(), 0),
+                        collector.getMetric(MaterialMetricsCollector.Metrics.PROCESSING_DURATION.getMetricName(), 0),
+                        collector.getMetric(MaterialMetricsCollector.Metrics.PASSTHROUGH_TIME.getMetricName(), 0)
                     ));
               }
             });
