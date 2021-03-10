@@ -2,9 +2,7 @@ package com.assemblyrobot.shared.config;
 
 import com.assemblyrobot.shared.config.model.ApplicationConfig;
 import com.assemblyrobot.shared.utils.JsonUtils;
-import java.io.File;
 import java.io.FileReader;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.prefs.Preferences;
 import lombok.Getter;
@@ -44,6 +42,10 @@ public abstract class Config {
     return config;
   }
 
+  public static void updateConfig(ApplicationConfig newConfig) {
+    config = newConfig;
+  }
+
   /**
    * (Re)loads the configuration file from either the default path ({@link
    * Config#DEFAULT_CONFIG_PATH}) or a custom path as specified by the user.
@@ -55,26 +57,14 @@ public abstract class Config {
     val useCustomConfig = hasUserSetting(UserSetting.CUSTOM_CONFIG_PATH);
 
     if (useCustomConfig) {
-      var configPath = Config.class.getResource(getUserSetting(UserSetting.CUSTOM_CONFIG_PATH));
+      var configPath = getUserSetting(UserSetting.CUSTOM_CONFIG_PATH);
 
-      File configFile = null;
-
-      try {
-        configFile = Paths.get(configPath.toURI()).toFile();
-      } catch (URISyntaxException e) {
-        logger.error("Could not parse custom config path:", e);
+      try (val file = new FileReader(configPath)) {
+        config = JsonUtils.gson.fromJson(file, ApplicationConfig.class);
+        putUserSetting(UserSetting.CUSTOM_CONFIG_LOADED, true);
+      } catch (Exception e) {
+        logger.error("Could not load custom config:", e);
         fallbackToDefaultConfig(); // Fallback to default
-      }
-
-      // Only load custom if we didn't fallback to the default config due to a URISyntaxException
-      if (configFile != null) {
-        try (val file = new FileReader(configFile.getAbsolutePath())) {
-          config = JsonUtils.gson.fromJson(file, ApplicationConfig.class);
-          putUserSetting(UserSetting.CUSTOM_CONFIG_LOADED, true);
-        } catch (Exception e) {
-          logger.error("Could not load custom config:", e);
-          fallbackToDefaultConfig(); // Fallback to default
-        }
       }
     } else {
       fallbackToDefaultConfig();
@@ -88,8 +78,12 @@ public abstract class Config {
    * exit.
    */
   private static void fallbackToDefaultConfig() {
+    logger.info("Falling back to default config.");
+
     try {
-      putUserSetting(UserSetting.CUSTOM_CONFIG_LOADED, false);
+      removeUserSetting(UserSetting.CUSTOM_CONFIG_PATH);
+      removeUserSetting(UserSetting.CUSTOM_CONFIG_LOADED);
+
       val configPath = Config.class.getResource(DEFAULT_CONFIG_PATH);
       val configFile = Paths.get(configPath.toURI()).toFile();
       val file = new FileReader(configFile.getAbsolutePath());
