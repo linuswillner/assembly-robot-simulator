@@ -75,12 +75,13 @@ public class OptionsEditor implements Initializable, View {
             textField ->
                 textField
                     .textProperty()
-                    .addListener((observable, oldValue, newValue) -> {
-                      // Only react to explicit changes
-                      if (!oldValue.equals("") && !newValue.equals("")) {
-                        updateConfig();
-                      }
-                    }));
+                    .addListener(
+                        (observable, oldValue, newValue) -> {
+                          // Only react to explicit changes
+                          if (!oldValue.equals("") && !newValue.equals("")) {
+                            updateConfig();
+                          }
+                        }));
 
     // Pull initial config
     populateConfig();

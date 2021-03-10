@@ -15,8 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Main extends Application {
-  @Getter
-  private Stage primaryStage;
+  @Getter private Stage primaryStage;
 
   private Parent rootScene;
   private final ApplicationConfig config = Config.getConfig();
