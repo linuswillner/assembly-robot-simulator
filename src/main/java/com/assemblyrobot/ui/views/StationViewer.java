@@ -16,39 +16,59 @@ import javafx.stage.Stage;
 import lombok.Setter;
 
 public class StationViewer extends TickAdvanceListener implements Initializable, View {
-  @Setter private Main main;
-  //AssemblyStage columns
-  @FXML private TableView<TableData> TableAssemblyStage;
-  @FXML private TableColumn<TableData, String> TableColumnAssemblyStatus;
-  @FXML private TableColumn<TableData, String> TableColumnAssemblyName;
-  @FXML private TableColumn<TableData, String> TableColumnAssemblyQ;
 
+  @Setter
+  private Main main;
+  //AssemblyStage columns
+  @FXML
+  private TableView<TableData> TableAssemblyStage;
+  @FXML
+  private TableColumn<TableData, String> TableColumnAssemblyStatus;
+  @FXML
+  private TableColumn<TableData, String> TableColumnAssemblyName;
+  @FXML
+  private TableColumn<TableData, String> TableColumnAssemblyQ;
 
 
   //ErrorCheck columns
-  @FXML private TableView<TableData> TableErrorCheckStage;
-  @FXML private TableColumn<TableData, String> TableColumnErrorCheckStatus;
-  @FXML private TableColumn<TableData, String> TableColumnErrorCheckName;
-  @FXML private TableColumn<TableData, String> TableColumnErrorCheckQ;
+  @FXML
+  private TableView<TableData> TableErrorCheckStage;
+  @FXML
+  private TableColumn<TableData, String> TableColumnErrorCheckStatus;
+  @FXML
+  private TableColumn<TableData, String> TableColumnErrorCheckName;
+  @FXML
+  private TableColumn<TableData, String> TableColumnErrorCheckQ;
 
   //FixColumns
-  @FXML private TableView<TableData> TableFixStage;
-  @FXML private TableColumn<TableData, String> TableColumnFixStatus;
-  @FXML private TableColumn<TableData, String> TableColumnFixName;
-  @FXML private TableColumn<TableData, String> TableColumnFixQ;
+  @FXML
+  private TableView<TableData> TableFixStage;
+  @FXML
+  private TableColumn<TableData, String> TableColumnFixStatus;
+  @FXML
+  private TableColumn<TableData, String> TableColumnFixName;
+  @FXML
+  private TableColumn<TableData, String> TableColumnFixQ;
 
   StationViewerController sv = new StationViewerController();
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     //AssemblyStage columns
-    TableColumnAssemblyStatus.setCellValueFactory(new PropertyValueFactory<TableData, String>("status"));
-    TableColumnAssemblyName.setCellValueFactory(new PropertyValueFactory<TableData, String>("name"));
-    TableColumnAssemblyQ.setCellValueFactory(new PropertyValueFactory<TableData, String>("queueLength"));
+    TableColumnAssemblyStatus
+        .setCellValueFactory(new PropertyValueFactory<TableData, String>("status"));
+    TableColumnAssemblyName
+        .setCellValueFactory(new PropertyValueFactory<TableData, String>("name"));
+    TableColumnAssemblyQ
+        .setCellValueFactory(new PropertyValueFactory<TableData, String>("queueLength"));
 
     //ErrorCheckStage columns
-    TableColumnErrorCheckStatus.setCellValueFactory(new PropertyValueFactory<TableData, String>("status"));
-    TableColumnErrorCheckName.setCellValueFactory(new PropertyValueFactory<TableData, String>("name"));
-    TableColumnErrorCheckQ.setCellValueFactory(new PropertyValueFactory<TableData, String>("queueLength"));
+    TableColumnErrorCheckStatus
+        .setCellValueFactory(new PropertyValueFactory<TableData, String>("status"));
+    TableColumnErrorCheckName
+        .setCellValueFactory(new PropertyValueFactory<TableData, String>("name"));
+    TableColumnErrorCheckQ
+        .setCellValueFactory(new PropertyValueFactory<TableData, String>("queueLength"));
 
     //FixStage columns
     TableColumnFixStatus.setCellValueFactory(new PropertyValueFactory<TableData, String>("status"));
@@ -62,21 +82,27 @@ public class StationViewer extends TickAdvanceListener implements Initializable,
 
   }
 
-  private void refresh(){
+  /**
+   * Updates the tables in the UI. called when simulation time advances and when the simulation is
+   * first loaded.
+   */
+  private void refresh() {
     TableAssemblyStage.setItems(sv.assemblyGetData());
     TableErrorCheckStage.setItems(sv.errorCheckGetData());
     TableFixStage.setItems(sv.fixGetData());
   }
 
   @Override
-  public void setStage(Stage stage) {}
+  public void setStage(Stage stage) {
+  }
 
   @Override
   protected void onTickAdvance(long ticksAdvanced) {
     refresh();
   }
+
   @Override
   protected void onTickReset() {
-  refresh();
+    refresh();
   }
 }

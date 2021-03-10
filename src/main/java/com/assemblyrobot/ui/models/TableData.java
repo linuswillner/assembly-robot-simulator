@@ -4,10 +4,24 @@ import lombok.Getter;
 
 public class TableData {
 
-  @Getter private int queueLength;
-  @Getter private String status;
-  @Getter private String name;
+  @Getter
+  private int queueLength;
+  @Getter
+  private String status;
+  @Getter
+  private String name;
 
+
+  /**
+   * this constructor is used to convert the {@link com.assemblyrobot.simulator.system.components.StationQueue}s
+   * station objects to TableData objects that can be viewed in a table
+   *
+   * @param name   the name of the {@link com.assemblyrobot.simulator.system.components.Station}
+   * @param status if the {@link com.assemblyrobot.simulator.system.components.Station} is handling
+   *               a material, this is passed to the constructor as a boolean and converted to
+   *               string for the table
+   * @param q      number of materials in the stations queue
+   */
   public TableData(String name, boolean status, int q) {
     this.name = name;
     this.queueLength = q;
@@ -16,10 +30,6 @@ public class TableData {
     } else {
       this.status = "Idle";
     }
-  }
-
-  public void setQueueLength(int queueLength) {
-    this.queueLength = queueLength;
   }
 
   public void setName(String name) {
