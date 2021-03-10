@@ -11,8 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 import lombok.Getter;
 import lombok.val;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,6 +28,9 @@ public class RunDAO implements DAO {
 
   private RunDAO() {
     try {
+      // Disable hibernate logging
+      Configurator.setLevel("org.hibernate", Level.OFF);
+
       val config = new Configuration().configure("/config/hibernate.cfg.xml");
       val isFirstRun = !Config.hasUserSetting(UserSetting.FIRST_RUN);
 
