@@ -22,12 +22,17 @@ public abstract class Engine extends Thread {
   @Getter(AccessLevel.PROTECTED)
   private final StageController stageController = new StageController(eventQueue);
 
-  private final Clock clock = Clock.getInstance();
+  @Getter private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
   private boolean isRunning = false;
+
+  @Setter private boolean isPause;
+  @Setter private boolean canProceed;
+
+  @Setter private double speedMultiplier = 0;
 
   @Setter private long stopTick = 0;
 
@@ -108,6 +113,11 @@ public abstract class Engine extends Thread {
     System.out.println("---");
     logger.trace("Future event queue dumped.");
 
+    // Test UI button status
+    if(isPause)logger.trace("Simulation paused.");
+    while(isPause && !canProceed){Thread.sleep(1);}
+    canProceed = false;
+
     // Advance clock
     val ticksToAdvance = eventQueue.peekNext().getExecutionTime() - clock.getCurrentTick();
 
@@ -115,9 +125,21 @@ public abstract class Engine extends Thread {
         "Advancing clock by {} ticks to tick {}.",
         ticksToAdvance,
         clock.getCurrentTick() + ticksToAdvance);
-    Thread.sleep(ticksToAdvance * 1000);
+
+    if(speedMultiplier < 0){
+      //If slowing down
+      Thread.sleep(ticksToAdvance * (Math.round(speedMultiplier/-1))*1000);
+    }else if(speedMultiplier > 0){
+      //If speeding up
+      Thread.sleep(ticksToAdvance * (1000/Math.round(speedMultiplier)));
+    }else{
+      //If staying at default
+      Thread.sleep(ticksToAdvance * 1000);
+    }
+
     clock.advanceTick(ticksToAdvance);
     logger.trace("Clock tick is now {}.", clock.getCurrentTick());
+
   }
 
   // Delegate methods
@@ -129,4 +151,6 @@ public abstract class Engine extends Thread {
   protected abstract void onTransfer(TransferEvent event);
 
   protected abstract void onDeparture(Event event);
+
+
 }

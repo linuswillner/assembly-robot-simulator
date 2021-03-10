@@ -83,7 +83,7 @@
                         <Insets bottom="5.0" />
                      </padding>
                   </Label>
-                  <Slider id="sliderSpeed" blockIncrement="0.5" majorTickUnit="0.5" max="5.0" min="-5.0" minorTickCount="0" prefHeight="38.0" prefWidth="533.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+                  <Slider fx:id="sliderSpeed" blockIncrement="0.5" majorTickUnit="0.5" max="5.0" min="-5.0" minorTickCount="0" onMouseReleased="#onSliderChanged" prefHeight="38.0" prefWidth="533.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
                      <padding>
                         <Insets left="20.0" right="20.0" />
                      </padding>
@@ -92,7 +92,7 @@
             </VBox>
             <HBox id="hboxSimulationControlButtons" alignment="CENTER" maxWidth="150.0">
                <children>
-                  <Button id="buttonPlayResume" alignment="CENTER" maxHeight="30.0" maxWidth="75.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="49.0" text="Start">
+                  <Button id="buttonPlayResume" fx:id="buttonStatus" alignment="CENTER" maxHeight="30.0" maxWidth="75.0" mnemonicParsing="false" onAction="#controlSimulation" prefHeight="30.0" prefWidth="49.0" text="Start">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -100,7 +100,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button id="buttonNextTick" maxHeight="30.0" maxWidth="75.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="63.0" text="Next tick" />
+                  <Button id="buttonNextTick" maxHeight="30.0" maxWidth="75.0" mnemonicParsing="false" onAction="#takeStep" prefHeight="30.0" prefWidth="63.0" text="Next tick" />
                </children>
             </HBox>
         </buttons>
