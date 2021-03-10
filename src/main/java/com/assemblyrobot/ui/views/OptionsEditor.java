@@ -21,6 +21,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.Setter;
 import lombok.val;
@@ -29,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 
 public class OptionsEditor implements Initializable, View {
   @Setter private Main main;
+  @Setter private Stage stage;
   private static final Logger logger = LogManager.getLogger();
 
   // Root container
@@ -169,7 +171,7 @@ public class OptionsEditor implements Initializable, View {
     return fileChooser;
   }
 
-  public void populateConfig() {
+  private void populateConfig() {
     logger.debug("Populating config.");
 
     // Populate configuration into the fields

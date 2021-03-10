@@ -33,6 +33,8 @@
   },
   "appSettings": {
     "windowWidth": 1024,
-    "windowHeight": 800
+    "windowHeight": 800,
+    "popupWindowWidth": 500,
+    "popupWindowHeight": 300
   }
 }
