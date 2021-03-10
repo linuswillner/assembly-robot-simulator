@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -70,6 +71,7 @@
             <Label layoutX="724.0" layoutY="415.0" prefWidth="60.0" text="Fix Stage: Position" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
+      <Separator prefWidth="200.0" />
       <ButtonBar id="buttonBarSimulationControls" buttonOrder="U+L_HE+FBIX_NCYOA_R" prefHeight="96.0" prefWidth="1000.0">
         <buttons>
             <VBox id="vboxSimulationSpeed" alignment="CENTER" maxHeight="100.0" prefHeight="61.0" prefWidth="740.0">
@@ -91,7 +93,7 @@
             </VBox>
             <HBox id="hboxSimulationControlButtons" alignment="CENTER" maxWidth="247.0" prefHeight="66.0">
                <children>
-                  <Button id="buttonPlayResume" fx:id="buttonStatus" alignment="CENTER" maxHeight="30.0" mnemonicParsing="false" onAction="#controlSimulation" prefHeight="30.0" prefWidth="56.0" text="Start">
+                  <Button id="buttonPlayResume" fx:id="buttonStatus" alignment="CENTER" maxHeight="30.0" mnemonicParsing="false" onAction="#controlSimulation" prefHeight="30.0" text="Start">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -99,12 +101,12 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button maxHeight="30.0" mnemonicParsing="false" onAction="#stopSimulation" prefHeight="30.0" prefWidth="57.0" text="Stop">
+                  <Button maxHeight="30.0" mnemonicParsing="false" onAction="#stopSimulation" prefHeight="30.0" text="Stop">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button id="buttonNextTick" maxHeight="30.0" mnemonicParsing="false" onAction="#takeStep" prefHeight="30.0" prefWidth="71.0" text="Next tick">
+                  <Button id="buttonNextTick" maxHeight="30.0" mnemonicParsing="false" onAction="#takeStep" prefHeight="30.0" text="Next tick">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin></Button>
