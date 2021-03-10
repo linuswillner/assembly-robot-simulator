@@ -182,6 +182,7 @@ public class StageController {
         new TransferEvent(
             Clock.getInstance().getCurrentTick() + 1,
             EventType.TRANSFER,
+            material.getCurrentStage(),
             getNextStage(material, shouldHaveError),
             error));
   }
