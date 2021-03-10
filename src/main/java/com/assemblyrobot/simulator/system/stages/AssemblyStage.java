@@ -7,6 +7,7 @@ import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.components.StageController;
+import com.assemblyrobot.simulator.system.components.StationQueue;
 import com.assemblyrobot.simulator.system.stations.AssemblyStation;
 import java.util.PriorityQueue;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import lombok.val;
 public class AssemblyStage extends Stage {
 
   @Getter private final StageController stageController;
-  private final PriorityQueue<AssemblyStation> stationQueue = new PriorityQueue<>();
+  @Getter private static final StationQueue stationQueue = new StationQueue();
   private final StationConfig config = Config.getConfig().getStationParams();
 
   public AssemblyStage(@NonNull StageController stageController) {

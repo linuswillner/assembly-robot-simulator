@@ -25,7 +25,7 @@ public abstract class Station extends TickAdvanceListener {
 
   private final StageController stageController;
   private final HashMap<Long, MaterialMetricsCollector> materialsInProcessing = new HashMap<>();
-  private final String stationId;
+  @Getter private final String stationId;
   private Material currentMaterial;
   private long busyTimeRemaining = 0;
   private static final Logger logger = LogManager.getLogger();
@@ -183,6 +183,9 @@ public abstract class Station extends TickAdvanceListener {
     } else {
       processMaterial();
     }
+  }
+  public int getOnQueue(){
+    return materialQueue.size();
   }
 
   @Override

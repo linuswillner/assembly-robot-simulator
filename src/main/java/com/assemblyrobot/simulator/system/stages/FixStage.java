@@ -7,6 +7,7 @@ import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.system.components.Material;
 import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.components.StageController;
+import com.assemblyrobot.simulator.system.components.StationQueue;
 import com.assemblyrobot.simulator.system.stations.FixStation;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 public class FixStage extends Stage {
 
   @Getter private final StageController stageController;
-  private final HashMap<ErrorType, PriorityQueue<FixStation>> substations = new HashMap<>();
+  @Getter private static final HashMap<ErrorType, StationQueue> substations = new HashMap<>();
   private final StationConfig config = Config.getConfig().getStationParams();
   private static final Logger logger = LogManager.getLogger();
 
@@ -52,7 +53,7 @@ public class FixStage extends Stage {
     Arrays.stream(ErrorType.values())
         .forEach(
             errorType -> {
-              val stationQueue = new PriorityQueue<FixStation>();
+              val stationQueue = new StationQueue();
 
               for (int i = 0; i < getStationAmountForErrorType(errorType); i++) {
                 stationQueue.add(new FixStation(this, errorType));
