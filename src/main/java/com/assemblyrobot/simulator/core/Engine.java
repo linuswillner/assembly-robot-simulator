@@ -114,8 +114,10 @@ public abstract class Engine extends Thread {
     logger.trace("Future event queue dumped.");
 
     // Test UI button status
-    if(isPause)logger.trace("Simulation paused.");
-    while(isPause && !canProceed){Thread.sleep(1);}
+    if (isPause) logger.trace("Simulation paused.");
+    while (isPause && !canProceed) {
+      Thread.sleep(1);
+    }
     canProceed = false;
 
     // Advance clock
@@ -126,20 +128,19 @@ public abstract class Engine extends Thread {
         ticksToAdvance,
         clock.getCurrentTick() + ticksToAdvance);
 
-    if(speedMultiplier < 0){
-      //If slowing down
-      Thread.sleep(ticksToAdvance * (Math.round(speedMultiplier/-1))*1000);
-    }else if(speedMultiplier > 0){
-      //If speeding up
-      Thread.sleep(ticksToAdvance * (1000/Math.round(speedMultiplier)));
-    }else{
-      //If staying at default
+    if (speedMultiplier < 0) {
+      // If slowing down
+      Thread.sleep(ticksToAdvance * (Math.round(speedMultiplier / -1)) * 1000);
+    } else if (speedMultiplier > 0) {
+      // If speeding up
+      Thread.sleep(ticksToAdvance * (1000 / Math.round(speedMultiplier)));
+    } else {
+      // If staying at default
       Thread.sleep(ticksToAdvance * 1000);
     }
 
     clock.advanceTick(ticksToAdvance);
     logger.trace("Clock tick is now {}.", clock.getCurrentTick());
-
   }
 
   // Delegate methods
@@ -151,6 +152,4 @@ public abstract class Engine extends Thread {
   protected abstract void onTransfer(TransferEvent event);
 
   protected abstract void onDeparture(Event event);
-
-
 }
