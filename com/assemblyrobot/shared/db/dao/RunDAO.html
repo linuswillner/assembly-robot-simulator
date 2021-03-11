@@ -87,6 +87,7 @@ loadScripts(document, 'script');</script>
 <pre>public class <span class="type-name-label">RunDAO</span>
 extends java.lang.Object
 implements <a href="DAO.html" title="interface in com.assemblyrobot.shared.db.dao">DAO</a></pre>
+<div class="block">DAO for accessing the simulator run history database.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -109,7 +110,9 @@ implements <a href="DAO.html" title="interface in com.assemblyrobot.shared.db.da
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>boolean</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#deleteRun(long)">deleteRun</a></span>&#8203;(long&nbsp;id)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Deletes a run from the database based on its ID.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>void</code></td>
@@ -117,23 +120,29 @@ implements <a href="DAO.html" title="interface in com.assemblyrobot.shared.db.da
 <td class="col-last">&nbsp;</td>
 </tr>
 <tr class="alt-color" id="i2">
-<td class="col-first"><code><a href="../model/Run.html" title="class in com.assemblyrobot.shared.db.model">Run</a>[]</code></td>
+<td class="col-first"><code><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model">RunDTO</a>[]</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getAllRuns()">getAllRuns</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Returns an array of all runs in the database.</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
-<td class="col-first"><code><a href="../model/Run.html" title="class in com.assemblyrobot.shared.db.model">Run</a></code></td>
+<td class="col-first"><code><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model">RunDTO</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getRun(long)">getRun</a></span>&#8203;(long&nbsp;id)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Gets a simulator run by ID.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i4">
 <td class="col-first"><code>boolean</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#logRun(com.assemblyrobot.shared.db.model.Run,com.assemblyrobot.shared.db.model.Engine,com.assemblyrobot.shared.db.model.StageController,com.assemblyrobot.shared.db.model.Station%5B%5D,com.assemblyrobot.shared.db.model.Material%5B%5D)">logRun</a></span>&#8203;(<a href="../model/Run.html" title="class in com.assemblyrobot.shared.db.model">Run</a>&nbsp;run,
-<a href="../model/Engine.html" title="class in com.assemblyrobot.shared.db.model">Engine</a>&nbsp;engine,
-<a href="../model/StageController.html" title="class in com.assemblyrobot.shared.db.model">StageController</a>&nbsp;stageController,
-<a href="../model/Station.html" title="class in com.assemblyrobot.shared.db.model">Station</a>[]&nbsp;stations,
-<a href="../model/Material.html" title="class in com.assemblyrobot.shared.db.model">Material</a>[]&nbsp;materials)</code></th>
-<td class="col-last">&nbsp;</td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#logRun(com.assemblyrobot.shared.db.model.RunDTO,com.assemblyrobot.shared.db.model.EngineDTO,com.assemblyrobot.shared.db.model.StageControllerDTO,com.assemblyrobot.shared.db.model.StationDTO%5B%5D,com.assemblyrobot.shared.db.model.MaterialDTO%5B%5D)">logRun</a></span>&#8203;(<a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model">RunDTO</a>&nbsp;run,
+<a href="../model/EngineDTO.html" title="class in com.assemblyrobot.shared.db.model">EngineDTO</a>&nbsp;engine,
+<a href="../model/StageControllerDTO.html" title="class in com.assemblyrobot.shared.db.model">StageControllerDTO</a>&nbsp;stageController,
+<a href="../model/StationDTO.html" title="class in com.assemblyrobot.shared.db.model">StationDTO</a>[]&nbsp;stations,
+<a href="../model/MaterialDTO.html" title="class in com.assemblyrobot.shared.db.model">MaterialDTO</a>[]&nbsp;materials)</code></th>
+<td class="col-last">
+<div class="block">Logs a simulator run.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -156,34 +165,51 @@ implements <a href="DAO.html" title="interface in com.assemblyrobot.shared.db.da
 <li>
 <section class="detail" id="getRun(long)">
 <h3>getRun</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/Run.html" title="class in com.assemblyrobot.shared.db.model">Run</a></span>&nbsp;<span class="member-name">getRun</span>&#8203;(<span class="parameters">long&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model">RunDTO</a></span>&nbsp;<span class="member-name">getRun</span>&#8203;(<span class="parameters">long&nbsp;id)</span></div>
+<div class="block">Gets a simulator run by ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="DAO.html#getRun(long)">getRun</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.assemblyrobot.shared.db.dao">DAO</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>id</code> - RunDTO ID</dd>
+<dt>Returns:</dt>
+<dd><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>RunDTO</code></a></dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getAllRuns()">
 <h3>getAllRuns</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/Run.html" title="class in com.assemblyrobot.shared.db.model">Run</a>[]</span>&nbsp;<span class="member-name">getAllRuns</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model">RunDTO</a>[]</span>&nbsp;<span class="member-name">getAllRuns</span>()</div>
+<div class="block">Returns an array of all runs in the database.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="DAO.html#getAllRuns()">getAllRuns</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.assemblyrobot.shared.db.dao">DAO</a></code></dd>
+<dt>Returns:</dt>
+<dd><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>RunDTO</code></a>[]</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="logRun(com.assemblyrobot.shared.db.model.Run,com.assemblyrobot.shared.db.model.Engine,com.assemblyrobot.shared.db.model.StageController,com.assemblyrobot.shared.db.model.Station[],com.assemblyrobot.shared.db.model.Material[])">
+<section class="detail" id="logRun(com.assemblyrobot.shared.db.model.RunDTO,com.assemblyrobot.shared.db.model.EngineDTO,com.assemblyrobot.shared.db.model.StageControllerDTO,com.assemblyrobot.shared.db.model.StationDTO[],com.assemblyrobot.shared.db.model.MaterialDTO[])">
 <h3>logRun</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">logRun</span>&#8203;(<span class="parameters"><a href="../model/Run.html" title="class in com.assemblyrobot.shared.db.model">Run</a>&nbsp;run,
-<a href="../model/Engine.html" title="class in com.assemblyrobot.shared.db.model">Engine</a>&nbsp;engine,
-<a href="../model/StageController.html" title="class in com.assemblyrobot.shared.db.model">StageController</a>&nbsp;stageController,
-<a href="../model/Station.html" title="class in com.assemblyrobot.shared.db.model">Station</a>[]&nbsp;stations,
-<a href="../model/Material.html" title="class in com.assemblyrobot.shared.db.model">Material</a>[]&nbsp;materials)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">logRun</span>&#8203;(<span class="parameters"><a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model">RunDTO</a>&nbsp;run,
+<a href="../model/EngineDTO.html" title="class in com.assemblyrobot.shared.db.model">EngineDTO</a>&nbsp;engine,
+<a href="../model/StageControllerDTO.html" title="class in com.assemblyrobot.shared.db.model">StageControllerDTO</a>&nbsp;stageController,
+<a href="../model/StationDTO.html" title="class in com.assemblyrobot.shared.db.model">StationDTO</a>[]&nbsp;stations,
+<a href="../model/MaterialDTO.html" title="class in com.assemblyrobot.shared.db.model">MaterialDTO</a>[]&nbsp;materials)</span></div>
+<div class="block">Logs a simulator run.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="DAO.html#logRun(com.assemblyrobot.shared.db.model.Run,com.assemblyrobot.shared.db.model.Engine,com.assemblyrobot.shared.db.model.StageController,com.assemblyrobot.shared.db.model.Station%5B%5D,com.assemblyrobot.shared.db.model.Material%5B%5D)">logRun</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.assemblyrobot.shared.db.dao">DAO</a></code></dd>
+<dd><code><a href="DAO.html#logRun(com.assemblyrobot.shared.db.model.RunDTO,com.assemblyrobot.shared.db.model.EngineDTO,com.assemblyrobot.shared.db.model.StageControllerDTO,com.assemblyrobot.shared.db.model.StationDTO%5B%5D,com.assemblyrobot.shared.db.model.MaterialDTO%5B%5D)">logRun</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.assemblyrobot.shared.db.dao">DAO</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>run</code> - <a href="../model/RunDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>RunDTO</code></a></dd>
+<dd><code>engine</code> - <a href="../model/EngineDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>EngineDTO</code></a></dd>
+<dd><code>stageController</code> - <a href="../model/StageControllerDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>StageControllerDTO</code></a></dd>
+<dd><code>stations</code> - <a href="../model/StationDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>StationDTO</code></a>[]</dd>
+<dd><code>materials</code> - <a href="../model/MaterialDTO.html" title="class in com.assemblyrobot.shared.db.model"><code>MaterialDTO</code></a>[]</dd>
+<dt>Returns:</dt>
+<dd><code>Boolean</code> indicating whether the logging of the run was successful.</dd>
 </dl>
 </section>
 </li>
@@ -191,9 +217,14 @@ implements <a href="DAO.html" title="interface in com.assemblyrobot.shared.db.da
 <section class="detail" id="deleteRun(long)">
 <h3>deleteRun</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">deleteRun</span>&#8203;(<span class="parameters">long&nbsp;id)</span></div>
+<div class="block">Deletes a run from the database based on its ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="DAO.html#deleteRun(long)">deleteRun</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.assemblyrobot.shared.db.dao">DAO</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>id</code> - RunDTO ID</dd>
+<dt>Returns:</dt>
+<dd><code>Boolean</code> indicating whether deletion was successful.</dd>
 </dl>
 </section>
 </li>

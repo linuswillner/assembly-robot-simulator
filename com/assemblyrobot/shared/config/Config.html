@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":9,"i1":9};
+<script type="text/javascript">var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -46,7 +46,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -82,10 +82,35 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public abstract class <span class="type-name-label">Config</span>
 extends java.lang.Object</pre>
-<div class="block">Config loader and manager class.</div>
+<div class="block">Central configuration loader and manager class.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<li>
+<section class="nested-class-summary" id="nested.class.summary">
+<h2>Nested Class Summary</h2>
+<div class="member-summary">
+<table class="summary-table">
+<caption><span>Nested Classes</span></caption>
+<thead>
+<tr>
+<th class="col-first" scope="col">Modifier and Type</th>
+<th class="col-second" scope="col">Class</th>
+<th class="col-last" scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="alt-color">
+<td class="col-first"><code>static class&nbsp;</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a></span></code></th>
+<td class="col-last">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li>
 <section class="constructor-summary" id="constructor.summary">
@@ -129,15 +154,65 @@ extends java.lang.Object</pre>
 <td class="col-first"><code>static <a href="model/ApplicationConfig.html" title="class in com.assemblyrobot.shared.config.model">ApplicationConfig</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getConfig()">getConfig</a></span>()</code></th>
 <td class="col-last">
-<div class="block">Returns the configuration as defined in resources/config/config.json.</div>
+<div class="block">Returns the configuration as defined in resources/config/config.json, or in an optional custom
+ path if specified by the user.</div>
 </td>
 </tr>
 <tr class="row-color" id="i1">
+<td class="col-first"><code>static java.lang.String</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)">getUserSetting</a></span>&#8203;(<a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</code></th>
+<td class="col-last">
+<div class="block">Gets a user setting as a string, or null if not defined.</div>
+</td>
+</tr>
+<tr class="alt-color" id="i2">
+<td class="col-first"><code>static boolean</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getUserSettingBoolean(com.assemblyrobot.shared.config.Config.UserSetting)">getUserSettingBoolean</a></span>&#8203;(<a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</code></th>
+<td class="col-last">
+<div class="block">Gets a user setting as a boolean.</div>
+</td>
+</tr>
+<tr class="row-color" id="i3">
+<td class="col-first"><code>static boolean</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#hasUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)">hasUserSetting</a></span>&#8203;(<a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</code></th>
+<td class="col-last">
+<div class="block">Checks if a user setting exists.</div>
+</td>
+</tr>
+<tr class="alt-color" id="i4">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#load()">load</a></span>()</code></th>
 <td class="col-last">
-<div class="block">(Re)loads the configuration file from resources/config/config.json.</div>
+<div class="block">(Re)loads the configuration file from either the default path (<code>DEFAULT_CONFIG_PATH</code>) or a custom path as specified by the user.</div>
 </td>
+</tr>
+<tr class="row-color" id="i5">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#putUserSetting(com.assemblyrobot.shared.config.Config.UserSetting,boolean)">putUserSetting</a></span>&#8203;(<a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting,
+boolean&nbsp;value)</code></th>
+<td class="col-last">
+<div class="block">Defines a user setting as a boolean value.</div>
+</td>
+</tr>
+<tr class="alt-color" id="i6">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#putUserSetting(com.assemblyrobot.shared.config.Config.UserSetting,java.lang.String)">putUserSetting</a></span>&#8203;(<a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting,
+java.lang.String&nbsp;value)</code></th>
+<td class="col-last">
+<div class="block">Defines a user setting as a string value.</div>
+</td>
+</tr>
+<tr class="row-color" id="i7">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#removeUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)">removeUserSetting</a></span>&#8203;(<a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</code></th>
+<td class="col-last">
+<div class="block">Removes a user setting.</div>
+</td>
+</tr>
+<tr class="alt-color" id="i8">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#updateConfig(com.assemblyrobot.shared.config.model.ApplicationConfig)">updateConfig</a></span>&#8203;(<a href="model/ApplicationConfig.html" title="class in com.assemblyrobot.shared.config.model">ApplicationConfig</a>&nbsp;newConfig)</code></th>
+<td class="col-last">&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -175,7 +250,8 @@ extends java.lang.Object</pre>
 <section class="detail" id="getConfig()">
 <h3>getConfig</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="model/ApplicationConfig.html" title="class in com.assemblyrobot.shared.config.model">ApplicationConfig</a></span>&nbsp;<span class="member-name">getConfig</span>()</div>
-<div class="block">Returns the configuration as defined in resources/config/config.json.</div>
+<div class="block">Returns the configuration as defined in resources/config/config.json, or in an optional custom
+ path if specified by the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd><a href="model/ApplicationConfig.html" title="class in com.assemblyrobot.shared.config.model"><code>ApplicationConfig</code></a></dd>
@@ -183,13 +259,102 @@ extends java.lang.Object</pre>
 </section>
 </li>
 <li>
+<section class="detail" id="updateConfig(com.assemblyrobot.shared.config.model.ApplicationConfig)">
+<h3>updateConfig</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">updateConfig</span>&#8203;(<span class="parameters"><a href="model/ApplicationConfig.html" title="class in com.assemblyrobot.shared.config.model">ApplicationConfig</a>&nbsp;newConfig)</span></div>
+</section>
+</li>
+<li>
 <section class="detail" id="load()">
 <h3>load</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">load</span>()</div>
-<div class="block">(Re)loads the configuration file from resources/config/config.json.
+<div class="block">(Re)loads the configuration file from either the default path (<code>DEFAULT_CONFIG_PATH</code>) or a custom path as specified by the user.
 
- <p>An IOException in this method will cause the program to exit with code 1, as the config must
- be loaded in order for the application to function.</div>
+ <p>An exception in the loading process of a custom config will cause an all-or-nothing fallback
+ to the default configuration.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="hasUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)">
+<h3>hasUserSetting</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">hasUserSetting</span>&#8203;(<span class="parameters"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</span></div>
+<div class="block">Checks if a user setting exists.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>setting</code> - <a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config"><code>Config.UserSetting</code></a></dd>
+<dt>Returns:</dt>
+<dd><code>Boolean</code> indicating whether the setting exists.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)">
+<h3>getUserSetting</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">java.lang.String</span>&nbsp;<span class="member-name">getUserSetting</span>&#8203;(<span class="parameters"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</span></div>
+<div class="block">Gets a user setting as a string, or null if not defined.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>setting</code> - <a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config"><code>Config.UserSetting</code></a></dd>
+<dt>Returns:</dt>
+<dd><code>String</code> or null if not found.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getUserSettingBoolean(com.assemblyrobot.shared.config.Config.UserSetting)">
+<h3>getUserSettingBoolean</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="member-name">getUserSettingBoolean</span>&#8203;(<span class="parameters"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</span></div>
+<div class="block">Gets a user setting as a boolean.
+
+ <p>IMPORTANT: Due to a combinatory poor design choice in the <code>Preferences</code> API and how
+ Java handles primitive types, this method is forced to use a boolean (Not null) as a fallback
+ value for undefined settings. As a result, it uses "false" as the better security choice.
+ Subsequently, it's HIGHLY RECOMMENDED to use <a href="#hasUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)"><code>hasUserSetting(UserSetting)</code></a> to
+ check for the existence of any given setting before running this method, in order to avoid
+ unexpected results.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>setting</code> - <a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config"><code>Config.UserSetting</code></a></dd>
+<dt>Returns:</dt>
+<dd><code>Boolean</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="putUserSetting(com.assemblyrobot.shared.config.Config.UserSetting,java.lang.String)">
+<h3>putUserSetting</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">putUserSetting</span>&#8203;(<span class="parameters"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting,
+java.lang.String&nbsp;value)</span></div>
+<div class="block">Defines a user setting as a string value.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>setting</code> - <a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config"><code>Config.UserSetting</code></a></dd>
+<dd><code>value</code> - <code>String</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="putUserSetting(com.assemblyrobot.shared.config.Config.UserSetting,boolean)">
+<h3>putUserSetting</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">putUserSetting</span>&#8203;(<span class="parameters"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting,
+boolean&nbsp;value)</span></div>
+<div class="block">Defines a user setting as a boolean value.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>setting</code> - <a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config"><code>Config.UserSetting</code></a></dd>
+<dd><code>value</code> - <code>Boolean</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="removeUserSetting(com.assemblyrobot.shared.config.Config.UserSetting)">
+<h3>removeUserSetting</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">removeUserSetting</span>&#8203;(<span class="parameters"><a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config">Config.UserSetting</a>&nbsp;setting)</span></div>
+<div class="block">Removes a user setting.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>setting</code> - <a href="Config.UserSetting.html" title="enum in com.assemblyrobot.shared.config"><code>Config.UserSetting</code></a></dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -218,7 +383,7 @@ extends java.lang.Object</pre>
 <div>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>

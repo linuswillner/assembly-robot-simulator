@@ -18,3 +18,6 @@ com.assemblyrobot.simulator.system.stations
 com.assemblyrobot.simulator.system.utils
 com.assemblyrobot.ui
 com.assemblyrobot.ui.controllers
+com.assemblyrobot.ui.models
+com.assemblyrobot.ui.utils
+com.assemblyrobot.ui.views
