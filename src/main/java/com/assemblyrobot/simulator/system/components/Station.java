@@ -155,14 +155,6 @@ public abstract class Station extends TickAdvanceListener {
           newBusyTime);
 
       if (newBusyTime == 0) {
-        // Update station metrics
-        metricsCollector.incrementMetric(
-            Metrics.STATION_BUSY_TIME.getMetricName(), getProcessingTime());
-        metricsCollector.incrementMetric(Metrics.STATION_PROCESSED_AMOUNT.getMetricName());
-        metricsCollector.incrementMetric(
-            Metrics.STATION_TOTAL_PASSTHROUGH_TIME.getMetricName(),
-            currentMaterial.getTotalPassthroughTime());
-
         // Update material metrics
         val currentTick = getCurrentTick();
         val currentMaterialId = currentMaterial.getId();
@@ -171,6 +163,14 @@ public abstract class Station extends TickAdvanceListener {
         currentMaterial.setProcessingEndTime(currentTick);
         currentMetrics.setProcessingEndTime(currentTick);
         currentMetrics.updateMetrics();
+
+        // Update station metrics
+        metricsCollector.incrementMetric(
+            Metrics.STATION_BUSY_TIME.getMetricName(), getProcessingTime());
+        metricsCollector.incrementMetric(Metrics.STATION_PROCESSED_AMOUNT.getMetricName());
+        metricsCollector.incrementMetric(
+            Metrics.STATION_TOTAL_PASSTHROUGH_TIME.getMetricName(),
+            currentMaterial.getTotalPassthroughTime());
 
         logger.trace("Processing for material {} finished.", currentMaterial);
 
@@ -189,7 +189,7 @@ public abstract class Station extends TickAdvanceListener {
    *
    * @return {@link Integer}
    */
-  public int getQueueLength(){
+  public int getQueueLength() {
     return materialQueue.size();
   }
 
