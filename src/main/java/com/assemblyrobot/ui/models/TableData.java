@@ -24,25 +24,12 @@ public class TableData {
    */
   public TableData(String name, boolean status, int q) {
     this.name = name;
-    this.queueLength = q;
     if (status) {
       this.status = "Busy";
     } else {
       this.status = "Idle";
     }
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setStatus(Boolean s) {
-    if (s) {
-      this.status = "Busy";
-    } else {
-      this.status = "Idle";
-    }
-
+    this.queueLength = q;
   }
 
 
