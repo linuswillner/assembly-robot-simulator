@@ -19,7 +19,8 @@ import org.apache.logging.log4j.Logger;
 
 public class FixStage extends Stage {
 
-  @Getter private final StageController stageController;
+  @Getter
+  private final StageController stageController;
   private final HashMap<ErrorType, PriorityQueue<FixStation>> substations = new HashMap<>();
   private final StationConfig config = Config.getConfig().getStationParams();
   private static final Logger logger = LogManager.getLogger();
@@ -36,7 +37,7 @@ public class FixStage extends Stage {
    * @param type Type of error station
    * @return {@link Integer}
    */
-  private int getStationAmountForErrorType(ErrorType type) {
+  private int getStationAmountForErrorType(@NonNull ErrorType type) {
     return switch (type) {
       case FITTING -> config.getFittingFixStationAmount();
       case BOLTING -> config.getBoltingFixStationAmount();

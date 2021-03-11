@@ -3,22 +3,38 @@ package com.assemblyrobot.simulator.system.components;
 import com.assemblyrobot.shared.constants.ErrorType;
 import com.assemblyrobot.shared.constants.StageID;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
-/** Represents a product traveling through the production line in a simulated environment. */
+/**
+ * Represents a product traveling through the production line in a simulated environment.
+ */
 @ToString
 public class Material implements Comparable<Material> {
 
   private static int nextFreeId = 1;
 
-  @Getter private final long id;
-  @Getter @Setter private long queueStartTime = 0;
-  @Getter @Setter private long queueEndTime = 0;
-  @Getter @Setter private long processingStartTime = 0;
-  @Getter @Setter private long processingEndTime = 0;
-  @Getter @Setter private StageID currentStage;
-  @Getter @Setter private ErrorType error;
+  @Getter
+  private final long id;
+  @Getter
+  @Setter
+  private long queueStartTime = 0;
+  @Getter
+  @Setter
+  private long queueEndTime = 0;
+  @Getter
+  @Setter
+  private long processingStartTime = 0;
+  @Getter
+  @Setter
+  private long processingEndTime = 0;
+  @Getter
+  @Setter
+  private StageID currentStage;
+  @Getter
+  @Setter
+  private ErrorType error;
 
   public Material() {
     id = nextFreeId;
@@ -46,7 +62,7 @@ public class Material implements Comparable<Material> {
    *
    * @param nextStage The next {@link Stage} this material is headed to.
    */
-  public void setNextStage(StageID nextStage) {
+  public void setNextStage(@NonNull StageID nextStage) {
     this.currentStage = nextStage;
   }
 
@@ -54,7 +70,7 @@ public class Material implements Comparable<Material> {
    * Calculates the amount of time the {@link Material} spent in the system.
    *
    * @return The difference of {@link Material#processingEndTime} and {@link
-   *     Material#processingStartTime}.
+   * Material#processingStartTime}.
    */
   public long getTotalPassthroughTime() {
     return processingEndTime - queueStartTime;

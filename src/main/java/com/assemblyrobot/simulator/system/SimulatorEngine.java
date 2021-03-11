@@ -4,8 +4,10 @@ import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.simulator.core.events.Event;
 import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator;
+import lombok.NonNull;
 
 public class SimulatorEngine extends Engine {
+
   private final ArrivalEventPropagator arrivalEventPropagator =
       new ArrivalEventPropagator(super.getEventQueue());
 
@@ -16,18 +18,18 @@ public class SimulatorEngine extends Engine {
   }
 
   @Override
-  protected void onArrival(Event event) {
+  protected void onArrival(@NonNull Event event) {
     arrivalEventPropagator.feedNext();
     super.getStageController().registerIncomingMaterial();
   }
 
   @Override
-  protected void onTransfer(TransferEvent event) {
-    System.out.println(event.toString());
+  protected void onTransfer(@NonNull TransferEvent event) {
 
     super.getStageController().transferAll();
   }
 
   @Override
-  protected void onDeparture(Event event) {}
+  protected void onDeparture(Event event) {
+  }
 }
