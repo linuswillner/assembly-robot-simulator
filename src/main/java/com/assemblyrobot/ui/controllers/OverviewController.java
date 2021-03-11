@@ -2,6 +2,8 @@ package com.assemblyrobot.ui.controllers;
 
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.constants.ErrorType;
+import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.shared.db.dao.RunDAO;
 import com.assemblyrobot.shared.db.model.EngineDTO;
 import com.assemblyrobot.shared.db.model.MaterialDTO;
@@ -14,9 +16,11 @@ import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
 import com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector;
+import com.assemblyrobot.ui.views.Overview;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -25,11 +29,16 @@ import org.apache.logging.log4j.core.config.Configurator;
 
 public class OverviewController {
 
-  @Getter private static final SimulatorEngine engine = new SimulatorEngine();
+  @Getter private final SimulatorEngine engine = new SimulatorEngine(this);
   private final ApplicationConfig config = Config.getConfig();
   private final RunDAO dao = RunDAO.getInstance();
+  private Overview overview;
   private final CentralMetricsCollector metricsCollector = CentralMetricsCollector.getInstance();
   private static final Logger logger = LogManager.getLogger();
+
+  public OverviewController(Overview overview){
+    this.overview = overview;
+  }
 
   public void startEngine() {
     Configurator.setRootLevel(Level.TRACE);
@@ -113,4 +122,29 @@ public class OverviewController {
   public void resetMetricsCollectors(){
     metricsCollector.dump();
   }
+
+  //Animation controls
+  @SneakyThrows
+  public void onArrival(){
+    overview.materialToAssembly();
+  }
+
+  @SneakyThrows
+  public void onTransfer(String destination){
+    switch (destination){
+      case "error_check" -> overview.materialToErrorCheck();
+      case "bolting" -> overview.materialToBolting();
+      case "fitting" -> overview.materialToFitting();
+      case "welding" -> overview.materialToWelding();
+      case "riveting" ->overview.materialToRiveting();
+      case "positioning" -> overview.materialToPosition();
+      case "from_bolting" -> overview.materialFromBolting();
+      case "from_fitting" -> overview.materialFromFitting();
+      case "from_welding" -> overview.materialFromWelding();
+      case "from_riveting" -> overview.materialFromRiveting();
+      case "from_positioning" -> overview.materialFromPosition();
+      case "departure" -> overview.materialToDeparture();
+    }
+  }
+
 }
