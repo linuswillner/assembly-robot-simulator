@@ -1,7 +1,6 @@
 package com.assemblyrobot.ui.controllers;
 
 import com.assemblyrobot.shared.config.Config;
-import com.assemblyrobot.shared.config.model.Configuration;
 import com.assemblyrobot.shared.db.dao.RunDAO;
 import com.assemblyrobot.shared.db.model.EngineDTO;
 import com.assemblyrobot.shared.db.model.MaterialDTO;
@@ -30,7 +29,6 @@ import org.apache.logging.log4j.core.config.Configurator;
 public class OverviewController {
   @Getter private StationViewerController stationViewerController;
   private SimulatorEngine engine = new SimulatorEngine(this);
-  private final Configuration config = Config.getConfig();
   private final RunDAO dao = RunDAO.getInstance();
   private final CentralMetricsCollector metricsCollector = CentralMetricsCollector.getInstance();
   private final Overview overview;
@@ -106,6 +104,8 @@ public class OverviewController {
    * Logs the current simulator run to the database.
    */
   public void logRun() {
+    val config = Config.getConfig();
+
     val run =
         new RunDTO(
             config.getArrivalIntervalParams(),

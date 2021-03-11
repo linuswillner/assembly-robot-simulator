@@ -128,6 +128,7 @@ public class OptionsEditor implements Initializable, View {
       }
 
       populateConfig();
+      updateConfig();
     }
   }
 
@@ -163,6 +164,7 @@ public class OptionsEditor implements Initializable, View {
     Config.removeUserSetting(UserSetting.CUSTOM_CONFIG_LOADED);
     Config.load();
     populateConfig();
+    updateConfig();
   }
 
   private FileChooser getFileChooser(String defaultFileName) {
