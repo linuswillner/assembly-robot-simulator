@@ -37,7 +37,7 @@ public class StageController {
       new MetricsCollector(getClass().getSimpleName(), getClass().getName());
 
   @RequiredArgsConstructor
-  private enum Metrics {
+  public enum Metrics {
     TOTAL_MATERIAL_AMOUNT("total_entered_material_amount"),
     TOTAL_ASSEMBLED_AMOUNT("total_exited_material_amount");
 
@@ -183,11 +183,18 @@ public class StageController {
       material.setError(error);
     }
 
+    val hasError = material.getCurrentStage() == StageID.FIX;
+
+    if (shouldHaveError) {
+      material.setError(error);
+    }
+
     eventQueue.schedule(
         new TransferEvent(
             Clock.getInstance().getCurrentTick() + 1,
             EventType.TRANSFER,
+            material.getCurrentStage(),
             getNextStage(material, shouldHaveError),
-            error));
+            hasError ? material.getError() : error));
   }
 }

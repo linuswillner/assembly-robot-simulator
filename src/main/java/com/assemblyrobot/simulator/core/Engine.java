@@ -6,10 +6,10 @@ import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
+import com.assemblyrobot.ui.controllers.StationViewerController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,12 +22,20 @@ public abstract class Engine extends Thread {
   @Getter(AccessLevel.PROTECTED)
   private final StageController stageController = new StageController(eventQueue);
 
-  private final Clock clock = Clock.getInstance();
+  @Setter
+  private StationViewerController stationViewerController;
+
+  @Getter private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
   private boolean isRunning = false;
+
+  @Setter private boolean isPause;
+  @Setter private boolean canProceed;
+
+  @Setter private double speedMultiplier = 0;
 
   @Setter private long stopTick = 0;
 
@@ -38,10 +46,13 @@ public abstract class Engine extends Thread {
   /**
    * Starts the Engine thread. Do not call this method manually; call the start() method instead.
    */
-  @SneakyThrows
   @Override
   public void run() {
-    startEngine();
+    try {
+      startEngine();
+    } catch (InterruptedException e) {
+      // Silently swallow InterruptedExceptions as this indicates stopping of simulation
+    }
   }
 
   /**
@@ -67,7 +78,7 @@ public abstract class Engine extends Thread {
 
   /** Stops the engine. */
   public void endRun() {
-    logger.warn("ENGINE: Stopping simulation.");
+    logger.warn("Stopping simulation.");
     setRunning(false);
   }
 
@@ -108,14 +119,34 @@ public abstract class Engine extends Thread {
     System.out.println("---");
     logger.trace("Future event queue dumped.");
 
+    // Test UI button status
+    if (isPause) logger.trace("Simulation paused.");
+    while (isPause && !canProceed) {
+      Thread.sleep(1);
+    }
+    canProceed = false;
+
     // Advance clock
     val ticksToAdvance = eventQueue.peekNext().getExecutionTime() - clock.getCurrentTick();
+
+    stationViewerController.refreshStationViewer();
 
     logger.trace(
         "Advancing clock by {} ticks to tick {}.",
         ticksToAdvance,
         clock.getCurrentTick() + ticksToAdvance);
-    Thread.sleep(ticksToAdvance * 1000);
+
+    if (speedMultiplier < 0) {
+      // If slowing down
+      Thread.sleep(ticksToAdvance * (Math.round(speedMultiplier / -1)) * 1000);
+    } else if (speedMultiplier > 0) {
+      // If speeding up
+      Thread.sleep(ticksToAdvance * (1000 / Math.round(speedMultiplier)));
+    } else {
+      // If staying at default
+      Thread.sleep(ticksToAdvance * 1000);
+    }
+
     clock.advanceTick(ticksToAdvance);
     logger.trace("Clock tick is now {}.", clock.getCurrentTick());
   }

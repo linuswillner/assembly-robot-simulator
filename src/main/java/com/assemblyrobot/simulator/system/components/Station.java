@@ -25,7 +25,7 @@ public abstract class Station extends TickAdvanceListener {
 
   private final StageController stageController;
   private final HashMap<Long, MaterialMetricsCollector> materialsInProcessing = new HashMap<>();
-  private final String stationId;
+  @Getter private final String stationId;
   private Material currentMaterial;
   private long busyTimeRemaining = 0;
   private static final Logger logger = LogManager.getLogger();
@@ -33,7 +33,7 @@ public abstract class Station extends TickAdvanceListener {
   private final MetricsCollector metricsCollector;
 
   @RequiredArgsConstructor
-  private enum Metrics {
+  public enum Metrics {
     STATION_MATERIAL_AMOUNT("station_entered_material_amount"),
     STATION_PROCESSED_AMOUNT("station_exited_material_amount"),
     STATION_BUSY_TIME("station_busy_time"),
@@ -120,7 +120,7 @@ public abstract class Station extends TickAdvanceListener {
    *
    * @return {@link Boolean}
    */
-  protected boolean isBusy() {
+  public boolean isBusy() {
     return busyTimeRemaining > 0;
   }
 
@@ -183,6 +183,9 @@ public abstract class Station extends TickAdvanceListener {
     } else {
       processMaterial();
     }
+  }
+  public int getOnQueue(){
+    return materialQueue.size();
   }
 
   @Override

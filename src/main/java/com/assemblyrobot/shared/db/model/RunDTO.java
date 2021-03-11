@@ -27,7 +27,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "runs")
 @NoArgsConstructor
-public class Run implements Serializable {
+public class RunDTO implements Serializable {
   @Serial private static final long serialVersionUID = 1L;
 
   @Id
@@ -57,12 +57,12 @@ public class Run implements Serializable {
   @Getter
   @Setter
   @OneToOne(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL)
-  private Engine engine;
+  private EngineDTO engine;
 
   @Getter
   @Setter
   @OneToOne(mappedBy = "run", orphanRemoval = true, cascade = CascadeType.ALL)
-  private StageController stageController;
+  private StageControllerDTO stageController;
 
   @Getter
   @Column(nullable = false)
@@ -71,7 +71,7 @@ public class Run implements Serializable {
       orphanRemoval = true,
       cascade = CascadeType.ALL,
       fetch = FetchType.EAGER)
-  private final Set<Station> stations = new HashSet<>();
+  private final Set<StationDTO> stations = new HashSet<>();
 
   @Getter
   @Column(nullable = false)
@@ -80,11 +80,11 @@ public class Run implements Serializable {
       orphanRemoval = true,
       cascade = CascadeType.ALL,
       fetch = FetchType.EAGER)
-  private final Set<Material> materials = new HashSet<>();
+  private final Set<MaterialDTO> materials = new HashSet<>();
 
   // Having to use this monolith constructor as opposed to @RequiredArgsConstructor because we don't
   // want a run ID to be defined before creation time
-  public Run(
+  public RunDTO(
       NormalDistributionConfig arrivalIntervalParams,
       NormalDistributionConfig assemblyTimeParams,
       NormalDistributionConfig errorCheckTimeParams,
@@ -147,11 +147,11 @@ public class Run implements Serializable {
     this.stationParams = gson.toJson(stationParams);
   }
 
-  public void setStations(Station[] stations) {
+  public void setStations(StationDTO[] stations) {
     this.stations.addAll(Arrays.asList(stations));
   }
 
-  public void setMaterials(Material[] materials) {
+  public void setMaterials(MaterialDTO[] materials) {
     this.materials.addAll(Arrays.asList(materials));
   }
 }

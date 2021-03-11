@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="740.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assemblyrobot.ui.views.OptionsEditor">
+   <children>
+      <AnchorPane>
+         <children>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleLoadButtonClick" prefHeight="30.0" prefWidth="60.0" text="Load...">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleSaveButtonClick" prefHeight="30.0" prefWidth="60.0" text="Save...">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleResetButtonClick" prefHeight="30.0" prefWidth="60.0" text="Reset" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="settingsRoot" prefHeight="677.0" prefWidth="1024.0">
+         <children>
+            <VBox prefHeight="676.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="227.0" prefWidth="1000.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefWidth="150.0" text="Simulation Settings" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <GridPane prefWidth="850.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.0" minWidth="10.0" prefWidth="150.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="901.0" minWidth="10.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="901.0" minWidth="0.0" prefWidth="126.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="901.0" minWidth="10.0" prefWidth="388.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="TOP_LEFT" text="Arrival Event Interval:" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Assembly Time:" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Error Check Time:" GridPane.columnIndex="2" GridPane.valignment="TOP" />
+                              <Label text="Error Occurrence:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label text="Average">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="arrivalIntervalAverage" maxWidth="50.0" text="empty" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Label text="Variance">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="arrivalIntervalVariance" maxWidth="50.0" text="empty" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Average">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="assemblyTimeAverage" maxWidth="50.0" text="empty" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Label text="Variance">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="assemblyTimeVariance" maxWidth="50.0" text="empty" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+                                 <children>
+                                    <Label text="Average">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="24.0" prefWidth="395.0">
+                                       <children>
+                                          <TextField fx:id="errorCheckTimeAverage" maxWidth="50.0" text="empty" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Label text="Variance">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="395.0">
+                                       <children>
+                                          <TextField fx:id="errorCheckTimeVariance" maxWidth="50.0" text="empty" />
+                                          <Label alignment="CENTER" text="s">
+                                             <HBox.margin>
+                                                <Insets left="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Error occurrence coefficient 🛈">
+                                       <tooltip>
+                                          <Tooltip fx:id="errorCoefficientTooltip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This value determines the negative exponential distribution for error types. It has been carefully calibrated to result in the correct distribution with the default simulation model. Changing it is therefore only advised if you're aware of the consequences." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                       </tooltip>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="errorOccurrenceCoefficient" disable="true" maxWidth="50.0" text="empty" />
+                                          <CheckBox fx:id="errorCoefficientCheckbox" mnemonicParsing="false" prefWidth="175.0" text="I know what I'm doing, allow me to edit this value." wrapText="true">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Threshold 🛈">
+                                       <tooltip>
+                                          <Tooltip fx:id="errorThresholdTooltip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="This defines the X in &quot;1 in X&quot; chance for an error to appear for each product." textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                       </tooltip>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                    <TextField fx:id="errorOccurrenceThreshold" maxWidth="50.0" text="empty" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" top="20.0" />
+                     </padding>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="310.0" prefWidth="1024.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefWidth="150.0" text="Station Amounts" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <GridPane prefHeight="245.0" prefWidth="850.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="493.0" minWidth="10.0" prefWidth="150.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="783.0" minWidth="10.0" prefWidth="129.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="783.0" minWidth="10.0" prefWidth="387.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="60.0" minHeight="40.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="80.0" minHeight="48.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="97.0" minHeight="59.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="65.0" minHeight="30.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Assembly Station:" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Error Check Station:" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Fitting Fix Station:" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Bolting Fix Station:" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Riveting Fix Station:" GridPane.columnIndex="2" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Welding Fix Station:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label prefHeight="46.0" prefWidth="101.0" text="Returning Fix Station:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="assemblyStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="errorCheckStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="fittingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <TextField fx:id="boltingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                              <TextField fx:id="rivetingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.valignment="TOP" />
+                              <TextField fx:id="weldingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="returningStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="30.0" />
+                     </padding>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="127.0" prefWidth="1024.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefWidth="150.0" text="Error Fix Times" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <GridPane alignment="CENTER" prefWidth="850.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="491.0" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="0.0" prefWidth="73.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="0.0" prefWidth="77.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="0.0" prefWidth="81.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="83.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="79.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="84.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="77.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="87.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="102.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Fitting Error:" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Bolting Error:" GridPane.columnIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Riveting Error:" GridPane.columnIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Welding Error:" GridPane.columnIndex="6" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Position Error:" GridPane.columnIndex="8" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <TextField fx:id="fittingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="3">
+                                 <children>
+                                    <TextField fx:id="boltingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="5">
+                                 <children>
+                                    <TextField fx:id="rivetingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="7">
+                                 <children>
+                                    <TextField fx:id="weldingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="9">
+                                 <children>
+                                    <TextField fx:id="positionFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
+                                    <Label text="s">
+                                       <HBox.margin>
+                                          <Insets left="4.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

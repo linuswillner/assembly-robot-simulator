@@ -30,5 +30,12 @@
     "rivetingFixStationAmount": 1,
     "weldingFixStationAmount": 1,
     "returningFixStationAmount": 1
+  },
+  "appSettings": {
+    "requiredEnv": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD"],
+    "windowWidth": 1040,
+    "windowHeight": 800,
+    "popupWindowWidth": 500,
+    "popupWindowHeight": 300
   }
 }

@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "engines")
+@Table(name = "stage_controllers")
 @NoArgsConstructor
-public class Engine {
+public class StageControllerDTO {
   @Id
   @Getter
   @Column(nullable = false)
@@ -25,13 +25,18 @@ public class Engine {
   @Setter
   @ManyToOne
   @JoinColumn(nullable = false, name = "run_id")
-  private Run run;
+  private RunDTO run;
 
   @Getter
-  @Column(nullable = false, name = "total_simulation_time")
-  private double totalSimulationTime;
+  @Column(nullable = false, name = "total_entered_material_amount")
+  private double totalEnteredMaterialAmount;
 
-  public Engine(double totalSimulationTime) {
-    this.totalSimulationTime = totalSimulationTime;
+  @Getter
+  @Column(nullable = false, name = "total_exited_material_amount")
+  private double totalExitedMaterialAmount;
+
+  public StageControllerDTO(double totalEnteredMaterialAmount, double totalExitedMaterialAmount) {
+    this.totalEnteredMaterialAmount = totalEnteredMaterialAmount;
+    this.totalExitedMaterialAmount = totalExitedMaterialAmount;
   }
 }

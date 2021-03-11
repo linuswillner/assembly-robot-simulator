@@ -13,7 +13,7 @@ class TransferEventTest {
   @DisplayName("toString(): Returns information with expansions")
   void testToString() {
     assertEquals(
-        "TransferEvent(executionTime=0, type=TRANSFER, destination=ERROR_CHECK, error=FITTING)",
-        new TransferEvent(0, EventType.TRANSFER, StageID.ERROR_CHECK, ErrorType.FITTING).toString());
+        "TransferEvent(executionTime=0, type=TRANSFER, current=ASSEMBLY, destination=ERROR_CHECK, error=FITTING)",
+        new TransferEvent(0, EventType.TRANSFER, StageID.ASSEMBLY, StageID.ERROR_CHECK, ErrorType.FITTING).toString());
   }
 }

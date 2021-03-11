@@ -5,16 +5,13 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mariadb://localhost:3306/runs?createDatabaseIfNotExist=true</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">password</property>
     <property name="show_sql">false</property>
 
     <!-- Entity mappings -->
-    <mapping class="com.assemblyrobot.shared.db.model.Run"/>
-    <mapping class="com.assemblyrobot.shared.db.model.Engine"/>
-    <mapping class="com.assemblyrobot.shared.db.model.StageController"/>
-    <mapping class="com.assemblyrobot.shared.db.model.Station"/>
-    <mapping class="com.assemblyrobot.shared.db.model.Material"/>
+    <mapping class="com.assemblyrobot.shared.db.model.RunDTO"/>
+    <mapping class="com.assemblyrobot.shared.db.model.EngineDTO"/>
+    <mapping class="com.assemblyrobot.shared.db.model.StageControllerDTO"/>
+    <mapping class="com.assemblyrobot.shared.db.model.StationDTO"/>
+    <mapping class="com.assemblyrobot.shared.db.model.MaterialDTO"/>
   </session-factory>
 </hibernate-configuration>
