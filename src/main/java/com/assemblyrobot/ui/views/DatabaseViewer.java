@@ -1,16 +1,17 @@
 package com.assemblyrobot.ui.views;
 
-import com.assemblyrobot.shared.db.model.EngineDTO;
 import com.assemblyrobot.shared.db.model.MaterialDTO;
 import com.assemblyrobot.shared.db.model.RunDTO;
 import com.assemblyrobot.shared.db.model.StageControllerDTO;
 import com.assemblyrobot.shared.db.model.StationDTO;
 import com.assemblyrobot.ui.Main;
 import com.assemblyrobot.ui.controllers.DatabaseViewerController;
+import com.assemblyrobot.ui.models.EngineVisualization;
 import com.assemblyrobot.ui.models.ErrorFixTimeVisualization;
 import com.assemblyrobot.ui.models.ErrorOccurrenceVisualization;
 import com.assemblyrobot.ui.models.NormalDistributionVisualization;
 import com.assemblyrobot.ui.models.StationAmountVisualization;
+import com.assemblyrobot.ui.models.StationVisualization;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -37,9 +38,9 @@ public class DatabaseViewer implements Initializable, View {
   @FXML private TableView<ErrorOccurrenceVisualization> errorOccurrenceTable;
   @FXML private TableView<ErrorFixTimeVisualization> errorFixTimeTable;
   @FXML private TableView<StationAmountVisualization> stationAmountTable;
-  @FXML private TableView<EngineDTO> engineTable;
+  @FXML private TableView<EngineVisualization> engineTable;
   @FXML private TableView<StageControllerDTO> stageControllerTable;
-  @FXML private TableView<StationDTO> stationTable;
+  @FXML private TableView<StationVisualization> stationTable;
   @FXML private TableView<MaterialDTO> materialTable;
 
   @Override
@@ -96,17 +97,16 @@ public class DatabaseViewer implements Initializable, View {
 
     // Engine table
     val engineColumns = engineTable.getColumns();
-    engineColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
-    engineColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("totalSimulationTime"));
+    engineColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("totalSimulationTime"));
+    engineColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("totalThroughput"));
 
     // Stage controller table
     val stageControllerColumns = stageControllerTable.getColumns();
-    stageControllerColumns.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
     stageControllerColumns
-        .get(1)
+        .get(0)
         .setCellValueFactory(new PropertyValueFactory<>("totalEnteredMaterialAmount"));
     stageControllerColumns
-        .get(2)
+        .get(1)
         .setCellValueFactory(new PropertyValueFactory<>("totalExitedMaterialAmount"));
 
     // Stations table
@@ -115,7 +115,12 @@ public class DatabaseViewer implements Initializable, View {
     stationColumns.get(1).setCellValueFactory(new PropertyValueFactory<>("enteredMaterialAmount"));
     stationColumns.get(2).setCellValueFactory(new PropertyValueFactory<>("exitedMaterialAmount"));
     stationColumns.get(3).setCellValueFactory(new PropertyValueFactory<>("busyTime"));
-    stationColumns.get(4).setCellValueFactory(new PropertyValueFactory<>("totalPassthroughTime"));
+    stationColumns.get(4).setCellValueFactory(new PropertyValueFactory<>("totalPassThroughTime"));
+    stationColumns.get(5).setCellValueFactory(new PropertyValueFactory<>("utilization"));
+    stationColumns.get(6).setCellValueFactory(new PropertyValueFactory<>("throughput"));
+    stationColumns.get(7).setCellValueFactory(new PropertyValueFactory<>("averageServiceTime"));
+    stationColumns.get(8).setCellValueFactory(new PropertyValueFactory<>("averageResponseTime"));
+    stationColumns.get(9).setCellValueFactory(new PropertyValueFactory<>("averageQueueLength"));
 
     // Materials table
     val materialColumns = materialTable.getColumns();
@@ -194,14 +199,20 @@ public class DatabaseViewer implements Initializable, View {
             "Fix: Returning", stationAmounts.getReturningFixStationAmount()));
 
     // Engines
-    engineTable.getItems().add(currentRun.getEngine());
+    engineTable
+        .getItems()
+        .add(new EngineVisualization(currentRun.getEngine(), currentRun.getStageController()));
 
     // Stage controllers
     stageControllerTable.getItems().add(currentRun.getStageController());
 
     // Stations table
     val stations = currentRun.getStations();
-    stationTable.getItems().addAll(stations);
+    val stationItems = stationTable.getItems();
+
+    for (StationDTO stationDTO : stations) {
+      stationItems.add(new StationVisualization(stationDTO, currentRun.getEngine()));
+    }
 
     // Materials table
     val materials = currentRun.getMaterials();
