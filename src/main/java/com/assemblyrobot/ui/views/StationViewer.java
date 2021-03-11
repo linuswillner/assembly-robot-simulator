@@ -3,7 +3,7 @@ package com.assemblyrobot.ui.views;
 import com.assemblyrobot.simulator.core.clock.TickAdvanceListener;
 import com.assemblyrobot.ui.Main;
 import com.assemblyrobot.ui.controllers.StationViewerController;
-import com.assemblyrobot.ui.models.StationVisualization;
+import com.assemblyrobot.ui.models.StationViewerVisualization;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -24,22 +24,22 @@ public class StationViewer extends TickAdvanceListener implements Initializable,
   private final StationViewerController controller = new StationViewerController(this);
 
   // AssemblyStage columns
-  @FXML private TableView<StationVisualization> assemblyStageTable;
-  @FXML private TableColumn<StationVisualization, String> assemblyStatusColumn;
-  @FXML private TableColumn<StationVisualization, String> assemblyNameColumn;
-  @FXML private TableColumn<StationVisualization, String> assemblyQueueColumn;
+  @FXML private TableView<StationViewerVisualization> assemblyStageTable;
+  @FXML private TableColumn<StationViewerVisualization, String> assemblyStatusColumn;
+  @FXML private TableColumn<StationViewerVisualization, String> assemblyNameColumn;
+  @FXML private TableColumn<StationViewerVisualization, String> assemblyQueueColumn;
 
   // ErrorCheck columns
-  @FXML private TableView<StationVisualization> errorCheckStageTable;
-  @FXML private TableColumn<StationVisualization, String> errorCheckStatusColumn;
-  @FXML private TableColumn<StationVisualization, String> errorCheckNameColumn;
-  @FXML private TableColumn<StationVisualization, String> errorCheckQueueColumn;
+  @FXML private TableView<StationViewerVisualization> errorCheckStageTable;
+  @FXML private TableColumn<StationViewerVisualization, String> errorCheckStatusColumn;
+  @FXML private TableColumn<StationViewerVisualization, String> errorCheckNameColumn;
+  @FXML private TableColumn<StationViewerVisualization, String> errorCheckQueueColumn;
 
   // FixColumns
-  @FXML private TableView<StationVisualization> fixStageTable;
-  @FXML private TableColumn<StationVisualization, String> fixStatusColumn;
-  @FXML private TableColumn<StationVisualization, String> fixNameColumn;
-  @FXML private TableColumn<StationVisualization, String> fixQueueColumn;
+  @FXML private TableView<StationViewerVisualization> fixStageTable;
+  @FXML private TableColumn<StationViewerVisualization, String> fixStatusColumn;
+  @FXML private TableColumn<StationViewerVisualization, String> fixNameColumn;
+  @FXML private TableColumn<StationViewerVisualization, String> fixQueueColumn;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
