@@ -6,6 +6,7 @@ import com.assemblyrobot.simulator.core.events.EventQueue;
 import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector;
+import com.assemblyrobot.ui.controllers.StationViewerController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,9 @@ public abstract class Engine extends Thread {
 
   @Getter(AccessLevel.PROTECTED)
   private final StageController stageController = new StageController(eventQueue);
+
+  @Setter
+  private StationViewerController stationViewerController;
 
   @Getter private final Clock clock = Clock.getInstance();
   private static final Logger logger = LogManager.getLogger();
@@ -122,6 +126,8 @@ public abstract class Engine extends Thread {
 
     // Advance clock
     val ticksToAdvance = eventQueue.peekNext().getExecutionTime() - clock.getCurrentTick();
+
+    stationViewerController.refreshStationViewer();
 
     logger.trace(
         "Advancing clock by {} ticks to tick {}.",

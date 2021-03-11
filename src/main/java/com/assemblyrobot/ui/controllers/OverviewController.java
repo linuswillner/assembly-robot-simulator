@@ -34,6 +34,11 @@ public class OverviewController {
   private final Overview overview;
   private static final Logger logger = LogManager.getLogger();
 
+  public void setStationViewerController(
+      StationViewerController stationViewerController) {
+    engine.setStationViewerController(stationViewerController);
+  }
+
   public void startEngine() {
     Configurator.setRootLevel(Level.TRACE);
     engine.start();
@@ -117,7 +122,7 @@ public class OverviewController {
     metricsCollector.dump();
   }
 
-  //Animation controls
+  // Animation controls
   @SneakyThrows
   public void onArrival(){
     overview.materialToAssembly();

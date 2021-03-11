@@ -34,6 +34,11 @@ public class Overview implements Initializable, View {
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
 
+  @Override
+  public void afterInitialize() {
+    controller.setStationViewerController(main.getStationViewerController());
+  }
+
   @FXML
   public void openOptionsEditor(ActionEvent actionEvent) {
     main.showOptionsEditor();
@@ -52,7 +57,6 @@ public class Overview implements Initializable, View {
   @FXML
   public void controlSimulation(ActionEvent actionEvent) {
     if (!hasStarted) {
-      main.showStationViewer();
       buttonStatus.setText("Pause");
       controller.startEngine();
       hasStarted = true;

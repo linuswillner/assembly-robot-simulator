@@ -32,4 +32,7 @@ public class About implements Initializable, View {
   public void handleCloseButtonClick() {
     stage.close();
   }
+
+  @Override
+  public void afterInitialize() {}
 }

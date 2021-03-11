@@ -10,14 +10,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+@RequiredArgsConstructor
 public class StationViewer extends TickAdvanceListener implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;
+
+  private final StationViewerController controller = new StationViewerController(this);
 
   // AssemblyStage columns
   @FXML private TableView<StationVisualization> assemblyStageTable;
@@ -36,8 +39,6 @@ public class StationViewer extends TickAdvanceListener implements Initializable,
   @FXML private TableColumn<StationVisualization, String> fixStatusColumn;
   @FXML private TableColumn<StationVisualization, String> fixNameColumn;
   @FXML private TableColumn<StationVisualization, String> fixQueueColumn;
-
-  StationViewerController stationViewerController = new StationViewerController();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -60,10 +61,15 @@ public class StationViewer extends TickAdvanceListener implements Initializable,
     refresh();
   }
 
-  private void refresh() {
-    assemblyStageTable.setItems(stationViewerController.getAssemblyVisualizations());
-    errorCheckStageTable.setItems(stationViewerController.getErrorCheckVisualizations());
-    fixStageTable.setItems(stationViewerController.getFixVisualizations());
+  @Override
+  public void afterInitialize() {
+    main.setStationViewerController(controller);
+  }
+
+  public void refresh() {
+    assemblyStageTable.setItems(controller.getAssemblyVisualizations());
+    errorCheckStageTable.setItems(controller.getErrorCheckVisualizations());
+    fixStageTable.setItems(controller.getFixVisualizations());
   }
 
   @Override

@@ -6,4 +6,5 @@ import javafx.stage.Stage;
 public interface View {
   void setMain(Main main);
   void setStage(Stage stage);
+  void afterInitialize();
 }

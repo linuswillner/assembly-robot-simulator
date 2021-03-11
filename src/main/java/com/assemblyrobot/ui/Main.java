@@ -3,6 +3,7 @@ package com.assemblyrobot.ui;
 import com.assemblyrobot.shared.config.Config;
 import com.assemblyrobot.shared.config.model.ApplicationConfig;
 import com.assemblyrobot.shared.utils.EnvUtils;
+import com.assemblyrobot.ui.controllers.StationViewerController;
 import com.assemblyrobot.ui.views.View;
 import java.io.IOException;
 import javafx.application.Application;
@@ -11,12 +12,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Main extends Application {
   @Getter private Stage primaryStage;
+
+  @Getter @Setter private StationViewerController stationViewerController;
 
   private Parent rootScene;
   private final ApplicationConfig config = Config.getConfig();
@@ -28,6 +32,7 @@ public class Main extends Application {
 
     this.primaryStage = primaryStage;
     initStage(primaryStage, "Assembly Robot Simulator", false);
+    setScene("/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer", false);
     setScene("/scenes/Overview.fxml", "Assembly Robot Simulator", false);
   }
 
@@ -63,6 +68,7 @@ public class Main extends Application {
       val scene = new Scene(rootScene);
       stage.setScene(scene);
       stage.show();
+      controller.afterInitialize();
 
       logger.trace("Opening view {}.", sceneResourcePath);
     } catch (IOException e) {

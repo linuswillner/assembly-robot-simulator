@@ -1,19 +1,29 @@
 package com.assemblyrobot.ui.controllers;
 
+import com.assemblyrobot.simulator.core.Engine;
 import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import com.assemblyrobot.simulator.system.stages.FixStage;
 import com.assemblyrobot.ui.models.StationVisualization;
+import com.assemblyrobot.ui.views.StationViewer;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 
+@RequiredArgsConstructor
 public class StationViewerController {
+  private final StationViewer stationViewer;
+
+  public void setEngine(Engine engine) {
+    engine.setStationViewerController(this);
+  }
+
   /**
    * Used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
    * format usable by {@link StationVisualization}. This one formats data from the {@link
@@ -79,6 +89,10 @@ public class StationViewerController {
                     station.getStationId(), station.isBusy(), station.getOnQueue())));
 
     return data;
+  }
+
+  public void refreshStationViewer() {
+    stationViewer.refresh();
   }
 
   /**

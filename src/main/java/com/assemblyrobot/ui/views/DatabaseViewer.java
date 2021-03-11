@@ -206,4 +206,7 @@ public class DatabaseViewer implements Initializable, View {
     val materials = currentRun.getMaterials();
     materialTable.getItems().addAll(materials);
   }
+
+  @Override
+  public void afterInitialize() {}
 }

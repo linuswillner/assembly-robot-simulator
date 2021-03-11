@@ -282,4 +282,7 @@ public class OptionsEditor implements Initializable, View {
   private int getFixTime(TextField fixTimeField) {
     return Integer.parseInt(fixTimeField.getText());
   }
+
+  @Override
+  public void afterInitialize() {}
 }
