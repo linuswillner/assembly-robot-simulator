@@ -37,7 +37,7 @@ public class FixStage extends Stage {
    * @param type Type of error station
    * @return {@link Integer}
    */
-  private int getStationAmountForErrorType(ErrorType type) {
+  private int getStationAmountForErrorType(@NonNull ErrorType type) {
     return switch (type) {
       case FITTING -> config.getFittingFixStationAmount();
       case BOLTING -> config.getBoltingFixStationAmount();

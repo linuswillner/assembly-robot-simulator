@@ -7,6 +7,7 @@ import java.util.HashMap;
 import lombok.NonNull;
 
 public class FixStation extends Station implements Comparable<FixStation> {
+
   private final ErrorType type;
   private static final HashMap<ErrorType, Long> stationIds = new HashMap<>();
 
