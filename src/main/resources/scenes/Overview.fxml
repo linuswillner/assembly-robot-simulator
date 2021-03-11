@@ -128,8 +128,8 @@
         <VBox id="vboxSimulationSpeed" alignment="CENTER" maxHeight="100.0" prefHeight="61.0"
           prefWidth="740.0">
           <children>
-            <Label id="labelSimulationSpeed" alignment="TOP_LEFT" maxWidth="100.0" prefHeight="34.0"
-              text="Simulation speed">
+            <Label id="labelSimulationSpeed" alignment="TOP_LEFT" prefHeight="34.0"
+              text="Simulation speed multiplier">
               <opaqueInsets>
                 <Insets bottom="20.0"/>
               </opaqueInsets>
