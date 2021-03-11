@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import lombok.val;
 
+/**
+ * Generic {@link TextField} utilities.
+ */
 public abstract class TextFieldUtils {
   /**
    * Recursively returns all {@link TextField} nodes inside a given {@link Pane}.

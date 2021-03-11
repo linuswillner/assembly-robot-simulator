@@ -10,7 +10,6 @@ import com.assemblyrobot.ui.controllers.StationViewerController;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,10 +46,13 @@ public abstract class Engine extends Thread {
   /**
    * Starts the Engine thread. Do not call this method manually; call the start() method instead.
    */
-  @SneakyThrows
   @Override
   public void run() {
-    startEngine();
+    try {
+      startEngine();
+    } catch (InterruptedException e) {
+      // Silently swallow InterruptedExceptions as this indicates stopping of simulation
+    }
   }
 
   /**

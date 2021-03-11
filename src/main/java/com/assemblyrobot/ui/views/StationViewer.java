@@ -72,6 +72,12 @@ public class StationViewer extends TickAdvanceListener implements Initializable,
     fixStageTable.setItems(controller.getFixVisualizations());
   }
 
+  public void reset() {
+    assemblyStageTable.getItems().clear();
+    errorCheckStageTable.getItems().clear();
+    fixStageTable.getItems().clear();
+  }
+
   @Override
   protected void onTickAdvance(long ticksAdvanced) {
     refresh();

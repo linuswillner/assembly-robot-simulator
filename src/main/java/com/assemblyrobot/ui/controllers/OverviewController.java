@@ -17,8 +17,8 @@ import com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsColle
 import com.assemblyrobot.ui.views.Overview;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +27,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 
 @RequiredArgsConstructor
 public class OverviewController {
-  private SimulatorEngine engine = new SimulatorEngine(this);;
+  @Getter private StationViewerController stationViewerController;
+  private SimulatorEngine engine = new SimulatorEngine(this);
   private final ApplicationConfig config = Config.getConfig();
   private final RunDAO dao = RunDAO.getInstance();
   private final CentralMetricsCollector metricsCollector = CentralMetricsCollector.getInstance();
@@ -36,35 +37,73 @@ public class OverviewController {
 
   public void setStationViewerController(
       StationViewerController stationViewerController) {
+    this.stationViewerController = stationViewerController;
     engine.setStationViewerController(stationViewerController);
   }
 
+  /**
+   * Starts a new simulation run.
+   */
   public void startEngine() {
     Configurator.setRootLevel(Level.TRACE);
     engine.start();
   }
 
+  /**
+   * Ends the current simulation run.
+   */
   public void stopEngine() {
     engine.endRun();
   }
 
+  /**
+   * Resets the {@link com.assemblyrobot.simulator.core.Engine} for a new simulator run.
+   */
+  public void resetEngine() {
+    engine.interrupt(); // Interrupt any operations (=> sleeps) in progress
+    val newEngine = new SimulatorEngine(this);
+    newEngine.setStationViewerController(stationViewerController);
+    engine = newEngine;
+  }
+
+  /**
+   * Pauses execution and enters step-by-step mode.
+   *
+   * @param isPause Whether to set the engine to step-by-step mode.
+   */
   public void setPause(boolean isPause) {
     engine.setPause(isPause);
   }
 
+  /**
+   * Allows the engine to run a new CPU cycle in step-by-step mode.
+   *
+   * @param canProceed Whether to allow proceeding or not.
+   */
   public void setCanProceed(boolean canProceed) {
     engine.setCanProceed(canProceed);
   }
 
+  /**
+   * Moves the engine forward by one CPU cycle in step-by-step mode.
+   */
   public void takeStep() {
     engine.setCanProceed(true);
     logger.trace("Taking a step forward.");
   }
 
+  /**
+   * Sets the engine speed multiplier.
+   *
+   * @param value The speed multiplier to adjust sleep time by.
+   */
   public void setSpeed(double value) {
     engine.setSpeedMultiplier(value);
   }
 
+  /**
+   * Logs the current simulator run to the database.
+   */
   public void logRun() {
     val run =
         new RunDTO(
@@ -118,18 +157,28 @@ public class OverviewController {
     dao.logRun(run, engine.get(), stageController.get(), stations, materials);
   }
 
+  /**
+   * Resets all metrics collectors.
+   */
   public void resetMetricsCollectors(){
     metricsCollector.dump();
   }
 
-  // Animation controls
-  @SneakyThrows
+  /**
+   * Visualises the arrival of a {@link com.assemblyrobot.simulator.system.components.Material}
+   * into the system.
+   */
   public void onArrival(){
     overview.materialToAssembly();
   }
 
-  @SneakyThrows
-  public void onTransfer(String destination){
+  /**
+   * Visualises the transfer of a {@link com.assemblyrobot.simulator.system.components.Material} in
+   * the system.
+   *
+   * @param destination {@link String}
+   */
+  public void onTransfer(String destination) {
     switch (destination) {
       case "error_check" -> overview.materialToErrorCheck();
       case "bolting" -> overview.materialToBolting();

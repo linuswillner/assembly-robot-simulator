@@ -7,6 +7,7 @@ import com.assemblyrobot.ui.controllers.StationViewerController;
 import com.assemblyrobot.ui.views.View;
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,13 +30,26 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) {
     EnvUtils.checkEnv();
-
     this.primaryStage = primaryStage;
-    initStage(primaryStage, "Assembly Robot Simulator", false);
-    setScene("/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer", false);
-    setScene("/scenes/Overview.fxml", "Assembly Robot Simulator", false);
+
+    setScene(
+        "/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer", false, false);
+    setScene("/scenes/Overview.fxml", "Assembly Robot Simulator", false, true);
+
+    primaryStage.setOnCloseRequest(
+        event -> {
+          Platform.exit();
+          System.exit(0); // Also close dangling simulator threads
+        });
   }
 
+  /**
+   * Internal callback for initialising a stage based on application configuration.
+   *
+   * @param stage The {@link Stage} to configure.
+   * @param stageTitle The title of the {@link Stage}.
+   * @param isPopup Whether this stage is a popup (affects window sizing).
+   */
   private void initStage(Stage stage, String stageTitle, boolean isPopup) {
     // Set stage title
     stage.setTitle(stageTitle);
@@ -52,9 +66,26 @@ public class Main extends Application {
     stage.setMaxHeight(windowHeight);
   }
 
-  private void setScene(String sceneResourcePath, String stageTitle, boolean isPopup) {
+  /**
+   * Initialises a {@link Scene} with application-specific options through a call to {@link
+   * Main#initStage(Stage, String, boolean)}.
+   *
+   * @param sceneResourcePath The resource path for the FXML file of this {@link Scene}.
+   * @param stageTitle The title of the stage.
+   * @param isPopup Whether this scene is supposed to be a popup (Changes window sizing).
+   * @param isPrimary Whether this is the primary scene.
+   */
+  private void setScene(
+      String sceneResourcePath, String stageTitle, boolean isPopup, boolean isPrimary) {
     try {
-      val stage = new Stage();
+      Stage stage;
+
+      if (isPrimary) {
+        stage = primaryStage;
+      } else {
+        stage = new Stage();
+      }
+
       initStage(stage, stageTitle, isPopup);
 
       val loader = new FXMLLoader();
@@ -76,20 +107,21 @@ public class Main extends Application {
     }
   }
 
-  public void showStationViewer() {
-    setScene("/scenes/StationViewer.fxml", "Assembly Robot Simulator - Station Viewer", false);
-  }
-
+  /** Shows the {@link com.assemblyrobot.ui.views.DatabaseViewer}. */
   public void showDatabaseViewer() {
-    setScene("/scenes/DatabaseViewer.fxml", "Assembly Robot Simulator - Database Viewer", false);
+    setScene(
+        "/scenes/DatabaseViewer.fxml", "Assembly Robot Simulator - Database Viewer", false, false);
   }
 
+  /** Shows the {@link com.assemblyrobot.ui.views.OptionsEditor}. */
   public void showOptionsEditor() {
-    setScene("/scenes/OptionsEditor.fxml", "Assembly Robot Simulator - Options Editor", false);
+    setScene(
+        "/scenes/OptionsEditor.fxml", "Assembly Robot Simulator - Options Editor", false, false);
   }
 
+  /** Shows the {@link com.assemblyrobot.ui.views.About} window. */
   public void showAbout() {
-    setScene("/scenes/About.fxml", "Assembly Robot Simulator - About", true);
+    setScene("/scenes/About.fxml", "Assembly Robot Simulator - About", true, false);
   }
 
   public static void main(String[] args) {

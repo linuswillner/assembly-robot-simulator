@@ -95,6 +95,10 @@ public class StationViewerController {
     stationViewer.refresh();
   }
 
+  public void resetStationViewer() {
+    stationViewer.reset();
+  }
+
   /**
    * A helper method used to separate {@link Station#getStationId()} number from the name.
    *

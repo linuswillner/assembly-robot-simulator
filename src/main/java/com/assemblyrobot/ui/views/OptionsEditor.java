@@ -32,6 +32,7 @@ public class OptionsEditor implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;
   private static final Logger logger = LogManager.getLogger();
+  private boolean isPopulating;
 
   // Root container
   @FXML private AnchorPane settingsRoot;
@@ -87,8 +88,8 @@ public class OptionsEditor implements Initializable, View {
                     .textProperty()
                     .addListener(
                         (observable, oldValue, newValue) -> {
-                          // Only react to explicit changes
-                          if (!oldValue.equals("empty") && !newValue.equals("")) {
+                          // Only react to explicit changes by the user
+                          if (!isPopulating && !oldValue.equals("empty") && !newValue.equals("")) {
                             updateConfig();
                           }
                         }));
@@ -174,6 +175,8 @@ public class OptionsEditor implements Initializable, View {
   private void populateConfig() {
     logger.debug("Populating config.");
 
+    isPopulating = true;
+
     // Populate configuration into the fields
     val config = Config.getConfig();
 
@@ -209,6 +212,8 @@ public class OptionsEditor implements Initializable, View {
     setFixTime(rivetingFixTime, fixTimes.getRivetingFixTime());
     setFixTime(weldingFixTime, fixTimes.getWeldingFixTime());
     setFixTime(positionFixTime, fixTimes.getReturningFixTime());
+
+    isPopulating = false;
   }
 
   private void updateConfig() {

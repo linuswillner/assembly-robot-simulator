@@ -114,7 +114,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button id="buttonNextTick" maxHeight="30.0" mnemonicParsing="false" onAction="#takeStep" prefHeight="30.0" text="Next tick">
+                  <Button id="buttonNextTick" maxHeight="30.0" mnemonicParsing="false" onAction="#takeStep" prefHeight="30.0" text="Next event">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin></Button>

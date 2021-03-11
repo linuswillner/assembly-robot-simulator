@@ -1,5 +1,14 @@
 package com.assemblyrobot.ui.views;
 
+import com.assemblyrobot.simulator.core.clock.Clock;
+import com.assemblyrobot.simulator.system.components.Material;
+import com.assemblyrobot.simulator.system.components.StationQueue;
+import com.assemblyrobot.simulator.system.stages.AssemblyStage;
+import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
+import com.assemblyrobot.simulator.system.stages.FixStage;
+import com.assemblyrobot.simulator.system.stations.AssemblyStation;
+import com.assemblyrobot.simulator.system.stations.ErrorCheckStation;
+import com.assemblyrobot.simulator.system.stations.FixStation;
 import com.assemblyrobot.ui.Main;
 import com.assemblyrobot.ui.controllers.OverviewController;
 import java.net.URL;
@@ -92,16 +101,26 @@ public class Overview implements Initializable, View {
   @FXML
   public void stopSimulation(ActionEvent actionEvent) {
     controller.stopEngine();
-    resetSimulation();
     controller.logRun();
     main.showDatabaseViewer();
-    controller.resetMetricsCollectors();
+    resetSimulation();
     hasStarted = false;
   }
 
   private void resetSimulation() {
     sliderSpeed.setValue(0);
     buttonStatus.setText("Start");
+    Clock.getInstance().reset();
+    Material.resetId();
+    ErrorCheckStation.resetId();
+    AssemblyStation.resetId();
+    FixStation.resetId();
+    AssemblyStage.getStationQueue().dump();
+    ErrorCheckStage.getStationQueue().dump();
+    FixStage.getSubstations().values().forEach(StationQueue::dump);
+    controller.getStationViewerController().resetStationViewer();
+    controller.resetMetricsCollectors();
+    controller.resetEngine();
   }
 
   // Animation controls

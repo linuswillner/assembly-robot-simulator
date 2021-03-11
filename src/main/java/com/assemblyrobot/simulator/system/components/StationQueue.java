@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class StationQueue {
-
   private final PriorityQueue<Station> queue = new PriorityQueue<>();
 
   public void add(Station station) {
@@ -20,5 +19,7 @@ public class StationQueue {
     return new ArrayList<>(queue);
   }
 
-
+  public void dump() {
+    queue.clear();
+  }
 }
