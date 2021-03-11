@@ -24,7 +24,7 @@ public class StationVisualization {
     enteredMaterialAmount = stationDTO.getEnteredMaterialAmount();
     exitedMaterialAmount = stationDTO.getExitedMaterialAmount();
     busyTime = stationDTO.getBusyTime();
-    utilization = "%f%%".formatted(isDivisible(busyTime, totalSimulationTime));
+    utilization = "%.2f%%".formatted(isDivisible(busyTime * 100, totalSimulationTime));
     throughput = isDivisible(exitedMaterialAmount, totalSimulationTime);
     averageServiceTime = isDivisible(busyTime, exitedMaterialAmount);
     totalPassThroughTime = stationDTO.getTotalPassthroughTime();
