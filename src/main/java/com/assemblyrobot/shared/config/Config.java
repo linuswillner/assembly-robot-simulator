@@ -40,7 +40,7 @@ public abstract class Config {
       val isFresh = System.getenv("FRESH_INSTALL");
 
       // If we're doing a fresh start override, remove all user settings
-      if (isFresh != null && !isFresh.isBlank()) {
+      if (isFresh != null) {
         Arrays.stream(UserSetting.values()).forEach(Config::removeUserSetting);
       }
 
