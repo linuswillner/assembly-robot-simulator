@@ -89,7 +89,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="arrivalIntervalAverage" maxWidth="50.0" />
+                                          <TextField fx:id="arrivalIntervalAverage" maxWidth="50.0" text="empty" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -107,7 +107,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="arrivalIntervalVariance" maxWidth="50.0" />
+                                          <TextField fx:id="arrivalIntervalVariance" maxWidth="50.0" text="empty" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -129,7 +129,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="assemblyTimeAverage" maxWidth="50.0" />
+                                          <TextField fx:id="assemblyTimeAverage" maxWidth="50.0" text="empty" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -147,7 +147,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="assemblyTimeVariance" maxWidth="50.0" />
+                                          <TextField fx:id="assemblyTimeVariance" maxWidth="50.0" text="empty" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -166,7 +166,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="24.0" prefWidth="395.0">
                                        <children>
-                                          <TextField fx:id="errorCheckTimeAverage" maxWidth="50.0" />
+                                          <TextField fx:id="errorCheckTimeAverage" maxWidth="50.0" text="empty" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -184,7 +184,7 @@
                                     </Label>
                                     <HBox alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="395.0">
                                        <children>
-                                          <TextField fx:id="errorCheckTimeVariance" maxWidth="50.0" />
+                                          <TextField fx:id="errorCheckTimeVariance" maxWidth="50.0" text="empty" />
                                           <Label alignment="CENTER" text="s">
                                              <HBox.margin>
                                                 <Insets left="4.0" />
@@ -206,7 +206,7 @@
                                     </Label>
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="errorOccurrenceCoefficient" disable="true" maxWidth="50.0" />
+                                          <TextField fx:id="errorOccurrenceCoefficient" disable="true" maxWidth="50.0" text="empty" />
                                           <CheckBox fx:id="errorCoefficientCheckbox" mnemonicParsing="false" prefWidth="175.0" text="I know what I'm doing, allow me to edit this value." wrapText="true">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
@@ -222,7 +222,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Label>
-                                    <TextField fx:id="errorOccurrenceThreshold" maxWidth="50.0" />
+                                    <TextField fx:id="errorOccurrenceThreshold" maxWidth="50.0" text="empty" />
                                  </children>
                               </VBox>
                            </children>
@@ -296,6 +296,7 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
+<<<<<<< Updated upstream
                               <TextField fx:id="assemblyStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.valignment="TOP" />
                               <TextField fx:id="errorCheckStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <TextField fx:id="fittingStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
@@ -303,6 +304,15 @@
                               <TextField fx:id="rivetingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.valignment="TOP" />
                               <TextField fx:id="weldingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <TextField fx:id="returningStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+=======
+                              <TextField fx:id="assemblyStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="errorCheckStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="fittingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <TextField fx:id="boltingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                              <TextField fx:id="rivetingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.valignment="TOP" />
+                              <TextField fx:id="weldingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="positionStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+>>>>>>> Stashed changes
                            </children>
                            <padding>
                               <Insets top="5.0" />
@@ -369,7 +379,7 @@
                               </Label>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="1">
                                  <children>
-                                    <TextField fx:id="fittingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="fittingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -379,7 +389,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="3">
                                  <children>
-                                    <TextField fx:id="boltingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="boltingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -389,7 +399,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="5">
                                  <children>
-                                    <TextField fx:id="rivetingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="rivetingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -399,7 +409,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="7">
                                  <children>
-                                    <TextField fx:id="weldingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="weldingFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />
@@ -409,7 +419,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefWidth="73.0" GridPane.columnIndex="9">
                                  <children>
-                                    <TextField fx:id="positionFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" />
+                                    <TextField fx:id="positionFixTime" maxWidth="50.0" prefHeight="21.0" prefWidth="48.0" text="empty" />
                                     <Label text="s">
                                        <HBox.margin>
                                           <Insets left="4.0" />

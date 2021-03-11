@@ -88,7 +88,7 @@ public class OptionsEditor implements Initializable, View {
                     .addListener(
                         (observable, oldValue, newValue) -> {
                           // Only react to explicit changes
-                          if (!oldValue.equals("") && !newValue.equals("")) {
+                          if (!oldValue.equals("empty") && !newValue.equals("")) {
                             updateConfig();
                           }
                         }));
