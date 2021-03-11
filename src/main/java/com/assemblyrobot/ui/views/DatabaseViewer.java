@@ -47,8 +47,15 @@ public class DatabaseViewer implements Initializable, View {
   public void initialize(URL location, ResourceBundle resources) {
     // Update run data
     controller.updateRuns();
-    val latestRun = controller.getRuns().size() - 1;
-    updateCurrentRun(latestRun); // Always set the latest as active
+    val runAmount = controller.getRuns().size();
+    val hasRuns = runAmount > 0;
+
+    val latestRun = hasRuns ? runAmount - 1 : 0;
+
+    // // Always set the latest as active (If available)
+    if (hasRuns) {
+      updateCurrentRun(latestRun);
+    }
 
     // Populate run selector list
     ObservableList<String> items = FXCollections.observableArrayList();
@@ -61,7 +68,11 @@ public class DatabaseViewer implements Initializable, View {
 
     items.addAll(runNames);
     runList.setItems(items);
-    runList.setValue(runNames[latestRun]);
+
+    // Set first run as active (If available)
+    if (hasRuns) {
+      runList.setValue(runNames[latestRun]);
+    }
 
     // Add selection listener for current run
     runList
