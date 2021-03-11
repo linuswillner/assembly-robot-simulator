@@ -30,25 +30,19 @@ import org.apache.logging.log4j.Logger;
 /* Backend logic component for Overview.fxml. */
 public class Overview implements Initializable, View {
 
-  @Setter
-  private Main main;
-  @Setter
-  private Stage stage;
+  @Setter private Main main;
+  @Setter private Stage stage;
   private double speedMultiplier;
   private final OverviewController controller = new OverviewController(this);
   private boolean hasStarted = false;
   private boolean isPause = false;
   private static final Logger logger = LogManager.getLogger();
 
-
-  @FXML
-  private Button buttonStatus;
-  @FXML
-  private Slider sliderSpeed;
+  @FXML private Button buttonStatus;
+  @FXML private Slider sliderSpeed;
 
   @Override
-  public void initialize(URL location, ResourceBundle resources) {
-  }
+  public void initialize(URL location, ResourceBundle resources) {}
 
   @Override
   public void afterInitialize() {
@@ -134,56 +128,31 @@ public class Overview implements Initializable, View {
 
   // Animation engine
 
-  @FXML
-  private ProgressBar barToAssembly;
-  @FXML
-  private ProgressBar barToErrorCheck;
-  @FXML
-  private ProgressBar barToFix;
-  @FXML
-  private ProgressBar barToFixUp1;
-  @FXML
-  private ProgressBar barToFixUp2;
-  @FXML
-  private ProgressBar barToFixDown1;
-  @FXML
-  private ProgressBar barToFixDown2;
-  @FXML
-  private ProgressBar barToFixDown3;
-  @FXML
-  private ProgressBar barToFixFitting;
-  @FXML
-  private ProgressBar barToFixBolting;
-  @FXML
-  private ProgressBar barToFixRiveting;
-  @FXML
-  private ProgressBar barToFixWelding;
-  @FXML
-  private ProgressBar barToFixPosition;
-  @FXML
-  private ProgressBar barFromFitting;
-  @FXML
-  private ProgressBar barFromBolting;
-  @FXML
-  private ProgressBar barFromRiveting;
-  @FXML
-  private ProgressBar barFromWelding;
-  @FXML
-  private ProgressBar barFromPosition;
-  @FXML
-  private ProgressBar barDown1;
-  @FXML
-  private ProgressBar barDown2;
-  @FXML
-  private ProgressBar barDown3;
-  @FXML
-  private ProgressBar barDown4;
-  @FXML
-  private ProgressBar barDown5;
-  @FXML
-  private ProgressBar barDeparture1;
-  @FXML
-  private ProgressBar barDeparture2;
+  @FXML private ProgressBar barToAssembly;
+  @FXML private ProgressBar barToErrorCheck;
+  @FXML private ProgressBar barToFix;
+  @FXML private ProgressBar barToFixUp1;
+  @FXML private ProgressBar barToFixUp2;
+  @FXML private ProgressBar barToFixDown1;
+  @FXML private ProgressBar barToFixDown2;
+  @FXML private ProgressBar barToFixDown3;
+  @FXML private ProgressBar barToFixFitting;
+  @FXML private ProgressBar barToFixBolting;
+  @FXML private ProgressBar barToFixRiveting;
+  @FXML private ProgressBar barToFixWelding;
+  @FXML private ProgressBar barToFixPosition;
+  @FXML private ProgressBar barFromFitting;
+  @FXML private ProgressBar barFromBolting;
+  @FXML private ProgressBar barFromRiveting;
+  @FXML private ProgressBar barFromWelding;
+  @FXML private ProgressBar barFromPosition;
+  @FXML private ProgressBar barDown1;
+  @FXML private ProgressBar barDown2;
+  @FXML private ProgressBar barDown3;
+  @FXML private ProgressBar barDown4;
+  @FXML private ProgressBar barDown5;
+  @FXML private ProgressBar barDeparture1;
+  @FXML private ProgressBar barDeparture2;
 
   private long calculateAnimationSpeed() {
     long animationSpeed;
@@ -309,14 +278,14 @@ public class Overview implements Initializable, View {
 
   public void materialFromFitting() {
     ProgressBar[] progressBars = {
-        barFromFitting, barDown1, barDown2, barDown3, barDown4, barDown5, barDeparture2
+      barFromFitting, barDown1, barDown2, barDown3, barDown4, barDown5, barDeparture2
     };
     animateProgressBarsSequential(progressBars);
   }
 
   public void materialFromBolting() {
     ProgressBar[] progressBars = {
-        barFromBolting, barDown2, barDown3, barDown4, barDown5, barDeparture2
+      barFromBolting, barDown2, barDown3, barDown4, barDown5, barDeparture2
     };
     animateProgressBarsSequential(progressBars);
   }
@@ -338,20 +307,40 @@ public class Overview implements Initializable, View {
 
   public void materialToDeparture() {
     ProgressBar[] progressBars = {
-        barToFix, barToFixDown1, barToFixDown2, barToFixDown3, barDeparture1, barDeparture2
+      barToFix, barToFixDown1, barToFixDown2, barToFixDown3, barDeparture1, barDeparture2
     };
     animateProgressBarsSequential(progressBars);
   }
 
   private void resetProgressBars() {
-    ProgressBar[] barArray = {barToAssembly, barToErrorCheck, barToFix, barToFixUp1, barToFixUp2,
-        barToFixDown1, barToFixDown2, barToFixDown3, barToFixBolting, barToFixRiveting,
-        barToFixWelding, barToFixPosition, barFromFitting, barFromBolting, barFromRiveting,
-        barFromWelding, barFromPosition, barDown1, barDown2, barDown3, barDown4, barDown5,
-        barDeparture1, barDeparture2};
+    ProgressBar[] barArray = {
+      barToAssembly,
+      barToErrorCheck,
+      barToFix,
+      barToFixUp1,
+      barToFixUp2,
+      barToFixDown1,
+      barToFixDown2,
+      barToFixDown3,
+      barToFixBolting,
+      barToFixRiveting,
+      barToFixWelding,
+      barToFixPosition,
+      barFromFitting,
+      barFromBolting,
+      barFromRiveting,
+      barFromWelding,
+      barFromPosition,
+      barDown1,
+      barDown2,
+      barDown3,
+      barDown4,
+      barDown5,
+      barDeparture1,
+      barDeparture2
+    };
     for (ProgressBar progressBar : barArray) {
       progressBar.setProgress(0);
     }
   }
-
 }
