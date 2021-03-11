@@ -19,8 +19,7 @@ public class EngineMetricsCollector extends TickAdvanceListener {
   public enum Metrics {
     TOTAL_SIMULATION_TIME("total_simulation_time");
 
-    @Getter
-    private final String metricName;
+    @Getter private final String metricName;
   }
 
   // Cannot use RequiredArgsConstructor and a class property here because that will result in a

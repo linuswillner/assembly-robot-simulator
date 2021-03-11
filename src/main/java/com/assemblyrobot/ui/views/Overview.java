@@ -2,9 +2,9 @@ package com.assemblyrobot.ui.views;
 
 import com.assemblyrobot.ui.Main;
 import com.assemblyrobot.ui.controllers.OverviewController;
-import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
+import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -88,9 +89,10 @@ public class Overview implements Initializable, View {
   public void stopSimulation(ActionEvent actionEvent) {
     controller.stopEngine();
     resetSimulation();
-    // controller.logRun();
+    controller.logRun();
     main.showDatabaseViewer();
     controller.resetMetricsCollectors();
+    hasStarted = false;
   }
 
   private void resetSimulation() {
@@ -157,585 +159,129 @@ public class Overview implements Initializable, View {
   }
 
   @SneakyThrows
+  private void animateProgressBar(ProgressBar progressBar) {
+    val animationSpeed = calculateAnimationSpeed();
+    val waitingTime = calculateWaitingTime();
+
+    var currentProgress = 0.1;
+
+    for (int i = 0; i < 10; i++) {
+      progressBar.setProgress(currentProgress);
+      currentProgress += 0.1;
+      Thread.sleep(animationSpeed);
+    }
+
+    Thread.sleep(waitingTime);
+
+    progressBar.setProgress(0);
+  }
+
+  @SneakyThrows
+  private void animateProgressBarsSequential(ProgressBar[] progressBars) {
+    val animationSpeed = calculateAnimationSpeed();
+    val waitingTime = calculateWaitingTime();
+    var currentProgress = 0.1;
+
+    for (int i = 0; i < progressBars.length; i++) {
+      val previous = i > 0 ? progressBars[i - 1] : null;
+      val current = progressBars[i];
+      val next = i < progressBars.length - 1 ? progressBars[i + 1] : null;
+
+      // Mid-run
+      if (previous != null) {
+        previous.setProgress(0);
+      }
+
+      runAnimationCycle(current, currentProgress, animationSpeed, waitingTime);
+
+      if (previous != null && previous.getProgress() >= 0.98) { // Mid-run
+        previous.setProgress(0);
+        currentProgress = 0.1;
+      } else if (next == null) { // End of run
+        current.setProgress(0);
+      }
+    }
+  }
+
+  @SneakyThrows
+  private void runAnimationCycle(
+      ProgressBar progressBar, double currentProgress, long animationSpeed, long waitingTime) {
+
+    for (int i = 0; i < 10; i++) {
+      progressBar.setProgress(currentProgress);
+      currentProgress += 0.1;
+      Thread.sleep(animationSpeed);
+    }
+
+    Thread.sleep(waitingTime);
+  }
+
   public void materialToAssembly() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToAssembly.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    barToAssembly.setProgress(0);
+    animateProgressBar(barToAssembly);
   }
 
-  @SneakyThrows
   public void materialToErrorCheck() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToErrorCheck.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    barToErrorCheck.setProgress(0);
+    animateProgressBar(barToErrorCheck);
   }
 
-  @SneakyThrows
   public void materialToFitting() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    // if (barToFix.getProgress() == 0) {
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToFix.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barToFix.getProgress() >= 0.98) {
-      barToFix.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barToFixUp2.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barToFixUp2.getProgress() >= 0.98) {
-        barToFixUp2.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barToFixUp1.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barToFixUp1.getProgress() >= 0.98) {
-          barToFixUp1.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barToFixFitting.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-          barToFixFitting.setProgress(0);
-        }
-      }
-    }
-    // }
+    ProgressBar[] progressBars = {barToFix, barToFixUp2, barToFixUp1, barToFixFitting};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialToBolting() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToFix.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barToFix.getProgress() >= 0.98) {
-      barToFix.setProgress(0);
-
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barToFixUp2.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-      if (barToFixUp2.getProgress() >= 0.98) {
-        barToFixUp2.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barToFixBolting.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-        barToFixBolting.setProgress(0);
-      }
-    }
+    ProgressBar[] progressBars = {barToFix, barToFixUp2, barToFixBolting};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialToRiveting() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToFix.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barToFix.getProgress() >= 0.98) {
-      barToFix.setProgress(0);
-
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barToFixRiveting.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-      barToFixRiveting.setProgress(0);
-    }
+    ProgressBar[] progressBars = {barToFix, barToFixRiveting};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialToWelding() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToFix.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barToFix.getProgress() >= 0.98) {
-      barToFix.setProgress(0);
-
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barToFixDown1.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-      if (barToFixDown1.getProgress() >= 0.98) {
-        barToFixDown1.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barToFixWelding.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-        barToFixWelding.setProgress(0);
-      }
-    }
+    ProgressBar[] progressBars = {barToFix, barToFixDown1, barToFixWelding};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialToPosition() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToFix.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barToFix.getProgress() >= 0.98) {
-      barToFix.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barToFixDown1.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barToFixDown1.getProgress() >= 0.98) {
-        barToFixDown1.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barToFixDown2.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barToFixDown2.getProgress() >= 0.98) {
-          barToFixDown2.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barToFixPosition.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-          barToFixPosition.setProgress(0);
-        }
-      }
-    }
+    ProgressBar[] progressBars = {barToFix, barToFixDown1, barToFixDown2, barToFixPosition};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialFromFitting() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barFromFitting.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barFromFitting.getProgress() >= 0.98) {
-      barFromFitting.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barDown1.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barDown1.getProgress() >= 0.98) {
-        barDown1.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barDown2.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barDown2.getProgress() >= 0.98) {
-          barDown2.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barDown3.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-
-          if (barDown3.getProgress() >= 0.98) {
-            barDown3.setProgress(0);
-            progress = 0.1;
-            for (int i = 0; i < 10; i++) {
-              barDown4.setProgress(progress);
-              progress += 0.1;
-              Thread.sleep(animationSpeed);
-            }
-            Thread.sleep(waitingTime);
-
-            if (barDown4.getProgress() >= 0.98) {
-              barDown4.setProgress(0);
-              progress = 0.1;
-              for (int i = 0; i < 10; i++) {
-                barDown5.setProgress(progress);
-                progress += 0.1;
-                Thread.sleep(animationSpeed);
-              }
-              Thread.sleep(waitingTime);
-
-              if (barDown5.getProgress() >= 0.98) {
-                barDown5.setProgress(0);
-                progress = 0.1;
-                for (int i = 0; i < 10; i++) {
-                  barDeparture2.setProgress(progress);
-                  progress += 0.1;
-                  Thread.sleep(animationSpeed);
-                }
-                Thread.sleep(waitingTime);
-                barDeparture2.setProgress(0);
-              }
-            }
-          }
-        }
-      }
-    }
+    ProgressBar[] progressBars = {
+      barFromFitting, barDown1, barDown2, barDown3, barDown4, barDown5, barDeparture2
+    };
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialFromBolting() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barFromBolting.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barFromBolting.getProgress() >= 0.98) {
-      barFromBolting.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barDown2.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barDown2.getProgress() >= 0.98) {
-        barDown2.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barDown3.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barDown3.getProgress() >= 0.98) {
-          barDown3.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barDown4.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-
-          if (barDown4.getProgress() >= 0.98) {
-            barDown4.setProgress(0);
-            progress = 0.1;
-            for (int i = 0; i < 10; i++) {
-              barDown5.setProgress(progress);
-              progress += 0.1;
-              Thread.sleep(animationSpeed);
-            }
-            Thread.sleep(waitingTime);
-
-            if (barDown5.getProgress() >= 0.98) {
-              barDown5.setProgress(0);
-              progress = 0.1;
-              for (int i = 0; i < 10; i++) {
-                barDeparture2.setProgress(progress);
-                progress += 0.1;
-                Thread.sleep(animationSpeed);
-              }
-              Thread.sleep(waitingTime);
-              barDeparture2.setProgress(0);
-            }
-          }
-        }
-      }
-    }
+    ProgressBar[] progressBars = {
+      barFromBolting, barDown2, barDown3, barDown4, barDown5, barDeparture2
+    };
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialFromRiveting() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barFromRiveting.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barFromRiveting.getProgress() >= 0.98) {
-      barFromRiveting.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barDown3.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barDown3.getProgress() >= 0.98) {
-        barDown3.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barDown4.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barDown4.getProgress() >= 0.98) {
-          barDown4.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barDown5.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-
-          if (barDown5.getProgress() >= 0.98) {
-            barDown5.setProgress(0);
-            progress = 0.1;
-            for (int i = 0; i < 10; i++) {
-              barDeparture2.setProgress(progress);
-              progress += 0.1;
-              Thread.sleep(animationSpeed);
-            }
-            Thread.sleep(waitingTime);
-            barDeparture2.setProgress(0);
-          }
-        }
-      }
-    }
+    ProgressBar[] progressBars = {barFromRiveting, barDown3, barDown4, barDown5, barDeparture2};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialFromWelding() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barFromWelding.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barFromWelding.getProgress() >= 0.98) {
-      barFromWelding.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barDown4.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barDown4.getProgress() >= 0.98) {
-        barDown4.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barDown5.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barDown5.getProgress() >= 0.98) {
-          barDown5.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barDeparture2.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-          barDeparture2.setProgress(0);
-        }
-      }
-    }
+    ProgressBar[] progressBars = {barFromWelding, barDown4, barDown5, barDeparture2};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialFromPosition() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barFromPosition.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barFromPosition.getProgress() >= 0.98) {
-      barFromPosition.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barDown5.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barDown5.getProgress() >= 0.98) {
-        barDown5.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barDeparture2.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-        barDeparture2.setProgress(0);
-      }
-    }
+    ProgressBar[] progressBars = {barFromPosition, barDown5, barDeparture2};
+    animateProgressBarsSequential(progressBars);
   }
 
-  @SneakyThrows
   public void materialToDeparture() {
-    long animationSpeed = calculateAnimationSpeed();
-    long waitingTime = calculateWaitingTime();
-
-    double progress = 0.1;
-    for (int i = 0; i < 10; i++) {
-      barToFix.setProgress(progress);
-      progress += 0.1;
-      Thread.sleep(animationSpeed);
-    }
-    Thread.sleep(waitingTime);
-    if (barToFix.getProgress() >= 0.98) {
-      barToFix.setProgress(0);
-      progress = 0.1;
-      for (int i = 0; i < 10; i++) {
-        barToFixDown1.setProgress(progress);
-        progress += 0.1;
-        Thread.sleep(animationSpeed);
-      }
-      Thread.sleep(waitingTime);
-
-      if (barToFixDown1.getProgress() >= 0.98) {
-        barToFixDown1.setProgress(0);
-        progress = 0.1;
-        for (int i = 0; i < 10; i++) {
-          barToFixDown2.setProgress(progress);
-          progress += 0.1;
-          Thread.sleep(animationSpeed);
-        }
-        Thread.sleep(waitingTime);
-
-        if (barToFixDown2.getProgress() >= 0.98) {
-          barToFixDown2.setProgress(0);
-          progress = 0.1;
-          for (int i = 0; i < 10; i++) {
-            barToFixDown3.setProgress(progress);
-            progress += 0.1;
-            Thread.sleep(animationSpeed);
-          }
-          Thread.sleep(waitingTime);
-
-          if (barToFixDown3.getProgress() >= 0.98) {
-            barToFixDown3.setProgress(0);
-            progress = 0.1;
-            for (int i = 0; i < 10; i++) {
-              barDeparture1.setProgress(progress);
-              progress += 0.1;
-              Thread.sleep(animationSpeed);
-            }
-            Thread.sleep(waitingTime);
-
-            if (barDeparture1.getProgress() >= 0.98) {
-              barDeparture1.setProgress(0);
-              progress = 0.1;
-              for (int i = 0; i < 10; i++) {
-                barDeparture2.setProgress(progress);
-                progress += 0.1;
-                Thread.sleep(animationSpeed);
-              }
-              Thread.sleep(waitingTime);
-              barDeparture2.setProgress(0);
-            }
-          }
-        }
-      }
-    }
+    ProgressBar[] progressBars = {
+      barToFix, barToFixDown1, barToFixDown2, barToFixDown3, barDeparture1, barDeparture2
+    };
+    animateProgressBarsSequential(progressBars);
   }
 }

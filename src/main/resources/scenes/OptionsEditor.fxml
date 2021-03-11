@@ -296,15 +296,6 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-<<<<<<< Updated upstream
-                              <TextField fx:id="assemblyStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.valignment="TOP" />
-                              <TextField fx:id="errorCheckStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                              <TextField fx:id="fittingStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                              <TextField fx:id="boltingStationAmount" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                              <TextField fx:id="rivetingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.valignment="TOP" />
-                              <TextField fx:id="weldingStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                              <TextField fx:id="returningStationAmount" maxWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-=======
                               <TextField fx:id="assemblyStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.valignment="TOP" />
                               <TextField fx:id="errorCheckStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <TextField fx:id="fittingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
@@ -312,7 +303,6 @@
                               <TextField fx:id="rivetingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.valignment="TOP" />
                               <TextField fx:id="weldingStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <TextField fx:id="positionStationAmount" maxWidth="50.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
->>>>>>> Stashed changes
                            </children>
                            <padding>
                               <Insets top="5.0" />
