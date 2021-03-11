@@ -66,6 +66,7 @@ public class Overview implements Initializable, View {
   @FXML
   public void controlSimulation(ActionEvent actionEvent) {
     if (!hasStarted) {
+      resetSimulation();
       buttonStatus.setText("Pause");
       controller.startEngine();
       hasStarted = true;
@@ -201,11 +202,12 @@ public class Overview implements Initializable, View {
 
   @SneakyThrows
   private void animateProgressBarsSequential(ProgressBar[] progressBars) {
-    val animationSpeed = calculateAnimationSpeed();
-    val waitingTime = calculateWaitingTime();
     var currentProgress = 0.1;
 
     for (int i = 0; i < progressBars.length; i++) {
+      val animationSpeed = calculateAnimationSpeed();
+      val waitingTime = calculateWaitingTime();
+
       val previous = i > 0 ? progressBars[i - 1] : null;
       val current = progressBars[i];
       val next = i < progressBars.length - 1 ? progressBars[i + 1] : null;
