@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.assemblyrobot.simulator.core.Engine</OriginalElement>
+  <nodes>
+    <node x="11631.0" y="12249.0">com.assemblyrobot.shared.db.model.EngineDTO</node>
+    <node x="8056.5" y="2106.0">com.assemblyrobot.simulator.system.stages.AssemblyStage</node>
+    <node x="18092.5" y="1971.5">com.assemblyrobot.ui.Main</node>
+    <node x="11081.0" y="4071.5">com.assemblyrobot.simulator.core.generators.Generator</node>
+    <node x="11035.0" y="1895.5">com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator</node>
+    <node x="19511.0" y="2471.0">com.assemblyrobot.ui.models.StationAmountVisualization</node>
+    <node x="7734.5" y="3368.5">com.assemblyrobot.simulator.system.components.StationQueue</node>
+    <node x="15545.5" y="10124.5">com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator</node>
+    <node x="6313.5" y="10637.0">com.assemblyrobot.simulator.core.metrics.CentralMetricsCollector</node>
+    <node x="9001.5" y="4334.0">com.assemblyrobot.simulator.system.components.Station</node>
+    <node x="4546.5" y="7135.5">com.assemblyrobot.simulator.core.events.EventQueue</node>
+    <node x="14457.5" y="11309.5">com.assemblyrobot.shared.db.model.RunDTO</node>
+    <node x="10692.0" y="4322.5">com.assemblyrobot.shared.config.model.NormalDistributionConfig</node>
+    <node x="19951.5" y="236.5">com.assemblyrobot.ui.views.DatabaseViewer</node>
+    <node x="11022.5" y="4255.5">com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator</node>
+    <node x="4553.5" y="5558.0">com.assemblyrobot.shared.constants.StageID</node>
+    <node x="17758.0" y="1409.5">com.assemblyrobot.shared.config.model.AppConfig</node>
+    <node x="10391.5" y="4015.5">com.assemblyrobot.simulator.core.generators.ErrorCheckTimeGenerator</node>
+    <node x="15582.5" y="10402.5">com.assemblyrobot.shared.config.model.ErrorOccurrenceConfig</node>
+    <node x="15932.5" y="1376.0">com.assemblyrobot.shared.config.model.Configuration</node>
+    <node x="7649.5" y="9099.5">com.assemblyrobot.simulator.system.components.Tracker</node>
+    <node x="3216.5" y="3642.5">com.assemblyrobot.simulator.system.components.Stage</node>
+    <node x="8359.0" y="4048.5">com.assemblyrobot.simulator.system.stations.ErrorCheckStation</node>
+    <node x="2153.5" y="6324.0">com.assemblyrobot.simulator.system.stages.FixStage</node>
+    <node x="8051.5" y="9309.0">com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector</node>
+    <node x="15893.5" y="1882.0">com.assemblyrobot.shared.utils.EnvUtils</node>
+    <node x="819.5" y="1084.0">com.assemblyrobot.ui.controllers.StationViewerController</node>
+    <node x="5911.0" y="8182.0">com.assemblyrobot.simulator.core.clock.Clock</node>
+    <node x="19454.5" y="10380.0">com.assemblyrobot.ui.models.ErrorOccurrenceVisualization</node>
+    <node x="8846.0" y="2408.5">com.assemblyrobot.simulator.system.stations.AssemblyStation</node>
+    <node x="14824.5" y="5013.5">com.assemblyrobot.shared.utils.JsonUtils</node>
+    <node x="13063.5" y="11906.0">com.assemblyrobot.shared.config.Config.UserSetting</node>
+    <node x="308.5" y="900.0">com.assemblyrobot.ui.models.StationVisualization</node>
+    <node x="3271.5" y="5018.0">com.assemblyrobot.simulator.system.components.Material</node>
+    <node x="7173.0" y="8527.0">com.assemblyrobot.simulator.system.components.StageController</node>
+    <node x="5167.0" y="8979.5">com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector</node>
+    <node x="5138.0" y="7472.0">com.assemblyrobot.simulator.core.Engine</node>
+    <node x="4116.5" y="7168.5">com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator</node>
+    <node x="232.5" y="221.0">com.assemblyrobot.ui.views.StationViewer</node>
+    <node x="6151.0" y="9117.0">com.assemblyrobot.simulator.system.components.StageController.Metrics</node>
+    <node x="7216.5" y="3746.0">com.assemblyrobot.simulator.system.stages.ErrorCheckStage</node>
+    <node x="5586.0" y="8631.0">com.assemblyrobot.simulator.core.clock.TickAdvanceListener</node>
+    <node x="18801.0" y="2226.5">com.assemblyrobot.ui.views.About</node>
+    <node x="6797.5" y="10244.5">com.assemblyrobot.simulator.core.metrics.MetricsCollector</node>
+    <node x="7110.0" y="10616.0">com.assemblyrobot.simulator.core.metrics.MetricsCollectorType</node>
+    <node x="10598.5" y="11020.0">com.assemblyrobot.ui.models.NormalDistributionVisualization</node>
+    <node x="10224.0" y="1387.5">com.assemblyrobot.shared.config.model.StationConfig</node>
+    <node x="14718.5" y="12936.0">com.assemblyrobot.shared.db.model.StationDTO</node>
+    <node x="12502.5" y="12700.0">com.assemblyrobot.shared.db.dao.DAO</node>
+    <node x="4714.0" y="6768.5">com.assemblyrobot.simulator.core.events.Event</node>
+    <node x="13622.5" y="12633.0">com.assemblyrobot.shared.db.dao.RunDAO</node>
+    <node x="16690.0" y="4860.5">com.assemblyrobot.ui.utils.TextFieldUtils</node>
+    <node x="3613.0" y="7626.5">com.assemblyrobot.simulator.system.SimulatorEngine</node>
+    <node x="15538.5" y="4190.0">com.assemblyrobot.shared.config.Config</node>
+    <node x="1504.5" y="2701.5">com.assemblyrobot.ui.views.Overview</node>
+    <node x="16386.0" y="4573.5">com.assemblyrobot.shared.constants.ErrorType.FixTimes</node>
+    <node x="4218.5" y="6386.5">com.assemblyrobot.simulator.core.events.TransferEvent</node>
+    <node x="618.0" y="13654.0">com.assemblyrobot.ui.controllers.OverviewController</node>
+    <node x="18525.0" y="1111.0">com.assemblyrobot.ui.views.View</node>
+    <node x="18859.0" y="2493.5">com.assemblyrobot.shared.constants.Version</node>
+    <node x="18643.0" y="4322.5">com.assemblyrobot.ui.utils.AlertUtils</node>
+    <node x="14292.0" y="12379.5">com.assemblyrobot.ui.controllers.DatabaseViewerController</node>
+    <node x="17179.5" y="3881.5">com.assemblyrobot.ui.views.OptionsEditor</node>
+    <node x="2753.5" y="6637.5">com.assemblyrobot.simulator.system.stations.FixStation</node>
+    <node x="4874.0" y="9168.0">com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector.Metrics</node>
+    <node x="16233.0" y="5209.5">com.assemblyrobot.shared.config.model.ErrorFixTimeConfig</node>
+    <node x="19093.0" y="2282.0">com.assemblyrobot.ui.utils.LinkUtils</node>
+    <node x="8474.0" y="9742.0">com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector.Metrics</node>
+    <node x="9768.0" y="4855.0">com.assemblyrobot.simulator.system.components.Station.Metrics</node>
+    <node x="4986.5" y="6998.0">com.assemblyrobot.simulator.core.events.EventType</node>
+    <node x="11891.0" y="13183.0">com.assemblyrobot.shared.db.model.MaterialDTO</node>
+    <node x="3268.5" y="7604.0">com.assemblyrobot.shared.constants.ErrorType</node>
+    <node x="19479.0" y="2191.0">com.assemblyrobot.ui.models.ErrorFixTimeVisualization</node>
+    <node x="13197.5" y="12398.0">com.assemblyrobot.shared.db.model.StageControllerDTO</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.components.Tracker">
+      <point x="187.0" y="80.0" />
+      <point x="8000.0" y="8800.0" />
+      <point x="8000.0" y="9160.0" />
+      <point x="150.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="0.0" y="-127.0" />
+      <point x="13880.0" y="11590.0" />
+      <point x="-422.5" y="110.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="143.5" y="-60.0" />
+      <point x="7640.0" y="3780.0" />
+      <point x="7640.0" y="1520.0" />
+      <point x="-96.0" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-53.33333333333394" y="226.0" />
+      <point x="9146.666666666666" y="5680.0" />
+      <point x="4800.0" y="5680.0" />
+      <point x="0.0" y="-71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="-143.5" y="20.0" />
+      <point x="4600.0" y="3860.0" />
+      <point x="4600.0" y="5160.0" />
+      <point x="88.5" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.AssemblyStation" target="com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator">
+      <point x="114.0" y="-0.0" />
+      <point x="10120.0" y="2480.0" />
+      <point x="10120.0" y="2000.0" />
+      <point x="-125.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="142.0" y="80.0" />
+      <point x="6080.0" y="7800.0" />
+      <point x="0.0" y="-138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="220.5" y="-120.0" />
+      <point x="17680.0" y="4240.0" />
+      <point x="17680.0" y="1320.0" />
+      <point x="10360.0" y="1320.0" />
+      <point x="40.0" y="-92.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.views.View">
+      <point x="-200.0" y="203.5" />
+      <point x="19960.0" y="1160.0" />
+      <point x="75.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator" target="com.assemblyrobot.simulator.core.generators.Generator">
+      <point x="0.0" y="-104.5" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.MaterialDTO" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="229.0" y="-120.0" />
+      <point x="12400.0" y="13200.0" />
+      <point x="12400.0" y="11540.0" />
+      <point x="-422.5" y="60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.StationAmountVisualization">
+      <point x="-120.0" y="203.5" />
+      <point x="20040.0" y="2520.0" />
+      <point x="129.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-100.0" y="-193.0" />
+      <point x="7260.0" y="6280.0" />
+      <point x="3380.0" y="6280.0" />
+      <point x="20.0" y="-116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.simulator.core.events.TransferEvent">
+      <point x="0.0" y="-93.5" />
+      <point x="3760.0" y="6520.0" />
+      <point x="-181.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator" target="com.assemblyrobot.shared.config.model.ErrorFixTimeConfig">
+      <point x="40.0" y="-115.5" />
+      <point x="15720.0" y="5280.0" />
+      <point x="-87.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.metrics.MetricsCollector">
+      <point x="198.5" y="120.0" />
+      <point x="9560.0" y="4680.0" />
+      <point x="9560.0" y="10360.0" />
+      <point x="122.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.simulator.system.stations.FixStation">
+      <point x="160.0" y="-116.0" />
+      <point x="2480.0" y="6280.0" />
+      <point x="2840.0" y="6280.0" />
+      <point x="-40.0" y="-82.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.TransferEvent" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="40.0" y="93.5" />
+      <point x="4440.0" y="6720.0" />
+      <point x="5040.0" y="6720.0" />
+      <point x="-40.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="53.333333333333485" y="-116.0" />
+      <point x="2373.3333333333335" y="3800.0" />
+      <point x="3200.0" y="3800.0" />
+      <point x="3200.0" y="5200.0" />
+      <point x="-88.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="93.33333333333348" y="-116.0" />
+      <point x="2413.3333333333335" y="6160.0" />
+      <point x="7290.0" y="6160.0" />
+      <point x="-70.0" y="-193.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.DAO" target="com.assemblyrobot.shared.db.model.StageControllerDTO">
+      <point x="40.0" y="-60.0" />
+      <point x="12800.0" y="12480.0" />
+      <point x="-122.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="-80.0" y="226.0" />
+      <point x="9120.0" y="5640.0" />
+      <point x="86.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator" target="com.assemblyrobot.simulator.core.events.EventQueue">
+      <point x="123.5" y="-0.0" />
+      <point x="-93.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.stations.ErrorCheckStation">
+      <point x="60.0" y="-698.5" />
+      <point x="1740.0" y="2520.0" />
+      <point x="8480.0" y="2520.0" />
+      <point x="0.0" y="-71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="-80.0" y="478.5" />
+      <point x="17320.0" y="5120.0" />
+      <point x="10840.0" y="5120.0" />
+      <point x="40.0" y="37.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator">
+      <point x="0.0" y="193.0" />
+      <point x="7360.0" y="10160.0" />
+      <point x="8240.0" y="10160.0" />
+      <point x="8240.0" y="10240.0" />
+      <point x="-134.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Material" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="0.0" y="182.0" />
+      <point x="0.0" y="-116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.stages.FixStage">
+      <point x="120.0" y="698.5" />
+      <point x="1800.0" y="6440.0" />
+      <point x="-166.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="0.0" y="94.0" />
+      <point x="8200.0" y="5480.0" />
+      <point x="4680.0" y="5480.0" />
+      <point x="40.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="198.5" y="100.0" />
+      <point x="9600.0" y="4660.0" />
+      <point x="9600.0" y="10880.0" />
+      <point x="6080.0" y="10880.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.About" target="com.assemblyrobot.shared.constants.Version">
+      <point x="0.0" y="93.5" />
+      <point x="0.0" y="-26.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector.Metrics">
+      <point x="142.0" y="-91.42857142857144" />
+      <point x="8560.0" y="13788.57142857143" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.clock.TickAdvanceListener" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="40.0" y="-49.0" />
+      <point x="5720.0" y="8520.0" />
+      <point x="6000.0" y="8520.0" />
+      <point x="-80.0" y="138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.models.ErrorOccurrenceVisualization" target="com.assemblyrobot.shared.config.model.ErrorOccurrenceConfig">
+      <point x="-185.5" y="-0.0" />
+      <point x="97.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.stages.FixStage">
+      <point x="-60.0" y="-193.0" />
+      <point x="7300.0" y="6120.0" />
+      <point x="2400.0" y="6120.0" />
+      <point x="80.0" y="-116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="-208.5" y="-0.0" />
+      <point x="10320.0" y="440.0" />
+      <point x="0.0" y="-92.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.config.Config">
+      <point x="257.5" y="-0.0" />
+      <point x="15440.0" y="12760.0" />
+      <point x="15440.0" y="4480.0" />
+      <point x="-141.5" y="120.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.config.Config.UserSetting">
+      <point x="0.0" y="478.5" />
+      <point x="17400.0" y="11840.0" />
+      <point x="13160.0" y="11840.0" />
+      <point x="0.0" y="-94.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.ui.views.View">
+      <point x="220.5" y="-40.0" />
+      <point x="18600.0" y="4320.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.simulator.core.Engine">
+      <point x="20.0" y="116.0" />
+      <point x="1020.0" y="8360.0" />
+      <point x="4000.0" y="8360.0" />
+      <point x="4000.0" y="8080.0" />
+      <point x="5240.0" y="8080.0" />
+      <point x="-40.0" y="248.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.db.model.MaterialDTO">
+      <point x="142.0" y="-40.0" />
+      <point x="11840.0" y="13840.0" />
+      <point x="11840.0" y="13320.0" />
+      <point x="-229.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.simulator.system.components.Stage">
+      <point x="40.0" y="-116.0" />
+      <point x="2360.0" y="3680.0" />
+      <point x="-143.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.model.Configuration" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="-147.5" y="-0.0" />
+      <point x="96.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.Config" target="com.assemblyrobot.shared.config.Config.UserSetting">
+      <point x="-141.5" y="40.0" />
+      <point x="11400.0" y="4400.0" />
+      <point x="11400.0" y="12160.0" />
+      <point x="13160.0" y="12160.0" />
+      <point x="0.0" y="94.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController.Metrics" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="89.0" y="-0.0" />
+      <point x="6400.0" y="9200.0" />
+      <point x="6400.0" y="8800.0" />
+      <point x="-187.0" y="80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.NormalDistributionVisualization">
+      <point x="-70.0" y="203.5" />
+      <point x="20090.0" y="11200.0" />
+      <point x="10800.0" y="11200.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.ErrorCheckStation" target="com.assemblyrobot.simulator.system.stages.ErrorCheckStage">
+      <point x="-121.0" y="-0.0" />
+      <point x="7440.0" y="4120.0" />
+      <point x="80.0" y="94.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="-40.0" y="-170.5" />
+      <point x="14840.0" y="11240.0" />
+      <point x="10480.0" y="11240.0" />
+      <point x="10480.0" y="4386.666666666666" />
+      <point x="-108.0" y="26.66666666666606" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.ui.views.StationViewer">
+      <point x="-40.0" y="-116.0" />
+      <point x="960.0" y="800.0" />
+      <point x="520.0" y="800.0" />
+      <point x="80.0" y="259.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorCheckTimeGenerator" target="com.assemblyrobot.shared.config.Config">
+      <point x="0.0" y="-104.5" />
+      <point x="10520.0" y="1840.0" />
+      <point x="15620.0" y="1840.0" />
+      <point x="-60.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.simulator.system.components.Stage">
+      <point x="-40.0" y="-94.0" />
+      <point x="7320.0" y="3680.0" />
+      <point x="143.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.core.metrics.MetricsCollector">
+      <point x="-187.0" y="120.0" />
+      <point x="6920.0" y="8840.0" />
+      <point x="0.0" y="-115.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="-166.5" y="-20.0" />
+      <point x="2000.0" y="6420.0" />
+      <point x="2000.0" y="1480.0" />
+      <point x="-96.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.core.metrics.MetricsCollectorType">
+      <point x="142.0" y="-108.57142857142856" />
+      <point x="7240.0" y="13771.42857142857" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.model.Configuration" target="com.assemblyrobot.shared.config.model.ErrorFixTimeConfig">
+      <point x="40.0" y="104.0" />
+      <point x="16120.0" y="1880.0" />
+      <point x="16320.0" y="1880.0" />
+      <point x="0.0" y="-70.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator" target="com.assemblyrobot.simulator.core.generators.Generator">
+      <point x="0.0" y="104.5" />
+      <point x="0.0" y="-48.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.config.model.ErrorFixTimeConfig">
+      <point x="-110.0" y="203.5" />
+      <point x="20050.0" y="5400.0" />
+      <point x="16360.0" y="5400.0" />
+      <point x="40.0" y="70.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.ui.controllers.OverviewController">
+      <point x="-175.5" y="80.0" />
+      <point x="1440.0" y="3480.0" />
+      <point x="1440.0" y="13691.42857142857" />
+      <point x="142.0" y="-188.57142857142856" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.About" target="com.assemblyrobot.ui.Main">
+      <point x="-119.0" y="-0.0" />
+      <point x="18280.0" y="2320.0" />
+      <point x="40.0" y="148.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator" target="com.assemblyrobot.shared.config.model.ErrorOccurrenceConfig">
+      <point x="0.0" y="115.5" />
+      <point x="0.0" y="-37.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator" target="com.assemblyrobot.shared.config.Config">
+      <point x="0.0" y="-115.5" />
+      <point x="0.0" y="170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.simulator.system.stations.AssemblyStation">
+      <point x="143.5" y="40.0" />
+      <point x="8960.0" y="2240.0" />
+      <point x="0.0" y="-71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.db.model.EngineDTO">
+      <point x="-80.0" y="-127.0" />
+      <point x="13800.0" y="12320.0" />
+      <point x="89.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Material" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="66.66666666666652" y="182.0" />
+      <point x="3426.6666666666665" y="5480.0" />
+      <point x="4600.0" y="5480.0" />
+      <point x="-40.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.db.model.StageControllerDTO">
+      <point x="-422.5" y="100.0" />
+      <point x="13320.0" y="11580.0" />
+      <point x="0.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.shared.utils.EnvUtils">
+      <point x="-100.0" y="-148.5" />
+      <point x="18140.0" y="1920.0" />
+      <point x="66.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.model.Configuration" target="com.assemblyrobot.shared.config.model.ErrorOccurrenceConfig">
+      <point x="0.0" y="104.0" />
+      <point x="16080.0" y="5240.0" />
+      <point x="15480.0" y="5240.0" />
+      <point x="15480.0" y="10440.0" />
+      <point x="-97.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="198.5" y="80.0" />
+      <point x="9640.0" y="4640.0" />
+      <point x="9640.0" y="10920.0" />
+      <point x="5680.0" y="10920.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.config.Config">
+      <point x="-220.5" y="-0.0" />
+      <point x="141.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.stages.ErrorCheckStage">
+      <point x="120.0" y="-698.5" />
+      <point x="1800.0" y="2640.0" />
+      <point x="7360.0" y="2640.0" />
+      <point x="0.0" y="-94.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.components.Station.Metrics">
+      <point x="142.0" y="-80.0" />
+      <point x="9880.0" y="13800.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.Config.UserSetting" target="com.assemblyrobot.shared.config.Config">
+      <point x="-96.5" y="-0.0" />
+      <point x="11440.0" y="12000.0" />
+      <point x="11440.0" y="4420.0" />
+      <point x="-141.5" y="60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="142.0" y="-131.42857142857144" />
+      <point x="5840.0" y="13748.57142857143" />
+      <point x="5840.0" y="8720.0" />
+      <point x="-187.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.Main">
+      <point x="-170.0" y="203.5" />
+      <point x="19990.0" y="2120.0" />
+      <point x="147.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.constants.ErrorType" target="com.assemblyrobot.shared.constants.ErrorType.FixTimes">
+      <point x="0.0" y="116.0" />
+      <point x="3360.0" y="8720.0" />
+      <point x="120.0" y="8720.0" />
+      <point x="120.0" y="120.0" />
+      <point x="18760.0" y="120.0" />
+      <point x="18760.0" y="3720.0" />
+      <point x="16480.0" y="3720.0" />
+      <point x="0.0" y="-26.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.StageControllerDTO" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="-122.5" y="-40.0" />
+      <point x="13000.0" y="12440.0" />
+      <point x="13000.0" y="11570.0" />
+      <point x="-422.5" y="90.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.db.model.StationDTO">
+      <point x="142.0" y="-0.0" />
+      <point x="15160.0" y="13880.0" />
+      <point x="15160.0" y="13080.0" />
+      <point x="161.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.constants.ErrorType.FixTimes" target="com.assemblyrobot.shared.config.Config">
+      <point x="-94.0" y="-0.0" />
+      <point x="15720.0" y="4600.0" />
+      <point x="40.0" y="170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.config.model.Configuration">
+      <point x="-142.0" y="-0.0" />
+      <point x="40.0" y="13880.0" />
+      <point x="40.0" y="40.0" />
+      <point x="16080.0" y="40.0" />
+      <point x="0.0" y="-104.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station.Metrics" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="-112.0" y="-0.0" />
+      <point x="9720.0" y="4960.0" />
+      <point x="9720.0" y="4600.0" />
+      <point x="198.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="166.5" y="80.0" />
+      <point x="2560.0" y="6520.0" />
+      <point x="2560.0" y="7710.0" />
+      <point x="-91.5" y="-10.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.db.model.StationDTO">
+      <point x="40.0" y="170.5" />
+      <point x="14920.0" y="11800.0" />
+      <point x="15480.0" y="11800.0" />
+      <point x="15480.0" y="12960.0" />
+      <point x="161.5" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.config.Config.UserSetting">
+      <point x="-40.0" y="-127.0" />
+      <point x="13840.0" y="12000.0" />
+      <point x="96.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.db.model.EngineDTO">
+      <point x="0.0" y="203.5" />
+      <point x="20160.0" y="13560.0" />
+      <point x="11720.0" y="13560.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector">
+      <point x="0.0" y="226.0" />
+      <point x="9200.0" y="9400.0" />
+      <point x="148.5" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.ui.Main">
+      <point x="220.5" y="-80.0" />
+      <point x="18240.0" y="4280.0" />
+      <point x="0.0" y="148.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector.Metrics" target="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector">
+      <point x="86.0" y="-0.0" />
+      <point x="5240.0" y="9240.0" />
+      <point x="-40.0" y="60.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.Main">
+      <point x="207.5" y="-0.0" />
+      <point x="18240.0" y="480.0" />
+      <point x="0.0" y="-148.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.shared.config.Config">
+      <point x="-166.5" y="-40.0" />
+      <point x="2040.0" y="6400.0" />
+      <point x="2040.0" y="1720.0" />
+      <point x="15680.0" y="1720.0" />
+      <point x="0.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator" target="com.assemblyrobot.shared.config.Config">
+      <point x="125.0" y="-0.0" />
+      <point x="15600.0" y="2000.0" />
+      <point x="-80.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.core.events.EventQueue">
+      <point x="-130.0" y="-193.0" />
+      <point x="7230.0" y="7240.0" />
+      <point x="93.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.metrics.MetricsCollector" target="com.assemblyrobot.simulator.core.metrics.MetricsCollectorType">
+      <point x="122.5" y="80.0" />
+      <point x="7240.0" y="10440.0" />
+      <point x="0.0" y="-104.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.db.dao.DAO">
+      <point x="-257.5" y="-0.0" />
+      <point x="257.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.shared.config.Config">
+      <point x="40.0" y="-94.0" />
+      <point x="8240.0" y="1760.0" />
+      <point x="15660.0" y="1760.0" />
+      <point x="-20.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="40.0" y="698.5" />
+      <point x="1720.0" y="6760.0" />
+      <point x="2360.0" y="6760.0" />
+      <point x="2360.0" y="8320.0" />
+      <point x="-169.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-142.0" y="-120.0" />
+      <point x="4800.0" y="7600.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.DAO" target="com.assemblyrobot.shared.db.model.EngineDTO">
+      <point x="-257.5" y="-0.0" />
+      <point x="11760.0" y="12760.0" />
+      <point x="40.0" y="71.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="66.66666666666652" y="-116.0" />
+      <point x="2386.6666666666665" y="6080.0" />
+      <point x="3520.0" y="6080.0" />
+      <point x="3520.0" y="5640.0" />
+      <point x="-86.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.controllers.StationViewerController">
+      <point x="207.5" y="40.0" />
+      <point x="1000.0" y="520.0" />
+      <point x="0.0" y="-116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="40.0" y="94.0" />
+      <point x="7400.0" y="4600.0" />
+      <point x="8800.0" y="4600.0" />
+      <point x="8800.0" y="6000.0" />
+      <point x="7400.0" y="6000.0" />
+      <point x="40.0" y="-193.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.ui.utils.TextFieldUtils">
+      <point x="-160.0" y="478.5" />
+      <point x="17240.0" y="4920.0" />
+      <point x="150.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="-30.0" y="-193.0" />
+      <point x="7330.0" y="5960.0" />
+      <point x="3400.0" y="5960.0" />
+      <point x="40.0" y="182.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.db.model.StageControllerDTO">
+      <point x="-20.0" y="203.5" />
+      <point x="20140.0" y="13240.0" />
+      <point x="13320.0" y="13240.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="143.5" y="13.33333333333394" />
+      <point x="10080.0" y="2213.333333333334" />
+      <point x="10080.0" y="8720.0" />
+      <point x="187.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.Config" target="com.assemblyrobot.shared.config.model.Configuration">
+      <point x="40.0" y="-170.0" />
+      <point x="15720.0" y="1840.0" />
+      <point x="16040.0" y="1840.0" />
+      <point x="-40.0" y="104.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.core.events.TransferEvent">
+      <point x="-110.0" y="-193.0" />
+      <point x="7250.0" y="6480.0" />
+      <point x="181.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.About" target="com.assemblyrobot.ui.utils.LinkUtils">
+      <point x="119.0" y="-0.0" />
+      <point x="-107.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.models.NormalDistributionVisualization" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.EventQueue" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-93.5" y="-40.0" />
+      <point x="4480.0" y="7200.0" />
+      <point x="4480.0" y="6872.0" />
+      <point x="-86.0" y="32.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.ui.Main">
+      <point x="0.0" y="-698.5" />
+      <point x="1680.0" y="1240.0" />
+      <point x="18200.0" y="1240.0" />
+      <point x="-40.0" y="-148.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.components.Station.Metrics">
+      <point x="198.5" y="20.0" />
+      <point x="9880.0" y="4580.0" />
+      <point x="0.0" y="-105.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="-120.0" y="-193.0" />
+      <point x="7240.0" y="7080.0" />
+      <point x="93.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.db.model.MaterialDTO">
+      <point x="-257.5" y="40.0" />
+      <point x="13360.0" y="12800.0" />
+      <point x="13360.0" y="13320.0" />
+      <point x="229.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.ui.views.Overview">
+      <point x="142.0" y="-177.14285714285717" />
+      <point x="1680.0" y="13702.857142857143" />
+      <point x="0.0" y="698.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.models.StationVisualization">
+      <point x="0.0" y="259.0" />
+      <point x="0.0" y="-60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.TransferEvent" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-181.5" y="-0.0" />
+      <point x="3420.0" y="6480.0" />
+      <point x="60.0" y="-116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.DAO" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="0.0" y="-60.0" />
+      <point x="12760.0" y="11560.0" />
+      <point x="-422.5" y="80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="-422.5" y="-0.0" />
+      <point x="10320.0" y="11480.0" />
+      <point x="0.0" y="92.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector" target="com.assemblyrobot.simulator.core.metrics.MetricsCollector">
+      <point x="40.0" y="60.5" />
+      <point x="5320.0" y="10360.0" />
+      <point x="-122.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-40.0" y="-94.0" />
+      <point x="8160.0" y="1920.0" />
+      <point x="1360.0" y="1920.0" />
+      <point x="1360.0" y="7720.0" />
+      <point x="-91.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="123.5" y="40.0" />
+      <point x="4440.0" y="7280.0" />
+      <point x="4440.0" y="8120.0" />
+      <point x="6040.0" y="8120.0" />
+      <point x="-40.0" y="-138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.Config" target="com.assemblyrobot.shared.utils.JsonUtils">
+      <point x="-141.5" y="80.0" />
+      <point x="14880.0" y="4440.0" />
+      <point x="0.0" y="-26.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector">
+      <point x="142.0" y="120.0" />
+      <point x="5480.0" y="7840.0" />
+      <point x="5480.0" y="9000.0" />
+      <point x="113.0" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.metrics.MetricsCollector" target="com.assemblyrobot.simulator.core.metrics.CentralMetricsCollector">
+      <point x="0.0" y="115.5" />
+      <point x="6920.0" y="10720.0" />
+      <point x="166.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.db.model.StationDTO">
+      <point x="-30.0" y="203.5" />
+      <point x="20130.0" y="13040.0" />
+      <point x="161.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.FixStation" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-126.5" y="40.0" />
+      <point x="2680.0" y="6760.0" />
+      <point x="2680.0" y="7680.0" />
+      <point x="-91.5" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.db.model.EngineDTO">
+      <point x="-422.5" y="30.0" />
+      <point x="11720.0" y="11510.0" />
+      <point x="0.0" y="-71.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.ui.models.StationVisualization">
+      <point x="-120.0" y="-116.0" />
+      <point x="880.0" y="960.0" />
+      <point x="131.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.ui.controllers.StationViewerController">
+      <point x="-20.0" y="-148.5" />
+      <point x="18220.0" y="1200.0" />
+      <point x="180.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.simulator.system.components.Stage">
+      <point x="-80.0" y="-94.0" />
+      <point x="8120.0" y="2040.0" />
+      <point x="3360.0" y="2040.0" />
+      <point x="0.0" y="-37.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.EngineDTO" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="89.0" y="-40.0" />
+      <point x="11880.0" y="12280.0" />
+      <point x="11880.0" y="11520.0" />
+      <point x="-422.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.shared.config.model.StationConfig">
+      <point x="0.0" y="-94.0" />
+      <point x="8200.0" y="1560.0" />
+      <point x="-96.0" y="80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.ui.controllers.StationViewerController">
+      <point x="142.0" y="-200.0" />
+      <point x="1000.0" y="13680.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="40.0" y="-93.5" />
+      <point x="3800.0" y="6840.0" />
+      <point x="-86.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector" target="com.assemblyrobot.simulator.core.Engine">
+      <point x="0.0" y="-60.5" />
+      <point x="0.0" y="248.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.TransferEvent" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="0.0" y="-93.5" />
+      <point x="4400.0" y="5680.0" />
+      <point x="-86.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="-143.5" y="-0.0" />
+      <point x="7600.0" y="2200.0" />
+      <point x="7600.0" y="3400.0" />
+      <point x="4560.0" y="3400.0" />
+      <point x="4560.0" y="5120.0" />
+      <point x="88.5" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="148.5" y="-120.0" />
+      <point x="8840.0" y="9360.0" />
+      <point x="8840.0" y="5800.0" />
+      <point x="4700.0" y="5800.0" />
+      <point x="60.0" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.EventQueue">
+      <point x="-142.0" y="-80.0" />
+      <point x="4640.0" y="7640.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.views.View">
+      <point x="0.0" y="-259.0" />
+      <point x="440.0" y="160.0" />
+      <point x="18600.0" y="160.0" />
+      <point x="0.0" y="-49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.AssemblyTimeGenerator" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="-125.0" y="40.0" />
+      <point x="10960.0" y="2040.0" />
+      <point x="10960.0" y="4333.333333333334" />
+      <point x="108.0" y="-26.66666666666606" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="-147.0" y="-40.0" />
+      <point x="3560.0" y="7680.0" />
+      <point x="3560.0" y="5660.0" />
+      <point x="-86.5" y="20.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="-40.0" y="226.0" />
+      <point x="9160.0" y="5720.0" />
+      <point x="5080.0" y="5720.0" />
+      <point x="0.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="40.0" y="-248.0" />
+      <point x="5320.0" y="7400.0" />
+      <point x="7220.0" y="7400.0" />
+      <point x="-140.0" y="-193.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.ErrorOccurrenceVisualization">
+      <point x="-100.0" y="203.5" />
+      <point x="20060.0" y="10320.0" />
+      <point x="19640.0" y="10320.0" />
+      <point x="0.0" y="-60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="-143.5" y="40.0" />
+      <point x="4640.0" y="3880.0" />
+      <point x="0.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.db.model.StationDTO">
+      <point x="40.0" y="127.0" />
+      <point x="13920.0" y="13040.0" />
+      <point x="-161.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.simulator.system.stages.FixStage">
+      <point x="60.0" y="116.0" />
+      <point x="1060.0" y="7760.0" />
+      <point x="2320.0" y="7760.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorOccurrenceGenerator" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="134.5" y="-0.0" />
+      <point x="19400.0" y="10240.0" />
+      <point x="19400.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="13400.0" />
+      <point x="3560.0" y="13400.0" />
+      <point x="3560.0" y="7760.0" />
+      <point x="91.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="26.666666666666515" y="-116.0" />
+      <point x="2346.6666666666665" y="3600.0" />
+      <point x="8240.0" y="3600.0" />
+      <point x="8240.0" y="4540.0" />
+      <point x="-198.5" y="-20.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.DAO" target="com.assemblyrobot.shared.db.model.MaterialDTO">
+      <point x="-40.0" y="60.0" />
+      <point x="12720.0" y="13280.0" />
+      <point x="229.0" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.ui.views.View">
+      <point x="147.5" y="-80.0" />
+      <point x="18440.0" y="2040.0" />
+      <point x="18440.0" y="1180.0" />
+      <point x="-75.0" y="20.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.components.StageController">
+      <point x="-13.33333333333394" y="226.0" />
+      <point x="9186.666666666666" y="6080.0" />
+      <point x="7440.0" y="6080.0" />
+      <point x="80.0" y="-193.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Station" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="-120.0" y="226.0" />
+      <point x="9080.0" y="5200.0" />
+      <point x="88.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector" target="com.assemblyrobot.simulator.core.metrics.MetricsCollector">
+      <point x="-148.5" y="-0.0" />
+      <point x="7680.0" y="9480.0" />
+      <point x="7680.0" y="10300.0" />
+      <point x="122.5" y="-60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.db.model.StageControllerDTO">
+      <point x="142.0" y="-28.571428571428555" />
+      <point x="13080.0" y="13851.42857142857" />
+      <point x="13080.0" y="12500.0" />
+      <point x="-122.5" y="20.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.About" target="com.assemblyrobot.ui.views.View">
+      <point x="0.0" y="-93.5" />
+      <point x="18920.0" y="2160.0" />
+      <point x="18720.0" y="2160.0" />
+      <point x="18720.0" y="1200.0" />
+      <point x="75.0" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.components.StationQueue">
+      <point x="80.0" y="-698.5" />
+      <point x="1760.0" y="2560.0" />
+      <point x="7820.0" y="2560.0" />
+      <point x="-20.0" y="-71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector.Metrics" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector">
+      <point x="-86.0" y="-0.0" />
+      <point x="8240.0" y="9880.0" />
+      <point x="40.0" y="171.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector.Metrics">
+      <point x="148.5" y="40.0" />
+      <point x="8560.0" y="9520.0" />
+      <point x="0.0" y="-138.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.ErrorCheckStation" target="com.assemblyrobot.simulator.core.generators.ErrorCheckTimeGenerator">
+      <point x="121.0" y="-0.0" />
+      <point x="-128.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Stage" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="0.0" y="37.5" />
+      <point x="0.0" y="-182.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.FixStation" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="126.5" y="-0.0" />
+      <point x="3080.0" y="6720.0" />
+      <point x="3080.0" y="4880.0" />
+      <point x="9066.666666666666" y="4880.0" />
+      <point x="-133.33333333333394" y="226.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.constants.ErrorType.FixTimes" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="94.0" y="-0.0" />
+      <point x="16640.0" y="4600.0" />
+      <point x="16640.0" y="5320.0" />
+      <point x="19360.0" y="5320.0" />
+      <point x="19360.0" y="80.0" />
+      <point x="80.0" y="80.0" />
+      <point x="80.0" y="8760.0" />
+      <point x="3520.0" y="8760.0" />
+      <point x="3520.0" y="7800.0" />
+      <point x="91.5" y="80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector">
+      <point x="142.0" y="-97.14285714285717" />
+      <point x="8200.0" y="13782.857142857143" />
+      <point x="0.0" y="171.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="-142.0" y="-160.0" />
+      <point x="5080.0" y="7560.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.ui.views.View">
+      <point x="-175.5" y="-0.0" />
+      <point x="1320.0" y="3400.0" />
+      <point x="1320.0" y="1160.0" />
+      <point x="-75.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.ui.controllers.StationViewerController">
+      <point x="-80.0" y="248.0" />
+      <point x="5200.0" y="8040.0" />
+      <point x="1040.0" y="8040.0" />
+      <point x="40.0" y="116.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.stages.AssemblyStage">
+      <point x="20.0" y="-698.5" />
+      <point x="1700.0" y="2000.0" />
+      <point x="8140.0" y="2000.0" />
+      <point x="-60.0" y="-94.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-147.0" y="-0.0" />
+      <point x="91.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector">
+      <point x="187.0" y="40.0" />
+      <point x="8200.0" y="8760.0" />
+      <point x="0.0" y="-171.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.Engine" target="com.assemblyrobot.simulator.core.events.TransferEvent">
+      <point x="0.0" y="-248.0" />
+      <point x="5280.0" y="6640.0" />
+      <point x="4520.0" y="6640.0" />
+      <point x="120.0" y="93.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.FixStage" target="com.assemblyrobot.simulator.system.components.StationQueue">
+      <point x="13.333333333333485" y="-116.0" />
+      <point x="2333.3333333333335" y="3440.0" />
+      <point x="-105.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-123.5" y="-40.0" />
+      <point x="4040.0" y="7200.0" />
+      <point x="4040.0" y="6856.0" />
+      <point x="-86.0" y="16.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.Event" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="86.0" y="-0.0" />
+      <point x="5020.0" y="6840.0" />
+      <point x="-60.0" y="-82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.core.metrics.CentralMetricsCollector">
+      <point x="142.0" y="-114.28571428571428" />
+      <point x="6720.0" y="13765.714285714286" />
+      <point x="6720.0" y="10760.0" />
+      <point x="166.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.events.TransferEvent" target="com.assemblyrobot.simulator.core.events.Event">
+      <point x="-181.5" y="80.0" />
+      <point x="3960.0" y="6560.0" />
+      <point x="3960.0" y="6820.0" />
+      <point x="-86.0" y="-20.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="-207.5" y="-0.0" />
+      <point x="160.0" y="480.0" />
+      <point x="160.0" y="8680.0" />
+      <point x="-94.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.shared.config.model.Configuration">
+      <point x="-60.0" y="-148.5" />
+      <point x="18180.0" y="1280.0" />
+      <point x="16280.0" y="1280.0" />
+      <point x="16280.0" y="1440.0" />
+      <point x="147.5" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.components.StageController.Metrics">
+      <point x="-187.0" y="40.0" />
+      <point x="6240.0" y="8760.0" />
+      <point x="0.0" y="-83.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.stations.AssemblyStation">
+      <point x="40.0" y="-698.5" />
+      <point x="1720.0" y="2480.0" />
+      <point x="-114.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector">
+      <point x="142.0" y="-137.14285714285717" />
+      <point x="5280.0" y="13742.857142857143" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.components.StageController.Metrics">
+      <point x="142.0" y="-125.71428571428572" />
+      <point x="6240.0" y="13754.285714285714" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Tracker" target="com.assemblyrobot.simulator.system.metricscollectors.MaterialMetricsCollector">
+      <point x="150.5" y="40.0" />
+      <point x="8160.0" y="9200.0" />
+      <point x="-40.0" y="-171.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-143.5" y="-0.0" />
+      <point x="3160.0" y="3840.0" />
+      <point x="3160.0" y="7640.0" />
+      <point x="-91.5" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.db.model.MaterialDTO">
+      <point x="-422.5" y="70.0" />
+      <point x="12440.0" y="11550.0" />
+      <point x="12440.0" y="13240.0" />
+      <point x="229.0" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.AssemblyStation" target="com.assemblyrobot.simulator.system.stages.AssemblyStage">
+      <point x="-114.0" y="-40.0" />
+      <point x="8800.0" y="2440.0" />
+      <point x="8800.0" y="2253.333333333334" />
+      <point x="143.5" y="53.33333333333394" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.ui.utils.AlertUtils">
+      <point x="220.5" y="-0.0" />
+      <point x="-157.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.core.clock.Clock">
+      <point x="-160.0" y="-193.0" />
+      <point x="7200.0" y="8360.0" />
+      <point x="169.0" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.stations.FixStation">
+      <point x="80.0" y="698.5" />
+      <point x="1760.0" y="6720.0" />
+      <point x="-126.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.utils.EnvUtils" target="com.assemblyrobot.shared.config.Config">
+      <point x="-66.5" y="-0.0" />
+      <point x="15740.0" y="1920.0" />
+      <point x="60.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.utils.JsonUtils">
+      <point x="0.0" y="-170.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="-60.0" y="203.5" />
+      <point x="20100.0" y="11720.0" />
+      <point x="15000.0" y="11720.0" />
+      <point x="120.0" y="170.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.shared.config.Config">
+      <point x="143.5" y="-0.0" />
+      <point x="10160.0" y="3840.0" />
+      <point x="10160.0" y="1800.0" />
+      <point x="15640.0" y="1800.0" />
+      <point x="-40.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator" target="com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator">
+      <point x="0.0" y="71.5" />
+      <point x="4240.0" y="10960.0" />
+      <point x="11160.0" y="10960.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.ErrorFixTimeVisualization">
+      <point x="-160.0" y="203.5" />
+      <point x="20000.0" y="2240.0" />
+      <point x="121.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.DAO" target="com.assemblyrobot.shared.db.model.StationDTO">
+      <point x="0.0" y="60.0" />
+      <point x="12760.0" y="13280.0" />
+      <point x="14880.0" y="13280.0" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.shared.config.model.AppConfig">
+      <point x="-80.0" y="-148.5" />
+      <point x="18160.0" y="1480.0" />
+      <point x="82.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.AssemblyStation" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="0.0" y="71.5" />
+      <point x="8960.0" y="4400.0" />
+      <point x="-198.5" y="-160.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.config.model.ErrorOccurrenceConfig">
+      <point x="422.5" y="-40.0" />
+      <point x="15360.0" y="11440.0" />
+      <point x="15360.0" y="11160.0" />
+      <point x="15680.0" y="11160.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.simulator.system.stages.ErrorCheckStage">
+      <point x="80.0" y="116.0" />
+      <point x="1080.0" y="1960.0" />
+      <point x="7560.0" y="1960.0" />
+      <point x="7560.0" y="3760.0" />
+      <point x="143.5" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="142.0" y="-85.71428571428572" />
+      <point x="9680.0" y="13794.285714285714" />
+      <point x="9680.0" y="4620.0" />
+      <point x="198.5" y="60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.FixStation" target="com.assemblyrobot.simulator.system.stages.FixStage">
+      <point x="-80.0" y="-82.5" />
+      <point x="2800.0" y="6440.0" />
+      <point x="166.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.db.dao.RunDAO">
+      <point x="142.0" y="-11.428571428571416" />
+      <point x="13880.0" y="13868.57142857143" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.View" target="com.assemblyrobot.ui.Main">
+      <point x="-75.0" y="40.0" />
+      <point x="18480.0" y="1200.0" />
+      <point x="18480.0" y="2080.0" />
+      <point x="147.5" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.controllers.DatabaseViewerController">
+      <point x="-50.0" y="203.5" />
+      <point x="20110.0" y="11880.0" />
+      <point x="14440.0" y="11880.0" />
+      <point x="40.0" y="-60.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.shared.config.Config">
+      <point x="-147.5" y="-0.0" />
+      <point x="15760.0" y="2120.0" />
+      <point x="80.0" y="-170.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.simulator.core.Engine">
+      <point x="147.0" y="-0.0" />
+      <point x="-142.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="142.0" y="-68.57142857142856" />
+      <point x="11480.0" y="13811.42857142857" />
+      <point x="11480.0" y="11490.0" />
+      <point x="-422.5" y="10.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.SimulatorEngine">
+      <point x="142.0" y="-171.42857142857144" />
+      <point x="3760.0" y="13708.57142857143" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.stages.AssemblyStage">
+      <point x="120.0" y="-193.0" />
+      <point x="7480.0" y="6120.0" />
+      <point x="10040.0" y="6120.0" />
+      <point x="10040.0" y="2226.666666666666" />
+      <point x="143.5" y="26.66666666666606" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.StationDTO" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="161.5" y="-40.0" />
+      <point x="17440.0" y="13000.0" />
+      <point x="17440.0" y="11760.0" />
+      <point x="14960.0" y="11760.0" />
+      <point x="80.0" y="170.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.simulator.system.stations.ErrorCheckStation">
+      <point x="100.0" y="94.0" />
+      <point x="7460.0" y="4000.0" />
+      <point x="8440.0" y="4000.0" />
+      <point x="-40.0" y="-71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.db.model.EngineDTO">
+      <point x="142.0" y="-51.428571428571445" />
+      <point x="11560.0" y="13828.57142857143" />
+      <point x="11560.0" y="12320.0" />
+      <point x="-89.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector" target="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector.Metrics">
+      <point x="-113.0" y="-0.0" />
+      <point x="4960.0" y="9040.0" />
+      <point x="0.0" y="-72.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator" target="com.assemblyrobot.simulator.core.events.EventType">
+      <point x="40.0" y="-71.5" />
+      <point x="4280.0" y="7080.0" />
+      <point x="-93.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="-137.5" y="-0.0" />
+      <point x="108.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="120.0" y="116.0" />
+      <point x="1120.0" y="1680.0" />
+      <point x="10240.0" y="1680.0" />
+      <point x="10240.0" y="4560.0" />
+      <point x="198.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.simulator.system.components.StationQueue">
+      <point x="-143.5" y="40.0" />
+      <point x="7840.0" y="2240.0" />
+      <point x="0.0" y="-71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.constants.ErrorType.FixTimes" target="com.assemblyrobot.shared.config.model.ErrorFixTimeConfig">
+      <point x="0.0" y="26.5" />
+      <point x="16480.0" y="5240.0" />
+      <point x="87.0" y="-40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.simulator.system.components.StationQueue">
+      <point x="143.5" y="-40.0" />
+      <point x="7680.0" y="3800.0" />
+      <point x="7680.0" y="3480.0" />
+      <point x="-105.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector.Metrics">
+      <point x="142.0" y="-148.57142857142856" />
+      <point x="4960.0" y="13731.42857142857" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.simulator.system.components.Material">
+      <point x="175.5" y="-0.0" />
+      <point x="3560.0" y="3400.0" />
+      <point x="3560.0" y="5080.0" />
+      <point x="88.5" y="-120.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StationQueue" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="105.5" y="-0.0" />
+      <point x="8720.0" y="3440.0" />
+      <point x="8720.0" y="4460.0" />
+      <point x="-198.5" y="-100.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.AssemblyStage" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="143.5" y="80.0" />
+      <point x="8760.0" y="2280.0" />
+      <point x="8760.0" y="4440.0" />
+      <point x="-198.5" y="-120.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.clock.Clock" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="-169.0" y="40.0" />
+      <point x="5680.0" y="8360.0" />
+      <point x="0.0" y="-49.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorCheckTimeGenerator" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="0.0" y="104.5" />
+      <point x="10520.0" y="4360.0" />
+      <point x="-108.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.dao.RunDAO" target="com.assemblyrobot.shared.db.model.StageControllerDTO">
+      <point x="-120.0" y="-127.0" />
+      <point x="13760.0" y="12480.0" />
+      <point x="122.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stages.ErrorCheckStage" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="60.0" y="94.0" />
+      <point x="7420.0" y="4560.0" />
+      <point x="-198.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.DatabaseViewerController" target="com.assemblyrobot.shared.db.model.RunDTO">
+      <point x="-108.0" y="-0.0" />
+      <point x="14240.0" y="12440.0" />
+      <point x="14240.0" y="11610.0" />
+      <point x="-422.5" y="130.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.metrics.CentralMetricsCollector" target="com.assemblyrobot.simulator.core.metrics.MetricsCollector">
+      <point x="166.5" y="-40.0" />
+      <point x="6720.0" y="10680.0" />
+      <point x="6720.0" y="10440.0" />
+      <point x="-122.5" y="80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.Stage" target="com.assemblyrobot.shared.constants.ErrorType">
+      <point x="-143.5" y="26.66666666666606" />
+      <point x="3120.0" y="3706.666666666666" />
+      <point x="3120.0" y="7660.0" />
+      <point x="-91.5" y="-60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator">
+      <point x="120.0" y="-93.5" />
+      <point x="3880.0" y="7360.0" />
+      <point x="4200.0" y="7360.0" />
+      <point x="-40.0" y="71.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ErrorCheckTimeGenerator" target="com.assemblyrobot.simulator.core.generators.Generator">
+      <point x="128.5" y="-0.0" />
+      <point x="-79.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.core.generators.ArrivalEventIntervalGenerator" target="com.assemblyrobot.shared.config.Config">
+      <point x="137.5" y="-0.0" />
+      <point x="-141.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.config.model.ErrorFixTimeConfig">
+      <point x="-40.0" y="478.5" />
+      <point x="17360.0" y="5280.0" />
+      <point x="87.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.shared.config.Config">
+      <point x="142.0" y="-74.28571428571428" />
+      <point x="11360.0" y="13805.714285714286" />
+      <point x="11360.0" y="4380.0" />
+      <point x="-141.5" y="20.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.DatabaseViewerController" target="com.assemblyrobot.shared.db.dao.RunDAO">
+      <point x="0.0" y="60.5" />
+      <point x="14400.0" y="12680.0" />
+      <point x="257.5" y="-80.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.utils.JsonUtils">
+      <point x="-120.0" y="478.5" />
+      <point x="17280.0" y="5040.0" />
+      <point x="55.5" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.metricscollectors.EngineMetricsCollector" target="com.assemblyrobot.simulator.core.clock.TickAdvanceListener">
+      <point x="113.0" y="-20.0" />
+      <point x="5520.0" y="9020.0" />
+      <point x="5520.0" y="8720.0" />
+      <point x="-94.0" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.simulator.system.stages.AssemblyStage">
+      <point x="100.0" y="116.0" />
+      <point x="1100.0" y="1880.0" />
+      <point x="8180.0" y="1880.0" />
+      <point x="-20.0" y="-94.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.SimulatorEngine" target="com.assemblyrobot.ui.controllers.OverviewController">
+      <point x="147.0" y="20.0" />
+      <point x="4080.0" y="7740.0" />
+      <point x="4080.0" y="13725.714285714286" />
+      <point x="142.0" y="-154.28571428571428" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.simulator.system.stages.ErrorCheckStage">
+      <point x="-10.0" y="-193.0" />
+      <point x="7350.0" y="5880.0" />
+      <point x="4840.0" y="5880.0" />
+      <point x="4840.0" y="3900.0" />
+      <point x="-143.5" y="60.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.model.Configuration" target="com.assemblyrobot.shared.config.model.NormalDistributionConfig">
+      <point x="-147.5" y="40.0" />
+      <point x="10800.0" y="1520.0" />
+      <point x="0.0" y="-37.5" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.shared.config.model.Configuration">
+      <point x="0.0" y="-478.5" />
+      <point x="17400.0" y="1520.0" />
+      <point x="147.5" y="40.0" />
+    </edge>
+    <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.shared.db.model.MaterialDTO">
+      <point x="-10.0" y="203.5" />
+      <point x="20150.0" y="13520.0" />
+      <point x="12160.0" y="13520.0" />
+      <point x="40.0" y="137.0" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.components.StageController" target="com.assemblyrobot.shared.constants.StageID">
+      <point x="-20.0" y="-193.0" />
+      <point x="7340.0" y="5920.0" />
+      <point x="4660.0" y="5920.0" />
+      <point x="20.0" y="82.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.config.model.Configuration" target="com.assemblyrobot.shared.config.model.AppConfig">
+      <point x="147.5" y="-0.0" />
+      <point x="-82.0" y="-0.0" />
+    </edge>
+    <edge source="com.assemblyrobot.shared.db.model.RunDTO" target="com.assemblyrobot.shared.config.model.ErrorFixTimeConfig">
+      <point x="422.5" y="-0.0" />
+      <point x="16320.0" y="11480.0" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="com.assemblyrobot.simulator.system.stations.ErrorCheckStation" target="com.assemblyrobot.simulator.system.components.Station">
+      <point x="0.0" y="71.5" />
+      <point x="8480.0" y="4500.0" />
+      <point x="-198.5" y="-60.0" />
+    </edge>
+  </edges>
+  <settings layout="Directed Orthogonal" zoom="0.08820614469772052" x="10184.5" y="7053.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
