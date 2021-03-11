@@ -3,189 +3,193 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="671.784558823529" y="1107.5">com.assemblyrobot.ui.Main</node>
-    <node x="0.0" y="1030.0">com.assemblyrobot.ui.controllers.OverviewController</node>
-    <node x="781.159558823529" y="11.0">com.assemblyrobot.ui.views.View</node>
-    <node x="21.666666666666742" y="748.0">com.assemblyrobot.ui.controllers.StationViewerController</node>
-    <node x="545.909558823529" y="2177.0">com.assemblyrobot.ui.views.About</node>
-    <node x="2320.0630252100837" y="1196.0">com.assemblyrobot.ui.models.ErrorOccurrenceVisualization</node>
-    <node x="0.8359418767503257" y="0.0">com.assemblyrobot.ui.models.StationVisualization</node>
-    <node x="1120.0630252100839" y="1196.0">com.assemblyrobot.ui.models.NormalDistributionVisualization</node>
-    <node x="2041.0630252100839" y="1207.0">com.assemblyrobot.ui.models.StationAmountVisualization</node>
-    <node x="1805.0630252100839" y="1195.5">com.assemblyrobot.ui.controllers.DatabaseViewerController</node>
-    <node x="803.909558823529" y="1792.0">com.assemblyrobot.ui.views.OptionsEditor</node>
-    <node x="129.54427521008358" y="180.0">com.assemblyrobot.ui.views.StationViewer</node>
-    <node x="1662.416666666667" y="2067.0">com.assemblyrobot.ui.views.DatabaseViewer</node>
-    <node x="110.60486694677854" y="1572.0">com.assemblyrobot.ui.views.Overview</node>
-    <node x="1543.0630252100839" y="1207.0">com.assemblyrobot.ui.models.ErrorFixTimeVisualization</node>
+    <node x="496.8750000000002" y="1040.0">com.assemblyrobot.ui.Main</node>
+    <node x="218.96707393483734" y="2894.0">com.assemblyrobot.ui.controllers.OverviewController</node>
+    <node x="504.3641134085216" y="11.0">com.assemblyrobot.ui.views.View</node>
+    <node x="2371.893687343359" y="758.0">com.assemblyrobot.ui.controllers.StationViewerController</node>
+    <node x="371.0000000000001" y="2042.0">com.assemblyrobot.ui.views.About</node>
+    <node x="1937.0295739348373" y="1128.5">com.assemblyrobot.ui.models.ErrorOccurrenceVisualization</node>
+    <node x="1278.0295739348373" y="1128.5">com.assemblyrobot.ui.models.NormalDistributionVisualization</node>
+    <node x="2505.4895206766923" y="0.0">com.assemblyrobot.ui.models.StationVisualization</node>
+    <node x="1000.0295739348373" y="1139.5">com.assemblyrobot.ui.models.StationAmountVisualization</node>
+    <node x="1701.0295739348373" y="1128.0">com.assemblyrobot.ui.controllers.DatabaseViewerController</node>
+    <node x="629.0000000000001" y="1657.0">com.assemblyrobot.ui.views.OptionsEditor</node>
+    <node x="2224.781187343359" y="190.0">com.assemblyrobot.ui.views.StationViewer</node>
+    <node x="1459.1545739348373" y="1932.0">com.assemblyrobot.ui.views.DatabaseViewer</node>
+    <node x="0.0" y="1437.0">com.assemblyrobot.ui.views.Overview</node>
+    <node x="2328.0295739348376" y="1139.5">com.assemblyrobot.ui.models.ErrorFixTimeVisualization</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.ui.views.View">
       <point x="110.25" y="-478.5" />
-      <point x="1134.659558823529" y="1552.0" />
-      <point x="1067.4166666666667" y="1552.0" />
-      <point x="1067.4166666666667" y="160.0" />
-      <point x="899.0167016806716" y="160.0" />
-      <point x="42.85714285714266" y="49.0" />
+      <point x="959.7500000000001" y="1417.0" />
+      <point x="950.3936873433589" y="1417.0" />
+      <point x="950.3936873433589" y="160.0" />
+      <point x="600.7926848370931" y="160.0" />
+      <point x="21.42857142857156" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.controllers.StationViewerController">
-      <point x="-51.875" y="259.0" />
-      <point x="285.1692752100836" y="723.0" />
-      <point x="274.3666666666668" y="723.0" />
-      <point x="72.20000000000005" y="-116.0" />
+      <point x="51.875" y="259.0" />
+      <point x="2484.156187343359" y="733.0" />
+      <point x="2480.193687343359" y="733.0" />
+      <point x="-72.19999999999982" y="-116.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.views.View">
-      <point x="103.75" y="-259.0" />
-      <point x="440.7942752100836" y="140.0" />
-      <point x="791.8738445378148" y="140.0" />
-      <point x="-64.28571428571422" y="49.0" />
+      <point x="-103.75" y="-259.0" />
+      <point x="2328.531187343359" y="140.0" />
+      <point x="643.6498276942358" y="140.0" />
+      <point x="64.28571428571422" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.ErrorFixTimeVisualization">
-      <point x="-86.87500000000011" y="-203.5" />
-      <point x="1784.0416666666667" y="1512.0" />
-      <point x="1603.5630252100839" y="1512.0" />
+      <point x="156.375" y="-203.5" />
+      <point x="1824.0295739348373" y="1407.0" />
+      <point x="2388.5295739348376" y="1407.0" />
       <point x="-60.5" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.ui.views.View">
-      <point x="70.20000000000005" y="-698.5" />
-      <point x="356.3048669467786" y="1542.0" />
-      <point x="555.0442752100836" y="1542.0" />
-      <point x="555.0442752100836" y="150.0" />
-      <point x="813.3024159663863" y="150.0" />
-      <point x="-42.85714285714266" y="49.0" />
+      <point x="-87.75" y="-698.5" />
+      <point x="87.75" y="160.0" />
+      <point x="515.0783991228074" y="160.0" />
+      <point x="-64.28571428571422" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.Main">
-      <point x="-191.1250000000001" y="-203.5" />
-      <point x="1679.7916666666667" y="1542.0" />
-      <point x="929.909558823529" y="1542.0" />
-      <point x="110.625" y="148.5" />
+      <point x="-191.125" y="-203.5" />
+      <point x="1476.5295739348373" y="1407.0" />
+      <point x="755.0" y="1407.0" />
+      <point x="110.62499999999977" y="148.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.ui.Main">
-      <point x="140.4000000000001" y="-698.5" />
-      <point x="426.50486694677863" y="1552.0" />
-      <point x="708.659558823529" y="1552.0" />
+      <point x="87.75" y="-698.5" />
+      <point x="263.25" y="1417.0" />
+      <point x="533.7500000000002" y="1417.0" />
       <point x="-110.625" y="148.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.views.View">
-      <point x="121.62499999999989" y="-203.5" />
-      <point x="1992.5416666666667" y="1532.0" />
-      <point x="2309.5630252100837" y="1532.0" />
-      <point x="2309.5630252100837" y="150.0" />
-      <point x="920.4452731092432" y="150.0" />
-      <point x="64.28571428571422" y="49.0" />
+      <point x="-156.375" y="-203.5" />
+      <point x="1511.2795739348373" y="1397.0" />
+      <point x="989.5295739348373" y="1397.0" />
+      <point x="989.5295739348373" y="150.0" />
+      <point x="622.2212562656645" y="150.0" />
+      <point x="42.85714285714289" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.ui.views.Overview">
-      <point x="94.66666666666674" y="226.0" />
-      <point x="236.66666666666674" y="1552.0" />
-      <point x="286.10486694677854" y="1552.0" />
-      <point x="0.0" y="-698.5" />
+      <point x="-113.59999999999991" y="-226.0" />
+      <point x="247.36707393483744" y="2874.0" />
+      <point x="58.5" y="2874.0" />
+      <point x="-117.0" y="698.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.models.StationVisualization">
-      <point x="-103.75" y="-259.0" />
-      <point x="233.29427521008358" y="160.0" />
-      <point x="220.00260854341695" y="160.0" />
-      <point x="87.66666666666669" y="60.0" />
+      <point x="103.75" y="-259.0" />
+      <point x="2536.031187343359" y="170.0" />
+      <point x="2549.322854010026" y="170.0" />
+      <point x="-87.66666666666652" y="60.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.NormalDistributionVisualization">
-      <point x="-156.3750000000001" y="-203.5" />
-      <point x="1714.5416666666667" y="1532.0" />
-      <point x="1220.8130252100839" y="1532.0" />
+      <point x="-52.125" y="-203.5" />
+      <point x="1615.5295739348373" y="1367.0" />
+      <point x="1378.7795739348373" y="1367.0" />
       <point x="-100.75" y="60.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.StationAmountVisualization">
-      <point x="52.124999999999886" y="-203.5" />
-      <point x="1923.0416666666667" y="1512.0" />
-      <point x="2105.5630252100837" y="1512.0" />
+      <point x="-121.625" y="-203.5" />
+      <point x="1546.0295739348373" y="1387.0" />
+      <point x="1064.5295739348373" y="1387.0" />
       <point x="-64.5" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.View" target="com.assemblyrobot.ui.Main">
-      <point x="21.42857142857156" y="49.0" />
-      <point x="877.5881302521005" y="160.0" />
-      <point x="887.9069502801121" y="160.0" />
-      <point x="887.9069502801121" y="1005.0" />
-      <point x="929.909558823529" y="1005.0" />
-      <point x="110.625" y="-148.5" />
+      <point x="0.0" y="49.0" />
+      <point x="579.3641134085216" y="170.0" />
+      <point x="607.5" y="170.0" />
+      <point x="-36.87500000000023" y="-148.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.controllers.DatabaseViewerController">
-      <point x="-17.375000000000114" y="-203.5" />
-      <point x="1853.5416666666667" y="1552.0" />
-      <point x="1859.0630252100839" y="1552.0" />
+      <point x="17.375" y="-203.5" />
+      <point x="1685.0295739348373" y="1367.0" />
+      <point x="1755.0295739348373" y="1367.0" />
       <point x="-54.0" y="60.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.ui.views.StationViewer">
-      <point x="2.8421709430404007E-14" y="-116.0" />
-      <point x="202.16666666666674" y="723.0" />
-      <point x="181.41927521008358" y="723.0" />
-      <point x="-155.625" y="259.0" />
+      <point x="-144.4000000000001" y="-116.0" />
+      <point x="2407.993687343359" y="733.0" />
+      <point x="2380.406187343359" y="733.0" />
+      <point x="-51.875" y="259.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.DatabaseViewer" target="com.assemblyrobot.ui.models.ErrorOccurrenceVisualization">
-      <point x="156.3749999999999" y="-203.5" />
-      <point x="2027.2916666666667" y="1542.0" />
-      <point x="2412.8130252100837" y="1542.0" />
+      <point x="86.875" y="-203.5" />
+      <point x="1754.5295739348373" y="1387.0" />
+      <point x="2029.7795739348373" y="1387.0" />
       <point x="-92.75" y="60.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.OptionsEditor" target="com.assemblyrobot.ui.Main">
       <point x="-110.25" y="-478.5" />
-      <point x="914.159558823529" y="1552.0" />
-      <point x="856.159558823529" y="1552.0" />
+      <point x="739.2500000000001" y="1417.0" />
+      <point x="681.2500000000002" y="1417.0" />
       <point x="36.875" y="148.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.StationViewer" target="com.assemblyrobot.ui.Main">
-      <point x="155.625" y="259.0" />
-      <point x="492.6692752100836" y="723.0" />
-      <point x="845.159558823529" y="723.0" />
-      <point x="845.159558823529" y="1005.0" />
-      <point x="782.409558823529" y="1005.0" />
-      <point x="-36.875" y="-148.5" />
+      <point x="-155.625" y="259.0" />
+      <point x="2276.656187343359" y="733.0" />
+      <point x="618.5" y="733.0" />
+      <point x="618.5" y="1015.0" />
+      <point x="681.25" y="1015.0" />
+      <point x="36.87499999999977" y="-148.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.ui.views.View">
-      <point x="36.875" y="-148.5" />
-      <point x="0.0" y="49.0" />
+      <point x="-110.62500000000023" y="-148.5" />
+      <point x="533.75" y="1015.0" />
+      <point x="568.3641134085216" y="1015.0" />
+      <point x="568.3641134085216" y="170.0" />
+      <point x="557.9355419799502" y="170.0" />
+      <point x="-21.42857142857133" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.Overview" target="com.assemblyrobot.ui.controllers.OverviewController">
-      <point x="-140.4000000000001" y="-698.5" />
-      <point x="145.70486694677845" y="1552.0" />
-      <point x="47.33333333333326" y="1552.0" />
-      <point x="-94.66666666666674" y="226.0" />
+      <point x="0.0" y="698.5" />
+      <point x="175.5" y="2864.0" />
+      <point x="304.16707393483716" y="2864.0" />
+      <point x="-56.80000000000018" y="-226.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.About" target="com.assemblyrobot.ui.Main">
-      <point x="59.5" y="-93.5" />
-      <point x="724.409558823529" y="1552.0" />
-      <point x="782.409558823529" y="1552.0" />
+      <point x="59.50000000000023" y="-93.5" />
+      <point x="549.5000000000003" y="1417.0" />
+      <point x="607.5000000000002" y="1417.0" />
       <point x="-36.875" y="148.5" />
     </edge>
     <edge source="com.assemblyrobot.ui.controllers.StationViewerController" target="com.assemblyrobot.ui.models.StationVisualization">
-      <point x="-72.19999999999993" y="-116.0" />
-      <point x="129.9666666666668" y="723.0" />
-      <point x="119.04427521008358" y="723.0" />
-      <point x="119.04427521008358" y="160.0" />
-      <point x="132.33594187675033" y="160.0" />
-      <point x="0.0" y="60.0" />
+      <point x="144.4000000000001" y="-116.0" />
+      <point x="2696.793687343359" y="733.0" />
+      <point x="2661.281187343359" y="733.0" />
+      <point x="2661.281187343359" y="170.0" />
+      <point x="2724.656187343359" y="170.0" />
+      <point x="87.66666666666652" y="60.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.Main" target="com.assemblyrobot.ui.controllers.StationViewerController">
-      <point x="-110.625" y="-148.5" />
-      <point x="708.659558823529" y="1005.0" />
-      <point x="322.5" y="1005.0" />
-      <point x="120.33333333333331" y="116.0" />
+      <point x="110.62499999999977" y="-148.5" />
+      <point x="755.0" y="1015.0" />
+      <point x="2432.0603540100255" y="1015.0" />
+      <point x="-120.33333333333348" y="116.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.views.About" target="com.assemblyrobot.ui.views.View">
-      <point x="-59.5" y="-93.5" />
-      <point x="605.409558823529" y="1542.0" />
-      <point x="604.347058823529" y="1542.0" />
-      <point x="604.347058823529" y="160.0" />
-      <point x="834.7309873949574" y="160.0" />
-      <point x="-21.42857142857156" y="49.0" />
+      <point x="-59.49999999999977" y="-93.5" />
+      <point x="430.50000000000034" y="1407.0" />
+      <point x="429.43750000000034" y="1407.0" />
+      <point x="429.43750000000034" y="170.0" />
+      <point x="536.5069705513787" y="170.0" />
+      <point x="-42.85714285714289" y="49.0" />
     </edge>
     <edge source="com.assemblyrobot.ui.controllers.OverviewController" target="com.assemblyrobot.ui.controllers.StationViewerController">
-      <point x="-71.0" y="-226.0" />
-      <point x="71.0" y="1005.0" />
-      <point x="81.83333333333337" y="1005.0" />
-      <point x="-120.33333333333333" y="116.0" />
+      <point x="113.59999999999991" y="-226.0" />
+      <point x="474.56707393483725" y="2874.0" />
+      <point x="2591.5295739348376" y="2874.0" />
+      <point x="2591.5295739348376" y="1015.0" />
+      <point x="2672.7270206766925" y="1015.0" />
+      <point x="120.33333333333348" y="116.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4" x="1820.1190476190482" y="1853.5" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.3701723113487819" x="1384.5" y="1673.0" />
+  <SelectedNodes>
+    <node>com.assemblyrobot.ui.Main</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
