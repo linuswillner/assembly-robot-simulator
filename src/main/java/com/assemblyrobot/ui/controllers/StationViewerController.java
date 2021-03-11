@@ -4,7 +4,7 @@ import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.ErrorCheckStage;
 import com.assemblyrobot.simulator.system.stages.FixStage;
-import com.assemblyrobot.ui.models.TableData;
+import com.assemblyrobot.ui.models.StationVisualization;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,68 +14,78 @@ import javafx.collections.ObservableList;
 import lombok.val;
 
 public class StationViewerController {
-
   /**
-   * used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
-   * format usable by {@link TableData}. Each Stage has their own queue so there are 3 similar methods.
+   * Used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
+   * format usable by {@link StationVisualization}. This one formats data from the {@link
+   * AssemblyStage}.
    *
-   * @return returns a {@link ObservableList} that contains {@link TableData} objects for UI
+   * @return Returns an {@link ObservableList} that contains {@link StationVisualization} objects.
    */
-  public ObservableList<TableData> assemblyGetData() {
-    ObservableList<TableData> data = FXCollections.observableArrayList();
+  public ObservableList<StationVisualization> getAssemblyVisualizations() {
+    ObservableList<StationVisualization> data = FXCollections.observableArrayList();
 
     val stations = AssemblyStage.getStationQueue().getAll();
     stations.sort(Comparator.comparingInt(this::getStationNumber));
 
-    stations.forEach(station -> {
-      data.add(new TableData(station.getStationId(), station.isBusy(), station.getOnQueue()));
-    });
+    stations.forEach(
+        station ->
+            data.add(
+                new StationVisualization(
+                    station.getStationId(), station.isBusy(), station.getOnQueue())));
+
     return data;
   }
 
   /**
-   * used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
-   * format usable by {@link TableData}. Each Stage has their own queue so there are 3 similar methods.
+   * Used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
+   * format usable by {@link StationVisualization}. This one formats data from the {@link
+   * ErrorCheckStage}.
    *
-   * @return returns a {@link ObservableList} that contains {@link TableData} objects for UI
+   * @return Returns an {@link ObservableList} that contains {@link StationVisualization} objects.
    */
-  public ObservableList<TableData> errorCheckGetData() {
-    ObservableList<TableData> data = FXCollections.observableArrayList();
+  public ObservableList<StationVisualization> getErrorCheckVisualizations() {
+    ObservableList<StationVisualization> data = FXCollections.observableArrayList();
 
     val stations = ErrorCheckStage.getStationQueue().getAll();
     stations.sort(Comparator.comparingInt(this::getStationNumber));
 
-    stations.forEach(station -> {
-      data.add(new TableData(station.getStationId(), station.isBusy(), station.getOnQueue()));
-    });
+    stations.forEach(
+        station ->
+            data.add(
+                new StationVisualization(
+                    station.getStationId(), station.isBusy(), station.getOnQueue())));
+
     return data;
   }
 
   /**
-   * used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
-   * format usable by {@link TableData}. Each Stage has their own queue so there are 3 similar methods.
+   * Used to reformat {@link com.assemblyrobot.simulator.system.components.StationQueue} into a data
+   * format usable by {@link StationVisualization}. This one formats data from the {@link FixStage}.
    *
-   * @return returns a {@link ObservableList} that contains {@link TableData} objects for UI
+   * @return Returns an {@link ObservableList} that contains {@link StationVisualization} objects.
    */
-  public ObservableList<TableData> fixGetData() {
-    ObservableList<TableData> data = FXCollections.observableArrayList();
+  public ObservableList<StationVisualization> getFixVisualizations() {
+    ObservableList<StationVisualization> data = FXCollections.observableArrayList();
 
     val queues = FixStage.getSubstations().values();
     val stations = new ArrayList<Station>();
-    queues.forEach(
-        stationQueue -> stations.addAll(stationQueue.getAll()));
+    queues.forEach(stationQueue -> stations.addAll(stationQueue.getAll()));
     stations.sort(Comparator.comparing(Station::getStationId));
 
-    stations.forEach(station -> {
-      data.add(new TableData(station.getStationId(), station.isBusy(), station.getOnQueue()));
-    });
+    stations.forEach(
+        station ->
+            data.add(
+                new StationVisualization(
+                    station.getStationId(), station.isBusy(), station.getOnQueue())));
+
     return data;
   }
 
   /**
-   * A helper method used to separate the station id number from the name.
-   * @param station thats id is needed.
-   * @return the station id number in integer format
+   * A helper method used to separate {@link Station#getStationId()} number from the name.
+   *
+   * @param station {@link Station#getStationId()} id is needed.
+   * @return {@link Integer}
    */
   private int getStationNumber(Station station) {
     // The last element of the dash-separated ID is the number of this station

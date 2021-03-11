@@ -9,25 +9,25 @@
    <children>
       <HBox prefHeight="740.0" prefWidth="3072.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="TableAssemblyStage" prefHeight="740.0" prefWidth="1024.0">
+            <TableView fx:id="assemblyStageTable" prefHeight="740.0" prefWidth="1024.0">
               <columns>
-                <TableColumn fx:id="TableColumnAssemblyStatus" maxWidth="131.0" prefWidth="97.0" text="Station  Status" />
-                  <TableColumn fx:id="TableColumnAssemblyName" maxWidth="217.0" minWidth="0.0" prefWidth="155.0" text="Station Name" />
-                  <TableColumn fx:id="TableColumnAssemblyQ" maxWidth="228.0" minWidth="0.0" prefWidth="88.0" text="In Queue" />
+                <TableColumn fx:id="assemblyStatusColumn" maxWidth="131.0" prefWidth="97.0" text="Station  Status" />
+                  <TableColumn fx:id="assemblyNameColumn" maxWidth="217.0" minWidth="0.0" prefWidth="155.0" text="Station Name" />
+                  <TableColumn fx:id="assemblyQueueColumn" maxWidth="228.0" minWidth="0.0" prefWidth="88.0" text="In Queue" />
               </columns>
             </TableView>
-            <TableView fx:id="TableErrorCheckStage" prefHeight="740.0" prefWidth="1024.0">
+            <TableView fx:id="errorCheckStageTable" prefHeight="740.0" prefWidth="1024.0">
                <columns>
-                  <TableColumn fx:id="TableColumnErrorCheckStatus" maxWidth="110.0" prefWidth="95.0" text="Station  Status" />
-                  <TableColumn fx:id="TableColumnErrorCheckName" maxWidth="259.0" minWidth="0.0" prefWidth="148.0" text="Station Name" />
-                  <TableColumn fx:id="TableColumnErrorCheckQ" maxWidth="320.0" minWidth="0.0" prefWidth="97.0" text="In Queue" />
+                  <TableColumn fx:id="errorCheckStatusColumn" maxWidth="110.0" prefWidth="95.0" text="Station  Status" />
+                  <TableColumn fx:id="errorCheckNameColumn" maxWidth="259.0" minWidth="0.0" prefWidth="148.0" text="Station Name" />
+                  <TableColumn fx:id="errorCheckQueueColumn" maxWidth="320.0" minWidth="0.0" prefWidth="97.0" text="In Queue" />
                </columns>
             </TableView>
-            <TableView fx:id="TableFixStage" prefHeight="740.0" prefWidth="1024.0">
+            <TableView fx:id="fixStageTable" prefHeight="740.0" prefWidth="1024.0">
                <columns>
-                  <TableColumn fx:id="TableColumnFixStatus" maxWidth="120.0" prefWidth="96.0" text="Station  Status" />
-                  <TableColumn fx:id="TableColumnFixName" maxWidth="261.0" prefWidth="169.0" text="Station Name" />
-                  <TableColumn fx:id="TableColumnFixQ" maxWidth="76.0" minWidth="0.0" prefWidth="76.0" text="In Queue" />
+                  <TableColumn fx:id="fixStatusColumn" maxWidth="120.0" prefWidth="96.0" text="Station  Status" />
+                  <TableColumn fx:id="fixNameColumn" maxWidth="261.0" prefWidth="169.0" text="Station Name" />
+                  <TableColumn fx:id="fixQueueColumn" maxWidth="76.0" minWidth="0.0" prefWidth="76.0" text="In Queue" />
                </columns>
             </TableView>
          </children>
