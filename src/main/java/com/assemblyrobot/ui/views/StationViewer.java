@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/* Backend logic component for StationViewer.fxml. */
 @RequiredArgsConstructor
 public class StationViewer extends TickAdvanceListener implements Initializable, View {
   @Setter private Main main;

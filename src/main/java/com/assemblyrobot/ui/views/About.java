@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
 
+/** Backend logic component for About.fxml. */
 public class About implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;

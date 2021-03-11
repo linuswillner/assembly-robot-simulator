@@ -11,13 +11,13 @@ import com.assemblyrobot.simulator.system.components.StationQueue;
 import com.assemblyrobot.simulator.system.stations.FixStation;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.PriorityQueue;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/** {@link Stage} implementation that represents the error fixing stage in the simulator. */
 public class FixStage extends Stage {
 
   @Getter private final StageController stageController;

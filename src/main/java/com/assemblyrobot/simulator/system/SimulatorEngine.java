@@ -6,16 +6,17 @@ import com.assemblyrobot.simulator.core.events.TransferEvent;
 import com.assemblyrobot.simulator.system.utils.ArrivalEventPropagator;
 import lombok.NonNull;
 import com.assemblyrobot.ui.controllers.OverviewController;
+import lombok.RequiredArgsConstructor;
 
+/**
+ * Main {@link Engine} implementation for the simulator.
+ */
+@RequiredArgsConstructor
 public class SimulatorEngine extends Engine {
-
   private final ArrivalEventPropagator arrivalEventPropagator =
       new ArrivalEventPropagator(super.getEventQueue());
-  private final OverviewController overviewController;
 
-  public SimulatorEngine(OverviewController overviewController){
-    this.overviewController = overviewController;
-  }
+  private final OverviewController overviewController;
 
   @Override
   protected void init() {
@@ -70,6 +71,5 @@ public class SimulatorEngine extends Engine {
   }
 
   @Override
-  protected void onDeparture(Event event) {
-  }
+  protected void onDeparture(Event event) {}
 }

@@ -13,7 +13,6 @@ import lombok.val;
  * TickAdvanceListener}, thus making collecting simulation time easier.
  */
 public class EngineMetricsCollector extends TickAdvanceListener {
-
   private final MetricsCollector metricsCollector;
 
   @RequiredArgsConstructor

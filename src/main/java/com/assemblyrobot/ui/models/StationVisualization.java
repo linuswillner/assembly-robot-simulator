@@ -2,6 +2,10 @@ package com.assemblyrobot.ui.models;
 
 import lombok.Getter;
 
+/**
+ * Visualisation transformer class for {@link
+ * com.assemblyrobot.simulator.system.components.Station}s.
+ */
 public class StationVisualization {
   @Getter private String name;
   @Getter private String status;

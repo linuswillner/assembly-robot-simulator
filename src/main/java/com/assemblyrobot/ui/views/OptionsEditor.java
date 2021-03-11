@@ -28,6 +28,7 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/* Backend logic component for OptionsEditor.fxml. */
 public class OptionsEditor implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;

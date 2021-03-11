@@ -1,5 +1,6 @@
 package com.assemblyrobot.simulator.system.components;
 
+import com.assemblyrobot.shared.constants.ErrorType;
 import com.assemblyrobot.shared.constants.StageID;
 import com.assemblyrobot.simulator.core.clock.Clock;
 import com.assemblyrobot.simulator.core.events.EventQueue;
@@ -24,29 +25,31 @@ import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public class StageController {
+  @Getter private final EventQueue eventQueue;
 
-  @Getter
-  private final EventQueue eventQueue;
   private final HashMap<Long, Tracker> trackers = new HashMap<>();
   private final ArrayList<Material> transferQueue = new ArrayList<>();
+
   private final AssemblyStage assemblyStage = new AssemblyStage(this);
   private final ErrorCheckStage errorCheckStage = new ErrorCheckStage(this);
   private final FixStage fixStage = new FixStage(this);
-  private static final Logger logger = LogManager.getLogger();
+
   private final MetricsCollector metricsCollector =
       new MetricsCollector(getClass().getSimpleName(), getClass().getName());
+  private static final Logger logger = LogManager.getLogger();
 
   @RequiredArgsConstructor
   public enum Metrics {
     TOTAL_MATERIAL_AMOUNT("total_entered_material_amount"),
     TOTAL_ASSEMBLED_AMOUNT("total_exited_material_amount");
 
-    @Getter
-    private final String metricName;
+    @Getter private final String metricName;
   }
 
   /**
-   * Puts {@link Material}s and {@link Tracker}s into their respective data stores, and propagates
+   * Registers a new {@link Material} to the system.
+   *
+   * <p>Puts {@link Material}s and {@link Tracker}s into their respective data stores, and propagates
    * transfers via {@link StageController#sendToNextStage}. Increments total material amount for
    * metrics.
    */
@@ -68,9 +71,7 @@ public class StageController {
     trackers.put(tracker.getTrackerId(), tracker);
   }
 
-  /**
-   * Transfers all materials in the transfer queue to their appropriate destinations.
-   */
+  /** Transfers all materials in the transfer queue to their appropriate destinations. */
   public void transferAll() {
     transferQueue.forEach(this::sendToNextStage);
     transferQueue.clear();
@@ -110,7 +111,7 @@ public class StageController {
    *
    * @param material {@link Material}
    * @param hasError Whether this material has an error, and should be sent to the {@link FixStage}
-   *                 before departing.
+   *     before departing.
    * @return {@link StageID}
    */
   private StageID getNextStage(@NonNull Material material, boolean hasError) {
@@ -159,12 +160,12 @@ public class StageController {
    * queues. Triggers scheduling of {@link TransferEvent}s (Type {@link EventType#TRANSFER}).
    *
    * @param material {@link Material} to add to the transfer queue.
-   * @param metrics  Populated {@link MaterialMetricsCollector} to add to the tracker.
-   *                 <p>Prepares material for transfer method by adding it to {@link
-   *                 StageController#transferQueue} for {@link StageController#transferAll()}. Adds
-   *                 {@link MaterialMetricsCollector} to {@link Tracker} and uses {@link
-   *                 StageController#addTrackingData(Tracker)} to add it to{@link
-   *                 StageController#trackers} HashMap
+   * @param metrics Populated {@link MaterialMetricsCollector} to add to the tracker.
+   *     <p>Prepares material for transfer method by adding it to {@link
+   *     StageController#transferQueue} for {@link StageController#transferAll()}. Adds {@link
+   *     MaterialMetricsCollector} to {@link Tracker} and uses {@link
+   *     StageController#addTrackingData(Tracker)} to add it to{@link StageController#trackers}
+   *     HashMap
    */
   public void onChildQueueDepart(
       @NonNull Material material, @NonNull MaterialMetricsCollector metrics) {
@@ -174,18 +175,23 @@ public class StageController {
     material.reset();
     transferQueue.add(material);
 
+    // Check if the material already has an error (I.e. is coming from an error fix stage)
+    // If so, this error needs to be added to the transfer event
+    val hasError = material.getCurrentStage() == StageID.FIX;
+
+    // If coming from the error check stage, check whether we should have an error on this material
+    // and subsequently send it for fixing
     val shouldHaveError =
         material.getCurrentStage() == StageID.ERROR_CHECK
             && ErrorOccurrenceGenerator.getInstance().shouldHaveError();
     val error = shouldHaveError ? ErrorOccurrenceGenerator.getInstance().nextError() : null;
 
-    if (shouldHaveError) {
-      material.setError(error);
-    }
+    ErrorType optionalError = null;
 
-    val hasError = material.getCurrentStage() == StageID.FIX;
-
-    if (shouldHaveError) {
+    if (hasError) {
+      optionalError = material.getError();
+    } else if (shouldHaveError) {
+      optionalError = error;
       material.setError(error);
     }
 
@@ -195,6 +201,6 @@ public class StageController {
             EventType.TRANSFER,
             material.getCurrentStage(),
             getNextStage(material, shouldHaveError),
-            hasError ? material.getError() : error));
+            optionalError));
   }
 }

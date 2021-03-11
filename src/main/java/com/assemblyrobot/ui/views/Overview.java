@@ -21,20 +21,20 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/* Backend logic component for Overview.fxml. */
 public class Overview implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;
+  private double speedMultiplier;
   private final OverviewController controller = new OverviewController(this);
   private boolean hasStarted = false;
   private boolean isPause = false;
-  @Getter @Setter private double speedMultiplier;
   private static final Logger logger = LogManager.getLogger();
 
   @FXML private Button buttonStatus;
@@ -94,8 +94,8 @@ public class Overview implements Initializable, View {
   public void onSliderChanged(MouseEvent mouseEvent) {
     double value = sliderSpeed.getValue();
     controller.setSpeed(value);
-    setSpeedMultiplier(value);
-    System.out.println("Slider speed changed to x" + value);
+    speedMultiplier = value;
+    logger.trace("Speed multiplier changed to {}x.", value);
   }
 
   @FXML
@@ -123,7 +123,7 @@ public class Overview implements Initializable, View {
     controller.resetEngine();
   }
 
-  // Animation controls
+  // Animation engine
 
   @FXML private ProgressBar barToAssembly;
   @FXML private ProgressBar barToErrorCheck;

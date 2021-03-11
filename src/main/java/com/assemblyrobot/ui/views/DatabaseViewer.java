@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import lombok.Setter;
 import lombok.val;
 
+/* Backend logic component for DatabaseViewer.fxml. */
 public class DatabaseViewer implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;

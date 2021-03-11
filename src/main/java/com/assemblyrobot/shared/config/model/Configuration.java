@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-public class ApplicationConfig {
+public class Configuration {
   @Getter @Setter private NormalDistributionConfig arrivalIntervalParams;
   @Getter @Setter private NormalDistributionConfig assemblyTimeParams;
   @Getter @Setter private NormalDistributionConfig errorCheckTimeParams;

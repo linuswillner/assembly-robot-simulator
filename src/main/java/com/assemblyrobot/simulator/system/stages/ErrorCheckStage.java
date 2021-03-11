@@ -9,13 +9,12 @@ import com.assemblyrobot.simulator.system.components.Stage;
 import com.assemblyrobot.simulator.system.components.StageController;
 import com.assemblyrobot.simulator.system.components.StationQueue;
 import com.assemblyrobot.simulator.system.stations.ErrorCheckStation;
-import java.util.PriorityQueue;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.val;
 
+/** {@link Stage} implementation that represents the error checking stage in the simulator. */
 public class ErrorCheckStage extends Stage {
-
   @Getter private final StageController stageController;
   @Getter private static final StationQueue stationQueue = new StationQueue();
   private final StationConfig config = Config.getConfig().getStationParams();

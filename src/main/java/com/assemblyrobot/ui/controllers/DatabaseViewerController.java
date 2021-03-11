@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.val;
 
+/** Controller class for the {@link com.assemblyrobot.ui.views.DatabaseViewer}. */
 public class DatabaseViewerController {
   private final RunDAO dao = RunDAO.getInstance();
   private Set<RunDTO> runs;
@@ -25,9 +26,7 @@ public class DatabaseViewerController {
     return runArray;
   }
 
-  /**
-   * Updates the run list based on information in the database.
-   */
+  /** Updates the run list based on information in the database. */
   public void updateRuns() {
     runs = Arrays.stream(dao.getAllRuns()).collect(Collectors.toSet());
   }

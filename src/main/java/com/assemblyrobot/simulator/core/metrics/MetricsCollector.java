@@ -8,16 +8,27 @@ import lombok.val;
 /**
  * Generic metrics collector. Can be attached to any class to store metrics about various facets of
  * said class.
+ *
+ * <p>It's generally considered a good practice to attach a public enum with a record of the metrics
+ * any given class is collecting, for the sake of ease of use later in the application.
+ *
+ * <p>Example:
+ *
+ * <pre>{@code
+ * public class MyClass {
+ *   @RequiredArgsConstructor
+ *   public enum Metrics {
+ *     METRIC_NAME("collector_metric_name");
+ *
+ *     @Getter private final String metricName;
+ *   }
+ * }
+ * }</pre>
  */
 public class MetricsCollector {
-
-  @Getter
-  private final String hostName;
-  @Getter
-  private final HashMap<String, Double> metrics = new HashMap<>();
-  @Getter
-  @NonNull
-  private final MetricsCollectorType type;
+  @Getter private final String hostName;
+  @Getter private final HashMap<String, Double> metrics = new HashMap<>();
+  @Getter @NonNull private final MetricsCollectorType type;
 
   public MetricsCollector(@NonNull String hostName, @NonNull String typeClassName) {
     this.hostName = hostName;
@@ -44,7 +55,7 @@ public class MetricsCollector {
    * Gets a metric by name, specifying a default value to use when a metric by this name does not
    * exist.
    *
-   * @param metricName   Metric name to get.
+   * @param metricName Metric name to get.
    * @param defaultValue Default value to use in case no metric by this name exists.
    * @return {@link Double}
    */
@@ -55,7 +66,7 @@ public class MetricsCollector {
   /**
    * Sets or updates a metric.
    *
-   * @param metricName  Metric name to set/update.
+   * @param metricName Metric name to set/update.
    * @param measurement Metric value to set/update.
    */
   public void putMetric(@NonNull String metricName, double measurement) {
@@ -75,7 +86,7 @@ public class MetricsCollector {
   /**
    * Increments a metric by wanted amount.
    *
-   * @param metricName  Metric name to increment.
+   * @param metricName Metric name to increment.
    * @param measurement Amount to increment.
    */
   public void incrementMetric(@NonNull String metricName, double measurement) {

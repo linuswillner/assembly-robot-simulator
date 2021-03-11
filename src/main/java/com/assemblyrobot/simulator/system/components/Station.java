@@ -22,10 +22,9 @@ import org.apache.logging.log4j.Logger;
  * flow in a {@link Station}
  */
 public abstract class Station extends TickAdvanceListener {
-
+  @Getter private final String id;
   private final StageController stageController;
   private final HashMap<Long, MaterialMetricsCollector> materialsInProcessing = new HashMap<>();
-  @Getter private final String stationId;
   private Material currentMaterial;
   private long busyTimeRemaining = 0;
   private static final Logger logger = LogManager.getLogger();
@@ -45,10 +44,10 @@ public abstract class Station extends TickAdvanceListener {
   @Getter(AccessLevel.PROTECTED)
   private final PriorityQueue<Material> materialQueue = new PriorityQueue<>();
 
-  public Station(StageController stageController, String stationId) {
+  public Station(StageController stageController, String id) {
     this.stageController = stageController;
-    this.stationId = stationId;
-    metricsCollector = new MetricsCollector(stationId, getClass().getSuperclass().getName());
+    this.id = id;
+    metricsCollector = new MetricsCollector(id, getClass().getSuperclass().getName());
   }
 
   /**
@@ -67,7 +66,7 @@ public abstract class Station extends TickAdvanceListener {
    */
   public void addToStationQueue(@NonNull Material material, @NonNull StageID stageId) {
     val materialId = material.getId();
-    val materialMetrics = new MaterialMetricsCollector(stageId, stationId, materialId);
+    val materialMetrics = new MaterialMetricsCollector(stageId, id, materialId);
     val currentTick = getCurrentTick();
 
     materialQueue.add(material);
@@ -184,7 +183,13 @@ public abstract class Station extends TickAdvanceListener {
       processMaterial();
     }
   }
-  public int getOnQueue(){
+
+  /**
+   * Returns the length of the queue for this station.
+   *
+   * @return {@link Integer}
+   */
+  public int getQueueLength(){
     return materialQueue.size();
   }
 

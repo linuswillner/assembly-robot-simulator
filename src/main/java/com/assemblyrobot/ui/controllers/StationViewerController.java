@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 
+/** Controller class for the {@link com.assemblyrobot.ui.views.StationViewer}. */
 @RequiredArgsConstructor
 public class StationViewerController {
   private final StationViewer stationViewer;
@@ -41,7 +42,7 @@ public class StationViewerController {
         station ->
             data.add(
                 new StationVisualization(
-                    station.getStationId(), station.isBusy(), station.getOnQueue())));
+                    station.getId(), station.isBusy(), station.getQueueLength())));
 
     return data;
   }
@@ -63,7 +64,7 @@ public class StationViewerController {
         station ->
             data.add(
                 new StationVisualization(
-                    station.getStationId(), station.isBusy(), station.getOnQueue())));
+                    station.getId(), station.isBusy(), station.getQueueLength())));
 
     return data;
   }
@@ -80,13 +81,13 @@ public class StationViewerController {
     val queues = FixStage.getSubstations().values();
     val stations = new ArrayList<Station>();
     queues.forEach(stationQueue -> stations.addAll(stationQueue.getAll()));
-    stations.sort(Comparator.comparing(Station::getStationId));
+    stations.sort(Comparator.comparing(Station::getId));
 
     stations.forEach(
         station ->
             data.add(
                 new StationVisualization(
-                    station.getStationId(), station.isBusy(), station.getOnQueue())));
+                    station.getId(), station.isBusy(), station.getQueueLength())));
 
     return data;
   }
@@ -100,14 +101,14 @@ public class StationViewerController {
   }
 
   /**
-   * A helper method used to separate {@link Station#getStationId()} number from the name.
+   * A helper method used to separate {@link Station#getId()} number from the name.
    *
-   * @param station {@link Station#getStationId()} id is needed.
+   * @param station {@link Station#getId()} id is needed.
    * @return {@link Integer}
    */
   private int getStationNumber(Station station) {
     // The last element of the dash-separated ID is the number of this station
-    val id = Iterables.getLast(Arrays.asList(station.getStationId().split("-")));
+    val id = Iterables.getLast(Arrays.asList(station.getId().split("-")));
     return Integer.parseInt(id);
   }
 }

@@ -1,7 +1,7 @@
 package com.assemblyrobot.ui;
 
 import com.assemblyrobot.shared.config.Config;
-import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.config.model.Configuration;
 import com.assemblyrobot.shared.utils.EnvUtils;
 import com.assemblyrobot.ui.controllers.StationViewerController;
 import com.assemblyrobot.ui.views.View;
@@ -24,7 +24,7 @@ public class Main extends Application {
   @Getter @Setter private StationViewerController stationViewerController;
 
   private Parent rootScene;
-  private final ApplicationConfig config = Config.getConfig();
+  private final Configuration config = Config.getConfig();
   private static final Logger logger = LogManager.getLogger();
 
   @Override

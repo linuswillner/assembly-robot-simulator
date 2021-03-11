@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class Tracker {
-
   @Getter private final long trackerId;
   @Getter private final ArrayList<MaterialMetricsCollector> stationMetrics = new ArrayList<>();
 
