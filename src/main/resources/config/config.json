@@ -33,7 +33,7 @@
   },
   "appSettings": {
     "requiredEnv": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD"],
-    "windowWidth": 1024,
+    "windowWidth": 1040,
     "windowHeight": 800,
     "popupWindowWidth": 500,
     "popupWindowHeight": 300

@@ -53,7 +53,7 @@ public class OptionsEditor implements Initializable, View {
   @FXML private TextField boltingStationAmount;
   @FXML private TextField rivetingStationAmount;
   @FXML private TextField weldingStationAmount;
-  @FXML private TextField positionStationAmount;
+  @FXML private TextField returningStationAmount;
 
   // Error fix times
   @FXML private TextField fittingFixTime;
@@ -199,7 +199,7 @@ public class OptionsEditor implements Initializable, View {
     setStationAmount(boltingStationAmount, stationParams.getBoltingFixStationAmount());
     setStationAmount(rivetingStationAmount, stationParams.getRivetingFixStationAmount());
     setStationAmount(weldingStationAmount, stationParams.getWeldingFixStationAmount());
-    setStationAmount(positionStationAmount, stationParams.getReturningFixStationAmount());
+    setStationAmount(returningStationAmount, stationParams.getReturningFixStationAmount());
 
     // Error fix times
 
@@ -241,7 +241,7 @@ public class OptionsEditor implements Initializable, View {
     stationParams.setBoltingFixStationAmount(getStationAmount(boltingStationAmount));
     stationParams.setRivetingFixStationAmount(getStationAmount(rivetingStationAmount));
     stationParams.setWeldingFixStationAmount(getStationAmount(weldingStationAmount));
-    stationParams.setReturningFixStationAmount(getStationAmount(positionStationAmount));
+    stationParams.setReturningFixStationAmount(getStationAmount(returningStationAmount));
 
     // Error fix times
 
