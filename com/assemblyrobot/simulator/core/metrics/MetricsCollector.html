@@ -83,7 +83,23 @@ loadScripts(document, 'script');</script>
 <pre>public class <span class="type-name-label">MetricsCollector</span>
 extends java.lang.Object</pre>
 <div class="block">Generic metrics collector. Can be attached to any class to store metrics about various facets of
- said class.</div>
+ said class.
+
+ <p>It's generally considered a good practice to attach a public enum with a record of the metrics
+ any given class is collecting, for the sake of ease of use later in the application.
+
+ <p>Example:
+
+ <pre><code>
+ public class MyClass {
+   @RequiredArgsConstructor
+   public enum Metrics {
+     METRIC_NAME("collector_metric_name");
+
+     @Getter private final String metricName;
+   }
+ }
+ </code></pre></div>
 </section>
 <section class="summary">
 <ul class="summary-list">

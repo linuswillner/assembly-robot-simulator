@@ -82,6 +82,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">StationQueue</span>
 extends java.lang.Object</pre>
+<div class="block">Generic station list/queue, ordered by vacancy (I.e. the simulator makes an assumption of
+ automatically prioritising empty stations over full ones, <a href="Material.html" title="class in com.assemblyrobot.simulator.system.components"><code>Material</code></a>s get no choice over
+ this).</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -127,22 +130,30 @@ extends java.lang.Object</pre>
 <tr class="alt-color" id="i0">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#add(com.assemblyrobot.simulator.system.components.Station)">add</a></span>&#8203;(<a href="Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a>&nbsp;station)</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Adds a station to the queue.</div>
+</td>
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#dump()">dump</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Dumps all stations from the queue.</div>
+</td>
 </tr>
 <tr class="alt-color" id="i2">
 <td class="col-first"><code>java.util.List&lt;<a href="Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a>&gt;</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getAll()">getAll</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Returns a <code>List</code> of all <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s in this queue.</div>
+</td>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code><a href="Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#peek()">peek</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
+<td class="col-last">
+<div class="block">Returns the next vacant <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -180,24 +191,40 @@ extends java.lang.Object</pre>
 <section class="detail" id="add(com.assemblyrobot.simulator.system.components.Station)">
 <h3>add</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">add</span>&#8203;(<span class="parameters"><a href="Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a>&nbsp;station)</span></div>
+<div class="block">Adds a station to the queue.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>station</code> - <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="peek()">
 <h3>peek</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a></span>&nbsp;<span class="member-name">peek</span>()</div>
+<div class="block">Returns the next vacant <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>First vacant <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getAll()">
 <h3>getAll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">java.util.List&lt;<a href="Station.html" title="class in com.assemblyrobot.simulator.system.components">Station</a>&gt;</span>&nbsp;<span class="member-name">getAll</span>()</div>
+<div class="block">Returns a <code>List</code> of all <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s in this queue.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>List</code>&lt;<a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>&gt;</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="dump()">
 <h3>dump</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">dump</span>()</div>
+<div class="block">Dumps all stations from the queue. Used for resets between simulator runs.</div>
 </section>
 </li>
 </ul>

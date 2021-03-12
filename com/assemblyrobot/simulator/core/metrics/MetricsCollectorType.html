@@ -159,7 +159,8 @@ extends java.lang.Enum&lt;<a href="MetricsCollectorType.html" title="enum in com
 <td class="col-first"><code>static <a href="MetricsCollectorType.html" title="enum in com.assemblyrobot.simulator.core.metrics">MetricsCollectorType</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getByClass(java.lang.String)">getByClass</a></span>&#8203;(@NonNull java.lang.String&nbsp;className)</code></th>
 <td class="col-last">
-<div class="block">Determines the appropriate metrics collector type based on a name (= organisational identifier).</div>
+<div class="block">Determines the appropriate metrics collector type based on a name (= organisational
+ identifier).</div>
 </td>
 </tr>
 <tr class="row-color" id="i1">
@@ -273,7 +274,9 @@ not permitted.)</div>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="MetricsCollectorType.html" title="enum in com.assemblyrobot.simulator.core.metrics">MetricsCollectorType</a></span>&nbsp;<span class="member-name">getByClass</span>&#8203;(<span class="parameters">@NonNull
 @NonNull java.lang.String&nbsp;className)</span>
                                        throws <span class="exceptions"><a href="errors/MetricsCollectorTypeNotRegisteredError.html" title="class in com.assemblyrobot.simulator.core.metrics.errors">MetricsCollectorTypeNotRegisteredError</a></span></div>
-<div class="block">Determines the appropriate metrics collector type based on a name (= organisational identifier).</div>
+<div class="block">Determines the appropriate metrics collector type based on a name (= organisational
+ identifier). This type can be used at runtime to bundle up metrics collectors of a certain
+ type that collect the same data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>className</code> - Organisational identifier in the form of a class name.</dd>

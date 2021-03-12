@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":6,"i4":10,"i5":10,"i6":10,"i7":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -134,7 +134,7 @@ extends <a href="../../core/clock/TickAdvanceListener.html" title="class in com.
 <tbody>
 <tr class="alt-color">
 <th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(com.assemblyrobot.simulator.system.components.StageController,java.lang.String)">Station</a></span>&#8203;(<a href="StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a>&nbsp;stageController,
-java.lang.String&nbsp;stationId)</code></th>
+java.lang.String&nbsp;id)</code></th>
 <td class="col-last">&nbsp;</td>
 </tr>
 </tbody>
@@ -174,15 +174,17 @@ java.lang.String&nbsp;stationId)</code></th>
 </td>
 </tr>
 <tr class="alt-color" id="i2">
-<td class="col-first"><code>int</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getOnQueue()">getOnQueue</a></span>()</code></th>
-<td class="col-last">&nbsp;</td>
-</tr>
-<tr class="row-color" id="i3">
 <td class="col-first"><code>protected abstract long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getProcessingTime()">getProcessingTime</a></span>()</code></th>
 <td class="col-last">
 <div class="block">Gets the processing duration of the <a href="Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a> from a corresponding generator.</div>
+</td>
+</tr>
+<tr class="row-color" id="i3">
+<td class="col-first"><code>int</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getQueueLength()">getQueueLength</a></span>()</code></th>
+<td class="col-last">
+<div class="block">Returns the length of the queue for this station.</div>
 </td>
 </tr>
 <tr class="alt-color" id="i4">
@@ -235,7 +237,7 @@ java.lang.String&nbsp;stationId)</code></th>
 <section class="detail" id="&lt;init&gt;(com.assemblyrobot.simulator.system.components.StageController,java.lang.String)">
 <h3>Station</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">Station</span>&#8203;(<span class="parameters"><a href="StageController.html" title="class in com.assemblyrobot.simulator.system.components">StageController</a>&nbsp;stageController,
-java.lang.String&nbsp;stationId)</span></div>
+java.lang.String&nbsp;id)</span></div>
 </section>
 </li>
 </ul>
@@ -317,9 +319,14 @@ java.lang.String&nbsp;stationId)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="getOnQueue()">
-<h3>getOnQueue</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="member-name">getOnQueue</span>()</div>
+<section class="detail" id="getQueueLength()">
+<h3>getQueueLength</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="member-name">getQueueLength</span>()</div>
+<div class="block">Returns the length of the queue for this station.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>Integer</code></dd>
+</dl>
 </section>
 </li>
 <li>

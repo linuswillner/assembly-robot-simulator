@@ -84,6 +84,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public class <span class="type-name-label">FixStage</span>
 extends <a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></pre>
+<div class="block"><a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components"><code>Stage</code></a> implementation that represents the error fixing stage in the simulator.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -179,7 +180,10 @@ extends <a href="../components/Stage.html" title="class in com.assemblyrobot.sim
 <h3>createStations</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">createStations</span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../components/Stage.html#createStations()">Stage</a></code></span></div>
-<div class="block">Creates a customisable, desired amount of <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.</div>
+<div class="block">Creates a customisable, desired amount of <a href="../components/Station.html" title="class in com.assemblyrobot.simulator.system.components"><code>Station</code></a>s.
+
+ <p>This method is a delegate because special stages like the <a href="FixStage.html" title="class in com.assemblyrobot.simulator.system.stages"><code>FixStage</code></a> need to create a list of "sub-stages" for
+ themselves, i.e. multiple typed station lists.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../components/Stage.html#createStations()">createStations</a></code>&nbsp;in class&nbsp;<code><a href="../components/Stage.html" title="class in com.assemblyrobot.simulator.system.components">Stage</a></code></dd>
