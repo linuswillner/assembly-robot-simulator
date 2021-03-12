@@ -18,6 +18,7 @@ public class TransferEvent extends Event {
   @Getter @NonNull private final StageID destination;
   @Getter private final ErrorType error;
 
+  // Using a legacy constructor here because we need to partially call super()
   public TransferEvent(
       long executionTime,
       @NonNull EventType type,

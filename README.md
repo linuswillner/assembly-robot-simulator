@@ -18,6 +18,8 @@ export DB_PASSWORD=password
 java -jar assembly-robot-simulator.jar
 ```
 
+Should you at any time wish to reset all stored settings of the simulator (**Note: This includes the database!**), you can supply the `FRESH_INSTALL` environment variable.
+
 # Development
 
 In development environments, environment variables can be set via the IntelliJ Run Configurations menu (`Run -> Edit Configurations -> Application -> Environment Variables -> Click the "$" or type manually`).

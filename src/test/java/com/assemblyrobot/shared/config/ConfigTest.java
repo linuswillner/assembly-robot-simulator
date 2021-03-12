@@ -2,7 +2,7 @@ package com.assemblyrobot.shared.config;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
-import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.config.model.Configuration;
 import lombok.val;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.DisplayName;
@@ -14,6 +14,6 @@ class ConfigTest {
   @DisplayName("getConfig(): Loads and returns config correctly")
   void getConfig() {
     val config = Config.getConfig();
-    MatcherAssert.assertThat(config, instanceOf(ApplicationConfig.class));
+    MatcherAssert.assertThat(config, instanceOf(Configuration.class));
   }
 }

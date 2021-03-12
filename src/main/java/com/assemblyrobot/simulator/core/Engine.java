@@ -22,22 +22,24 @@ public abstract class Engine extends Thread {
   @Getter(AccessLevel.PROTECTED)
   private final StageController stageController = new StageController(eventQueue);
 
-  @Setter
-  private StationViewerController stationViewerController;
+  private final Clock clock = Clock.getInstance();
 
-  @Getter private final Clock clock = Clock.getInstance();
-  private static final Logger logger = LogManager.getLogger();
+  // Runtime parameters
 
   @Getter
   @Setter(AccessLevel.PRIVATE)
   private boolean isRunning = false;
 
+  @Setter
+  private StationViewerController
+      stationViewerController; // Required for refresh logic before tick advancements
+
   @Setter private boolean isPause;
   @Setter private boolean canProceed;
-
   @Setter private double speedMultiplier = 0;
-
   @Setter private long stopTick = 0;
+
+  private static final Logger logger = LogManager.getLogger();
 
   public Engine() {
     new EngineMetricsCollector(this); // Register engine metrics collector
@@ -109,7 +111,7 @@ public abstract class Engine extends Thread {
       nextEvent = eventQueue.peekNext();
     }
 
-    // Tell points to check for C events
+    // Tell stations to check for C events
     logger.trace("Attempting to perform C events.");
 
     // Dump event queue for debug
@@ -121,21 +123,29 @@ public abstract class Engine extends Thread {
 
     // Test UI button status
     if (isPause) logger.trace("Simulation paused.");
+
+    // Wait for user to allow the simulator to proceed
     while (isPause && !canProceed) {
+      //noinspection BusyWait
       Thread.sleep(1);
     }
+
+    // Reset for the next cycle
     canProceed = false;
+
+    // Refresh station viewer here before we advance to the next event to indicate the state of the
+    // simulator as it currently stands
+    stationViewerController.refreshStationViewer();
 
     // Advance clock
     val ticksToAdvance = eventQueue.peekNext().getExecutionTime() - clock.getCurrentTick();
-
-    stationViewerController.refreshStationViewer();
 
     logger.trace(
         "Advancing clock by {} ticks to tick {}.",
         ticksToAdvance,
         clock.getCurrentTick() + ticksToAdvance);
 
+    // Calculate appropriate sleep time based on user-defined speed multiplier
     if (speedMultiplier < 0) {
       // If slowing down
       Thread.sleep(ticksToAdvance * (Math.round(speedMultiplier / -1)) * 1000);

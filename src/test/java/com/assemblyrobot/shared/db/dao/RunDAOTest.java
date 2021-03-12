@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.assemblyrobot.shared.config.Config;
-import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.config.model.Configuration;
 import com.assemblyrobot.shared.db.model.EngineDTO;
 import com.assemblyrobot.shared.db.model.MaterialDTO;
 import com.assemblyrobot.shared.db.model.RunDTO;
@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 @Disabled
 class RunDAOTest {
-  private final ApplicationConfig config = Config.getConfig();
+  private final Configuration config = Config.getConfig();
   private final RunDAO dao = RunDAO.getInstance();
 
   @BeforeEach

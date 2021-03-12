@@ -8,8 +8,13 @@ import lombok.NonNull;
  * Material}'s flow in a {@link Stage}.
  */
 public abstract class Stage {
-
-  /** Creates a customisable, desired amount of {@link Station}s. */
+  /**
+   * Creates a customisable, desired amount of {@link Station}s.
+   *
+   * <p>This method is a delegate because special stages like the {@link
+   * com.assemblyrobot.simulator.system.stages.FixStage} need to create a list of "sub-stages" for
+   * themselves, i.e. multiple typed station lists.
+   */
   protected abstract void createStations();
 
   /**

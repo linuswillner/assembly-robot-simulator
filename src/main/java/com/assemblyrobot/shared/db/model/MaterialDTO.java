@@ -2,6 +2,8 @@ package com.assemblyrobot.shared.db.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +17,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class MaterialDTO {
   @Id
+  @Getter
+  @Column(nullable = false)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long uid;
+
   @Getter
   @Column(nullable = false, length = 64)
   private String id;

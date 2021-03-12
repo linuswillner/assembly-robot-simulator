@@ -1,7 +1,5 @@
 package com.assemblyrobot.simulator.core.clock;
 
-import lombok.NonNull;
-
 /**
  * Generic tick advancement listener. Any class that extends this class will automatically be
  * registered as a tick advancement listener in the {@link Clock}.

@@ -11,14 +11,16 @@ public enum MetricsCollectorType {
   MATERIAL;
 
   /**
-   * Determines the appropriate metrics collector type based on a name (= organisational identifier).
+   * Determines the appropriate metrics collector type based on a name (= organisational
+   * identifier). This type can be used at runtime to bundle up metrics collectors of a certain
+   * type that collect the same data.
    *
    * @param className Organisational identifier in the form of a class name.
    * @return {@link MetricsCollectorType}
    * @throws MetricsCollectorTypeNotRegisteredError If no such organisational identifier exists.
    */
-
-  public static MetricsCollectorType getByClass(@NonNull String className) throws MetricsCollectorTypeNotRegisteredError{
+  public static MetricsCollectorType getByClass(@NonNull String className)
+      throws MetricsCollectorTypeNotRegisteredError {
     return switch (className) {
       case "com.assemblyrobot.simulator.core.Engine" -> ENGINE;
       case "com.assemblyrobot.simulator.system.components.Stage" -> STAGE;

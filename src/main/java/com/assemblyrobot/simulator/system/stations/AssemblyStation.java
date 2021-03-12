@@ -5,6 +5,7 @@ import com.assemblyrobot.simulator.system.components.Station;
 import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import lombok.NonNull;
 
+/** {@link Station} implementation for the {@link AssemblyStage}. */
 public class AssemblyStation extends Station implements Comparable<AssemblyStation> {
   private static int nextFreeId = 1;
 

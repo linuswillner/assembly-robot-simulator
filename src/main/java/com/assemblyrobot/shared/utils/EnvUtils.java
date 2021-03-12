@@ -22,7 +22,7 @@ public abstract class EnvUtils {
 
     requiredKeys.forEach(
         variable -> {
-          if (System.getenv(variable) == null || System.getenv().isEmpty()) {
+          if (System.getenv(variable) == null || System.getenv(variable).isBlank()) {
             missingKeys.add(variable);
           }
         });

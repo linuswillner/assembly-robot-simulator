@@ -28,6 +28,7 @@ import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/* Backend logic component for OptionsEditor.fxml. */
 public class OptionsEditor implements Initializable, View {
   @Setter private Main main;
   @Setter private Stage stage;
@@ -127,6 +128,7 @@ public class OptionsEditor implements Initializable, View {
       }
 
       populateConfig();
+      updateConfig();
     }
   }
 
@@ -162,6 +164,7 @@ public class OptionsEditor implements Initializable, View {
     Config.removeUserSetting(UserSetting.CUSTOM_CONFIG_LOADED);
     Config.load();
     populateConfig();
+    updateConfig();
   }
 
   private FileChooser getFileChooser(String defaultFileName) {

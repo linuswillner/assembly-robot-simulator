@@ -1,9 +1,10 @@
 package com.assemblyrobot.shared.config;
 
-import com.assemblyrobot.shared.config.model.ApplicationConfig;
+import com.assemblyrobot.shared.config.model.Configuration;
 import com.assemblyrobot.shared.utils.JsonUtils;
 import java.io.FileReader;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.prefs.Preferences;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 /** Central configuration loader and manager class. */
 public abstract class Config {
   private static final Logger logger = LogManager.getLogger();
-  private static ApplicationConfig config;
+  private static Configuration config;
   private static final Preferences userSettings =
       Preferences.userRoot().node(Config.class.getName());
   private static final String DEFAULT_CONFIG_PATH = "/config/config.json";
@@ -32,17 +33,24 @@ public abstract class Config {
    * Returns the configuration as defined in resources/config/config.json, or in an optional custom
    * path if specified by the user.
    *
-   * @return {@link ApplicationConfig}
+   * @return {@link Configuration}
    */
-  public static ApplicationConfig getConfig() {
+  public static Configuration getConfig() {
     if (config == null) {
+      val isFresh = System.getenv("FRESH_INSTALL");
+
+      // If we're doing a fresh start override, remove all user settings
+      if (isFresh != null) {
+        Arrays.stream(UserSetting.values()).forEach(Config::removeUserSetting);
+      }
+
       load();
     }
 
     return config;
   }
 
-  public static void updateConfig(ApplicationConfig newConfig) {
+  public static void updateConfig(Configuration newConfig) {
     config = newConfig;
   }
 
@@ -60,7 +68,7 @@ public abstract class Config {
       var configPath = getUserSetting(UserSetting.CUSTOM_CONFIG_PATH);
 
       try (val file = new FileReader(configPath)) {
-        config = JsonUtils.gson.fromJson(file, ApplicationConfig.class);
+        config = JsonUtils.gson.fromJson(file, Configuration.class);
         putUserSetting(UserSetting.CUSTOM_CONFIG_LOADED, true);
       } catch (Exception e) {
         logger.error("Could not load custom config:", e);
@@ -72,7 +80,7 @@ public abstract class Config {
   }
 
   /**
-   * Internal method to initiate a all-or-nothing fallback to the default config, should the custom
+   * Internal method to initiate an all-or-nothing fallback to the default config, should the custom
    * config loading somehow fail. If this method fails to load the default config (Something that
    * should conceivably never happen due to it being included in /resources), the application will
    * exit.
@@ -87,7 +95,7 @@ public abstract class Config {
       val configPath = Config.class.getResource(DEFAULT_CONFIG_PATH);
       val configFile = Paths.get(configPath.toURI()).toFile();
       val file = new FileReader(configFile.getAbsolutePath());
-      config = JsonUtils.gson.fromJson(file, ApplicationConfig.class);
+      config = JsonUtils.gson.fromJson(file, Configuration.class);
       file.close();
     } catch (Exception e) {
       // If we can't load the default config, we're boned anyway

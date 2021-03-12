@@ -2,16 +2,20 @@ package com.assemblyrobot.simulator.system.stations;
 
 import com.assemblyrobot.shared.constants.ErrorType;
 import com.assemblyrobot.simulator.system.components.Station;
+import com.assemblyrobot.simulator.system.stages.AssemblyStage;
 import com.assemblyrobot.simulator.system.stages.FixStage;
 import java.util.HashMap;
 import lombok.NonNull;
 
+/**
+ * {@link Station} implementation for the {@link AssemblyStage}. This station is slightly more
+ * unique compared to the rest, as noted by that it's sub-typed with an {@link ErrorType}.
+ */
 public class FixStation extends Station implements Comparable<FixStation> {
-
   private final ErrorType type;
   private static final HashMap<ErrorType, Long> stationIds = new HashMap<>();
 
-  public FixStation(@NonNull FixStage stage, ErrorType type) {
+  public FixStation(@NonNull FixStage stage, @NonNull ErrorType type) {
     super(
         stage.getStageController(),
         "FixStation-%s-%d".formatted(type, stationIds.getOrDefault(type, 1L)));

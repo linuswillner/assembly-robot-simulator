@@ -21,20 +21,21 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/* Backend logic component for Overview.fxml. */
 public class Overview implements Initializable, View {
+
   @Setter private Main main;
   @Setter private Stage stage;
+  private double speedMultiplier;
   private final OverviewController controller = new OverviewController(this);
   private boolean hasStarted = false;
   private boolean isPause = false;
-  @Getter @Setter private double speedMultiplier;
   private static final Logger logger = LogManager.getLogger();
 
   @FXML private Button buttonStatus;
@@ -66,6 +67,7 @@ public class Overview implements Initializable, View {
   @FXML
   public void controlSimulation(ActionEvent actionEvent) {
     if (!hasStarted) {
+      resetSimulation();
       buttonStatus.setText("Pause");
       controller.startEngine();
       hasStarted = true;
@@ -94,8 +96,8 @@ public class Overview implements Initializable, View {
   public void onSliderChanged(MouseEvent mouseEvent) {
     double value = sliderSpeed.getValue();
     controller.setSpeed(value);
-    setSpeedMultiplier(value);
-    System.out.println("Slider speed changed to x" + value);
+    speedMultiplier = value;
+    logger.trace("Speed multiplier changed to {}x.", value);
   }
 
   @FXML
@@ -110,6 +112,7 @@ public class Overview implements Initializable, View {
   private void resetSimulation() {
     sliderSpeed.setValue(0);
     buttonStatus.setText("Start");
+    resetProgressBars();
     Clock.getInstance().reset();
     Material.resetId();
     ErrorCheckStation.resetId();
@@ -123,7 +126,7 @@ public class Overview implements Initializable, View {
     controller.resetEngine();
   }
 
-  // Animation controls
+  // Animation engine
 
   @FXML private ProgressBar barToAssembly;
   @FXML private ProgressBar barToErrorCheck;
@@ -201,11 +204,12 @@ public class Overview implements Initializable, View {
 
   @SneakyThrows
   private void animateProgressBarsSequential(ProgressBar[] progressBars) {
-    val animationSpeed = calculateAnimationSpeed();
-    val waitingTime = calculateWaitingTime();
     var currentProgress = 0.1;
 
     for (int i = 0; i < progressBars.length; i++) {
+      val animationSpeed = calculateAnimationSpeed();
+      val waitingTime = calculateWaitingTime();
+
       val previous = i > 0 ? progressBars[i - 1] : null;
       val current = progressBars[i];
       val next = i < progressBars.length - 1 ? progressBars[i + 1] : null;
@@ -306,5 +310,37 @@ public class Overview implements Initializable, View {
       barToFix, barToFixDown1, barToFixDown2, barToFixDown3, barDeparture1, barDeparture2
     };
     animateProgressBarsSequential(progressBars);
+  }
+
+  private void resetProgressBars() {
+    ProgressBar[] barArray = {
+      barToAssembly,
+      barToErrorCheck,
+      barToFix,
+      barToFixUp1,
+      barToFixUp2,
+      barToFixDown1,
+      barToFixDown2,
+      barToFixDown3,
+      barToFixBolting,
+      barToFixRiveting,
+      barToFixWelding,
+      barToFixPosition,
+      barFromFitting,
+      barFromBolting,
+      barFromRiveting,
+      barFromWelding,
+      barFromPosition,
+      barDown1,
+      barDown2,
+      barDown3,
+      barDown4,
+      barDown5,
+      barDeparture1,
+      barDeparture2
+    };
+    for (ProgressBar progressBar : barArray) {
+      progressBar.setProgress(0);
+    }
   }
 }
